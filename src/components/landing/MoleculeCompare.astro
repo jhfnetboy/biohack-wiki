@@ -1,0 +1,77 @@
+---
+import { localeId, pick } from '../../lib/locale';
+
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const t = (en: string, zh: string) => pick(id, en, zh);
+
+const rows = [
+	{
+		label: 'Size',
+		labelZh: '大小',
+		bio: 'Small molecules, often under about 900 daltons.',
+		bioZh: '小分子，常常大约在 900 道尔顿以下。',
+		pep: 'Chains of about 2 to 40 amino acids.',
+		pepZh: '大约 2 到 40 个氨基酸的链。',
+	},
+	{
+		label: 'Origin',
+		labelZh: '来源',
+		bio: 'Made by chemical synthesis.',
+		bioZh: '化学合成。',
+		pep: 'Chains that mimic the body’s own signal hormones.',
+		pepZh: '模仿身体自身信号激素的链。',
+	},
+	{
+		label: 'Route',
+		labelZh: '途径',
+		bio: 'Often swallowed.',
+		bioZh: '常常口服。',
+		pep: 'Often not swallowed, because digestion breaks the chain. Not an instruction.',
+		pepZh: '常常不口服，因为消化会拆开这条链。这不是操作说明。',
+	},
+	{
+		label: 'Target',
+		labelZh: '靶点',
+		bio: 'Enzymes and receptors, including inside cells. Some cross into the brain.',
+		bioZh: '酶和受体，包括细胞内。有的能进入脑。',
+		pep: 'Mostly receptors on the cell surface, with high specificity.',
+		pepZh: '大多是细胞表面的受体，特异性高。',
+	},
+	{
+		label: 'Stability',
+		labelZh: '稳定性',
+		bio: 'Usually stable enough to store as a chemical.',
+		bioZh: '通常稳定到可以按化学品储存。',
+		pep: 'Often a short life in the body, and the chain degrades, so purity, storage, and testing are their own problem.',
+		pepZh: '在体内常常寿命短，链会降解，所以纯度、储存和检测本身就是问题。',
+	},
+];
+---
+
+<section class="bh-compare">
+	<h2>{t('Biochemical vs Peptides', '生化小分子与肽')}</h2>
+	<p class="bh-note">
+		{t(
+			'Filing contrast only. Not a regimen. A chain of more than 40 amino acids is a protein, filed as a biologic.',
+			'只是归档上的对照。不是方案。超过 40 个氨基酸的链是蛋白质，按生物制品归档。',
+		)}
+	</p>
+	<div class="bh-compare-table">
+		<div class="bh-compare-head">{t('Biochemical', '生化小分子')}</div>
+		<div class="bh-compare-head">{t('Peptides', '肽')}</div>
+		{
+			rows.map((row) => (
+				<>
+					<div>
+						<strong>{t(row.label, row.labelZh)}</strong>
+						<p>{t(row.bio, row.bioZh)}</p>
+					</div>
+					<div>
+						<strong>{t(row.label, row.labelZh)}</strong>
+						<p>{t(row.pep, row.pepZh)}</p>
+					</div>
+				</>
+			))
+		}
+	</div>
+</section>

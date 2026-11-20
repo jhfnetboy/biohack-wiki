@@ -35,6 +35,8 @@ Stub, needs sourcing. The outline below is not a set of findings.
 
 This slot is for the implanted device associated with Neuralink. Channel counts, materials, wireless behavior, and regulatory status are not stated.
 
+Neuralink’s N1 threads are intracortical: the electrodes go a few millimeters into the motor cortex. That is not a subcortical placement. The trial record itself was not opened, so results are not stated.
+
 ## Outline
 
 - What it is

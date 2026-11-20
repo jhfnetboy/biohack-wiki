@@ -1,0 +1,56 @@
+---
+import { goalLabel, type GoalId } from '../../data/domain-keywords';
+import { scenariosFor, type Scenario } from '../../data/scenarios';
+import { localeId, localePrefix, pick } from '../../lib/locale';
+
+interface Props {
+	slug: string;
+}
+
+const { slug } = Astro.props;
+const scenarios = scenariosFor(slug);
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const prefix = localePrefix(id);
+const t = (en: string, zh: string) => pick(id, en, zh);
+const text = (row: Scenario['name']) => row[id];
+const href = (path: string) => `${prefix}${path}`;
+
+function chips(scenario: Scenario): GoalId[] {
+	return scenario.goals;
+}
+---
+
+{
+	scenarios.length > 0 && (
+		<section class="bh-scenarios">
+			<h2>{t('Typical scenarios', '典型场景')}</h2>
+			<p class="bh-note">
+				{t(
+					'A named situation and the real examples this wiki can point at. A stub is not a result. No doses and no purchasing.',
+					'一个点名的情境，以及本维基能指到的真实例子。存根不是结果。没有剂量，也没有购买信息。',
+				)}
+			</p>
+			<ul class="bh-grid">
+				{scenarios.map((scenario) => (
+					<li class:list={['bh-card', { stub: scenario.stub }]}>
+						{scenario.stub && <span class="bh-pill stub">{t('Stub, needs sourcing', '存根，需要来源')}</span>}
+						<h3>{text(scenario.name)}</h3>
+						<p>
+							<strong>{t('What is used', '用的是什么')}</strong> {text(scenario.uses)}
+						</p>
+						<p class="bh-scenario-meta">
+							{chips(scenario).map((goal) => (
+								<span class:list={['bh-goal', goal]}>{goalLabel(goal, id)}</span>
+							))}
+						</p>
+						<p>
+							<strong>{t('Evidence status', '证据状态')}</strong> {text(scenario.status)}
+						</p>
+						<p>{text(scenario.note)}</p>
+						{scenario.href && <a href={href(scenario.href)}>{t('Open', '打开')}</a>}
+					</li>
+				))}
+			</ul>
+		</section>
+	)
+}
