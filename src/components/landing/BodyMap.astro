@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Illustration from './Illustration.astro';
 import { domains } from '../../data/domains';
-import { domainGoals, goalLabel, keywordLine, type GoalId } from '../../data/domain-keywords';
+import { domainGoals, goalLabel, keywordsFor, type GoalId } from '../../data/domain-keywords';
 import { illustrations } from '../../data/illustrations';
 import { localeId, localePrefix, pick } from '../../lib/locale';
 
@@ -129,7 +129,14 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 					<li>
 						<a class="bh-map-tile" href={href(tile.href)} data-tile={tile.slug}>
 							<span class="bh-map-copy">
-								<span class="bh-map-keywords">{keywordLine(tile.slug, id)}</span>
+								<span class="bh-map-keywords">
+									{keywordsFor(tile.slug, id).map((word, index) => (
+										<>
+											{index > 0 && <span class="bh-kw-sep"> · </span>}
+											<span class="bh-kw">{word}</span>
+										</>
+									))}
+								</span>
 								<strong>{t(tile.title, tile.titleZh)}</strong>
 								<span class="bh-map-layers">
 									{tile.layers.map((layer) => (
@@ -151,14 +158,25 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 		</ol>
 		<figure class="bh-map-body">
 			<div class="bh-map-figure">
-				<Image src={body.src} alt={bodyAlt} widths={[320, 480, 768]} sizes="(max-width: 767px) 70vw, 320px" />
+				<Image
+					src={body.src}
+					alt={bodyAlt}
+					widths={[480, 768, 1024]}
+					sizes="(max-width: 767px) 72vw, 360px"
+				/>
 				{
 					tiles.map((tile) => (
-						<span class="bh-map-anchor" data-anchor={tile.slug} style={`left:${tile.x}%;top:${tile.y}%`} />
+						<span
+							class="bh-map-anchor"
+							data-anchor={tile.slug}
+							data-x={tile.x}
+							data-y={tile.y}
+							style={`left:${tile.x}%;top:${tile.y}%`}
+						/>
 					))
 				}
+				<figcaption class="bh-map-caption">{caption}</figcaption>
 			</div>
-			<figcaption>{caption}</figcaption>
 		</figure>
 		<ol class="bh-map-side right">
 			{
@@ -166,7 +184,14 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 					<li>
 						<a class="bh-map-tile" href={href(tile.href)} data-tile={tile.slug}>
 							<span class="bh-map-copy">
-								<span class="bh-map-keywords">{keywordLine(tile.slug, id)}</span>
+								<span class="bh-map-keywords">
+									{keywordsFor(tile.slug, id).map((word, index) => (
+										<>
+											{index > 0 && <span class="bh-kw-sep"> · </span>}
+											<span class="bh-kw">{word}</span>
+										</>
+									))}
+								</span>
 								<strong>{t(tile.title, tile.titleZh)}</strong>
 								<span class="bh-map-layers">
 									{tile.layers.map((layer) => (
@@ -197,11 +222,11 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 			}
 		</svg>
 	</div>
-	<p class="bh-axis">
-		{t('The human at the center. Ten methods. Three goals.', '人在中心。十种手段。三个目标。')}
-	</p>
-	<div class="bh-split">
-		<p>
+	<div class="bh-explain">
+		<p class="bh-axis">
+			{t('The human at the center. Ten methods. Three goals.', '人在中心。十种手段。三个目标。')}
+		</p>
+		<p class="bh-explain-intro">
 			{
 				t(
 					'Biochemical and peptides both add a messenger. Genetic does not: it rewrites the instructions that make messengers.',
@@ -209,44 +234,103 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 				)
 			}
 		</p>
-		<ul>
+		<ul class="bh-trio">
 			<li>
-				{
-					t(
-						'Biochemical — small chemical molecules. Effects depend on dose and usually fade after you stop.',
-						'生化小分子：加入小化学分子。效果依赖剂量，停用后通常会消退。',
-					)
-				}
+				<h3><a href={href('/biochemical/')}>{t('Biochemical', '生化小分子')}</a></h3>
+				<p>
+					{
+						t(
+							'Small chemical molecules. Effects depend on dose and usually fade after you stop.',
+							'加入小化学分子。效果依赖剂量，停用后通常会消退。',
+						)
+					}
+				</p>
 			</li>
 			<li>
-				{
-					t(
-						'Peptides — the messenger is a short amino-acid chain. Split out because purity, testing, and supply are their own problem.',
-						'肽：信使是氨基酸短链。单独列出，是因为纯度、检测和供应本身就是问题。',
-					)
-				}
+				<h3><a href={href('/peptides/')}>{t('Peptides', '肽')}</a></h3>
+				<p>
+					{
+						t(
+							'Short amino-acid chains used as signals. Split out because purity, testing, and supply are their own problem.',
+							'作为信号的氨基酸短链。单独列出，是因为纯度、检测和供应本身就是问题。',
+						)
+					}
+				</p>
 			</li>
 			<li>
-				{
-					t(
-						'Genetic — reads or rewrites DNA or RNA. A change is often one-time and may be irreversible.',
-						'基因：阅读或改写 DNA 或 RNA。改动往往一次到位，而且可能不可逆。',
-					)
-				}
+				<h3><a href={href('/genetic/')}>{t('Genetic', '基因')}</a></h3>
+				<p>
+					{
+						t(
+							'Reads or rewrites DNA or RNA. A change is often one-time and may be irreversible.',
+							'阅读或改写 DNA 或 RNA。改动往往一次到位，而且可能不可逆。',
+						)
+					}
+				</p>
+			</li>
+		</ul>
+		<ul class="bh-goal-defs">
+			<li>
+				<a class="bh-goal restore" href={href('/goals/restore/')}>{t('Restore', '修复')}</a>
+				<p>
+					{
+						t(
+							'Bring a lost or damaged function back toward a usual level.',
+							'把失去或受损的功能拉回通常水平。',
+						)
+					}
+				</p>
+			</li>
+			<li>
+				<a class="bh-goal enhance" href={href('/goals/enhance/')}>{t('Enhance', '增强')}</a>
+				<p>
+					{
+						t(
+							'Take a usual function past a typical level, or add a new one.',
+							'让通常功能超过一般水平，或增加新能力。',
+						)
+					}
+				</p>
+			</li>
+			<li>
+				<a class="bh-goal extend" href={href('/goals/longevity/')}>{t('Extend', '延寿')}</a>
+				<p>
+					{
+						t(
+							'Postpone age-related decline and lengthen healthspan.',
+							'推迟与年龄相关的功能下降，延长健康寿命。',
+						)
+					}
+				</p>
 			</li>
 		</ul>
 	</div>
 </section>
 
 <script>
+	function toRoot(root: HTMLElement, el: HTMLElement, localX: number, localY: number) {
+		const rootBox = root.getBoundingClientRect();
+		const box = el.getBoundingClientRect();
+		const scaleX = rootBox.width ? root.clientWidth / rootBox.width : 1;
+		const scaleY = rootBox.height ? root.clientHeight / rootBox.height : 1;
+		return {
+			x: (box.left - rootBox.left + localX) * scaleX,
+			y: (box.top - rootBox.top + localY) * scaleY,
+		};
+	}
+
 	function layout(root: HTMLElement) {
 		const svg = root.querySelector<SVGSVGElement>('.bh-map-lines');
-		if (!svg) return;
+		const figure = root.querySelector<HTMLElement>('.bh-map-figure');
+		if (!svg || !figure) return;
 		if (window.matchMedia('(max-width: 767px)').matches) return;
-		const box = root.getBoundingClientRect();
-		svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
-		svg.setAttribute('width', String(box.width));
-		svg.setAttribute('height', String(box.height));
+		const width = root.clientWidth;
+		const height = root.clientHeight;
+		const figureBox = figure.getBoundingClientRect();
+		if (width < 8 || height < 8 || figureBox.width < 8 || figureBox.height < 8) return;
+		svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+		svg.removeAttribute('width');
+		svg.removeAttribute('height');
 		for (const tile of root.querySelectorAll<HTMLElement>('[data-tile]')) {
 			const slug = tile.dataset.tile ?? '';
 			const anchor = root.querySelector<HTMLElement>(`[data-anchor="${slug}"]`);
@@ -255,17 +339,16 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 			if (!anchor || !line || !dot) continue;
 			const tileBox = tile.getBoundingClientRect();
 			const anchorBox = anchor.getBoundingClientRect();
+			if (anchorBox.width < 2 || anchorBox.height < 2) continue;
 			const fromLeft = Boolean(tile.closest('.left'));
-			const x1 = (fromLeft ? tileBox.right : tileBox.left) - box.left;
-			const y1 = tileBox.top + tileBox.height / 2 - box.top;
-			const x2 = anchorBox.left + anchorBox.width / 2 - box.left;
-			const y2 = anchorBox.top + anchorBox.height / 2 - box.top;
-			line.setAttribute('x1', String(x1));
-			line.setAttribute('y1', String(y1));
-			line.setAttribute('x2', String(x2));
-			line.setAttribute('y2', String(y2));
-			dot.setAttribute('cx', String(x2));
-			dot.setAttribute('cy', String(y2));
+			const start = toRoot(root, tile, fromLeft ? tileBox.width : 0, tileBox.height / 2);
+			const end = toRoot(root, anchor, anchorBox.width / 2, anchorBox.height / 2);
+			line.setAttribute('x1', String(start.x));
+			line.setAttribute('y1', String(start.y));
+			line.setAttribute('x2', String(end.x));
+			line.setAttribute('y2', String(end.y));
+			dot.setAttribute('cx', String(end.x));
+			dot.setAttribute('cy', String(end.y));
 		}
 	}
 
@@ -280,8 +363,19 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 
 	for (const root of document.querySelectorAll<HTMLElement>('[data-body-map]')) {
 		const draw = () => layout(root);
+		const observer = new ResizeObserver(draw);
+		observer.observe(root);
+		const figure = root.querySelector<HTMLElement>('.bh-map-figure');
+		const image = figure?.querySelector('img');
+		if (figure) observer.observe(figure);
+		if (image) observer.observe(image);
+		for (const tile of root.querySelectorAll<HTMLElement>('[data-tile]')) observer.observe(tile);
+		image?.addEventListener('load', draw);
+		if (image && typeof image.decode === 'function') image.decode().then(draw).catch(() => {});
+		window.addEventListener('resize', draw);
+		document.fonts?.ready.then(draw);
 		draw();
-		new ResizeObserver(draw).observe(root);
+		requestAnimationFrame(() => requestAnimationFrame(draw));
 		root.addEventListener('pointerover', (event) => {
 			const tile = (event.target as Element | null)?.closest<HTMLElement>('[data-tile]');
 			setActive(root, tile?.dataset.tile ?? '');
