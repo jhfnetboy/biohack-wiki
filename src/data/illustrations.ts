@@ -11,6 +11,7 @@ import domainMicrobiome from '../assets/illustrations/domain-microbiome.webp';
 import domainLifestyle from '../assets/illustrations/domain-lifestyle.webp';
 import domainPeptides from '../assets/illustrations/domain-peptides.webp';
 import bodyCenter from '../assets/illustrations/body-center.webp';
+import bodyCenterCutout from '../assets/illustrations/body-center-cutout.webp';
 import sceneBci from '../assets/illustrations/scene-bci.webp';
 import sceneHand from '../assets/illustrations/scene-prosthetic-hand.webp';
 import sceneExo from '../assets/illustrations/scene-exoskeleton.webp';
@@ -70,6 +71,11 @@ export const illustrations: Record<string, Illustration> = {
 		src: bodyCenter,
 		alt: 'AI-generated illustration. A luminous translucent human figure standing centered on a dark field.',
 		altZh: 'AI 生成插图。居中站立的半透明发光人体。',
+	},
+	'body-center-cutout': {
+		src: bodyCenterCutout,
+		alt: 'AI-generated illustration. A translucent teal human figure, cropped close, with no background.',
+		altZh: 'AI 生成插图。裁切紧密的半透明青色人体，没有背景。',
 	},
 	'domain-quantified-self': {
 		src: domainQuantified,

@@ -96,10 +96,14 @@ export const domainGoals: Record<string, GoalId[]> = {
 
 type KeywordSlug = keyof typeof domainKeywords;
 
-export function keywordLine(slug: string, id: LocaleId): string {
+export function keywordsFor(slug: string, id: LocaleId): readonly string[] {
 	const row = domainKeywords[slug as KeywordSlug];
-	if (!row) return '';
-	return row[id].join(' · ');
+	if (!row) return [];
+	return row[id];
+}
+
+export function keywordLine(slug: string, id: LocaleId): string {
+	return keywordsFor(slug, id).join(' · ');
 }
 
 export function goalKeywordLine(goal: GoalId, id: LocaleId): string {
