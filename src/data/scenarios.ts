@@ -2,420 +2,405 @@ import type { GoalId } from './domain-keywords';
 import type { LocaleId } from '../lib/locale';
 
 export type Localized = Record<LocaleId, string>;
+export type EvidenceBadge = 'approved' | 'trial' | 'early' | 'limited';
 
 export type Scenario = {
 	name: Localized;
-	uses: Localized;
+	summary: Localized;
 	goals: GoalId[];
-	status: Localized;
-	note: Localized;
+	badge: EvidenceBadge;
 	href?: string;
+	sources?: { url: string; label: string }[];
 	stub?: boolean;
 };
 
 const L = (en: string, zh: string, th: string): Localized => ({ en, zh, th });
 
-const stubNote = L(
-	'Stub, needs sourcing. No outcome is stated.',
-	'存根，需要来源。不写结局。',
-	'ฉบับร่าง ยังต้องหาแหล่งอ้างอิง ไม่ได้ระบุผลลัพธ์',
+const notYet = L(
+	'Evidence for this scenario has not been summarized here yet.',
+	'这里还没有整理这个场景的证据。',
+	'ยังไม่ได้สรุปหลักฐานของสถานการณ์นี้ที่นี่',
 );
 
 export const domainScenarios: Record<string, Scenario[]> = {
 	biochemical: [
 		{
-			name: L('Caffeine with L-theanine', '咖啡因与 L-茶氨酸', 'คาเฟอีนกับ L-theanine'),
-			uses: L('Caffeine and L-theanine, discussed for focus.', '咖啡因和 L-茶氨酸，被讨论用于专注。', 'คาเฟอีนและ L-theanine ที่ถูกพูดถึงเรื่องสมาธิ'),
+			name: L('Caffeine with L-theanine', '咖啡因配 L-茶氨酸', 'คาเฟอีนคู่กับแอล-ธีอะนีน'),
+			summary: L(
+				'One small randomized crossover study found that caffeine plus L-theanine improved some attention measures, including accuracy on a rapid visual task, compared with placebo.',
+				'一项小型随机交叉研究发现，咖啡因加上 L-茶氨酸后，快速视觉任务的准确率等一些注意力指标优于安慰剂。',
+				'การทดลองไขว้แบบสุ่มขนาดเล็กพบว่าคาเฟอีนร่วมกับแอล-ธีอะนีนทำให้ตัวชี้วัดความใส่ใจบางอย่างดีกว่ายาหลอก รวมถึงความถูกต้องในงานภาพที่ต้องตอบเร็ว',
+			),
 			goals: ['enhance'],
-			status: L('Supplement talk. Research not opened.', '补充剂讨论。研究没有打开。', 'การพูดถึงผลิตภัณฑ์เสริม ยังไม่ได้เปิดงานวิจัย'),
-			note: stubNote,
-			stub: true,
+			badge: 'limited',
+			sources: [{
+				url: 'https://pubmed.ncbi.nlm.nih.gov/18006208/',
+				label: 'Haskell et al., Biological Psychology, 2008. PubMed 18006208',
+			}],
 		},
 		{
 			name: L('Creatine', '肌酸', 'ครีเอทีน'),
-			uses: L('Creatine, discussed for strength and cognition.', '肌酸，被讨论用于力量和认知。', 'ครีเอทีน ที่ถูกพูดถึงเรื่องกำลังและการรู้คิด'),
+			summary: L(
+				'The International Society of Sports Nutrition position stand says creatine monohydrate is the most effective supplement it reviewed for raising high-intensity exercise capacity and lean mass during training. The same review cites studies in which creatine improved some cognitive tests.',
+				'国际运动营养学会的立场声明认为，在它回顾的补充剂里，一水肌酸最能在训练中提高高强度运动能力和瘦体重。同一篇综述还引用了肌酸改善部分认知测验的研究。',
+				'แถลงการณ์ของสมาคมโภชนาการการกีฬานานาชาติระบุว่าครีเอทีนโมโนไฮเดรตเป็นผลิตภัณฑ์เสริมที่ได้ผลที่สุดในเอกสารที่ทบทวน สำหรับการเพิ่มความสามารถในการออกกำลังความเข้มสูงและมวลไร้ไขมันระหว่างฝึก บทความเดียวกันอ้างการศึกษาที่ครีเอทีนทำให้แบบทดสอบการรู้คิดบางชุดดีขึ้น',
+			),
 			goals: ['enhance'],
-			status: L('Research not opened.', '研究没有打开。', 'ยังไม่ได้เปิดงานวิจัย'),
-			note: stubNote,
-			stub: true,
+			badge: 'limited',
+			sources: [{
+				url: 'https://pubmed.ncbi.nlm.nih.gov/28615996/',
+				label: 'Kreider et al., JISSN, 2017. PubMed 28615996',
+			}],
 		},
 		{
-			name: L('Melatonin', '褪黑素', 'เมลาโทนิน'),
-			uses: L('Melatonin, discussed for sleep timing.', '褪黑素，被讨论用于睡眠时间。', 'เมลาโทนิน ที่ถูกพูดถึงเรื่องจังหวะการนอน'),
+			name: L('Melatonin for jet lag', '褪黑素与时差', 'เมลาโทนินกับอาการเจ็ตแล็ก'),
+			summary: L(
+				'A Cochrane review of randomized trials found that melatonin, taken near bedtime at the destination, reduced jet lag after flights that crossed five or more time zones.',
+				'Cochrane 对随机试验的综述发现，在目的地临近就寝时使用褪黑素，能减轻跨越五个及以上时区后的时差反应。',
+				'บททบทวน Cochrane ของการทดลองแบบสุ่มพบว่าเมลาโทนินที่กินใกล้เวลานอนของจุดหมาย ลดอาการเจ็ตแล็กหลังเที่ยวบินที่ข้ามห้าเขตเวลาขึ้นไป',
+			),
 			goals: ['enhance'],
-			status: L('Supplement talk. Research not opened.', '补充剂讨论。研究没有打开。', 'การพูดถึงผลิตภัณฑ์เสริม ยังไม่ได้เปิดงานวิจัย'),
-			note: stubNote,
-			stub: true,
+			badge: 'limited',
+			sources: [{
+				url: 'https://www.cochrane.org/evidence/CD001520_melatonin-prevention-and-treatment-jet-lag',
+				label: 'Herxheimer and Petrie, Cochrane, 2002. CD001520',
+			}],
 		},
 		{
 			name: L('Metformin and rapamycin', '二甲双胍与雷帕霉素', 'เมตฟอร์มินและราพามัยซิน'),
-			uses: L(
-				'Metformin and rapamycin. TAME is a named metformin trial. The NIA ITP page is the mouse-program stub.',
-				'二甲双胍和雷帕霉素。TAME 是点名的二甲双胍试验。NIA ITP 页是小鼠计划的存根。',
-				'เมตฟอร์มินและราพามัยซิน TAME เป็นชื่อการทดลองเมตฟอร์มิน หน้า NIA ITP เป็นฉบับร่างของโครงการในหนู',
+			summary: L(
+				'AFAR describes TAME as a planned six-year trial of metformin in older adults and says it is still raising money to launch it, so the trial has no result here. Separately, a 2009 mouse study from the NIA Interventions Testing Program found that rapamycin, started late in life, extended median and maximal lifespan in both sexes.',
+				'美国衰老研究联合会把 TAME 描述为计划中的六年二甲双胍试验，并表示仍在筹资启动，因此这里没有试验结果。另一边，美国衰老研究所干预测试计划 2009 年的小鼠研究发现，晚年才开始喂食的雷帕霉素延长了雌雄小鼠的中位寿命和最长寿命。',
+				'AFAR อธิบาย TAME ว่าเป็นการทดลองเมตฟอร์มินหกปีที่วางแผนไว้ในผู้สูงวัย และบอกว่ายังระดมทุนเพื่อเริ่ม จึงยังไม่มีผลที่นี่ อีกด้าน การศึกษาหนูปี 2009 ของโครงการทดสอบการแทรกแซง NIA พบว่าราพามัยซินที่เริ่มให้เมื่ออายุมากแล้ว ยืดทั้งอายุขัยมัธยฐานและอายุขัยสูงสุดในหนูทั้งสองเพศ',
 			),
 			goals: ['extend'],
-			status: L('Longevity research. No result copied.', '长寿研究。没有抄录结果。', 'งานวิจัยอายุยืน ไม่ได้คัดลอกผล'),
-			note: L(
-				'Stub, needs sourcing for TAME. The ITP page states no mouse result.',
-				'TAME 是存根，需要来源。ITP 页不写小鼠结果。',
-				'TAME เป็นฉบับร่างที่ยังต้องหาแหล่งอ้างอิง หน้า ITP ไม่ได้ระบุผลในหนู',
-			),
-			href: '/goals/longevity/nia-itp/',
-			stub: true,
+			badge: 'early',
+			sources: [
+				{
+					url: 'https://www.afar.org/news/afar-initiative-in-the-news-npr-spotlights-tame-trial-and-afar-scientific-leadership',
+					label: 'AFAR, TAME trial described as still being launched, 22 April 2024',
+				},
+				{
+					url: 'https://pubmed.ncbi.nlm.nih.gov/19587680/',
+					label: 'Harrison et al., Nature, 2009. PubMed 19587680',
+				},
+			],
 		},
 	],
 	peptides: [
 		{
-			name: L('GLP-1 agonists', 'GLP-1 激动剂', 'ตัวกระตุ้น GLP-1'),
-			uses: L(
-				'Semaglutide and tirzepatide. Approved products exist; those labels were not opened.',
-				'司美格鲁肽和替尔泊肽。存在已批准产品；那些说明书没有打开。',
-				'เซมากลูไทด์และเทอร์เซพาไทด์ มีผลิตภัณฑ์ที่อนุมัติแล้ว แต่ยังไม่ได้เปิดฉลากนั้น',
+			name: L('Semaglutide and tirzepatide', '司美格鲁肽与替尔泊肽', 'เซมากลูไทด์และเทอร์เซพาไทด์'),
+			summary: L(
+				'FDA has approved semaglutide (Wegovy) to reduce excess body weight, and approved tirzepatide both as Mounjaro for type 2 diabetes and as Zepbound for chronic weight management. SURMOUNT-1, a 72-week trial, reported substantial weight reduction with weekly tirzepatide in adults with obesity who did not have diabetes.',
+				'FDA 已批准司美格鲁肽（Wegovy）用于减轻过多体重，并批准替尔泊肽以 Mounjaro 用于 2 型糖尿病、以 Zepbound 用于长期体重管理。SURMOUNT-1 是一项 72 周试验，报告在没有糖尿病的肥胖成人中，每周一次替尔泊肽带来了明显且持续的体重下降。',
+				'FDA อนุมัติเซมากลูไทด์ (Wegovy) เพื่อลดน้ำหนักส่วนเกิน และอนุมัติเทอร์เซพาไทด์ทั้งในชื่อ Mounjaro สำหรับเบาหวานชนิดที่ 2 และ Zepbound สำหรับการควบคุมน้ำหนักระยะยาว SURMOUNT-1 การทดลอง 72 สัปดาห์ รายงานว่าเทอร์เซพาไทด์รายสัปดาห์ทำให้น้ำหนักลดลงมากและคงอยู่ในผู้ใหญ่ที่มีโรคอ้วนที่ไม่ได้เป็นเบาหวาน',
 			),
 			goals: ['restore'],
-			status: L(
-				'Approved products exist. This wiki’s opened FDA page is about unapproved versions.',
-				'存在已批准产品。本维基打开的 FDA 页面讲的是未经批准的版本。',
-				'มีผลิตภัณฑ์ที่อนุมัติแล้ว หน้า FDA ที่วิกินี้เปิดเป็นเรื่องเวอร์ชันที่ยังไม่อนุมัติ',
-			),
-			note: L(
-				'Stub, needs sourcing for the approval labels. No efficacy comparison.',
-				'批准说明书是存根，需要来源。没有疗效对比。',
-				'ฉลากที่อนุมัติเป็นฉบับร่าง ยังต้องหาแหล่งอ้างอิง ไม่มีการเปรียบเทียบประสิทธิผล',
-			),
+			badge: 'approved',
 			href: '/peptides/glp-1-agonists/',
-			stub: true,
+			sources: [
+				{
+					url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-new-medication-chronic-weight-management',
+					label: 'FDA announcement, Zepbound (tirzepatide), 8 Nov 2023',
+				},
+				{
+					url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/215256s023lbl.pdf',
+					label: 'Wegovy (semaglutide) prescribing information, FDA',
+				},
+				{
+					url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa2206038',
+					label: 'Jastreboff et al., SURMOUNT-1, NEJM 2022',
+				},
+			],
 		},
 		{
 			name: L('GHK-Cu', 'GHK-Cu', 'GHK-Cu'),
-			uses: L(
-				'GHK-Cu. The sourced note is injectable GHK-Cu on an FDA withdrawn-nomination list.',
-				'GHK-Cu。有来源的笔记是 FDA 撤回提名清单上的注射用 GHK-Cu。',
-				'GHK-Cu บันทึกที่มีแหล่งอ้างอิงคือ GHK-Cu แบบฉีดในรายการเสนอชื่อที่ FDA ถอน',
+			summary: L(
+				'This wiki’s GHK-Cu page records that FDA lists injectable GHK-Cu among withdrawn compounding nominations. Research on topical use for skin has not been summarized here.',
+				'本维基的 GHK-Cu 页记录了 FDA 将注射用 GHK-Cu 列在已撤回的复配提名中。外用于皮肤的研究还没有在这里总结。',
+				'หน้า GHK-Cu ของวิกินี้บันทึกว่า FDA ใส่ GHK-Cu แบบฉีดไว้ในรายการเสนอชื่อสำหรับผสมยาที่ถูกถอน งานวิจัยการใช้ทางผิวหนังยังไม่ได้สรุปที่นี่',
 			),
 			goals: ['enhance'],
-			status: L(
-				'Topical skin research is not summarized.',
-				'外用皮肤研究没有总结。',
-				'ยังไม่ได้สรุปงานวิจัยการใช้ทางผิวหนัง',
-			),
-			note: stubNote,
+			badge: 'limited',
 			href: '/peptides/ghk-cu/',
+			sources: [{
+				url: 'https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks',
+				label: 'FDA, bulk substances that may present safety risks',
+			}],
 			stub: true,
 		},
 		{
 			name: L('BPC-157', 'BPC-157', 'BPC-157'),
-			uses: L(
-				'BPC-157. FDA lists it among compounding substances with safety concerns.',
-				'BPC-157。FDA 把它列在有安全顾虑的复配物质中。',
-				'BPC-157 FDA ระบุในสารสำหรับผสมที่มีข้อกังวลด้านความปลอดภัย',
+			summary: L(
+				'FDA lists BPC-157 among compounding nominations that were withdrawn, and says it has no or only limited safety information for the proposed routes, so it cannot tell whether compounded products would cause harm. This wiki has not summarized animal studies.',
+				'FDA 把 BPC-157 列在已撤回的复配提名里，并表示对拟用途径没有或仅有有限的安全信息，因此无法判断复配产品是否会造成伤害。本维基没有总结动物研究。',
+				'FDA ใส่ BPC-157 ไว้ในรายการเสนอชื่อผสมยาที่ถูกถอน และบอกว่ามีข้อมูลความปลอดภัยไม่เลยหรือมีจำกัดสำหรับทางที่ใช้ จึงบอกไม่ได้ว่าผลิตภัณฑ์ที่ผสมจะก่ออันตรายหรือไม่ วิกินี้ยังไม่ได้สรุปการศึกษาในสัตว์',
 			),
 			goals: ['restore'],
-			status: L('Not an approved drug. No efficacy claim.', '不是已批准药物。不写疗效。', 'ไม่ใช่ยาที่อนุมัติแล้ว ไม่ได้อ้างประสิทธิผล'),
-			note: L(
-				'Taken from the opened FDA compounding-risk page.',
-				'取自已打开的 FDA 复配风险页。',
-				'นำมาจากหน้าความเสี่ยงของการผสมยาของ FDA ที่เปิดแล้ว',
-			),
+			badge: 'limited',
 			href: '/peptides/bpc-157/',
+			sources: [{
+				url: 'https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks',
+				label: 'FDA, bulk substances that may present safety risks',
+			}],
 		},
 		{
-			name: L('Purity and a COA', '纯度与检验报告', 'ความบริสุทธิ์และใบรับรองผลวิเคราะห์'),
-			uses: L(
-				'A certificate of analysis and third-party testing. Not a body effect.',
-				'检验报告和第三方检测。不是身体效应。',
-				'ใบรับรองผลการวิเคราะห์และการตรวจโดยบุคคลที่สาม ไม่ใช่ผลต่อร่างกาย',
+			name: L('Purity and a certificate of analysis', '纯度与检验报告', 'ความบริสุทธิ์และใบรับรองผลวิเคราะห์'),
+			summary: L(
+				'FDA says unapproved versions of GLP-1 drugs are not reviewed for quality before they are marketed. Reading a certificate of analysis is filed on this wiki; the certificate itself is not proof that a product is appropriate to use.',
+				'FDA 指出，未经批准的 GLP-1 药物版本在上市前不会经过质量审评。本维基有一页说明如何阅读检验报告；报告本身并不能证明产品适合使用。',
+				'FDA ระบุว่าเวอร์ชันยา GLP-1 ที่ยังไม่อนุมัติไม่ได้รับการตรวจคุณภาพก่อนวางตลาด วิกินี้มีหน้าอธิบายวิธีอ่านใบรับรองผลวิเคราะห์ ตัวใบรับรองเองไม่ได้พิสูจน์ว่าผลิตภัณฑ์เหมาะที่จะใช้',
 			),
 			goals: ['restore', 'enhance', 'extend'],
-			status: L('Quality problem. How to read a COA is filed.', '质量问题。如何读检验报告已归档。', 'ปัญหาคุณภาพ วิธีอ่านใบรับรองถูกจัดเก็บไว้แล้ว'),
-			note: L(
-				'Prices and lab tables stay on VeriSeas, not here.',
-				'价格和检测表在 VeriSeas，不在这里。',
-				'ราคาและตารางผลแล็บอยู่ที่ VeriSeas ไม่ใช่ที่นี่',
-			),
+			badge: 'limited',
 			href: '/peptides/reading-a-coa/',
+			sources: [{
+				url: 'https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss',
+				label: 'FDA, concerns with unapproved GLP-1 drugs',
+			}],
 		},
 	],
 	neurohacking: [
 		{
 			name: L('Neuralink N1', 'Neuralink N1', 'Neuralink N1'),
-			uses: L(
-				'The N1 implant, named for paralysis trials. Electrodes are intracortical.',
-				'N1 植入物，用于点名的瘫痪试验。电极在皮层内。',
-				'อุปกรณ์ฝัง N1 ที่ถูกระบุในการทดลองอัมพาต อิเล็กโทรดอยู่ในคอร์เทกซ์',
+			summary: L(
+				'Neuralink’s April 2024 update says the first person received the N1 in January, in the PRIME study, and that the device is an intracortical implant whose threads are inserted into the cortex at the precentral gyrus. The stated aim is to let people with quadriplegia control external devices. That placement is in the cortex, not under it.',
+				'Neuralink 在 2024 年 4 月的更新中说，第一位接受者于 1 月在 PRIME 研究中植入了 N1，这是一种皮层内装置，细丝插入皮层的中央前回。其目标是让四肢瘫痪的人控制外部设备。这个位置在皮层内，不是皮层下。',
+				'บันทึกของ Neuralink เมื่อเมษายน 2024 บอกว่าคนแรกได้รับ N1 ในเดือนมกราคม ในการศึกษา PRIME และว่าอุปกรณ์นี้ฝังในคอร์เทกซ์ โดยสอดเส้นเข้าที่คอร์เทกซ์บริเวณพรีเซนทรัลไจรัส เป้าหมายคือให้ผู้ที่เป็นอัมพาตทั้งสี่ข้าควบคุมอุปกรณ์ภายนอก ตำแหน่งนี้อยู่ในคอร์เทกซ์ ไม่ใช่ใต้คอร์เทกซ์',
 			),
 			goals: ['restore'],
-			status: L('Clinical trial. Results are not stated.', '临床试验。不写结果。', 'การทดลองทางคลินิก ไม่ได้ระบุผล'),
-			note: L(
-				'Stub, needs sourcing for the trial record. Not a subcortical implant.',
-				'试验记录是存根，需要来源。不是皮层下植入。',
-				'บันทึกการทดลองเป็นฉบับร่าง ยังต้องหาแหล่งอ้างอิง ไม่ใช่อุปกรณ์ฝังใต้คอร์เทกซ์',
-			),
+			badge: 'trial',
 			href: '/neurohacking/bci/neuralink-n1/',
-			stub: true,
+			sources: [{
+				url: 'https://neuralink.com/updates/prime-study-progress-update/',
+				label: 'Neuralink, PRIME study update, 12 April 2024',
+			}],
 		},
 		{
 			name: L('Synchron Stentrode', 'Synchron Stentrode', 'Synchron Stentrode'),
-			uses: L(
-				'An intravascular BCI, named for paralysis.',
-				'血管内脑机接口，用于点名的瘫痪场景。',
-				'ส่วนต่อประสานสมองกับคอมพิวเตอร์ในหลอดเลือด สำหรับอัมพาต',
+			summary: L(
+				'Synchron reported results from the COMMAND study of its endovascular brain-computer interface in six people with severe arm paralysis. The company said all six met the primary safety endpoint of no device-related serious adverse event causing death or permanent increase in disability over one year. This is the company’s announcement, not an independent write-up.',
+				'Synchron 公布了 COMMAND 研究的结果：六名严重手臂瘫痪者接受了血管内脑机接口。公司称六人都达到主要安全终点，即一年内没有因装置导致死亡或永久性加重残疾的严重不良事件。这是公司公告，不是独立综述。',
+				'Synchron รายงานผลการศึกษา COMMAND ของส่วนต่อประสานสมองกับคอมพิวเตอร์ในหลอดเลือด ในคนหกคนที่เป็นอัมพาตแขนรุนแรง บริษัทบอกว่าทั้งหกบรรลุจุดสิ้นสุดด้านความปลอดภัยหลัก คือไม่มีเหตุการณ์ไม่พึงประสงค์ร้ายแรงจากอุปกรณ์ที่ทำให้เสียชีวิตหรือพิการถาวรเพิ่มขึ้นในหนึ่งปี นี่คือแถลงการณ์ของบริษัท ไม่ใช่บทสรุปอิสระ',
 			),
 			goals: ['restore'],
-			status: L('Clinical trial. Results are not stated.', '临床试验。不写结果。', 'การทดลองทางคลินิก ไม่ได้ระบุผล'),
-			note: stubNote,
+			badge: 'trial',
 			href: '/neurohacking/bci/synchron-stentrode/',
-			stub: true,
+			sources: [{
+				url: 'https://www.businesswire.com/news/home/20240930433219/en/Synchron-Announces-Positive-Results-from-U.S.-COMMAND-Study-of-Endovascular-Brain-Computer-Interface',
+				label: 'Synchron, COMMAND study announcement, 30 Sept 2024',
+			}],
 		},
 		{
-			name: L('TMS', 'TMS', 'TMS'),
-			uses: L(
-				'Transcranial magnetic stimulation, discussed for depression.',
-				'经颅磁刺激，被讨论用于抑郁。',
-				'การกระตุ้นด้วยแม่เหล็กผ่านกะโหลก ที่ถูกพูดถึงเรื่องซึมเศร้า',
+			name: L('TMS for depression', '用于抑郁的 TMS', 'TMS สำหรับภาวะซึมเศร้า'),
+			summary: L(
+				'FDA cleared the NeuroStar TMS system in 2008 for adults with major depressive disorder who had not improved enough on one prior antidepressant. The clearance is for a prescription device used under a psychiatrist’s supervision.',
+				'FDA 在 2008 年许可 NeuroStar TMS 系统，用于一种抗抑郁药治疗后改善仍不理想的成人重性抑郁障碍。这是在精神科医师监督下凭处方使用的器械。',
+				'FDA รับรองระบบ NeuroStar TMS ในปี 2008 สำหรับผู้ใหญ่ที่มีโรคซึมเศร้าหลักที่ยาต้านเศร้าก่อนหน้าหนึ่งชนิดยังช่วยได้ไม่พอ เป็นเครื่องมือตามใบสั่งที่ใช้ภายใต้การดูแลจิตแพทย์',
 			),
 			goals: ['restore'],
-			status: L('Clearance text was not opened.', '许可文本没有打开。', 'ยังไม่ได้เปิดข้อความการรับรอง'),
-			note: stubNote,
+			badge: 'approved',
 			href: '/neurohacking/neuromodulation/tms/',
-			stub: true,
+			sources: [{
+				url: 'https://www.accessdata.fda.gov/cdrh_docs/pdf8/K083538.pdf',
+				label: 'FDA 510(k) K083538, NeuroStar TMS, 16 Dec 2008',
+			}],
 		},
 		{
-			name: L('EEG neurofeedback', '脑电神经反馈', 'นิวโรฟีดแบ็ก EEG'),
-			uses: L('Consumer and clinic EEG headsets.', '消费级和临床脑电头戴设备。', 'หูฟัง EEG สำหรับผู้บริโภคและคลินิก'),
+			name: L('EEG neurofeedback', '脑电神经反馈', 'นิวโรฟีดแบ็กด้วย EEG'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('Device class was not opened.', '器械类别没有打开。', 'ยังไม่ได้เปิดประเภทเครื่องมือ'),
-			note: stubNote,
+			badge: 'limited',
 			href: '/neurohacking/noninvasive/',
 			stub: true,
 		},
 	],
 	cyborg: [
 		{
-			name: L('NFC and RFID chips', 'NFC 与 RFID 芯片', 'ชิป NFC และ RFID'),
-			uses: L(
-				'A chip in the hand, discussed for doors or payments.',
-				'手部芯片，被讨论用于开门或支付。',
-				'ชิปในมือ ที่ถูกพูดถึงเรื่องเปิดประตูหรือการชำระเงิน',
-			),
+			name: L('Hand chips for doors or payments', '用于开门或支付的手部芯片', 'ชิปในมือเพื่อเปิดประตูหรือจ่ายเงิน'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('Anecdotal grinder practice.', 'Grinder 社区的轶事。', 'แนวปฏิบัติแบบเล่าต่อของกลุ่ม grinder'),
-			note: stubNote,
+			badge: 'limited',
 			href: '/cyborg/grinder-implants/',
 			stub: true,
 		},
 		{
 			name: L('Fingertip magnets', '指尖磁体', 'แม่เหล็กที่ปลายนิ้ว'),
-			uses: L('A small magnet under the skin of a finger.', '手指皮下的小磁体。', 'แม่เหล็กขนาดเล็กใต้ผิวหนังนิ้ว'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('Anecdotal. No incident list was opened.', '轶事。没有打开事件清单。', 'เรื่องเล่า ยังไม่ได้เปิดรายการเหตุการณ์'),
-			note: stubNote,
+			badge: 'limited',
 			href: '/cyborg/grinder-implants/',
 			stub: true,
 		},
 		{
-			name: L('Sensors that skip the nerves', '不接神经的传感器', 'เซนเซอร์ที่ไม่ต่อเส้นประสาท'),
-			uses: L(
-				'An implanted sensor that does not read or write neural signals.',
-				'不读写神经信号的植入传感器。',
-				'เซนเซอร์ฝังที่ไม่อ่านหรือเขียนสัญญาณประสาท',
-			),
+			name: L('Sensors that do not touch the nerves', '不接触神经的传感器', 'เซนเซอร์ที่ไม่แตะเส้นประสาท'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('Examples were not sourced.', '例子没有来源。', 'ตัวอย่างยังไม่มีแหล่งอ้างอิง'),
-			note: stubNote,
+			badge: 'limited',
 			href: '/cyborg/grinder-implants/',
 			stub: true,
 		},
 	],
 	'quantified-self': [
 		{
-			name: L('Continuous glucose monitor', '连续血糖监测', 'เครื่องวัดกลูโคสต่อเนื่อง'),
-			uses: L('A CGM such as the devices named on the CGM page.', 'CGM 页点名的那类设备。', 'CGM แบบที่หน้าระบุชื่อไว้'),
+			name: L('Continuous glucose monitors', '连续血糖监测', 'เครื่องวัดกลูโคสต่อเนื่อง'),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Medical devices exist. Accuracy is not stated.', '存在医疗器械。不写准确率。', 'มีเครื่องมือแพทย์ ไม่ได้ระบุความแม่นยำ'),
-			note: stubNote,
+			badge: 'limited',
 			href: '/quantified-self/cgm/',
 			stub: true,
 		},
 		{
 			name: L('Heart-rate variability', '心率变异性', 'ความแปรปรวนของอัตราหัวใจ'),
-			uses: L('A ring, watch, or strap that reports HRV.', '报告心率变异性的戒指、手表或胸带。', 'แหวน นาฬิกา หรือสายรัดที่รายงาน HRV'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('A reading is not a diagnosis.', '读数不是诊断。', 'ค่าที่อ่านได้ไม่ใช่การวินิจฉัย'),
-			note: stubNote,
+			badge: 'limited',
 			href: '/quantified-self/hrv/',
 			stub: true,
 		},
 		{
 			name: L('Sleep tracking', '睡眠追踪', 'การติดตามการนอน'),
-			uses: L('A wearable that stages sleep.', '做睡眠分期的可穿戴设备。', 'อุปกรณ์สวมใส่ที่แบ่งระยะการนอน'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('Consumer wellness. Validation was not opened.', '消费级健康设备。验证没有打开。', 'อุปกรณ์สุขภาพผู้บริโภค ยังไม่ได้เปิดการตรวจสอบ'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 	],
 	lifestyle: [
 		{
 			name: L('Morning light', '晨光', 'แสงยามเช้า'),
-			uses: L('Daylight to the eyes, discussed for the circadian clock.', '照到眼睛的日光，被讨论用于生物钟。', 'แสงกลางวันที่เข้าตา ที่ถูกพูดถึงเรื่องนาฬิกาชีวภาพ'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('Research not opened. No brightness number.', '研究没有打开。没有亮度数字。', 'ยังไม่ได้เปิดงานวิจัย ไม่มีตัวเลขความสว่าง'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
-			name: L('Cold', '寒冷', 'ความเย็น'),
-			uses: L('Cold water or cold air. No temperature is published.', '冷水或冷空气。不公布温度。', 'น้ำเย็นหรืออากาศเย็น ไม่ได้เผยแพร่อุณหภูมิ'),
+			name: L('Cold', '冷暴露', 'ความเย็น'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('Research not opened.', '研究没有打开。', 'ยังไม่ได้เปิดงานวิจัย'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
-			name: L('Heat', '炎热', 'ความร้อน'),
-			uses: L('A sauna or other heat. No temperature is published.', '桑拿或其他热暴露。不公布温度。', 'ซาวน่าหรือความร้อนอื่น ไม่ได้เผยแพร่อุณหภูมิ'),
+			name: L('Heat', '热暴露', 'ความร้อน'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('Research not opened.', '研究没有打开。', 'ยังไม่ได้เปิดงานวิจัย'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
 			name: L('Eating window', '进食窗口', 'หน้าต่างการกิน'),
-			uses: L('Time-restricted eating. No schedule is published.', '限时进食。不公布时间表。', 'การกินแบบจำกัดเวลา ไม่ได้เผยแพร่ตาราง'),
+			summary: notYet,
 			goals: ['extend'],
-			status: L('Research not opened.', '研究没有打开。', 'ยังไม่ได้เปิดงานวิจัย'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 	],
 	genetic: [
 		{
-			name: L('Approved gene therapies', '已批准的基因治疗', 'ยีนบำบัดที่อนุมัติแล้ว'),
-			uses: L('Nucleic-acid medicines. The approval list was not opened.', '核酸药物。批准清单没有打开。', 'ยาที่เป็นกรดนิวคลีอิก ยังไม่ได้เปิดรายการที่อนุมัติ'),
+			name: L('Approved gene therapies', '已获批的基因治疗', 'ยีนบำบัดที่ได้รับอนุมัติ'),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Approved products exist. Names were not copied.', '存在已批准产品。没有抄录名称。', 'มีผลิตภัณฑ์ที่อนุมัติแล้ว ไม่ได้คัดลอกชื่อ'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
 			name: L('CRISPR medicines', 'CRISPR 药物', 'ยา CRISPR'),
-			uses: L(
-				'A CRISPR-based medicine has been discussed for sickle cell disease. The file was not opened.',
-				'有一种基于 CRISPR 的药物被讨论用于镰状细胞病。档案没有打开。',
-				'มียาที่ใช้ CRISPR ที่ถูกพูดถึงเรื่องโรคเม็ดเลือดรูปเคียว ยังไม่ได้เปิดเอกสาร',
-			),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Approval file was not opened.', '批准档案没有打开。', 'ยังไม่ได้เปิดเอกสารการอนุมัติ'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
 			name: L('Consumer DNA tests', '消费级基因检测', 'การตรวจดีเอ็นเอสำหรับผู้บริโภค'),
-			uses: L('A saliva DNA test sold to consumers.', '卖给消费者的唾液 DNA 检测。', 'การตรวจดีเอ็นเอจากน้ำลายที่ขายให้ผู้บริโภค'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('What the report can say was not opened.', '报告能说明什么没有打开。', 'ยังไม่ได้เปิดว่าผลตรวจบอกอะไรได้'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
 			name: L('Epigenetic clocks', '表观遗传时钟', 'นาฬิกาอีพิเจเนติกส์'),
-			uses: L('A blood or saliva test that estimates biological age.', '用血液或唾液估计生物年龄的检测。', 'การตรวจเลือดหรือน้ำลายที่ประมาณอายุทางชีวภาพ'),
+			summary: notYet,
 			goals: ['extend'],
-			status: L('Error bars were not opened.', '误差没有打开。', 'ยังไม่ได้เปิดช่วงความคลาดเคลื่อน'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 	],
 	cellular: [
 		{
-			name: L('CAR-T and other approved cell products', 'CAR-T 等已批准细胞产品', 'CAR-T และผลิตภัณฑ์เซลล์ที่อนุมัติแล้ว'),
-			uses: L('Living immune cells returned to the same person. The product list was not opened.', '回输给本人的活免疫细胞。产品清单没有打开。', 'เซลล์ภูมิคุ้มกันมีชีวิตที่ให้กลับคนเดิม ยังไม่ได้เปิดรายการผลิตภัณฑ์'),
+			name: L('Approved cell products', '已获批的细胞产品', 'ผลิตภัณฑ์เซลล์ที่ได้รับอนุมัติ'),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Approved products exist. Names were not copied.', '存在已批准产品。没有抄录名称。', 'มีผลิตภัณฑ์ที่อนุมัติแล้ว ไม่ได้คัดลอกชื่อ'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
-			name: L('Stem-cell clinic offers', '干细胞诊所服务', 'ข้อเสนอคลินิกสเต็มเซลล์'),
-			uses: L('Unapproved clinic offers. They are not listed and not reviewed.', '未经批准的诊所服务。不列举，也不评。', 'ข้อเสนอคลินิกที่ยังไม่อนุมัติ ไม่ได้ระบุชื่อและไม่ได้ประเมิน'),
+			name: L('Stem-cell clinic offers', '干细胞诊所的宣传', 'ข้อเสนอจากคลินิกสเต็มเซลล์'),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Not a product list.', '不是产品清单。', 'ไม่ใช่รายการผลิตภัณฑ์'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
-			name: L('Platelet-rich plasma', '富血小板血浆', 'พลาสมาที่มีเกล็ดเลือดเข้มข้น'),
-			uses: L('PRP, a person’s own platelets. Evidence was not opened.', 'PRP，本人的血小板。证据没有打开。', 'PRP เกล็ดเลือดของคนคนนั้น ยังไม่ได้เปิดหลักฐาน'),
+			name: L('Platelet-rich plasma', '富血小板血浆', 'พลาสมาเกล็ดเลือดเข้มข้น'),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Clinical use is discussed. Studies were not opened.', '临床使用被讨论。研究没有打开。', 'มีการพูดถึงการใช้ทางคลินิก ยังไม่ได้เปิดงานวิจัย'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
 			name: L('Partial reprogramming', '部分重编程', 'การรีโปรแกรมบางส่วน'),
-			uses: L('Yamanaka factors are the research name. No protocol.', '山中因子是研究中的名称。没有流程。', 'ปัจจัยยามานากะเป็นชื่อในงานวิจัย ไม่มีโปรโตคอล'),
+			summary: notYet,
 			goals: ['extend'],
-			status: L('Research-only.', '仅研究。', 'งานวิจัยเท่านั้น'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 	],
 	microbiome: [
 		{
 			name: L('Fecal microbiota transplant', '粪菌移植', 'การปลูกถ่ายจุลินทรีย์จากอุจจาระ'),
-			uses: L('Donor stool for a gut infection. The FDA page was not opened.', '供体粪便用于肠道感染。FDA 页面没有打开。', 'อุจจาระผู้บริจาคสำหรับการติดเชื้อในลำไส้ ยังไม่ได้เปิดหน้า FDA'),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Regulated in some uses. The rule was not opened.', '某些用途受监管。规则没有打开。', 'มีการกำกับในบางการใช้ ยังไม่ได้เปิดกฎ'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
 			name: L('Probiotics', '益生菌', 'โพรไบโอติก'),
-			uses: L('Live microbes sold as foods or supplements.', '作为食品或补充剂出售的活微生物。', 'จุลินทรีย์มีชีวิตที่ขายเป็นอาหารหรือผลิตภัณฑ์เสริม'),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Evidence was not summarized.', '证据没有总结。', 'ยังไม่ได้สรุปหลักฐาน'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 		{
 			name: L('Stool sequencing', '粪便测序', 'การหาลำดับจากอุจจาระ'),
-			uses: L('A consumer test of gut microbes.', '消费者肠道微生物检测。', 'การตรวจจุลินทรีย์ลำไส้สำหรับผู้บริโภค'),
+			summary: notYet,
 			goals: ['enhance'],
-			status: L('What the report means was not opened.', '报告意味着什么没有打开。', 'ยังไม่ได้เปิดว่าผลรายงานหมายถึงอะไร'),
-			note: stubNote,
+			badge: 'limited',
 			stub: true,
 		},
 	],
 	bionic: [
 		{
 			name: L('Myoelectric hands', '肌电假手', 'มือเทียมไมโออิเล็กทริก'),
-			uses: L('A powered prosthetic hand controlled by muscle signals.', '由肌肉信号控制的动力假手。', 'มือเทียมขับเคลื่อนที่ควบคุมด้วยสัญญาณกล้ามเนื้อ'),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Commercial devices. Comparisons are stubs.', '商业器械。对比是存根。', 'อุปกรณ์เชิงพาณิชย์ การเปรียบเทียบเป็นฉบับร่าง'),
-			note: L(
-				'WHO’s assistive-technology fact sheet is the sourced overview.',
-				'WHO 辅助技术事实清单是有来源的总览。',
-				'เอกสารข้อเท็จจริงเทคโนโลยีสิ่งอำนวยความสะดวกของ WHO เป็นภาพรวมที่มีแหล่งอ้างอิง',
-			),
+			badge: 'limited',
 			href: '/bionic/bionic-hands/',
+			stub: true,
 		},
 		{
 			name: L('Rehab exoskeletons', '康复外骨骼', 'โครงกระดูกกลเพื่อฟื้นฟู'),
-			uses: L('A powered frame that assists walking in rehab.', '在康复中辅助行走的动力支架。', 'โครงขับเคลื่อนที่ช่วยการเดินในการฟื้นฟู'),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Clinical devices. Evidence was not opened.', '临床器械。证据没有打开。', 'เครื่องมือทางคลินิก ยังไม่ได้เปิดหลักฐาน'),
-			note: stubNote,
+			badge: 'limited',
 			href: '/bionic/exoskeletons/',
 			stub: true,
 		},
 		{
-			name: L('Osseointegration', '骨整合', 'การยึดกับกระดูก'),
-			uses: L('A mount fixed to bone for a prosthesis.', '固定在骨骼上、用来连接假肢的基座。', 'ฐานที่ยึดกับกระดูกสำหรับอวัยวะเทียม'),
+			name: L('Bone-anchored prostheses', '骨固定假肢', 'อวัยวะเทียมที่ยึดกับกระดูก'),
+			summary: notYet,
 			goals: ['restore'],
-			status: L('Surgical practice. Details were not opened.', '外科实践。细节没有打开。', 'การปฏิบัติทางศัลยกรรม ยังไม่ได้เปิดรายละเอียด'),
-			note: stubNote,
+			badge: 'limited',
 			href: '/bionic/tmr-osseointegration/',
 			stub: true,
 		},
@@ -425,3 +410,10 @@ export const domainScenarios: Record<string, Scenario[]> = {
 export function scenariosFor(slug: string): Scenario[] {
 	return domainScenarios[slug] ?? [];
 }
+
+export const evidenceBadge: Record<EvidenceBadge, Localized> = {
+	approved: L('Approved', '已获批', 'อนุมัติแล้ว'),
+	trial: L('Clinical trial', '临床试验', 'การทดลองทางคลินิก'),
+	early: L('Animal or early research', '仅动物或早期研究', 'การศึกษาในสัตว์หรือระยะต้น'),
+	limited: L('Limited evidence', '证据有限', 'หลักฐานจำกัด'),
+};

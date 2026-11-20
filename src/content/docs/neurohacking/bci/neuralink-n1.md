@@ -35,7 +35,7 @@ Stub, needs sourcing. The outline below is not a set of findings.
 
 This slot is for the implanted device associated with Neuralink. Channel counts, materials, wireless behavior, and regulatory status are not stated.
 
-Neuralink’s N1 threads are intracortical: the electrodes go a few millimeters into the motor cortex. That is not a subcortical placement. The trial record itself was not opened, so results are not stated.
+Neuralink’s 12 April 2024 update says the first person received the N1 in January, during the PRIME study. The company describes the N1 as an intracortical implant: threads are inserted into the cortex, aimed at the precentral gyrus, so the electrodes sit in the cortex rather than under it. Results beyond that company update are not summarized here.
 
 ## Outline
 

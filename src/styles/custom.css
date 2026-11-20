@@ -147,6 +147,53 @@
 	list-style: none;
 }
 
+.bh-scenarios .bh-grid {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.bh-scenarios .bh-grid:has(> li:nth-child(3):last-child) {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.bh-evidence {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.05rem 0.45rem;
+	border-radius: 999px;
+	font-size: 0.72rem;
+	font-weight: 700;
+	background: var(--bh-soft);
+}
+
+.bh-evidence.approved {
+	background: color-mix(in srgb, var(--bh-teal) 22%, transparent);
+}
+
+.bh-evidence.trial {
+	background: color-mix(in srgb, #3b6ea5 20%, transparent);
+}
+
+.bh-evidence.early {
+	background: color-mix(in srgb, #c47b2b 22%, transparent);
+}
+
+.bh-evidence.limited {
+	background: var(--bh-stub-bg, color-mix(in srgb, var(--sl-color-gray-4) 25%, transparent));
+}
+
+.bh-sources {
+	margin: 0.4rem 0 0;
+	padding-left: 1.1rem;
+	font-size: 0.8rem;
+}
+
+@media (max-width: 720px) {
+	.bh-scenarios .bh-grid,
+	.bh-scenarios .bh-grid:has(> li:nth-child(3):last-child) {
+		grid-template-columns: 1fr;
+	}
+}
+
 .bh-card {
 	background: var(--bh-card);
 	border: 1px solid var(--bh-line);
