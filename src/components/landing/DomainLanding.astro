@@ -19,11 +19,16 @@ const id = localeId(Astro.locals.starlightRoute?.lang);
 const prefix = localePrefix(id);
 const t = (en: string, zh: string) => pick(id, en, zh);
 const href = (path: string) => `${prefix}${path}`;
-const layerWord = {
-	Observe: { en: 'Observe', zh: '观测', th: 'สังเกต' },
-	Intervene: { en: 'Intervene', zh: '干预', th: 'แทรกแซง' },
-	Augment: { en: 'Augment', zh: '增强', th: 'เสริม' },
-} as const;
+const filing: Record<string, { zh: string }> = {
+	commercial: { zh: '已商用' },
+	'clinical-partial': { zh: '部分临床' },
+	'early-clinical': { zh: '早期临床' },
+	research: { zh: '研究' },
+	'highly-experimental': { zh: '高度实验' },
+	unknown: { zh: '未知' },
+	unrated: { zh: '未评级' },
+};
+const filingLabel = (value: string) => t(value, filing[value]?.zh ?? value);
 
 function cardTitle(card: Card) {
 	return t(card.title, card.titleZh);
@@ -39,15 +44,6 @@ function cardText(card: Card) {
 		<KeywordBanner domain={domain.slug} />
 		<h1>{t(domain.title, domain.titleZh)}</h1>
 		<p class="bh-lead">{t(domain.definition, domain.definitionZh)}</p>
-		<ul class="bh-badges">
-			{
-				domain.layers.map((layer) => (
-					<li>
-						{id === 'en' ? 'Layer' : id === 'zh' ? '层次' : 'ชั้น'} · {layerWord[layer][id]}
-					</li>
-				))
-			}
-		</ul>
 		<ul class="bh-goal-row">
 			{
 				domain.goals.map((goal) => (
@@ -105,8 +101,12 @@ function cardText(card: Card) {
 				domain.examples.map((example) => (
 					<li class:list={['bh-card', { stub: example.stub }]}>
 						<div class="bh-badge-row">
-							{example.maturity && <span class="bh-pill">{example.maturity}</span>}
-							{example.evidence && <span class="bh-pill">{t('Evidence', '证据')} {example.evidence}</span>}
+							{example.maturity && <span class="bh-pill">{filingLabel(example.maturity)}</span>}
+							{example.evidence && (
+								<span class="bh-pill">
+									{t('Evidence', '证据')} {filingLabel(example.evidence)}
+								</span>
+							)}
 							{example.stub && <span class="bh-pill stub">{t('Stub', '存根')}</span>}
 						</div>
 						<h3>{cardTitle(example)}</h3>

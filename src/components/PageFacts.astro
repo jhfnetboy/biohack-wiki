@@ -1,4 +1,5 @@
 ---
+import { scenariosFor } from '../data/scenarios';
 import { localeId, pick } from '../lib/locale';
 
 type Source = { url: string; title: string; accessed: string; type?: string };
@@ -149,6 +150,28 @@ if (data?.entityType) {
 	backlinks.sort((a, b) => a.title.localeCompare(b.title, id === 'zh' ? 'zh' : id === 'th' ? 'th' : 'en'));
 }
 
+const domainSlugs = new Set([
+	'quantified-self',
+	'lifestyle',
+	'biochemical',
+	'peptides',
+	'genetic',
+	'cellular',
+	'microbiome',
+	'neurohacking',
+	'cyborg',
+	'bionic',
+]);
+const bareId = currentId.replace(/^(zh-cn|th)\//, '');
+const scenarioSources = domainSlugs.has(bareId)
+	? scenariosFor(bareId).flatMap((scenario) => scenario.sources ?? [])
+	: [];
+const seen = new Set<string>();
+const cited = scenarioSources.filter((source) => {
+	if (seen.has(source.url)) return false;
+	seen.add(source.url);
+	return true;
+});
 const sources = data?.sources ?? [];
 const show = Boolean(data?.entityType);
 ---
@@ -164,11 +187,6 @@ const show = Boolean(data?.entityType);
 				{data?.domain && (
 					<li>
 						{pick(id, 'Domain', '领域')}: {isZh ? (domainLabels[data.domain] ?? data.domain) : pick(id, data.domain, data.domain)}
-					</li>
-				)}
-				{data?.layer && (
-					<li>
-						{pick(id, 'Layer', '层次')}: {pick(id, data.layer, data.layer)}
 					</li>
 				)}
 				{data?.goals && data.goals.length > 0 && (
@@ -227,7 +245,24 @@ const show = Boolean(data?.entityType);
 				</p>
 			)}
 			<h2>{pick(id, 'Sources', '来源')}</h2>
-			{sources.length === 0 ? (
+			{sources.length === 0 && cited.length > 0 ? (
+				<>
+					<p>
+						{pick(
+							id,
+							'The scenario cards on this page cite the sources below.',
+							'本页典型场景卡片引用了下面这些来源。',
+						)}
+					</p>
+					<ul>
+						{cited.map((source) => (
+							<li>
+								<a href={source.url}>{source.label}</a>
+							</li>
+						))}
+					</ul>
+				</>
+			) : sources.length === 0 ? (
 				<p>{pick(id, 'No external sources are attached to this page.', '本页没有附上外部来源。')}</p>
 			) : (
 				<ul>

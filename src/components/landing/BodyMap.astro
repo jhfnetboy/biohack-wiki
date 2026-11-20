@@ -3,11 +3,11 @@ import { Image } from 'astro:assets';
 import Illustration from './Illustration.astro';
 import { domains } from '../../data/domains';
 import { domainGoals, goalLabel, keywordsFor, type GoalId } from '../../data/domain-keywords';
+import { methodBySlug } from '../../data/method-goals';
 import { illustrations } from '../../data/illustrations';
 import { localeId, localePrefix, pick } from '../../lib/locale';
 
 type Side = 'left' | 'right';
-type Layer = 'Observe' | 'Intervene' | 'Augment';
 
 type Tile = {
 	slug: string;
@@ -18,16 +18,9 @@ type Tile = {
 	titleZh: string;
 	blurb: string;
 	blurbZh: string;
-	layers: Layer[];
 	goals: GoalId[];
 	x: number;
 	y: number;
-};
-
-const layerZh: Record<Layer, string> = {
-	Observe: '观察',
-	Intervene: '干预',
-	Augment: '增强',
 };
 
 const blurbs: Record<string, { en: string; zh: string }> = {
@@ -73,17 +66,17 @@ const blurbs: Record<string, { en: string; zh: string }> = {
 	},
 };
 
-const anchors: Record<string, { side: Side; x: number; y: number; layers: Layer[] }> = {
-	neurohacking: { side: 'left', x: 48, y: 4, layers: ['Observe', 'Intervene', 'Augment'] },
-	genetic: { side: 'left', x: 42, y: 22, layers: ['Observe', 'Intervene', 'Augment'] },
-	peptides: { side: 'left', x: 57, y: 28, layers: ['Intervene'] },
-	microbiome: { side: 'left', x: 44, y: 46, layers: ['Observe', 'Intervene'] },
-	bionic: { side: 'left', x: 36, y: 76, layers: ['Observe', 'Augment'] },
-	lifestyle: { side: 'right', x: 57, y: 7, layers: ['Observe', 'Intervene'] },
-	biochemical: { side: 'right', x: 62, y: 38, layers: ['Intervene'] },
-	'quantified-self': { side: 'right', x: 90, y: 48, layers: ['Observe'] },
-	cyborg: { side: 'right', x: 96, y: 53, layers: ['Augment'] },
-	cellular: { side: 'right', x: 66, y: 70, layers: ['Intervene'] },
+const anchors: Record<string, { side: Side; x: number; y: number }> = {
+	neurohacking: { side: 'left', x: 48, y: 4 },
+	genetic: { side: 'left', x: 42, y: 22 },
+	peptides: { side: 'left', x: 57, y: 28 },
+	microbiome: { side: 'left', x: 44, y: 46 },
+	bionic: { side: 'left', x: 36, y: 76 },
+	lifestyle: { side: 'right', x: 57, y: 7 },
+	biochemical: { side: 'right', x: 62, y: 38 },
+	'quantified-self': { side: 'right', x: 90, y: 48 },
+	cyborg: { side: 'right', x: 96, y: 53 },
+	cellular: { side: 'right', x: 66, y: 70 },
 };
 
 const bySlug = Object.fromEntries(domains.map((domain) => [domain.slug, domain]));
@@ -100,7 +93,6 @@ const tiles: Tile[] = Object.entries(anchors).map(([slug, anchor]) => {
 		titleZh: slug === 'peptides' ? '肽' : (domain?.titleZh ?? slug),
 		blurb: blurb?.en ?? '',
 		blurbZh: blurb?.zh ?? '',
-		layers: anchor.layers,
 		goals: domainGoals[slug] ?? [],
 		x: anchor.x,
 		y: anchor.y,
@@ -116,6 +108,7 @@ const t = (en: string, zh: string) => pick(id, en, zh);
 const body = illustrations['body-center-cutout'];
 const bodyAlt = pick(id, body.alt, body.altZh);
 const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
+const goalLine = (slug: string) => methodBySlug(slug)?.line[id] ?? '';
 ---
 
 <section id="domains" class="bh-coverage">
@@ -138,17 +131,13 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 									))}
 								</span>
 								<strong>{t(tile.title, tile.titleZh)}</strong>
-								<span class="bh-map-layers">
-									{tile.layers.map((layer) => (
-										<span class="bh-pill">{t(layer, layerZh[layer])}</span>
-									))}
-								</span>
+								<em>{t(tile.blurb, tile.blurbZh)}</em>
+								<span class="bh-map-goal-line">{goalLine(tile.slug)}</span>
 								<span class="bh-map-goals">
 									{tile.goals.map((goal) => (
 										<span class:list={['bh-goal', goal]}>{goalLabel(goal, id)}</span>
 									))}
 								</span>
-								<em>{t(tile.blurb, tile.blurbZh)}</em>
 							</span>
 							<Illustration name={tile.slot} size="panel" />
 						</a>
@@ -193,17 +182,13 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 									))}
 								</span>
 								<strong>{t(tile.title, tile.titleZh)}</strong>
-								<span class="bh-map-layers">
-									{tile.layers.map((layer) => (
-										<span class="bh-pill">{t(layer, layerZh[layer])}</span>
-									))}
-								</span>
+								<em>{t(tile.blurb, tile.blurbZh)}</em>
+								<span class="bh-map-goal-line">{goalLine(tile.slug)}</span>
 								<span class="bh-map-goals">
 									{tile.goals.map((goal) => (
 										<span class:list={['bh-goal', goal]}>{goalLabel(goal, id)}</span>
 									))}
 								</span>
-								<em>{t(tile.blurb, tile.blurbZh)}</em>
 							</span>
 							<Illustration name={tile.slot} size="panel" />
 						</a>
@@ -221,89 +206,6 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 				))
 			}
 		</svg>
-	</div>
-	<div class="bh-explain">
-		<p class="bh-axis">
-			{t('The human at the center. Ten methods. Three goals.', '人在中心。十种手段。三个目标。')}
-		</p>
-		<p class="bh-explain-intro">
-			{
-				t(
-					'Biochemical and peptides both add a messenger. Genetic does not: it rewrites the instructions that make messengers.',
-					'生化和肽都是往身体里加信使。基因不加信使，而是改写制造信使的说明书。',
-				)
-			}
-		</p>
-		<ul class="bh-trio">
-			<li>
-				<h3><a href={href('/biochemical/')}>{t('Biochemical', '生化小分子')}</a></h3>
-				<p>
-					{
-						t(
-							'Small chemical molecules. Effects depend on dose and usually fade after you stop.',
-							'加入小化学分子。效果依赖剂量，停用后通常会消退。',
-						)
-					}
-				</p>
-			</li>
-			<li>
-				<h3><a href={href('/peptides/')}>{t('Peptides', '肽')}</a></h3>
-				<p>
-					{
-						t(
-							'Short amino-acid chains used as signals. Split out because purity, testing, and supply are their own problem.',
-							'作为信号的氨基酸短链。单独列出，是因为纯度、检测和供应本身就是问题。',
-						)
-					}
-				</p>
-			</li>
-			<li>
-				<h3><a href={href('/genetic/')}>{t('Genetic', '基因')}</a></h3>
-				<p>
-					{
-						t(
-							'Reads or rewrites DNA or RNA. A change is often one-time and may be irreversible.',
-							'阅读或改写 DNA 或 RNA。改动往往一次到位，而且可能不可逆。',
-						)
-					}
-				</p>
-			</li>
-		</ul>
-		<ul class="bh-goal-defs">
-			<li>
-				<a class="bh-goal restore" href={href('/goals/restore/')}>{t('Restore', '修复')}</a>
-				<p>
-					{
-						t(
-							'Bring a lost or damaged function back toward a usual level.',
-							'把失去或受损的功能拉回通常水平。',
-						)
-					}
-				</p>
-			</li>
-			<li>
-				<a class="bh-goal enhance" href={href('/goals/enhance/')}>{t('Enhance', '增强')}</a>
-				<p>
-					{
-						t(
-							'Take a usual function past a typical level, or add a new one.',
-							'让通常功能超过一般水平，或增加新能力。',
-						)
-					}
-				</p>
-			</li>
-			<li>
-				<a class="bh-goal extend" href={href('/goals/longevity/')}>{t('Extend', '延寿')}</a>
-				<p>
-					{
-						t(
-							'Postpone age-related decline and lengthen healthspan.',
-							'推迟与年龄相关的功能下降，延长健康寿命。',
-						)
-					}
-				</p>
-			</li>
-		</ul>
 	</div>
 </section>
 

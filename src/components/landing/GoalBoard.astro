@@ -1,0 +1,50 @@
+---
+import GoalMark from './GoalMark.astro';
+import { goalLabel, type GoalId } from '../../data/domain-keywords';
+import { methodsFor } from '../../data/method-goals';
+import { localeId, localePrefix, pick } from '../../lib/locale';
+
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const prefix = localePrefix(id);
+const href = (path: string) => `${prefix}${path}`;
+const t = (en: string, zh: string) => pick(id, en, zh);
+
+const goals: { id: GoalId; definition: string; definitionZh: string }[] = [
+	{
+		id: 'restore',
+		definition: 'Bring a lost or damaged function back toward a usual level.',
+		definitionZh: '把失去或受损的功能拉回通常水平。',
+	},
+	{
+		id: 'enhance',
+		definition: 'Take a usual function past a typical level, or add a new one.',
+		definitionZh: '让通常功能超过一般水平，或增加新能力。',
+	},
+	{
+		id: 'extend',
+		definition: 'Postpone age-related decline and lengthen healthspan.',
+		definitionZh: '推迟与年龄相关的功能下降，延长健康寿命。',
+	},
+];
+---
+
+<section class="bh-goal-board" aria-label={t('Goals', '目标')}>
+	{
+		goals.map((goal) => (
+			<article class:list={['bh-goal-card', goal.id]}>
+				<a class="bh-goal-card-link" href={href(`/goals/#${goal.id}`)}>
+					<GoalMark goal={goal.id} />
+					<h3>{goalLabel(goal.id, id)}</h3>
+					<p>{t(goal.definition, goal.definitionZh)}</p>
+				</a>
+				<ul class="bh-method-chips">
+					{methodsFor(goal.id).map((method) => (
+						<li>
+							<a href={href(method.href)}>{method.name[id]}</a>
+						</li>
+					))}
+				</ul>
+			</article>
+		))
+	}
+</section>

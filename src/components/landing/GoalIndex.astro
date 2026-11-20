@@ -1,0 +1,112 @@
+---
+import GoalMark from './GoalMark.astro';
+import { goalLabel, type GoalId } from '../../data/domain-keywords';
+import { methodOrder, methods, methodsFor } from '../../data/method-goals';
+import { localeId, localePrefix, pick } from '../../lib/locale';
+
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const prefix = localePrefix(id);
+const href = (path: string) => `${prefix}${path}`;
+const t = (en: string, zh: string) => pick(id, en, zh);
+const text = (row: { en: string; zh: string; th: string }) => row[id];
+
+const columns: GoalId[] = ['restore', 'enhance', 'extend'];
+const definitions: Record<GoalId, { en: string; zh: string }> = {
+	restore: {
+		en: 'Bring a lost or damaged function back toward a usual level.',
+		zh: '把失去或受损的功能拉回通常水平。',
+	},
+	enhance: {
+		en: 'Take a usual function past a typical level, or add a new one.',
+		zh: '让通常功能超过一般水平，或增加新能力。',
+	},
+	extend: {
+		en: 'Postpone age-related decline and lengthen healthspan.',
+		zh: '推迟与年龄相关的功能下降，延长健康寿命。',
+	},
+};
+---
+
+<p class="bh-note">
+	{
+		t(
+			'A goal says why someone uses a method. It is not itself a method. The same device can restore a lost function for one person and enhance a usual function for another.',
+			'目标回答为什么用某种手段，它本身不是手段。同一台装置，对一个人可以是修复失去的功能，对另一个人可以是增强通常的功能。',
+		)
+	}
+</p>
+
+<div class="bh-matrix-wrap">
+	<table class="bh-matrix">
+		<thead>
+			<tr>
+				<th scope="col">{t('Method', '手段')}</th>
+				{
+					columns.map((goal) => (
+						<th scope="col">{goalLabel(goal, id)}</th>
+					))
+				}
+			</tr>
+		</thead>
+		<tbody>
+			{
+				methodOrder.map((slug) => {
+					const method = methods[slug];
+					return (
+						<tr>
+							<th scope="row">
+								<a href={href(method.href)}>{text(method.name)}</a>
+							</th>
+							{columns.map((goal) => {
+								const line = method.serves[goal];
+								return (
+									<td>
+										{line && (
+											<a href={href(method.href)}>
+												<span class="bh-dot" aria-hidden="true" />
+												{text(line)}
+											</a>
+										)}
+									</td>
+								);
+							})}
+						</tr>
+					);
+				})
+			}
+		</tbody>
+	</table>
+</div>
+
+{
+	columns.map((goal) => (
+		<section id={goal} class="bh-goal-section">
+			<h2>
+				<GoalMark goal={goal} />
+				{goalLabel(goal, id)}
+			</h2>
+			<p>{t(definitions[goal].en, definitions[goal].zh)}</p>
+			<ul class="bh-serve-list">
+				{methodsFor(goal).map((method) => (
+					<li>
+						<a href={href(method.href)}>{text(method.name)}</a>
+						<span>{text(method.serves[goal]!)}</span>
+					</li>
+				))}
+			</ul>
+			{goal === 'extend' && (
+				<p class="bh-note">
+					{t(
+						'Aging biology stays on this goal. The hallmarks note and the Interventions Testing Program stub are the deep dive.',
+						'衰老生物学留在这个目标上。标志笔记和干预测试计划存根是深入阅读。',
+					)}{' '}
+					<a href={href('/goals/longevity/hallmarks-of-aging/')}>{t('Hallmarks of aging', '衰老标志')}</a>
+					{' · '}
+					<a href={href('/goals/longevity/nia-itp/')}>{t('NIA Interventions Testing Program', 'NIA 干预测试计划')}</a>
+					{' · '}
+					<a href={href('/goals/longevity/')}>{t('Extend hub', '延寿专题')}</a>
+				</p>
+			)}
+		</section>
+	))
+}
