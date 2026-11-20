@@ -31,6 +31,6 @@ sidebar:
 
 一个读取神经系统信号并带动辅助手臂的系统，可以同时归在[神经增强](/zh-cn/neurohacking/)和[仿生](/zh-cn/bionic/)。如果目的是替代丧失的动作，purpose 标签是恢复。
 
-![信号链示意图](/diagrams/bci-signal-chain.svg)
+![信号链示意图](/diagrams/bci-signal-chain-zh.svg)
 
 图是原创的。它不是某公司的硬件，也不是接线指南。不写准确率和监管状态。

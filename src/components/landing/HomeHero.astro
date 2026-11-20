@@ -7,32 +7,37 @@ const copy = isZh ? positioning.zh : positioning.en;
 const prefix = isZh ? '/zh-cn' : '';
 const href = (path: string) => `${prefix}${path}`;
 const t = (en: string, zh: string) => (isZh ? zh : en);
+
+const icons = [
+	'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2.5h7l3 3V13.5H3z"/><path d="M10 2.5V6h3M5 9h6M5 11.5h4"/></svg>',
+	'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.4-3.4"/><path d="M13 2.5V5.2H10.3"/></svg>',
+	'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M5 13.5h6"/><path d="M3.5 5.5h9M2.2 8.5h3.2M10.6 8.5h3.2"/><path d="M3.5 5.5 2.2 8.5M12.5 5.5 13.8 8.5"/></svg>',
+	'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 7.5V5.2a3.5 3.5 0 0 1 6.7-1.4"/><rect x="3" y="7.5" width="10" height="6.2" rx="1.2"/></svg>',
+];
 ---
 
 <header class="bh-intro">
-	<p class="bh-kicker">{isZh ? 'BioHack 知识库' : 'BioHack Wiki'}</p>
+	<div class="bh-intro-copy">
+		<p class="bh-kicker">{isZh ? 'BioHack 知识库' : 'BioHack Wiki'}</p>
+		<h1 id="_top">{copy.headline}</h1>
+		<p class="bh-subline">{copy.subline}</p>
+		<ul class="bh-badges">
+			{
+				copy.badges.map((label, index) => (
+					<li>
+						<span set:html={icons[index]} />
+						{label}
+					</li>
+				))
+			}
+		</ul>
+		<div class="bh-links">
+			<a class="bh-button" href="#domains">{t('Explore 9 domains', '浏览九个领域')}</a>
+			<a class="bh-button ghost" href={href('/peptides/')}>{t('Peptides', '肽')}</a>
+			<a class="bh-textlink" href={href('/about/')}>{t('About', '关于')}</a>
+		</div>
+	</div>
 	<div class="bh-intro-art">
 		<Illustration name="hero" size="hero" />
 	</div>
-	<div class="bh-intro-copy">
-		<h1 id="_top">{copy.headline}</h1>
-		<p class="bh-value-line">{copy.values}</p>
-		<div class="bh-links">
-			<a class="bh-button" href="#domains">{t('Explore the 9 domains', '浏览九个领域')}</a>
-			<a class="bh-button ghost" href={href('/peptides/')}>{t('Peptides', '肽')}</a>
-			<a class="bh-button ghost" href={href('/about/')}>{t('About', '关于')}</a>
-			<button type="button" class="bh-button ghost bh-search" data-bh-search>
-				{t('Search', '搜索')}
-			</button>
-		</div>
-	</div>
 </header>
-
-<script>
-	for (const button of document.querySelectorAll('[data-bh-search]')) {
-		button.addEventListener('click', () => {
-			const opener = document.querySelector('site-search button[data-open-modal]');
-			if (opener instanceof HTMLButtonElement) opener.click();
-		});
-	}
-</script>

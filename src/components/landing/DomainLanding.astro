@@ -2,6 +2,7 @@
 import Illustration from './Illustration.astro';
 import { domainBySlug, type Card } from '../../data/domains';
 import { domainScenes } from '../../data/illustrations';
+import { toneLabel } from '../../lib/tone-label';
 
 interface Props {
 	slug: string;
@@ -105,7 +106,7 @@ function cardText(card: Card) {
 						<tr>
 							<td>{isZh ? row.labelZh : row.label}</td>
 							<td>
-								<span class:list={['bh-pill', row.tone]}>{row.tone}</span>
+								<span class:list={['bh-pill', row.tone]}>{toneLabel(row.tone, isZh)}</span>
 								{isZh ? row.noteZh : row.note}
 							</td>
 						</tr>
