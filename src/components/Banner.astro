@@ -1,0 +1,25 @@
+---
+import Default from '@astrojs/starlight/components/Banner.astro';
+
+const lang = Astro.locals.starlightRoute?.lang ?? 'en';
+const isZh = lang.toLowerCase().startsWith('zh');
+const href = isZh ? '/zh-cn/disclaimer/' : '/disclaimer/';
+---
+
+<div class="bh-banner" data-pagefind-ignore>
+	{
+		isZh ? (
+			<p>
+				本站仅供教育参考，不是医疗建议、诊断或治疗建议，也不提供剂量、注射或购买指引。
+				<a href={href}>医疗免责声明</a>
+			</p>
+		) : (
+			<p>
+				Educational reference only. Not medical advice, diagnosis, or treatment, and not dosing,
+				injection, or purchasing guidance.
+				<a href={href}>Medical disclaimer</a>
+			</p>
+		)
+	}
+</div>
+<Default />

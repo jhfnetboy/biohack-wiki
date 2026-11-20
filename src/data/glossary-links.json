@@ -1,0 +1,72 @@
+[
+  {
+    "phrase": "EEG",
+    "slug": "electroencephalography",
+    "caseSensitive": true
+  },
+  {
+    "phrase": "electroencephalography",
+    "slug": "electroencephalography",
+    "caseSensitive": false
+  },
+  {
+    "phrase": "fNIRS",
+    "slug": "functional-near-infrared-spectroscopy",
+    "caseSensitive": true
+  },
+  {
+    "phrase": "tDCS",
+    "slug": "transcranial-direct-current-stimulation",
+    "caseSensitive": true
+  },
+  {
+    "phrase": "HRV",
+    "slug": "heart-rate-variability",
+    "caseSensitive": true
+  },
+  {
+    "phrase": "DBS",
+    "slug": "deep-brain-stimulation",
+    "caseSensitive": true
+  },
+  {
+    "phrase": "BCI",
+    "slug": "brain-computer-interface",
+    "caseSensitive": true
+  },
+  {
+    "phrase": "brain-computer interface",
+    "slug": "brain-computer-interface",
+    "caseSensitive": false
+  },
+  {
+    "phrase": "GLP-1",
+    "slug": "glp-1",
+    "caseSensitive": true
+  },
+  {
+    "phrase": "SSVEP",
+    "slug": "ssvep",
+    "caseSensitive": true
+  },
+  {
+    "phrase": "P300",
+    "slug": "p300",
+    "caseSensitive": true
+  },
+  {
+    "phrase": "neuromodulation",
+    "slug": "neuromodulation",
+    "caseSensitive": false
+  },
+  {
+    "phrase": "osseointegration",
+    "slug": "osseointegration",
+    "caseSensitive": false
+  },
+  {
+    "phrase": "CGM",
+    "slug": "continuous-glucose-monitor",
+    "caseSensitive": true
+  }
+]
