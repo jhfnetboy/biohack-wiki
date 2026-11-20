@@ -422,29 +422,9 @@ html[data-has-hero] .content-panel {
 	margin-inline-start: 0.85rem;
 }
 
-.bh-section-head {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: baseline;
-	gap: 0.35rem 1rem;
-	margin-bottom: 0.65rem;
-}
-
-.bh-section-head h2,
 .bh-home h2 {
 	margin: 0 0 0.65rem;
 	font-size: 1.2rem;
-}
-
-.bh-section-head h2 {
-	margin: 0;
-}
-
-.bh-section-head p {
-	margin: 0;
-	color: var(--sl-color-gray-2);
-	font-size: 0.88rem;
 }
 
 .bh-domains,
@@ -564,7 +544,7 @@ html[data-has-hero] .content-panel {
 	}
 
 	.bh-intro h1 {
-		font-size: 2.5rem;
+		font-size: 2.15rem;
 	}
 
 	.bh-intro-art {
@@ -581,6 +561,37 @@ html[data-has-hero] .content-panel {
 
 	.bh-figure.hero figcaption {
 		display: block;
+	}
+}
+
+@media (min-width: 1280px) {
+	.bh-intro-line {
+		flex-wrap: nowrap;
+	}
+
+	.bh-intro h1 {
+		font-size: 1.7rem;
+		white-space: nowrap;
+	}
+
+	.bh-intro .bh-badges {
+		flex: 0 0 auto;
+		flex-wrap: nowrap;
+		width: max-content;
+		gap: 0.28rem;
+	}
+
+	.bh-intro .bh-badges li {
+		gap: 0.16rem;
+		padding: 0.06rem 0.38rem;
+		font-size: 0.68rem;
+		white-space: nowrap;
+	}
+
+	.bh-intro .bh-badges svg {
+		width: 11px;
+		height: 11px;
+		flex-basis: 11px;
 	}
 }
 
@@ -1038,8 +1049,7 @@ html[data-theme='dark'] .bh-map-figure img {
 	}
 
 	.bh-trio,
-	.bh-goal-defs,
-	.bh-goal-board {
+	.bh-goal-defs {
 		grid-template-columns: 1fr;
 	}
 }
@@ -1063,6 +1073,12 @@ a > .sl-badge {
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 0.9rem;
 	margin-top: 1.25rem;
+}
+
+@media (max-width: 767px) {
+	.bh-goal-board {
+		grid-template-columns: 1fr;
+	}
 }
 
 .bh-goal-card {
@@ -1134,6 +1150,8 @@ a > .sl-badge {
 	font-size: 0.75rem;
 	font-weight: 650;
 	text-decoration: none;
+	white-space: nowrap;
+	word-break: keep-all;
 }
 
 .bh-method-chips a:hover {
@@ -1162,11 +1180,13 @@ a > .sl-badge {
 
 .bh-matrix-wrap {
 	overflow-x: auto;
+	max-width: 100%;
 	margin-top: 1rem;
 }
 
 .bh-matrix {
-	width: 100%;
+	width: max-content;
+	min-width: 100%;
 	border-collapse: collapse;
 	font-size: 0.86rem;
 }
@@ -1177,6 +1197,17 @@ a > .sl-badge {
 	border-bottom: 1px solid var(--bh-line);
 	vertical-align: top;
 	text-align: start;
+}
+
+.bh-matrix th[scope='row'] {
+	min-width: 8.5rem;
+	white-space: nowrap;
+	word-break: keep-all;
+}
+
+.bh-matrix th[scope='row'] a {
+	white-space: nowrap;
+	word-break: keep-all;
 }
 
 .bh-matrix td a,

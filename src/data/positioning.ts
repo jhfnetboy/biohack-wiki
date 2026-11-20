@@ -8,12 +8,7 @@ export const positioning = {
 		headline: 'The open biohacking wiki',
 		subline:
 			'An open-source reference for any person or organization, to research every area of biohacking and make better-informed decisions.',
-		badges: [
-			'Professionally tracked',
-			'Continuously updated',
-			'Objective and neutral',
-			'Open source · CC BY-SA / MIT',
-		],
+		badges: ['Tracked', 'Updated', 'Neutral', 'Open source'],
 		tagline:
 			'Open, open-source wiki for anyone researching biohacking and informing decisions. Objective, continuously updated, and not medical advice.',
 		pillars: [
@@ -45,7 +40,7 @@ export const positioning = {
 		headline: '开放的生物黑客百科',
 		subline:
 			'开源、人人可用的参考资料，帮助任何人和组织研究、了解生物黑客的各个领域，为决策提供参考。',
-		badges: ['专业跟进', '持续更新', '客观中立', '开源 · CC BY-SA / MIT'],
+		badges: ['专业跟进', '持续更新', '客观中立', '开源'],
 		tagline: '开放、开源的生物黑客 wiki，帮助任何人和组织研究并做决策参考。客观中立，持续更新，不是医疗建议。',
 		pillars: [
 			{
@@ -76,7 +71,7 @@ export const positioning = {
 		headline: 'วิกิไบโอแฮกกิงแบบเปิด',
 		subline:
 			'แหล่งอ้างอิงโอเพนซอร์สสำหรับบุคคลหรือองค์กร เพื่อศึกษาไบโอแฮกกิงทุกด้านและตัดสินใจอย่างมีข้อมูลมากขึ้น',
-		badges: ['ติดตามอย่างมืออาชีพ', 'อัปเดตต่อเนื่อง', 'เป็นกลาง', 'โอเพนซอร์ส · CC BY-SA / MIT'],
+		badges: ['มืออาชีพ', 'อัปเดต', 'เป็นกลาง', 'โอเพนซอร์ส'],
 		tagline:
 			'วิกิไบโอแฮกกิงแบบเปิดและโอเพนซอร์ส สำหรับบุคคลหรือองค์กร เป็นกลาง อัปเดตต่อเนื่อง ไม่ใช่คำแนะนำทางการแพทย์',
 		pillars: [
