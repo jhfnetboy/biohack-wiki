@@ -469,8 +469,6 @@ export const thUi: Record<string, string> = {
   "Restore": "ฟื้นฟู",
   "Enhance": "เสริมศักยภาพ",
   "Extend": "ยืดสุขภาพ",
-  "The human at the center": "มนุษย์อยู่ตรงกลาง",
-  "The human at the center. Ten methods. Three goals.": "มนุษย์อยู่ตรงกลาง สิบวิธี สามเป้าหมาย",
   "Biochemical": "ชีวเคมีโมเลกุลเล็ก",
   "Neurotech": "เทคโนโลยีประสาท",
   "Bionics": "ไบโอนิก",

@@ -422,29 +422,9 @@ html[data-has-hero] .content-panel {
 	margin-inline-start: 0.85rem;
 }
 
-.bh-section-head {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: baseline;
-	gap: 0.35rem 1rem;
-	margin-bottom: 0.65rem;
-}
-
-.bh-section-head h2,
 .bh-home h2 {
 	margin: 0 0 0.65rem;
 	font-size: 1.2rem;
-}
-
-.bh-section-head h2 {
-	margin: 0;
-}
-
-.bh-section-head p {
-	margin: 0;
-	color: var(--sl-color-gray-2);
-	font-size: 0.88rem;
 }
 
 .bh-domains,
