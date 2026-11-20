@@ -1,0 +1,212 @@
+---
+import Illustration from './Illustration.astro';
+import { domains } from '../../data/domains';
+import { positioning, repoUrl } from '../../data/positioning';
+
+const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
+const copy = isZh ? positioning.zh : positioning.en;
+const prefix = isZh ? '/zh-cn' : '';
+const href = (path: string) => `${prefix}${path}`;
+const t = (en: string, zh: string) => (isZh ? zh : en);
+---
+
+<article class="bh-home">
+	<header class="bh-hero">
+		<Illustration name="hero" wide />
+		<p class="bh-kicker">{t('Open wiki', '开放的 wiki')}</p>
+		<h1>BioHack Wiki</h1>
+		<p class="bh-lead">{copy.statement}</p>
+		<p class="bh-links">
+			<a class="bh-button" href={href('/overview/what-is-biohacking/')}>{t('What this wiki means', '本维基的含义')}</a>
+			<a class="bh-button ghost" href={repoUrl}>{t('GitHub', 'GitHub')}</a>
+		</p>
+	</header>
+
+	<section class="bh-feature">
+		<Illustration name="domain-biochemical" />
+		<div>
+			<p class="bh-kicker">{t('Highlighted entry', '重点入口')}</p>
+			<h2>{t('Peptides', '肽')}</h2>
+			<p>
+				{
+					t(
+						'Filed under biochemical hacking, with its own path at /peptides/ for a future peptides subdomain. Categories, FDA evidence notes, and quality limits are on the landing page. Prices and lab-test data are on VeriSeas, not here.',
+						'归在生物化学干预之下，单独使用 /peptides/ 路径，以便以后映射到 peptides 子域名。类别、FDA 证据说明和质量限制在栏目页。价格和检测数据在 VeriSeas，不在这里。',
+					)
+				}
+			</p>
+			<p class="bh-links">
+				<a class="bh-button" href={href('/peptides/')}>{t('Open the peptide landing', '打开肽栏目')}</a>
+				<a class="bh-button ghost" href="https://veriseas.pages.dev" rel="noopener">
+					VeriSeas
+				</a>
+			</p>
+		</div>
+	</section>
+
+	<section>
+		<h2>{t('How we work', '我们如何工作')}</h2>
+		<ul class="bh-grid pillars">
+			{
+				copy.pillars.map((pillar) => (
+					<li class="bh-card">
+						<h3>{pillar.title}</h3>
+						<p>{pillar.text}</p>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section>
+		<h2>{t('Nine domains', '九个领域')}</h2>
+		<p class="bh-note">
+			{
+				t(
+					'An editorial map, not an official standard. Paths are top-level so they can later map to subdomains.',
+					'这是编辑地图，不是官方标准。路径在顶层，以后可以映射到子域名。',
+				)
+			}
+		</p>
+		<ul class="bh-grid domains">
+			{
+				domains.map((domain) => (
+					<li class="bh-card domain">
+						<Illustration name={domain.slot} />
+						<h3>
+							<a href={href(`/${domain.slug}/`)}>{isZh ? domain.titleZh : domain.title}</a>
+						</h3>
+						<p>{isZh ? domain.definitionZh : domain.definition}</p>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section class="bh-split">
+		<div>
+			<h2>{t('Three layers', '三个层次')}</h2>
+			<p>
+				{
+					t(
+						'Observe, intervene, and augment are filing labels. A later layer is not automatically better evidenced.',
+						'观察、干预和增强是归档标签。后一层不会自动证据更充分。',
+					)
+				}
+			</p>
+			<p>
+				<a href={href('/overview/three-layers/')}>{t('Open the matrix', '打开矩阵')}</a>
+			</p>
+		</div>
+		<img src="/diagrams/three-layers.svg" alt={t('Three layers diagram', '三个层次示意图')} />
+	</section>
+
+	<section>
+		<h2>{t('Maturity, in brief', '成熟度简表')}</h2>
+		<p class="bh-note">
+			{
+				t(
+					'Most rows are stubs. Two peptide rows point at FDA pages. The full table does not adopt unverified adjectives.',
+					'多数行是存根。两行肽指向 FDA 页面。全表不采用未经核对的形容词。',
+				)
+			}
+		</p>
+		<table class="bh-table">
+			<tbody>
+				<tr>
+					<td>{t('Named GLP-1 drugs on an FDA page', 'FDA 页面上的 GLP-1 药名')}</td>
+					<td><span class="bh-pill sourced">sourced</span></td>
+				</tr>
+				<tr>
+					<td>{t('Research peptides on the compounding-risk page', '复配风险页上的研究肽')}</td>
+					<td><span class="bh-pill sourced">sourced</span></td>
+				</tr>
+				<tr>
+					<td>{t('Wearables, prostheses, implanted BCI, genetic enhancement', '可穿戴、假肢、植入式脑机接口、基因增强')}</td>
+					<td><span class="bh-pill stub">{t('Stub', '存根')}</span></td>
+				</tr>
+			</tbody>
+		</table>
+		<p>
+			<a href={href('/overview/maturity/')}>{t('Full maturity page', '完整成熟度页')}</a>
+		</p>
+	</section>
+
+	<section class="bh-split">
+		<div>
+			<h2>{t('Signal chain', '信号链')}</h2>
+			<p>
+				{
+					t(
+						'A schematic for filing neurohacking and bionic pages. Not a named device and not a build guide.',
+						'用于归档神经增强和仿生页面的示意图。不是命名器械，也不是制作指南。',
+					)
+				}
+			</p>
+			<Illustration name="scene-bci" />
+		</div>
+		<img src="/diagrams/bci-signal-chain.svg" alt={t('Signal chain diagram', '信号链示意图')} />
+	</section>
+
+	<section class="bh-split">
+		<div>
+			<h2>{t('Closed loop', '闭环')}</h2>
+			<p>
+				{
+					t(
+						'A safety frame: sense, interpret, a person decides, then evaluate. Not automated dosing.',
+						'安全框架：感知、解释、由人决定、再评估。不是自动给药。',
+					)
+				}
+			</p>
+			<p>
+				<a href={href('/overview/closed-loop/')}>{t('Open the closed-loop page', '打开闭环页')}</a>
+			</p>
+		</div>
+		<Illustration name="scene-closed-loop" />
+	</section>
+
+	<section>
+		<h2>{t('Principles', '原则')}</h2>
+		<Illustration name="scene-principles" wide />
+		<p>
+			{
+				t(
+					'We take technology seriously and prefer defensive, safety-enhancing uses: open science, informed consent, neural-data limits, no coercive enhancement, and no sponsored rankings. The essay cites Buterin’s d/acc posts, Chile’s 2021 constitutional amendment, and UNESCO’s 2025 neurotechnology recommendation.',
+					'我们认真对待技术，并优先考虑防御性和增强安全性的用法：开放科学、知情同意、神经数据限制、拒绝强制增强、没有赞助排名。文章引用了 Buterin 的 d/acc 文章、智利 2021 年宪法修正，以及 UNESCO 2025 年神经技术建议书。',
+				)
+			}
+		</p>
+		<p>
+			<a href={href('/overview/principles/')}>{t('Read the principles', '阅读原则')}</a>
+		</p>
+	</section>
+
+	<section class="bh-open">
+		<h2>{t('Open and open source', '开放、开源')}</h2>
+		<p>{copy.pillars[4].text}</p>
+		<ul class="bh-links">
+			<li>
+				<a href={repoUrl}>{t('Public GitHub repository', '公开的 GitHub 仓库')}</a>
+			</li>
+			<li>
+				<a href={href('/policies/license/')}>{t('Content CC BY-SA 4.0, code MIT', '内容 CC BY-SA 4.0，代码 MIT')}</a>
+			</li>
+			<li>
+				<a href={href('/contributing/')}>{t('Contributing guide', '贡献指南')}</a>
+			</li>
+		</ul>
+	</section>
+
+	<section class="bh-updates">
+		<h2>{t('Latest updates', '最新动态')}</h2>
+		<p>
+			{
+				t(
+					'No items yet. Reviewed notes will appear here later. Nothing is auto-published.',
+					'还没有条目。审阅后的笔记以后会出现在这里。不会自动发布。',
+				)
+			}
+		</p>
+	</section>
+</article>

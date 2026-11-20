@@ -43,5 +43,5 @@ documentUrl: "https://www.accessdata.fda.gov/cms_ia/importalert_1186.html"
 
 ## 另见
 
-- [GLP-1 激动剂总览](/zh-cn/biochemical/peptides/glp-1-agonists/)
+- [GLP-1 激动剂总览](/zh-cn/peptides/glp-1-agonists/)
 - [法规](/zh-cn/regulation/)

@@ -26,6 +26,6 @@ Alzheimer's Drug Discovery Foundation Cognitive Vitality is named in the project
 
 ## Linked elsewhere
 
-- [Peptide section](/biochemical/peptides/)
+- [Peptide section](/peptides/)
 
 This page does not give doses, titration schedules, injection or implantation technique, preparation steps, or places to purchase a product.

@@ -1,0 +1,200 @@
+---
+import Illustration from './Illustration.astro';
+import { domainBySlug, type Card } from '../../data/domains';
+import { domainScenes } from '../../data/illustrations';
+
+interface Props {
+	slug: string;
+}
+
+const { slug } = Astro.props;
+const domain = domainBySlug(slug);
+const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
+const prefix = isZh ? '/zh-cn' : '';
+const t = (en: string, zh: string) => (isZh ? zh : en);
+const href = (path: string) => `${prefix}${path}`;
+
+function cardTitle(card: Card) {
+	return isZh ? card.titleZh : card.title;
+}
+function cardText(card: Card) {
+	return isZh ? card.textZh : card.text;
+}
+---
+
+<article class="bh-domain">
+	<header class="bh-hero">
+		<Illustration name={domain.slot} wide />
+		<p class="bh-kicker">{t('Domain', '领域')}</p>
+		<h1>{isZh ? domain.titleZh : domain.title}</h1>
+		<p class="bh-lead">{isZh ? domain.definitionZh : domain.definition}</p>
+		<ul class="bh-badges">
+			{
+				domain.layers.map((layer) => (
+					<li>
+						{t('Layer', '层次')} · {layer}
+					</li>
+				))
+			}
+			{
+				domain.purposes.map((purpose) => (
+					<li>
+						{t('Purpose', '目的')} · {purpose}
+					</li>
+				))
+			}
+		</ul>
+	</header>
+
+	<section>
+		<h2>{t('Map of the domain', '领域地图')}</h2>
+		<p class="bh-note">
+			{
+				t(
+					'Cards cover the field as this wiki files it. A stub card is not a finding.',
+					'卡片按本维基的归档覆盖该领域。存根卡片不是结论。',
+				)
+			}
+		</p>
+		<ul class="bh-grid">
+			{
+				domain.areas.map((area) => (
+					<li class:list={['bh-card', { stub: area.stub }]}>
+						{area.stub && <span class="bh-pill stub">{t('Stub', '存根')}</span>}
+						<h3>{cardTitle(area)}</h3>
+						<p>{cardText(area)}</p>
+						{area.href && <a href={href(area.href)}>{t('Open', '打开')}</a>}
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section>
+		<h2>{t('Representative examples', '代表性例子')}</h2>
+		<ul class="bh-grid">
+			{
+				domain.examples.map((example) => (
+					<li class:list={['bh-card', { stub: example.stub }]}>
+						<div class="bh-badge-row">
+							{example.maturity && <span class="bh-pill">{example.maturity}</span>}
+							{example.evidence && <span class="bh-pill">{t('Evidence', '证据')} {example.evidence}</span>}
+							{example.stub && <span class="bh-pill stub">{t('Stub', '存根')}</span>}
+						</div>
+						<h3>{cardTitle(example)}</h3>
+						<p>{cardText(example)}</p>
+						{example.href && <a href={href(example.href)}>{t('Open', '打开')}</a>}
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section>
+		<h2>{t('Maturity snapshot', '成熟度快照')}</h2>
+		<table class="bh-table">
+			<thead>
+				<tr>
+					<th>{t('Row', '行')}</th>
+					<th>{t('Status', '状态')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					domain.maturityRows.map((row) => (
+						<tr>
+							<td>{isZh ? row.labelZh : row.label}</td>
+							<td>
+								<span class:list={['bh-pill', row.tone]}>{row.tone}</span>
+								{isZh ? row.noteZh : row.note}
+							</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h2>{t('Debates and risks', '争论与风险')}</h2>
+		<ul class="bh-stack">
+			{
+				domain.debates.map((item) => (
+					<li>
+						<strong>{cardTitle(item)}</strong>
+						{item.stub && <span class="bh-pill stub">{t('Stub', '存根')}</span>}
+						<p>{cardText(item)}</p>
+						{item.href && <a href={href(item.href)}>{t('Open', '打开')}</a>}
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section>
+		<h2>{t('Regulation snapshot', '监管快照')}</h2>
+		<ul class="bh-stack">
+			{
+				domain.regulation.map((item) => (
+					<li>
+						<strong>{cardTitle(item)}</strong>
+						{item.stub && <span class="bh-pill stub">{t('Stub', '存根')}</span>}
+						<p>{cardText(item)}</p>
+						{item.href && <a href={href(item.href)}>{t('Open', '打开')}</a>}
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section>
+		<h2>{t('Related domains', '相关领域')}</h2>
+		<ul class="bh-links">
+			{
+				domain.related.map((item) => (
+					<li>
+						<a href={href(item.href)}>{isZh ? item.titleZh : item.title}</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section>
+		<h2>{t('Start here', '从这里开始')}</h2>
+		<ol class="bh-links">
+			{
+				domain.startHere.map((item) => (
+					<li>
+						<a href={href(item.href)}>{isZh ? item.titleZh : item.title}</a>
+					</li>
+				))
+			}
+		</ol>
+	</section>
+
+	{
+		(domainScenes[domain.slug] ?? []).length > 0 && (
+			<section>
+				<h2>{t('Scenes', '场景')}</h2>
+				<div class="bh-scenes">
+					{(domainScenes[domain.slug] ?? []).map((name) => (
+						<Illustration name={name} wide />
+					))}
+				</div>
+			</section>
+		)
+	}
+
+	<section class="bh-updates">
+		<h2>{t('Latest updates', '最新动态')}</h2>
+		<p>
+			{
+				t(
+					'No items yet. Reviewed daily notes will appear here later. Nothing is auto-published.',
+					'还没有条目。审阅后的每日笔记以后会出现在这里。不会自动发布。',
+				)
+			}
+		</p>
+	</section>
+</article>

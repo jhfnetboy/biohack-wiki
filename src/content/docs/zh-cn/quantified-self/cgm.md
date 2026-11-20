@@ -43,6 +43,6 @@ sidebar:
 ## 另见
 
 - [可穿戴设备](/zh-cn/quantified-self/)
-- [GLP-1 药物](/zh-cn/biochemical/peptides/glp-1-agonists/)
+- [GLP-1 药物](/zh-cn/peptides/glp-1-agonists/)
 - [编辑政策](/zh-cn/policies/editorial/)
 - [医疗免责声明](/zh-cn/disclaimer/)

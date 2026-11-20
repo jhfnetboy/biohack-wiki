@@ -35,6 +35,10 @@ Quote or paraphrase a document you opened. Record the access date. If you cannot
 
 Do not add doses, titration, injection or implantation steps, preparation steps, or a shopping destination. Vendor pages, when they exist, record regulatory and quality events. They are not a shop.
 
-## 5. Check
+## 5. License
+
+Wiki text you add is CC BY-SA 4.0 (`LICENSE-CONTENT`). Code is MIT (`LICENSE`). The repository is public: https://github.com/jhfnetboy/biohack-wiki. Starlight shows “Edit page” using that repository.
+
+## 6. Check
 
 `node scripts/check-content.mjs` checks the schema rules above. `npm run build` runs Starlight's link validator and fails on broken internal links or broken heading anchors.

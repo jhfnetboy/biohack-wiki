@@ -43,6 +43,6 @@ This page does not give doses, titration schedules, injection or implantation te
 ## See also
 
 - [Wearables](/quantified-self/)
-- [GLP-1 drugs](/biochemical/peptides/glp-1-agonists/)
+- [GLP-1 drugs](/peptides/glp-1-agonists/)
 - [Editorial policy](/policies/editorial/)
 - [Medical disclaimer](/disclaimer/)

@@ -39,5 +39,5 @@ documentUrl: "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns
 
 ## 另见
 
-- [GLP-1 激动剂总览](/zh-cn/biochemical/peptides/glp-1-agonists/)
+- [GLP-1 激动剂总览](/zh-cn/peptides/glp-1-agonists/)
 - [Category 2](/zh-cn/regulation/fda-503a-category-2/)

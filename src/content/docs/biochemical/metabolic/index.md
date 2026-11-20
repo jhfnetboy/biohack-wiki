@@ -21,7 +21,7 @@ Diet patterns, nutrigenomics, and supplement evidence are not written. GLP-1 dru
 ## Seeded pages
 
 - [Continuous glucose monitors](/quantified-self/cgm/)
-- [GLP-1 receptor agonists](/biochemical/peptides/glp-1-agonists/)
+- [GLP-1 receptor agonists](/peptides/glp-1-agonists/)
 
 ## Not yet written
 

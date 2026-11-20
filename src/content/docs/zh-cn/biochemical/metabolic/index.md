@@ -21,7 +21,7 @@ sidebar:
 ## 已建页面
 
 - [连续血糖监测](/zh-cn/quantified-self/cgm/)
-- [GLP-1 受体激动剂](/zh-cn/biochemical/peptides/glp-1-agonists/)
+- [GLP-1 受体激动剂](/zh-cn/peptides/glp-1-agonists/)
 
 ## 尚未撰写
 

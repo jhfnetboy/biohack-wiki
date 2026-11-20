@@ -39,5 +39,5 @@ This page does not give doses, titration schedules, injection or implantation te
 
 ## See also
 
-- [GLP-1 agonist overview](/biochemical/peptides/glp-1-agonists/)
+- [GLP-1 agonist overview](/peptides/glp-1-agonists/)
 - [Category 2](/regulation/fda-503a-category-2/)

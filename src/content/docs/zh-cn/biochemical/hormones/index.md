@@ -27,7 +27,7 @@ sidebar:
 
 ## 其他栏目
 
-- [Tesamorelin](/zh-cn/biochemical/peptides/tesamorelin/)
-- [生长激素相关肽](/zh-cn/biochemical/peptides/)
+- [Tesamorelin](/zh-cn/peptides/tesamorelin/)
+- [生长激素相关肽](/zh-cn/peptides/)
 
 本页不提供剂量、滴定方案、注射或植入操作、配制步骤，也不提供购买渠道。

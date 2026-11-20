@@ -27,7 +27,7 @@ The Endocrine Society site is a place an editor can start. This index does not s
 
 ## Linked elsewhere
 
-- [Tesamorelin](/biochemical/peptides/tesamorelin/)
-- [Growth-hormone peptides](/biochemical/peptides/)
+- [Tesamorelin](/peptides/tesamorelin/)
+- [Growth-hormone peptides](/peptides/)
 
 This page does not give doses, titration schedules, injection or implantation technique, preparation steps, or places to purchase a product.

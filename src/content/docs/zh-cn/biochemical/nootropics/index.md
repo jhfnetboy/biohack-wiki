@@ -26,6 +26,6 @@ sidebar:
 
 ## 其他栏目
 
-- [肽栏目](/zh-cn/biochemical/peptides/)
+- [肽栏目](/zh-cn/peptides/)
 
 本页不提供剂量、滴定方案、注射或植入操作、配制步骤，也不提供购买渠道。

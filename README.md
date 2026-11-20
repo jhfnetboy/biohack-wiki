@@ -1,6 +1,10 @@
 # BioHack Wiki
 
-A static, bilingual reference for peptides, neural interfaces, prosthetics and assistive technology, and the other domains in the project taxonomy. It is an educational site. It is not medical advice, and it does not publish doses, injection or implantation technique, preparation steps, or shopping guidance.
+An open, open-source wiki helping anyone, people and organizations alike, research and understand every area of biohacking and informing their decisions. Professionally tracked, continuously updated, objective and neutral.
+
+Content is CC BY-SA 4.0 (`LICENSE-CONTENT`). Code is MIT (`LICENSE`). The public repository is https://github.com/jhfnetboy/biohack-wiki.
+
+It is not medical advice, and it does not publish doses, injection or implantation technique, preparation steps, or shopping guidance.
 
 English is the default locale at `/`. Simplified Chinese is at `/zh-cn/`. Starlight emits `hreflang` alternates for each pair.
 
@@ -30,6 +34,10 @@ SITE_URL=https://biohack-wiki.example npm run build
 
 `SITE_URL` must be an absolute `http` or `https` origin with no path. If it is unset, the build uses `https://biohack-wiki.pages.dev`. See `.env.example`.
 
+Search indexing is off while the wiki is under construction. `ALLOW_INDEXING` defaults to unset, which the build treats as false. That writes `Disallow: /` in `robots.txt`, a sitewide `X-Robots-Tag: noindex, nofollow` in `dist/_headers`, and `<meta name="robots" content="noindex, nofollow">` on every page. The sitemap is still generated. Set `ALLOW_INDEXING=true` only when the owner wants the site indexed. Stub pages keep their own `noindex` either way.
+
+Illustrations are WebP files in `src/assets/illustrations/`, rendered with Astro `<Image>`. Captions say “AI-generated illustration” / “AI 生成插图”. They are listed on the attribution page. They are not photographs of patients or branded devices. Original diagrams stay in `public/diagrams/`.
+
 `node scripts/check-content.mjs` checks descriptions, review dates, stub indexing, and that reviewed non-policy pages have a source.
 
 ## Add a page
@@ -48,7 +56,8 @@ Nine top-level domains (IA v2), plus cross-cutting sections. URL slugs are Engli
 
 | Domain | Path |
 | --- | --- |
-| Biochemical hacking (peptides, hormones, nootropics, metabolic notes) | `/biochemical/` |
+| Biochemical hacking (hormones, nootropics, metabolic notes; peptides are linked from here) | `/biochemical/` |
+| Peptides (still the biochemical domain; path reserved for a future `peptides.<domain>` host) | `/peptides/` |
 | Neurohacking (recording, stimulation, brain-computer interfaces) | `/neurohacking/` |
 | Bionic augmentation | `/bionic/` |
 | Cyborg and grinder implants | `/cyborg/` |

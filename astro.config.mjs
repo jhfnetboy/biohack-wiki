@@ -55,6 +55,9 @@ const site = siteOrigin();
 const legacyRedirects = JSON.parse(
 	fs.readFileSync(path.join(root, 'src/data/legacy-redirects.json'), 'utf8'),
 );
+const allowIndexing = ['true', '1', 'yes'].includes(
+	(process.env.ALLOW_INDEXING ?? '').trim().toLowerCase(),
+);
 
 const group = (label, zh, directory) => ({
 	label,
@@ -80,7 +83,15 @@ export default defineConfig({
 				'zh-CN': 'BioHack 知识库',
 			},
 			description:
-				'A sourced reference for peptides, neurotechnology, assistive technology, and related domains. Not medical advice.',
+				'An open, open-source wiki helping anyone research every area of biohacking and inform decisions. Not medical advice.',
+			head: allowIndexing
+				? []
+				: [
+						{
+							tag: 'meta',
+							attrs: { name: 'robots', content: 'noindex, nofollow' },
+						},
+					],
 			defaultLocale: 'root',
 			locales: {
 				root: { label: 'English', lang: 'en' },
@@ -133,6 +144,16 @@ export default defineConfig({
 						},
 						{ label: 'About', translations: { 'zh-CN': '关于' }, slug: 'about' },
 						{
+							label: 'Principles',
+							translations: { 'zh-CN': '原则' },
+							slug: 'overview/principles',
+						},
+						{
+							label: 'License',
+							translations: { 'zh-CN': '许可' },
+							slug: 'policies/license',
+						},
+						{
 							label: 'Add a page',
 							translations: { 'zh-CN': '如何添加页面' },
 							slug: 'contributing',
@@ -140,6 +161,7 @@ export default defineConfig({
 					],
 				},
 				group('Biochemical', '生物化学干预', 'biochemical'),
+				group('Peptides', '肽', 'peptides'),
 				group('Neurohacking', '脑科学与神经增强', 'neurohacking'),
 				group('Bionic augmentation', '仿生与智能义肢', 'bionic'),
 				group('Cyborg and grinder', '人体植入与赛博格', 'cyborg'),
@@ -191,6 +213,17 @@ export default defineConfig({
 				group('About and policy', '关于与政策', 'policies'),
 			],
 		}),
+		{
+			name: 'construction-headers',
+			hooks: {
+				'astro:build:done': ({ dir }) => {
+					const headers = allowIndexing
+						? '# ALLOW_INDEXING is true. Sitewide X-Robots-Tag is omitted.\n'
+						: '/*\n  X-Robots-Tag: noindex, nofollow\n';
+					fs.writeFileSync(new URL('_headers', dir), headers);
+				},
+			},
+		},
 		sitemap({
 			filter: (page) => {
 				const pathname = new URL(page).pathname;
