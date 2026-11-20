@@ -1,0 +1,38 @@
+---
+import Illustration from './Illustration.astro';
+import { positioning } from '../../data/positioning';
+
+const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
+const copy = isZh ? positioning.zh : positioning.en;
+const prefix = isZh ? '/zh-cn' : '';
+const href = (path: string) => `${prefix}${path}`;
+const t = (en: string, zh: string) => (isZh ? zh : en);
+---
+
+<header class="bh-intro">
+	<p class="bh-kicker">{isZh ? 'BioHack 知识库' : 'BioHack Wiki'}</p>
+	<div class="bh-intro-art">
+		<Illustration name="hero" size="hero" />
+	</div>
+	<div class="bh-intro-copy">
+		<h1 id="_top">{copy.headline}</h1>
+		<p class="bh-value-line">{copy.values}</p>
+		<div class="bh-links">
+			<a class="bh-button" href="#domains">{t('Explore the 9 domains', '浏览九个领域')}</a>
+			<a class="bh-button ghost" href={href('/peptides/')}>{t('Peptides', '肽')}</a>
+			<a class="bh-button ghost" href={href('/about/')}>{t('About', '关于')}</a>
+			<button type="button" class="bh-button ghost bh-search" data-bh-search>
+				{t('Search', '搜索')}
+			</button>
+		</div>
+	</div>
+</header>
+
+<script>
+	for (const button of document.querySelectorAll('[data-bh-search]')) {
+		button.addEventListener('click', () => {
+			const opener = document.querySelector('site-search button[data-open-modal]');
+			if (opener instanceof HTMLButtonElement) opener.click();
+		});
+	}
+</script>

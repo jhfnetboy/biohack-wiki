@@ -5,6 +5,10 @@ export const positioning = {
 	en: {
 		statement:
 			'An open, open-source wiki helping anyone, people and organizations alike, research and understand every area of biohacking and informing their decisions. Professionally tracked, continuously updated, objective and neutral.',
+		headline:
+			'An open, open-source wiki helping anyone, people and organizations alike, research and understand every area of biohacking and informing their decisions.',
+		values:
+			'Professionally tracked · Continuously updated · Objective and neutral · Open source (CC BY-SA 4.0 / MIT)',
 		tagline:
 			'Open, open-source wiki for anyone researching biohacking and informing decisions. Objective, continuously updated, and not medical advice.',
 		pillars: [
@@ -33,6 +37,9 @@ export const positioning = {
 	zh: {
 		statement:
 			'开放、开源的 Biohacking wiki，帮助任何人和组织研究、了解 Biohacking 的各个领域，并为决策提供信息参考。专业跟进，持续更新，客观中立。',
+		headline:
+			'开放、开源的 Biohacking wiki，帮助任何人和组织研究、了解 Biohacking 的各个领域，并为决策提供信息参考。',
+		values: '专业跟进 · 持续更新 · 客观中立 · 开源（CC BY-SA 4.0 / MIT）',
 		tagline: '开放、开源的 Biohacking wiki，帮助任何人和组织研究并做决策参考。客观中立，持续更新，不是医疗建议。',
 		pillars: [
 			{
