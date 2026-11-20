@@ -2,6 +2,7 @@
 import Illustration from './Illustration.astro';
 import { domains } from '../../data/domains';
 import { positioning, repoUrl } from '../../data/positioning';
+import { localeId, localePrefix, pick } from '../../lib/locale';
 import { toneLabel } from '../../lib/tone-label';
 
 const blurbs: Record<string, { en: string; zh: string }> = {
@@ -43,11 +44,13 @@ const blurbs: Record<string, { en: string; zh: string }> = {
 	},
 };
 
-const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
-const copy = isZh ? positioning.zh : positioning.en;
-const prefix = isZh ? '/zh-cn' : '';
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const copy = id === 'zh' ? positioning.zh : id === 'th' ? positioning.th : positioning.en;
+const prefix = localePrefix(id);
 const href = (path: string) => `${prefix}${path}`;
-const t = (en: string, zh: string) => (isZh ? zh : en);
+const t = (en: string, zh: string) => pick(id, en, zh);
+const diagram = (file: string) =>
+	id === 'zh' ? file.replace('.svg', '-zh.svg') : id === 'th' ? file.replace('.svg', '-th.svg') : file;
 ---
 
 <article class="bh-home">
@@ -64,8 +67,8 @@ const t = (en: string, zh: string) => (isZh ? zh : en);
 							<a class="bh-domain-link" href={href(`/${domain.slug}/`)}>
 								<Illustration name={domain.slot} size="thumb" />
 								<span>
-									<strong>{isZh ? domain.titleZh : domain.title}</strong>
-									<em>{blurb ? (isZh ? blurb.zh : blurb.en) : ''}</em>
+									<strong>{t(domain.title, domain.titleZh)}</strong>
+									<em>{blurb ? t(blurb.en, blurb.zh) : ''}</em>
 								</span>
 							</a>
 						</li>
@@ -168,7 +171,7 @@ const t = (en: string, zh: string) => (isZh ? zh : en);
 			</p>
 		</div>
 		<img
-			src={isZh ? '/diagrams/three-layers-zh.svg' : '/diagrams/three-layers.svg'}
+			src={diagram('/diagrams/three-layers.svg')}
 			alt={t('Three layers diagram', '三个层次示意图')}
 		/>
 	</section>
@@ -187,15 +190,15 @@ const t = (en: string, zh: string) => (isZh ? zh : en);
 			<tbody>
 				<tr>
 					<td>{t('Named GLP-1 drugs on an FDA page', 'FDA 页面上的 GLP-1 药名')}</td>
-					<td><span class="bh-pill sourced">{toneLabel('sourced', isZh)}</span></td>
+					<td><span class="bh-pill sourced">{toneLabel('sourced', id)}</span></td>
 				</tr>
 				<tr>
 					<td>{t('Research peptides on the compounding-risk page', '复配风险页上的研究肽')}</td>
-					<td><span class="bh-pill sourced">{toneLabel('sourced', isZh)}</span></td>
+					<td><span class="bh-pill sourced">{toneLabel('sourced', id)}</span></td>
 				</tr>
 				<tr>
 					<td>{t('Wearables, prostheses, implanted BCI, genetic enhancement', '可穿戴、假肢、植入式脑机接口、基因增强')}</td>
-					<td><span class="bh-pill stub">{toneLabel('stub', isZh)}</span></td>
+					<td><span class="bh-pill stub">{toneLabel('stub', id)}</span></td>
 				</tr>
 			</tbody>
 		</table>
@@ -218,7 +221,7 @@ const t = (en: string, zh: string) => (isZh ? zh : en);
 			<Illustration name="scene-bci" size="moderate" />
 		</div>
 		<img
-			src={isZh ? '/diagrams/bci-signal-chain-zh.svg' : '/diagrams/bci-signal-chain.svg'}
+			src={diagram('/diagrams/bci-signal-chain.svg')}
 			alt={t('Signal chain diagram', '信号链示意图')}
 		/>
 	</section>

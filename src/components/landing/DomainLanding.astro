@@ -2,6 +2,7 @@
 import Illustration from './Illustration.astro';
 import { domainBySlug, type Card } from '../../data/domains';
 import { domainScenes } from '../../data/illustrations';
+import { localeId, localePrefix, pick } from '../../lib/locale';
 import { toneLabel } from '../../lib/tone-label';
 
 interface Props {
@@ -10,16 +11,16 @@ interface Props {
 
 const { slug } = Astro.props;
 const domain = domainBySlug(slug);
-const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
-const prefix = isZh ? '/zh-cn' : '';
-const t = (en: string, zh: string) => (isZh ? zh : en);
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const prefix = localePrefix(id);
+const t = (en: string, zh: string) => pick(id, en, zh);
 const href = (path: string) => `${prefix}${path}`;
 
 function cardTitle(card: Card) {
-	return isZh ? card.titleZh : card.title;
+	return t(card.title, card.titleZh);
 }
 function cardText(card: Card) {
-	return isZh ? card.textZh : card.text;
+	return t(card.text, card.textZh);
 }
 ---
 
@@ -27,20 +28,20 @@ function cardText(card: Card) {
 	<header class="bh-hero">
 		<Illustration name={domain.slot} wide />
 		<p class="bh-kicker">{t('Domain', '领域')}</p>
-		<h1>{isZh ? domain.titleZh : domain.title}</h1>
-		<p class="bh-lead">{isZh ? domain.definitionZh : domain.definition}</p>
+		<h1>{t(domain.title, domain.titleZh)}</h1>
+		<p class="bh-lead">{t(domain.definition, domain.definitionZh)}</p>
 		<ul class="bh-badges">
 			{
 				domain.layers.map((layer) => (
 					<li>
-						{t('Layer', '层次')} · {layer}
+						{t('Layer', '层次')} · {t(layer, layer)}
 					</li>
 				))
 			}
 			{
 				domain.purposes.map((purpose) => (
 					<li>
-						{t('Purpose', '目的')} · {purpose}
+						{t('Purpose', '目的')} · {t(purpose, purpose)}
 					</li>
 				))
 			}
@@ -104,10 +105,10 @@ function cardText(card: Card) {
 				{
 					domain.maturityRows.map((row) => (
 						<tr>
-							<td>{isZh ? row.labelZh : row.label}</td>
+							<td>{t(row.label, row.labelZh)}</td>
 							<td>
-								<span class:list={['bh-pill', row.tone]}>{toneLabel(row.tone, isZh)}</span>
-								{isZh ? row.noteZh : row.note}
+								<span class:list={['bh-pill', row.tone]}>{toneLabel(row.tone, id)}</span>
+								{t(row.note, row.noteZh)}
 							</td>
 						</tr>
 					))
@@ -154,7 +155,7 @@ function cardText(card: Card) {
 			{
 				domain.related.map((item) => (
 					<li>
-						<a href={href(item.href)}>{isZh ? item.titleZh : item.title}</a>
+						<a href={href(item.href)}>{t(item.title, item.titleZh)}</a>
 					</li>
 				))
 			}
@@ -167,7 +168,7 @@ function cardText(card: Card) {
 			{
 				domain.startHere.map((item) => (
 					<li>
-						<a href={href(item.href)}>{isZh ? item.titleZh : item.title}</a>
+						<a href={href(item.href)}>{t(item.title, item.titleZh)}</a>
 					</li>
 				))
 			}

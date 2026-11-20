@@ -1,9 +1,10 @@
 ---
 import Illustration from './Illustration.astro';
+import { localeId, localePrefix, pick } from '../../lib/locale';
 
-const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
-const prefix = isZh ? '/zh-cn' : '';
-const t = (en: string, zh: string) => (isZh ? zh : en);
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const prefix = localePrefix(id);
+const t = (en: string, zh: string) => pick(id, en, zh);
 const href = (path: string) => `${prefix}${path}`;
 
 const categories = [
@@ -99,12 +100,12 @@ const categories = [
 					<li class="bh-card">
 						<h3>
 							{item.href ? (
-								<a href={href(item.href)}>{isZh ? item.titleZh : item.title}</a>
+								<a href={href(item.href)}>{t(item.title, item.titleZh)}</a>
 							) : (
-								(isZh ? item.titleZh : item.title)
+								t(item.title, item.titleZh)
 							)}
 						</h3>
-						<p>{isZh ? item.textZh : item.text}</p>
+						<p>{t(item.text, item.textZh)}</p>
 						{item.stub && <span class="bh-pill stub">{t('Stub', '存根')}</span>}
 					</li>
 				))

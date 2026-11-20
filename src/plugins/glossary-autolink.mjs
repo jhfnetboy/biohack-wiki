@@ -26,7 +26,9 @@ function boundary(phrase) {
 
 function localePrefix(fileURL) {
 	const path = fileURL?.pathname ?? '';
-	return path.includes('/zh-cn/') ? '/zh-cn' : '';
+	if (path.includes('/zh-cn/')) return '/zh-cn';
+	if (path.includes('/th/')) return '/th';
+	return '';
 }
 
 function insideSkip(node, ctx) {
