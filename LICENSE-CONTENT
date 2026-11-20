@@ -1,0 +1,22 @@
+BioHack Wiki content license
+
+Copyright (c) 2026 BioHack Wiki contributors
+
+The text, diagrams drawn for this site, and other wiki content in
+`src/content/` and `public/diagrams/` are licensed under the Creative Commons
+Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
+
+https://creativecommons.org/licenses/by-sa/4.0/
+
+You may share and adapt the content for any purpose, including commercially,
+if you give appropriate credit, link to the license, and indicate if changes
+were made. If you remix or build on the content, you must distribute your
+contributions under the same license.
+
+Source code, configuration, and scripts are under the MIT License in LICENSE.
+Third-party images, if added later under `public/images/`, keep the license
+named in their caption and on the attribution page. They are not covered by
+CC BY-SA unless that caption says so.
+
+This is a human-readable summary, not a substitute for the full legal code at
+the URL above.

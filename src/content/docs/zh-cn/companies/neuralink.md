@@ -3,9 +3,9 @@ title: "Neuralink"
 titleZh: "Neuralink"
 description: "为「Neuralink」预留的存根页。尚无核对过的事实。不是医疗建议或购买指南。"
 entityType: "company"
-domain: "bci"
+domain: "neurohacking"
 domains:
-  - "bci"
+  - "neurohacking"
 evidenceLevel: "unrated"
 lastReviewed: "2026-11-20"
 status: "stub"
@@ -40,7 +40,7 @@ Neuralink 的公开网站是 https://neuralink.com/ 。产品、N1 植入物、�
 
 ## 另见
 
-- [N1 植入物存根](/zh-cn/neurotech/bci/neuralink-n1/)
-- [脑机接口](/zh-cn/neurotech/bci/)
+- [N1 植入物存根](/zh-cn/neurohacking/bci/neuralink-n1/)
+- [脑机接口](/zh-cn/neurohacking/bci/)
 - [编辑政策](/zh-cn/policies/editorial/)
 - [医疗免责声明](/zh-cn/disclaimer/)

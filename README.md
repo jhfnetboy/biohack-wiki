@@ -1,6 +1,10 @@
 # BioHack Wiki
 
-A static, bilingual reference for peptides, neural interfaces, prosthetics and assistive technology, and the other domains in the project taxonomy. It is an educational site. It is not medical advice, and it does not publish doses, injection or implantation technique, preparation steps, or shopping guidance.
+An open, open-source wiki helping anyone, people and organizations alike, research and understand every area of biohacking and informing their decisions. Professionally tracked, continuously updated, objective and neutral.
+
+Content is CC BY-SA 4.0 (`LICENSE-CONTENT`). Code is MIT (`LICENSE`). The public repository is https://github.com/jhfnetboy/biohack-wiki.
+
+It is not medical advice, and it does not publish doses, injection or implantation technique, preparation steps, or shopping guidance.
 
 English is the default locale at `/`. Simplified Chinese is at `/zh-cn/`. Starlight emits `hreflang` alternates for each pair.
 
@@ -30,6 +34,10 @@ SITE_URL=https://biohack-wiki.example npm run build
 
 `SITE_URL` must be an absolute `http` or `https` origin with no path. If it is unset, the build uses `https://biohack-wiki.pages.dev`. See `.env.example`.
 
+Search indexing is off while the wiki is under construction. `ALLOW_INDEXING` defaults to unset, which the build treats as false. That writes `Disallow: /` in `robots.txt`, a sitewide `X-Robots-Tag: noindex, nofollow` in `dist/_headers`, and `<meta name="robots" content="noindex, nofollow">` on every page. The sitemap is still generated. Set `ALLOW_INDEXING=true` only when the owner wants the site indexed. Stub pages keep their own `noindex` either way.
+
+Illustrations are WebP files in `src/assets/illustrations/`, rendered with Astro `<Image>`. Captions say “AI-generated illustration” / “AI 生成插图”. They are listed on the attribution page. They are not photographs of patients or branded devices. Original diagrams stay in `public/diagrams/`.
+
 `node scripts/check-content.mjs` checks descriptions, review dates, stub indexing, and that reviewed non-policy pages have a source.
 
 ## Add a page
@@ -44,22 +52,20 @@ Rules for what may be published are in [the editorial policy](src/content/docs/p
 
 ## Taxonomy
 
-Twelve top-level domains, plus cross-cutting sections. URL slugs are English.
+Nine top-level domains (IA v2), plus cross-cutting sections. URL slugs are English. Older v1 paths redirect.
 
 | Domain | Path |
 | --- | --- |
-| Peptides | `/peptides/` |
-| Neural interfaces and brain-computer interfaces | `/neurotech/bci/` |
-| Prosthetics, orthotics, and assistive technology | `/assistive/` |
-| Non-invasive neurotechnology | `/neurotech/noninvasive/` |
-| Neuromodulation | `/neurotech/neuromodulation/` |
-| Geroscience and longevity | `/longevity/` |
-| Hormones | `/hormones/` |
-| Metabolic health and nutrition | `/metabolic/` |
-| Nootropics | `/nootropics/` |
-| Sleep, recovery, and environment | `/recovery/` |
-| Wearables and quantified self | `/quantified-self/` |
-| Gene, cell, DIY biology, and implants | `/diybio/` |
+| Biochemical hacking (hormones, nootropics, metabolic notes; peptides are linked from here) | `/biochemical/` |
+| Peptides (still the biochemical domain; path reserved for a future `peptides.<domain>` host) | `/peptides/` |
+| Neurohacking (recording, stimulation, brain-computer interfaces) | `/neurohacking/` |
+| Bionic augmentation | `/bionic/` |
+| Cyborg and grinder implants | `/cyborg/` |
+| Genetic biohacking | `/genetic/` |
+| Longevity | `/longevity/` |
+| Quantified self (wearables, CGM, HRV) | `/quantified-self/` |
+| Microbiome | `/microbiome/` |
+| Lifestyle and environment | `/lifestyle/` |
 
 Cross-cutting sections: [`/companies/`](src/content/docs/companies/index.md), [`/trials/`](src/content/docs/trials/index.md), [`/studies/`](src/content/docs/studies/index.md), [`/vendors/`](src/content/docs/vendors/index.md), [`/regulation/`](src/content/docs/regulation/index.md), [`/glossary/`](src/content/docs/glossary/index.md), [`/news/`](src/content/docs/news/index.md).
 
@@ -71,6 +77,7 @@ Sidebar group labels are translated in `astro.config.mjs` (`zh-CN`). Starlight s
 
 - Cite a document you opened. Another wiki page is not evidence.
 - `evidenceLevel` stays `unrated` until the page cites a specific study design (`A` human randomized, `B` human observational, `C` animal, `D` in vitro, `E` anecdote).
+- `layer` (`observe`, `intervene`, `augment`), `purpose` (`restoration`, `enhancement`, `both`), and `maturity` are editorial filing labels. Do not treat them as trial results.
 - Do not invent studies, sample sizes, effect sizes, quotations, prices, or dates.
 - Do not add dosing protocols, titration, injection or implantation technique, preparation steps, or shopping guidance.
 - Stubs set `noindex: true` and stay out of the sitemap.

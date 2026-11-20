@@ -52,6 +52,12 @@ function collectNoindex(dir, prefix = '') {
 
 const noindex = collectNoindex(path.join(root, 'src/content/docs'));
 const site = siteOrigin();
+const legacyRedirects = JSON.parse(
+	fs.readFileSync(path.join(root, 'src/data/legacy-redirects.json'), 'utf8'),
+);
+const allowIndexing = ['true', '1', 'yes'].includes(
+	(process.env.ALLOW_INDEXING ?? '').trim().toLowerCase(),
+);
 
 const group = (label, zh, directory) => ({
 	label,
@@ -64,6 +70,7 @@ export default defineConfig({
 	site,
 	output: 'static',
 	trailingSlash: 'always',
+	redirects: legacyRedirects,
 	markdown: {
 		processor: satteri({
 			mdastPlugins: [glossaryAutolink],
@@ -76,7 +83,15 @@ export default defineConfig({
 				'zh-CN': 'BioHack 知识库',
 			},
 			description:
-				'A sourced reference for peptides, neurotechnology, assistive technology, and related domains. Not medical advice.',
+				'An open, open-source wiki helping anyone research every area of biohacking and inform decisions. Not medical advice.',
+			head: allowIndexing
+				? []
+				: [
+						{
+							tag: 'meta',
+							attrs: { name: 'robots', content: 'noindex, nofollow' },
+						},
+					],
 			defaultLocale: 'root',
 			locales: {
 				root: { label: 'English', lang: 'en' },
@@ -112,7 +127,32 @@ export default defineConfig({
 					translations: { 'zh-CN': '开始' },
 					items: [
 						{ label: 'Home', translations: { 'zh-CN': '首页' }, slug: '' },
+						{
+							label: 'What is biohacking',
+							translations: { 'zh-CN': '什么是生物黑客' },
+							slug: 'overview/what-is-biohacking',
+						},
+						{
+							label: 'Three layers',
+							translations: { 'zh-CN': '三个层次' },
+							slug: 'overview/three-layers',
+						},
+						{
+							label: 'Learning paths',
+							translations: { 'zh-CN': '学习路径' },
+							slug: 'overview/learning-paths',
+						},
 						{ label: 'About', translations: { 'zh-CN': '关于' }, slug: 'about' },
+						{
+							label: 'Principles',
+							translations: { 'zh-CN': '原则' },
+							slug: 'overview/principles',
+						},
+						{
+							label: 'License',
+							translations: { 'zh-CN': '许可' },
+							slug: 'policies/license',
+						},
 						{
 							label: 'Add a page',
 							translations: { 'zh-CN': '如何添加页面' },
@@ -120,18 +160,43 @@ export default defineConfig({
 						},
 					],
 				},
-				group('Peptides', '肽与蛋白', 'peptides'),
-				group('Neural interfaces / BCI', '神经接口与脑机接口', 'neurotech/bci'),
-				group('Non-invasive neurotech', '非侵入式神经技术', 'neurotech/noninvasive'),
-				group('Neuromodulation', '神经调控', 'neurotech/neuromodulation'),
-				group('Prosthetics and assistive tech', '义肢与辅助技术', 'assistive'),
-				group('Geroscience and longevity', '衰老与长寿', 'longevity'),
-				group('Hormones', '激素与内分泌', 'hormones'),
-				group('Metabolic health', '代谢与营养', 'metabolic'),
-				group('Nootropics', '认知增强', 'nootropics'),
-				group('Sleep and recovery', '睡眠与恢复', 'recovery'),
-				group('Wearables and quantified self', '可穿戴与量化自我', 'quantified-self'),
-				group('Gene, cell, and DIY bio', '基因、细胞与 DIY 生物', 'diybio'),
+				group('Biochemical', '生物化学干预', 'biochemical'),
+				group('Peptides', '肽', 'peptides'),
+				group('Neurohacking', '脑科学与神经增强', 'neurohacking'),
+				group('Bionic augmentation', '仿生与智能义肢', 'bionic'),
+				group('Cyborg and grinder', '人体植入与赛博格', 'cyborg'),
+				group('Genetic', '基因与细胞', 'genetic'),
+				group('Longevity', '长寿与抗衰老', 'longevity'),
+				group('Quantified self', '自我量化', 'quantified-self'),
+				group('Microbiome', '微生物组', 'microbiome'),
+				group('Lifestyle and environment', '环境与行为', 'lifestyle'),
+				{
+					label: 'Guides',
+					translations: { 'zh-CN': '导读' },
+					items: [
+						{ label: 'Maturity', translations: { 'zh-CN': '成熟度' }, slug: 'overview/maturity' },
+						{
+							label: 'Closed loop',
+							translations: { 'zh-CN': '闭环' },
+							slug: 'overview/closed-loop',
+						},
+						{
+							label: 'Concepts',
+							translations: { 'zh-CN': '概念辨析' },
+							slug: 'overview/concepts',
+						},
+						{
+							label: 'Evidence and safety',
+							translations: { 'zh-CN': '证据与安全' },
+							slug: 'overview/evidence-and-safety',
+						},
+						{
+							label: 'EEG, AI, and a robotic arm',
+							translations: { 'zh-CN': '脑电、AI 与机械臂' },
+							slug: 'overview/eeg-ai-robotic-arm',
+						},
+					],
+				},
 				{
 					label: 'Reference',
 					translations: { 'zh-CN': '参考' },
@@ -148,9 +213,23 @@ export default defineConfig({
 				group('About and policy', '关于与政策', 'policies'),
 			],
 		}),
+		{
+			name: 'construction-headers',
+			hooks: {
+				'astro:build:done': ({ dir }) => {
+					const headers = allowIndexing
+						? '# ALLOW_INDEXING is true. Sitewide X-Robots-Tag is omitted.\n'
+						: '/*\n  X-Robots-Tag: noindex, nofollow\n';
+					fs.writeFileSync(new URL('_headers', dir), headers);
+				},
+			},
+		},
 		sitemap({
 			filter: (page) => {
-				const slug = new URL(page).pathname.replace(/^\/|\/$/g, '');
+				const pathname = new URL(page).pathname;
+				const bare = pathname.replace(/\/$/, '') || '/';
+				if (Object.prototype.hasOwnProperty.call(legacyRedirects, bare)) return false;
+				const slug = pathname.replace(/^\/|\/$/g, '');
 				return !noindex.has(slug);
 			},
 			i18n: {

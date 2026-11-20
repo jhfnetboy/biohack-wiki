@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import { illustrations } from '../../data/illustrations';
+
+interface Props {
+	name: string;
+	wide?: boolean;
+}
+
+const { name, wide = false } = Astro.props;
+const item = illustrations[name];
+if (!item) throw new Error(`Unknown illustration ${name}`);
+const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
+const alt = isZh ? item.altZh : item.alt;
+---
+
+<figure class:list={['bh-figure', { wide }]}>
+	<Image src={item.src} alt={alt} widths={[480, 800, 1200]} sizes="(min-width: 960px) 720px, 100vw" />
+	<figcaption>{alt}</figcaption>
+</figure>

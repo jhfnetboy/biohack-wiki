@@ -19,6 +19,10 @@ sidebar:
 
 另一篇 BioHack 知识库页面是上下文，不是证据。
 
+## 归档标签
+
+`layer`（`observe` 观察、`intervene` 干预、`augment` 增强）、`purpose`（`restoration` 恢复、`enhancement` 增强、`both` 两者）和 `maturity`（`commercial`、`clinical-partial`、`early-clinical`、`research`、`highly-experimental`、`unknown`）用来组织页面。它们不能代替 `evidenceLevel`，也不是结局。在来源支持更紧的词之前，成熟度用 `unknown`。
+
 ## 证据等级
 
 `A` 人体随机对照，`B` 人体观察性，`C` 动物，`D` 体外，`E` 轶事。页面没有引用该研究设计时用 `unrated`。药物获批本身不足以把页面标成 `A`，除非页面总结的就是那些试验。

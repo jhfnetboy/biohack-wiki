@@ -1,0 +1,50 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+	/** File stem under public/images/slots/, for example "hero" or "domain-biochemical". */
+	name: string;
+	/** Short subject used in alt text and the caption. */
+	subject: string;
+	subjectZh?: string;
+	wide?: boolean;
+}
+
+const { name, subject, subjectZh = subject, wide = false } = Astro.props;
+const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
+const label = isZh ? subjectZh : subject;
+const exts = ['webp', 'jpg', 'jpeg', 'png', 'svg'];
+const dir = path.join(process.cwd(), 'public/images/slots');
+let src: string | null = null;
+for (const ext of exts) {
+	if (fs.existsSync(path.join(dir, `${name}.${ext}`))) {
+		src = `/images/slots/${name}.${ext}`;
+		break;
+	}
+}
+const ai = isZh ? 'AI 生成插图' : 'AI-generated illustration';
+---
+
+<figure class:list={['bh-slot', { wide }]}>
+	{
+		src ? (
+			<img src={src} alt={`${ai}: ${label}`} width="1200" height="750" />
+		) : (
+			<div class="bh-slot-empty" role="img" aria-label={`${name}: ${label}`}>
+				<span class="bh-slot-kicker">public/images/slots/{name}.webp</span>
+				<strong>{name}</strong>
+				<em>{label}</em>
+			</div>
+		)
+	}
+	<figcaption>
+		{
+			src
+				? `${ai}: ${label}`
+				: isZh
+					? `插图位「${name}」。放入图片后，图注会写成「AI 生成插图」。`
+					: `Illustration slot “${name}”. After an image is added, the caption reads “AI-generated illustration”.`
+		}
+	</figcaption>
+</figure>

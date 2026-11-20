@@ -3,12 +3,15 @@ title: "瑞他鲁肽"
 titleZh: "瑞他鲁肽"
 description: "FDA 说瑞他鲁肽不是已批准药物的成分，不得用于复配，且尚未被认定安全有效。本页不是医疗建议，也不能代替原始文件。"
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "retatrutide"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "research"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

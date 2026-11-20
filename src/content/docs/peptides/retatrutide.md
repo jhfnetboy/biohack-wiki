@@ -3,12 +3,15 @@ title: "Retatrutide"
 titleZh: "瑞他鲁肽"
 description: "FDA says retatrutide is not an approved-drug component, is not to be compounded, and has not been found safe and effective."
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "retatrutide"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "research"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

@@ -21,7 +21,7 @@ sidebar:
 
 英文文件放在 `src/content/docs/`。对应的简体中文文件放在 `src/content/docs/zh-cn/`，路径相同。Starlight 用这一对生成 `hreflang`。缺少中文文件时，站内链接检查会失败（`errorOnFallbackPages`）。
 
-链接使用小写短横线。目录就是栏目，例如 `peptides/`、`neurotech/bci/`、`assistive/`、`regulation/`。
+链接使用小写短横线。顶层目录是九个领域：`biochemical/`、`neurohacking/`、`bionic/`、`cyborg/`、`genetic/`、`longevity/`、`quantified-self/`、`microbiome/`、`lifestyle/`，以及 `overview/`、`regulation/` 和其他横向栏目。
 
 ## 3. 填写前言
 
@@ -35,6 +35,10 @@ sidebar:
 
 不要加入剂量、滴定、注射或植入步骤、配制步骤或购买地点。将来的厂商页只记录法规和质量事件，不是商店。
 
-## 5. 检查
+## 5. 许可
+
+你添加的维基文字采用 CC BY-SA 4.0（`LICENSE-CONTENT`）。代码采用 MIT（`LICENSE`）。仓库公开：https://github.com/jhfnetboy/biohack-wiki 。Starlight 用该仓库显示“编辑页面”。
+
+## 6. 检查
 
 `node scripts/check-content.mjs` 检查上述规则。`npm run build` 会运行 Starlight 链接校验，内部链接或标题锚点坏了就会失败。

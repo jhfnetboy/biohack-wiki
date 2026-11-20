@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 200" role="img" aria-labelledby="title desc">
+  <title id="title">Schematic brain-computer signal chain</title>
+  <desc id="desc">Original schematic. Not a diagram of any named device and not a procedure.</desc>
+  <rect width="960" height="200" fill="#f4f7fb"/>
+  <text x="24" y="36" font-family="Georgia, serif" font-size="20" fill="#12352c">Signal chain (schematic only)</text>
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#12352c">
+    <rect x="24" y="64" width="150" height="72" rx="8" fill="#d7e8f5"/>
+    <text x="40" y="96">Nervous</text>
+    <text x="40" y="116">system signal</text>
+    <rect x="214" y="64" width="150" height="72" rx="8" fill="#d7f5ea"/>
+    <text x="230" y="96">Sensor or</text>
+    <text x="230" y="116">electrode</text>
+    <rect x="404" y="64" width="150" height="72" rx="8" fill="#fff4cc"/>
+    <text x="420" y="96">Decode</text>
+    <text x="420" y="116">intent</text>
+    <rect x="594" y="64" width="150" height="72" rx="8" fill="#e7e4f7"/>
+    <text x="610" y="96">Computer or</text>
+    <text x="610" y="116">assistive device</text>
+    <rect x="784" y="64" width="150" height="72" rx="8" fill="#f7e7d8"/>
+    <text x="800" y="96">Optional</text>
+    <text x="800" y="116">feedback</text>
+  </g>
+  <g stroke="#12352c" stroke-width="1.5" fill="none">
+    <path d="M174 100 H214"/>
+    <path d="M364 100 H404"/>
+    <path d="M554 100 H594"/>
+    <path d="M744 100 H784"/>
+  </g>
+  <text x="24" y="172" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">This is a filing sketch. It is not evidence that a named system works, and it is not a build guide.</text>
+</svg>

@@ -3,12 +3,15 @@ title: "Tesamorelin"
 titleZh: "Tesamorelin"
 description: "为「Tesamorelin」预留的存根页。尚无核对过的事实。不是医疗建议或购买指南。"
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "tesamorelin"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "stub"
 noindex: true

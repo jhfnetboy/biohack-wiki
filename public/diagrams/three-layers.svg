@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 280" role="img" aria-labelledby="title desc">
+  <title id="title">Three layers: observe, intervene, augment</title>
+  <desc id="desc">Original diagram of the wiki's three-layer filing model.</desc>
+  <rect width="880" height="280" fill="#f7f6f3"/>
+  <text x="28" y="40" font-family="Georgia, serif" font-size="22" fill="#12352c">Three layers</text>
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <rect x="28" y="64" width="250" height="160" rx="10" fill="#d7f5ea"/>
+    <text x="48" y="100" font-size="18" fill="#12352c">Observe</text>
+    <text x="48" y="130" font-size="14" fill="#245">Measure a state.</text>
+    <text x="48" y="154" font-size="13" fill="#245">Wearables, CGM, EEG</text>
+    <text x="48" y="176" font-size="13" fill="#245">recording, labs.</text>
+    <rect x="310" y="64" width="250" height="160" rx="10" fill="#fff4cc"/>
+    <text x="330" y="100" font-size="18" fill="#12352c">Intervene</text>
+    <text x="330" y="130" font-size="14" fill="#245">Try to change a state.</text>
+    <text x="330" y="154" font-size="13" fill="#245">Drugs, peptides, light,</text>
+    <text x="330" y="176" font-size="13" fill="#245">stimulation, training.</text>
+    <rect x="592" y="64" width="250" height="160" rx="10" fill="#e7e4f7"/>
+    <text x="612" y="100" font-size="18" fill="#12352c">Augment</text>
+    <text x="612" y="130" font-size="14" fill="#245">Add or replace a function.</text>
+    <text x="612" y="154" font-size="13" fill="#245">Prostheses, implants,</text>
+    <text x="612" y="176" font-size="13" fill="#245">brain-computer interfaces.</text>
+  </g>
+  <text x="28" y="256" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">A later layer is not automatically better evidenced than an earlier one.</text>
+</svg>

@@ -21,7 +21,7 @@ Templates live in `templates/` at the repository root, one file per entity type:
 
 English files go in `src/content/docs/`. The matching Simplified Chinese file goes in `src/content/docs/zh-cn/` with the same path. Starlight uses that pair for `hreflang`. If the Chinese file is missing, the build fails the internal-link check (`errorOnFallbackPages`).
 
-Use a lowercase hyphenated slug. The folder is the section: `peptides/`, `neurotech/bci/`, `assistive/`, `regulation/`, and so on.
+Use a lowercase hyphenated slug. Top-level folders are the nine domains: `biochemical/`, `neurohacking/`, `bionic/`, `cyborg/`, `genetic/`, `longevity/`, `quantified-self/`, `microbiome/`, and `lifestyle/`, plus `overview/`, `regulation/`, and the other cross-cutting folders.
 
 ## 3. Fill the frontmatter
 
@@ -35,6 +35,10 @@ Quote or paraphrase a document you opened. Record the access date. If you cannot
 
 Do not add doses, titration, injection or implantation steps, preparation steps, or a shopping destination. Vendor pages, when they exist, record regulatory and quality events. They are not a shop.
 
-## 5. Check
+## 5. License
+
+Wiki text you add is CC BY-SA 4.0 (`LICENSE-CONTENT`). Code is MIT (`LICENSE`). The repository is public: https://github.com/jhfnetboy/biohack-wiki. Starlight shows “Edit page” using that repository.
+
+## 6. Check
 
 `node scripts/check-content.mjs` checks the schema rules above. `npm run build` runs Starlight's link validator and fails on broken internal links or broken heading anchors.

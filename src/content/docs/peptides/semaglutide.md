@@ -3,12 +3,15 @@ title: "Semaglutide"
 titleZh: "司美格鲁肽"
 description: "FDA statements about semaglutide in unapproved, compounded, counterfeit, and salt-form products. Not a dosing guide."
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "semaglutide"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "clinical-partial"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

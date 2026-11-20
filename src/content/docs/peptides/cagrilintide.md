@@ -3,12 +3,15 @@ title: "Cagrilintide"
 titleZh: "Cagrilintide"
 description: "FDA says cagrilintide cannot be compounded, is not part of an approved drug, and has not been found safe and effective."
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "cagrilintide"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "research"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

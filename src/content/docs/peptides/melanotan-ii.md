@@ -3,13 +3,16 @@ title: "Melanotan II"
 titleZh: "Melanotan II"
 description: "FDA's withdrawn-nomination note on melanotan II cites published case reports of serious harms. This is not a use guide."
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "melanotan II"
   - "melanotan 2"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

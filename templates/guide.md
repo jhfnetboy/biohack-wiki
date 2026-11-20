@@ -5,6 +5,9 @@ description: "REPLACE 40 to 200 characters. A guide explains how to read a docum
 entityType: "guide"
 domain: "peptides"
 evidenceLevel: "unrated"
+layer: "observe"
+purpose: "both"
+maturity: "unknown"
 lastReviewed: "2026-11-20"
 status: "stub"
 noindex: true

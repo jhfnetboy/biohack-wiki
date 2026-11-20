@@ -3,12 +3,15 @@ title: "Survodutide"
 titleZh: "Survodutide"
 description: "FDA has named survodutide among unapproved drugs sold under false research-use labels. No pharmacology is stated here."
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "survodutide"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "research"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

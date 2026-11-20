@@ -3,13 +3,16 @@ title: "Melanotan II"
 titleZh: "Melanotan II"
 description: "FDA 关于 melanotan II 的已撤回提名引用了严重伤害的病例报告。这不是使用指南。"
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "melanotan II"
   - "melanotan 2"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

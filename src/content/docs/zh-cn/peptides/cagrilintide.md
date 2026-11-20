@@ -3,12 +3,15 @@ title: "Cagrilintide"
 titleZh: "Cagrilintide"
 description: "FDA 说 cagrilintide 不能用于复配，不是已批准药物的成分，且尚未被认定安全有效。"
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "cagrilintide"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "research"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

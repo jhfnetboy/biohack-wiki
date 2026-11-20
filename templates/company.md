@@ -11,6 +11,9 @@ ticker: ""
 products: []
 irUrl: "https://example.com/"
 evidenceLevel: "unrated"
+layer: "observe"
+purpose: "both"
+maturity: "unknown"
 lastReviewed: "2026-11-20"
 status: "stub"
 noindex: true

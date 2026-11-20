@@ -3,12 +3,15 @@ title: "Tirzepatide"
 titleZh: "替尔泊肽"
 description: "FDA statements about unapproved and compounded tirzepatide, including adverse-event reports. Not a dosing guide."
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "tirzepatide"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "clinical-partial"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

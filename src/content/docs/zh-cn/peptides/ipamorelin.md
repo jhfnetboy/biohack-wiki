@@ -3,13 +3,16 @@ title: "Ipamorelin"
 titleZh: "Ipamorelin"
 description: "FDA 将醋酸 ipamorelin 列在 503B 复配的 Category 2，并解释了一项已撤回提名。不是使用指南。"
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "ipamorelin"
   - "ipamorelin acetate"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

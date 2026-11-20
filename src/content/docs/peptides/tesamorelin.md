@@ -3,12 +3,15 @@ title: "Tesamorelin"
 titleZh: "Tesamorelin"
 description: "Stub page reserved for Tesamorelin. No checked facts yet. Not medical advice or a buying guide."
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "tesamorelin"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "stub"
 noindex: true

@@ -3,9 +3,9 @@ title: "WHO assistive technology"
 titleZh: "WHO 辅助技术"
 description: "WHO's 2024 fact sheet: six function domains, and the published estimates of people who need assistive products."
 entityType: "regulation"
-domain: "assistive"
+domain: "bionic"
 domains:
-  - "assistive"
+  - "bionic"
 evidenceLevel: "unrated"
 lastReviewed: "2026-11-20"
 status: "reviewed"
@@ -45,5 +45,5 @@ This page does not give doses, titration schedules, injection or implantation te
 
 ## See also
 
-- [Prosthetics and assistive technology](/assistive/)
+- [Prosthetics and assistive technology](/bionic/)
 - [Regulation](/regulation/)

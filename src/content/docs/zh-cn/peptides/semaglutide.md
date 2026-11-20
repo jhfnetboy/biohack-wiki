@@ -3,12 +3,15 @@ title: "司美格鲁肽"
 titleZh: "司美格鲁肽"
 description: "FDA 关于未经批准、复配、假冒和盐型司美格鲁肽产品的表述。不是给药指南。本页不是医疗建议，也不能代替原始文件。"
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "semaglutide"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "clinical-partial"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:

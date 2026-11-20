@@ -3,12 +3,15 @@ title: "Survodutide"
 titleZh: "Survodutide"
 description: "FDA 将 survodutide 列为以虚假研究用标签销售的未经批准药物之一。此处不写药理。"
 entityType: "compound"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 aliases:
   - "survodutide"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "research"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sources:
