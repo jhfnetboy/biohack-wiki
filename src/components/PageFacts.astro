@@ -40,6 +40,25 @@ const evidence: Record<string, string> = isZh
 			unrated: 'Not rated',
 		};
 
+const domainLabels: Record<string, string> = isZh
+	? {
+			biochemical: '生物化学',
+			neurohacking: '神经增强',
+			bionic: '仿生',
+			cyborg: '赛博格',
+			genetic: '基因',
+			longevity: '长寿',
+			'quantified-self': '自我量化',
+			microbiome: '微生物组',
+			lifestyle: '环境与行为',
+			'cross-cutting': '跨领域',
+		}
+	: {};
+
+const statusLabels: Record<string, string> = isZh
+	? { reviewed: '已审阅', stub: '存根', draft: '草稿' }
+	: {};
+
 const entityLabels: Record<string, string> = isZh
 	? {
 			compound: '化合物',
@@ -140,7 +159,7 @@ const show = Boolean(data?.entityType);
 				</li>
 				{data?.domain && (
 					<li>
-						{isZh ? '领域' : 'Domain'}: {data.domain}
+						{isZh ? '领域' : 'Domain'}: {domainLabels[data.domain] ?? data.domain}
 					</li>
 				)}
 				{data?.layer && (
@@ -163,7 +182,7 @@ const show = Boolean(data?.entityType);
 				</li>
 				{data?.status && (
 					<li>
-						{isZh ? '状态' : 'Status'}: {data.status}
+						{isZh ? '状态' : 'Status'}: {statusLabels[data.status] ?? data.status}
 					</li>
 				)}
 				{data?.lastReviewed && (

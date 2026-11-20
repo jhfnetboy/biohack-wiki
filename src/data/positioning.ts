@@ -4,10 +4,10 @@ export type Pillar = { title: string; text: string };
 export const positioning = {
 	en: {
 		statement:
-			'An open, open-source wiki helping anyone, people and organizations alike, research and understand every area of biohacking and informing their decisions. Professionally tracked, continuously updated, objective and neutral.',
+			'An open, open-source wiki helping any person or organization research and understand every area of biohacking and informing their decisions. Professionally tracked, continuously updated, objective and neutral.',
 		headline: 'The open biohacking wiki',
 		subline:
-			'An open-source reference for anyone, people and organizations, to research every area of biohacking and make better-informed decisions.',
+			'An open-source reference for any person or organization, to research every area of biohacking and make better-informed decisions.',
 		badges: [
 			'Professionally tracked',
 			'Continuously updated',
@@ -44,9 +44,9 @@ export const positioning = {
 			'开放、开源的 Biohacking wiki，帮助任何人和组织研究、了解 Biohacking 的各个领域，并为决策提供信息参考。专业跟进，持续更新，客观中立。',
 		headline: '开放的生物黑客百科',
 		subline:
-			'开源、人人可用的参考资料，帮助任何人和组织研究、了解 Biohacking 的各个领域，为决策提供参考。',
+			'开源、人人可用的参考资料，帮助任何人和组织研究、了解生物黑客的各个领域，为决策提供参考。',
 		badges: ['专业跟进', '持续更新', '客观中立', '开源 · CC BY-SA / MIT'],
-		tagline: '开放、开源的 Biohacking wiki，帮助任何人和组织研究并做决策参考。客观中立，持续更新，不是医疗建议。',
+		tagline: '开放、开源的生物黑客 wiki，帮助任何人和组织研究并做决策参考。客观中立，持续更新，不是医疗建议。',
 		pillars: [
 			{
 				title: '全面覆盖',

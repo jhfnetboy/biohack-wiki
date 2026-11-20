@@ -16,6 +16,15 @@
 	text-underline-offset: 0.15em;
 }
 
+:root[data-theme='dark'] .bh-banner {
+	color: #d7ebe3;
+	background: #1c2e28;
+}
+
+:root[data-theme='dark'] .bh-banner a {
+	color: #f4fbf8;
+}
+
 .bh-facts {
 	margin-top: 2.5rem;
 	padding-top: 1.25rem;
@@ -355,6 +364,10 @@ html[data-has-hero] .content-panel {
 	text-underline-offset: 0.16em;
 }
 
+.bh-links .bh-textlink {
+	margin-inline-start: 0.85rem;
+}
+
 .bh-section-head {
 	display: flex;
 	flex-wrap: wrap;
@@ -457,6 +470,10 @@ html[data-has-hero] .content-panel {
 	border-radius: 8px;
 }
 
+:root[data-theme='dark'] .bh-figure.thumb img {
+	box-shadow: inset 0 0 0 1px rgba(232, 244, 238, 0.32);
+}
+
 .bh-figure.hero {
 	margin: 0;
 }
@@ -499,7 +516,8 @@ html[data-has-hero] .content-panel {
 
 	.bh-intro-art {
 		justify-self: end;
-		width: min(100%, 250px);
+		align-self: center;
+		width: min(100%, 240px);
 	}
 
 	.bh-figure.hero img {
@@ -529,5 +547,17 @@ html[data-has-hero] .content-panel {
 	.bh-domains,
 	.bh-help {
 		grid-template-columns: 1fr;
+	}
+
+	.bh-intro .bh-badges {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.4rem;
+		width: 100%;
+	}
+
+	.bh-intro .bh-badges li {
+		min-width: 0;
+		font-size: 0.7rem;
 	}
 }
