@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 200" role="img" aria-labelledby="title desc">
+  <title id="title">脑机信号链示意图</title>
+  <desc id="desc">原创示意图。不是任何命名器械的图，也不是操作步骤。</desc>
+  <rect width="960" height="200" fill="#f4f7fb"/>
+  <text x="24" y="36" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" fill="#12352c">信号链（仅示意图）</text>
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" fill="#12352c">
+    <rect x="24" y="64" width="150" height="72" rx="8" fill="#d7e8f5"/>
+    <text x="40" y="106">神经信号</text>
+    <rect x="214" y="64" width="150" height="72" rx="8" fill="#d7f5ea"/>
+    <text x="230" y="106">传感器或电极</text>
+    <rect x="404" y="64" width="150" height="72" rx="8" fill="#fff4cc"/>
+    <text x="420" y="106">解码意图</text>
+    <rect x="594" y="64" width="150" height="72" rx="8" fill="#e7e4f7"/>
+    <text x="610" y="106">计算机或辅具</text>
+    <rect x="784" y="64" width="150" height="72" rx="8" fill="#f7e7d8"/>
+    <text x="800" y="106">可选反馈</text>
+  </g>
+  <g stroke="#12352c" stroke-width="1.5" fill="none">
+    <path d="M174 100 H214"/>
+    <path d="M364 100 H404"/>
+    <path d="M554 100 H594"/>
+    <path d="M744 100 H784"/>
+  </g>
+  <text x="24" y="172" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">这是归档草图。它不是某个命名系统有效的证据，也不是制作指南。</text>
+</svg>

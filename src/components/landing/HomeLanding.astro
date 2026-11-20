@@ -2,6 +2,46 @@
 import Illustration from './Illustration.astro';
 import { domains } from '../../data/domains';
 import { positioning, repoUrl } from '../../data/positioning';
+import { toneLabel } from '../../lib/tone-label';
+
+const blurbs: Record<string, { en: string; zh: string }> = {
+	biochemical: {
+		en: 'Peptides, hormones, metabolic drugs and supplements',
+		zh: '肽、激素、代谢药物与补充剂',
+	},
+	neurohacking: {
+		en: 'Brain signals, stimulation, and interfaces',
+		zh: '脑信号、刺激与脑机接口',
+	},
+	bionic: {
+		en: 'Prostheses, exoskeletons, and assistive devices',
+		zh: '假肢、外骨骼与辅助装置',
+	},
+	cyborg: {
+		en: 'Implants and sensors placed in the body',
+		zh: '体内植入物与传感器',
+	},
+	genetic: {
+		en: 'Gene and cell research topics',
+		zh: '基因与细胞研究',
+	},
+	longevity: {
+		en: 'Aging biology and healthspan research',
+		zh: '衰老生物学与健康寿命',
+	},
+	'quantified-self': {
+		en: 'Wearables, glucose monitors, and heart data',
+		zh: '可穿戴、血糖与心率数据',
+	},
+	microbiome: {
+		en: 'Gut microbes, diet, and related oversight',
+		zh: '肠道微生物、饮食与监管',
+	},
+	lifestyle: {
+		en: 'Sleep, light, movement, and temperature',
+		zh: '睡眠、光照、运动与温度',
+	},
+};
 
 const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
 const copy = isZh ? positioning.zh : positioning.en;
@@ -11,27 +51,95 @@ const t = (en: string, zh: string) => (isZh ? zh : en);
 ---
 
 <article class="bh-home">
-	<header class="bh-hero">
-		<Illustration name="hero" wide />
-		<p class="bh-kicker">{t('Open wiki', '开放的 wiki')}</p>
-		<h1>BioHack Wiki</h1>
-		<p class="bh-lead">{copy.statement}</p>
-		<p class="bh-links">
-			<a class="bh-button" href={href('/overview/what-is-biohacking/')}>{t('What this wiki means', '本维基的含义')}</a>
-			<a class="bh-button ghost" href={repoUrl}>{t('GitHub', 'GitHub')}</a>
-		</p>
-	</header>
+	<section id="domains" class="bh-coverage">
+		<div class="bh-section-head">
+			<h2>{t('Nine domains', '覆盖的领域')}</h2>
+		</div>
+		<ul class="bh-domains">
+			{
+				domains.map((domain) => {
+					const blurb = blurbs[domain.slug];
+					return (
+						<li>
+							<a class="bh-domain-link" href={href(`/${domain.slug}/`)}>
+								<Illustration name={domain.slot} size="thumb" />
+								<span>
+									<strong>{isZh ? domain.titleZh : domain.title}</strong>
+									<em>{blurb ? (isZh ? blurb.zh : blurb.en) : ''}</em>
+								</span>
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</section>
+
+	<section>
+		<h2>{t('What we provide', '我们提供的价值和帮助')}</h2>
+		<ul class="bh-help">
+			<li class="bh-card">
+				<h3>{t('Evidence-graded summaries', '按证据分级的综述')}</h3>
+				<p>
+					{
+						t(
+							'A page states the study design it actually cites. If a source was not opened, the page stays a stub.',
+							'页面只写实际引用的研究设计。没有打开来源的页面保持为存根。',
+						)
+					}
+				</p>
+			</li>
+			<li class="bh-card">
+				<h3>{t('Regulatory status and maturity', '监管状态与成熟度')}</h3>
+				<p>
+					{
+						t(
+							'Pages record a review date, regulatory notes, and a maturity label. The label is a filing mark, not a trial result.',
+							'页面记录审阅日期、监管说明和成熟度标签。标签是归档标记，不是试验结果。',
+						)
+					}
+				</p>
+			</li>
+			<li class="bh-card">
+				<h3>{t('Neutral decision references', '中立的决策参考')}</h3>
+				<p>
+					{
+						t(
+							'Information for any person or organization. No sponsored rankings, and not medical advice.',
+							'给任何人和组织的信息。没有赞助排名，也不是医疗建议。',
+						)
+					}
+				</p>
+			</li>
+			<li class="bh-card">
+				<h3>{t('Open and linked to data', '开放，并链接到数据')}</h3>
+				<p>
+					{
+						t(
+							'Content is CC BY-SA 4.0 and code is MIT, so anyone can edit. Peptide prices and lab-test data are on VeriSeas, not copied here.',
+							'内容采用 CC BY-SA 4.0，代码采用 MIT，任何人都可以编辑。肽的价格和检测数据在 VeriSeas，不抄到这里。',
+						)
+					}
+				</p>
+				<p>
+					<a href="https://veriseas.pages.dev" rel="noopener">VeriSeas</a>
+					{' · '}
+					<a href={href('/contributing/')}>{t('Contributing', '贡献')}</a>
+				</p>
+			</li>
+		</ul>
+	</section>
 
 	<section class="bh-feature">
-		<Illustration name="domain-biochemical" />
+		<Illustration name="domain-biochemical" size="moderate" />
 		<div>
 			<p class="bh-kicker">{t('Highlighted entry', '重点入口')}</p>
 			<h2>{t('Peptides', '肽')}</h2>
 			<p>
 				{
 					t(
-						'Filed under biochemical hacking, with its own path at /peptides/ for a future peptides subdomain. Categories, FDA evidence notes, and quality limits are on the landing page. Prices and lab-test data are on VeriSeas, not here.',
-						'归在生物化学干预之下，单独使用 /peptides/ 路径，以便以后映射到 peptides 子域名。类别、FDA 证据说明和质量限制在栏目页。价格和检测数据在 VeriSeas，不在这里。',
+						'GLP-1s, repair names, growth-hormone secretagogues, and copper peptides, filed with biochemical hacking. Evidence notes and quality limits are on the landing page. Prices and lab-test data are on VeriSeas, not here.',
+						'GLP-1、修复类名称、生长激素促泌剂和铜肽，归在生物化学里。证据说明和质量限制在栏目页。价格和检测数据在 VeriSeas，不在这里。',
 					)
 				}
 			</p>
@@ -42,45 +150,6 @@ const t = (en: string, zh: string) => (isZh ? zh : en);
 				</a>
 			</p>
 		</div>
-	</section>
-
-	<section>
-		<h2>{t('How we work', '我们如何工作')}</h2>
-		<ul class="bh-grid pillars">
-			{
-				copy.pillars.map((pillar) => (
-					<li class="bh-card">
-						<h3>{pillar.title}</h3>
-						<p>{pillar.text}</p>
-					</li>
-				))
-			}
-		</ul>
-	</section>
-
-	<section>
-		<h2>{t('Nine domains', '九个领域')}</h2>
-		<p class="bh-note">
-			{
-				t(
-					'An editorial map, not an official standard. Paths are top-level so they can later map to subdomains.',
-					'这是编辑地图，不是官方标准。路径在顶层，以后可以映射到子域名。',
-				)
-			}
-		</p>
-		<ul class="bh-grid domains">
-			{
-				domains.map((domain) => (
-					<li class="bh-card domain">
-						<Illustration name={domain.slot} />
-						<h3>
-							<a href={href(`/${domain.slug}/`)}>{isZh ? domain.titleZh : domain.title}</a>
-						</h3>
-						<p>{isZh ? domain.definitionZh : domain.definition}</p>
-					</li>
-				))
-			}
-		</ul>
 	</section>
 
 	<section class="bh-split">
@@ -98,7 +167,10 @@ const t = (en: string, zh: string) => (isZh ? zh : en);
 				<a href={href('/overview/three-layers/')}>{t('Open the matrix', '打开矩阵')}</a>
 			</p>
 		</div>
-		<img src="/diagrams/three-layers.svg" alt={t('Three layers diagram', '三个层次示意图')} />
+		<img
+			src={isZh ? '/diagrams/three-layers-zh.svg' : '/diagrams/three-layers.svg'}
+			alt={t('Three layers diagram', '三个层次示意图')}
+		/>
 	</section>
 
 	<section>
@@ -115,15 +187,15 @@ const t = (en: string, zh: string) => (isZh ? zh : en);
 			<tbody>
 				<tr>
 					<td>{t('Named GLP-1 drugs on an FDA page', 'FDA 页面上的 GLP-1 药名')}</td>
-					<td><span class="bh-pill sourced">sourced</span></td>
+					<td><span class="bh-pill sourced">{toneLabel('sourced', isZh)}</span></td>
 				</tr>
 				<tr>
 					<td>{t('Research peptides on the compounding-risk page', '复配风险页上的研究肽')}</td>
-					<td><span class="bh-pill sourced">sourced</span></td>
+					<td><span class="bh-pill sourced">{toneLabel('sourced', isZh)}</span></td>
 				</tr>
 				<tr>
 					<td>{t('Wearables, prostheses, implanted BCI, genetic enhancement', '可穿戴、假肢、植入式脑机接口、基因增强')}</td>
-					<td><span class="bh-pill stub">{t('Stub', '存根')}</span></td>
+					<td><span class="bh-pill stub">{toneLabel('stub', isZh)}</span></td>
 				</tr>
 			</tbody>
 		</table>
@@ -143,9 +215,12 @@ const t = (en: string, zh: string) => (isZh ? zh : en);
 					)
 				}
 			</p>
-			<Illustration name="scene-bci" />
+			<Illustration name="scene-bci" size="moderate" />
 		</div>
-		<img src="/diagrams/bci-signal-chain.svg" alt={t('Signal chain diagram', '信号链示意图')} />
+		<img
+			src={isZh ? '/diagrams/bci-signal-chain-zh.svg' : '/diagrams/bci-signal-chain.svg'}
+			alt={t('Signal chain diagram', '信号链示意图')}
+		/>
 	</section>
 
 	<section class="bh-split">
@@ -163,12 +238,12 @@ const t = (en: string, zh: string) => (isZh ? zh : en);
 				<a href={href('/overview/closed-loop/')}>{t('Open the closed-loop page', '打开闭环页')}</a>
 			</p>
 		</div>
-		<Illustration name="scene-closed-loop" />
+		<Illustration name="scene-closed-loop" size="moderate" />
 	</section>
 
 	<section>
 		<h2>{t('Principles', '原则')}</h2>
-		<Illustration name="scene-principles" wide />
+		<Illustration name="scene-principles" size="moderate" />
 		<p>
 			{
 				t(

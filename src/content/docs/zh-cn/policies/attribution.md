@@ -42,4 +42,4 @@ sidebar:
 
 ## 原创示意图
 
-为本维基绘制，不是从第三方复制：[领域地图](/diagrams/domain-map.svg)、[三个层次](/diagrams/three-layers.svg)、[信号链](/diagrams/bci-signal-chain.svg)、[闭环](/diagrams/closed-loop.svg)。
+为本维基绘制，不是从第三方复制：[领域地图](/diagrams/domain-map.svg)、[三个层次](/diagrams/three-layers.svg)（中文版 [/diagrams/three-layers-zh.svg](/diagrams/three-layers-zh.svg)）、[信号链](/diagrams/bci-signal-chain.svg)（中文版 [/diagrams/bci-signal-chain-zh.svg](/diagrams/bci-signal-chain-zh.svg)）、[闭环](/diagrams/closed-loop.svg)。

@@ -11,19 +11,29 @@ const prefix = isZh ? '/zh-cn' : '';
 
 <PageFacts />
 <p class="bh-footer-note">
-	{copy.tagline}
-	<a href={`${prefix}/disclaimer/`}>{isZh ? '医疗免责声明' : 'Medical disclaimer'}</a>
-	·
-	<a href={`${prefix}/policies/license/`}>{isZh ? '内容 CC BY-SA 4.0，代码 MIT' : 'Content CC BY-SA 4.0, code MIT'}</a>
-	·
-	<a href={repoUrl}>GitHub</a>
+	<span>{copy.tagline}</span>
+	<span class="bh-footer-links">
+		<a href={`${prefix}/disclaimer/`}>{isZh ? '医疗免责声明' : 'Medical disclaimer'}</a>
+		<a href={`${prefix}/policies/license/`}>{isZh ? '内容 CC BY-SA 4.0，代码 MIT' : 'Content CC BY-SA 4.0, code MIT'}</a>
+		<a href={repoUrl}>GitHub</a>
+	</span>
 </p>
 <Default><slot /></Default>
 
 <style>
 	.bh-footer-note {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem 1.1rem;
+		align-items: baseline;
 		margin: 1.5rem 0 0;
 		font-size: var(--sl-text-xs);
 		color: var(--sl-color-gray-3);
+	}
+
+	.bh-footer-links {
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: 0.35rem 1.1rem;
 	}
 </style>

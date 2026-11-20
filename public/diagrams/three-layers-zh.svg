@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 280" role="img" aria-labelledby="title desc">
+  <title id="title">三个层次：观察、干预、增强</title>
+  <desc id="desc">本维基三层归档模型的原创示意图。</desc>
+  <rect width="880" height="280" fill="#f7f6f3"/>
+  <text x="28" y="40" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" fill="#12352c">三个层次</text>
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <rect x="28" y="64" width="250" height="160" rx="10" fill="#d7f5ea"/>
+    <text x="48" y="100" font-size="18" fill="#12352c">观察</text>
+    <text x="48" y="130" font-size="14" fill="#245">测量一种状态。</text>
+    <text x="48" y="154" font-size="13" fill="#245">可穿戴、连续血糖、</text>
+    <text x="48" y="176" font-size="13" fill="#245">脑电记录、化验。</text>
+    <rect x="310" y="64" width="250" height="160" rx="10" fill="#fff4cc"/>
+    <text x="330" y="100" font-size="18" fill="#12352c">干预</text>
+    <text x="330" y="130" font-size="14" fill="#245">试图改变一种状态。</text>
+    <text x="330" y="154" font-size="13" fill="#245">药物、肽、光照、</text>
+    <text x="330" y="176" font-size="13" fill="#245">刺激、训练。</text>
+    <rect x="592" y="64" width="250" height="160" rx="10" fill="#e7e4f7"/>
+    <text x="612" y="100" font-size="18" fill="#12352c">增强</text>
+    <text x="612" y="130" font-size="14" fill="#245">增加或替代一种功能。</text>
+    <text x="612" y="154" font-size="13" fill="#245">假肢、植入物、</text>
+    <text x="612" y="176" font-size="13" fill="#245">脑机接口。</text>
+  </g>
+  <text x="28" y="256" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">后一层不会自动比前一层证据更充分。</text>
+</svg>

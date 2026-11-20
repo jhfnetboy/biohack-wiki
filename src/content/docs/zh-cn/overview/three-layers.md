@@ -14,7 +14,7 @@ sidebar:
   order: 2
 ---
 
-![三个层次](/diagrams/three-layers.svg)
+![三个层次](/diagrams/three-layers-zh.svg)
 
 观察用于测量。干预用于试图改变一种生理状态。增强用于增加或替代一种功能。页面页脚还可以设置 `layer`。这些词是标签，不是结局。
 
