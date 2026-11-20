@@ -6,7 +6,7 @@ Content is CC BY-SA 4.0 (`LICENSE-CONTENT`). Code is MIT (`LICENSE`). The public
 
 It is not medical advice, and it does not publish doses, injection or implantation technique, preparation steps, or shopping guidance.
 
-English is the default locale at `/`. Simplified Chinese is at `/zh-cn/`. Starlight emits `hreflang` alternates for each pair.
+English is the default locale at `/`. Simplified Chinese is at `/zh-cn/`. Thai is at `/th/`. The language picker lists English, 简体中文, and ไทย. Starlight emits `hreflang` alternates. Thai translates the homepage, About, principles, the nine domain landings, the peptides landing, and the disclaimer, attribution, and license pages. Other Thai URLs fall back to English and show Starlight’s untranslated-content notice.
 
 ## Run locally
 

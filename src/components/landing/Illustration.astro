@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { illustrations } from '../../data/illustrations';
+import { localeId, pick } from '../../lib/locale';
 
 interface Props {
 	name: string;
@@ -12,8 +13,8 @@ interface Props {
 const { name, wide = false, size = 'full' } = Astro.props;
 const item = illustrations[name];
 if (!item) throw new Error(`Unknown illustration ${name}`);
-const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
-const alt = isZh ? item.altZh : item.alt;
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const alt = pick(id, item.alt, item.altZh);
 const widths = size === 'thumb' ? [96, 160] : size === 'hero' ? [320, 640] : [480, 800, 1200];
 const sizes =
 	size === 'thumb'
@@ -24,7 +25,7 @@ const sizes =
 				? '(min-width: 800px) 420px, 100vw'
 				: '(min-width: 960px) 720px, 100vw';
 const caption =
-	size === 'hero' ? (isZh ? 'AI 生成插图' : 'AI-generated illustration') : alt;
+	size === 'hero' ? pick(id, 'AI-generated illustration', 'AI 生成插图') : alt;
 ---
 
 <figure class:list={['bh-figure', size, { wide }]}>

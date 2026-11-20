@@ -1,12 +1,13 @@
 ---
 import Illustration from './Illustration.astro';
 import { positioning } from '../../data/positioning';
+import { localeId, localePrefix, pick } from '../../lib/locale';
 
-const isZh = (Astro.locals.starlightRoute?.lang ?? 'en').toLowerCase().startsWith('zh');
-const copy = isZh ? positioning.zh : positioning.en;
-const prefix = isZh ? '/zh-cn' : '';
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const copy = id === 'zh' ? positioning.zh : id === 'th' ? positioning.th : positioning.en;
+const prefix = localePrefix(id);
 const href = (path: string) => `${prefix}${path}`;
-const t = (en: string, zh: string) => (isZh ? zh : en);
+const t = (en: string, zh: string) => pick(id, en, zh);
 
 const icons = [
 	'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2.5h7l3 3V13.5H3z"/><path d="M10 2.5V6h3M5 9h6M5 11.5h4"/></svg>',

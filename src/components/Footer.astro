@@ -2,19 +2,19 @@
 import Default from '@astrojs/starlight/components/Footer.astro';
 import PageFacts from './PageFacts.astro';
 import { positioning, repoUrl } from '../data/positioning';
+import { localeId, localePrefix, pick } from '../lib/locale';
 
-const lang = Astro.locals.starlightRoute?.lang ?? 'en';
-const isZh = lang.toLowerCase().startsWith('zh');
-const copy = isZh ? positioning.zh : positioning.en;
-const prefix = isZh ? '/zh-cn' : '';
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const copy = id === 'zh' ? positioning.zh : id === 'th' ? positioning.th : positioning.en;
+const prefix = localePrefix(id);
 ---
 
 <PageFacts />
 <p class="bh-footer-note">
 	<span>{copy.tagline}</span>
 	<span class="bh-footer-links">
-		<a href={`${prefix}/disclaimer/`}>{isZh ? '医疗免责声明' : 'Medical disclaimer'}</a>
-		<a href={`${prefix}/policies/license/`}>{isZh ? '内容 CC BY-SA 4.0，代码 MIT' : 'Content CC BY-SA 4.0, code MIT'}</a>
+		<a href={`${prefix}/disclaimer/`}>{pick(id, 'Medical disclaimer', '医疗免责声明')}</a>
+		<a href={`${prefix}/policies/license/`}>{pick(id, 'Content CC BY-SA 4.0, code MIT', '内容 CC BY-SA 4.0，代码 MIT')}</a>
 		<a href={repoUrl}>GitHub</a>
 	</span>
 </p>

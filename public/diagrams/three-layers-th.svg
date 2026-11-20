@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" role="img" aria-labelledby="title desc">
+  <title id="title">สามชั้น: สังเกต แทรกแซง เสริมความสามารถ</title>
+  <desc id="desc">แผนภาพต้นฉบับของโมเดลสามชั้นของวิกินี้</desc>
+  <rect width="880" height="300" fill="#f7f6f3"/>
+  <text x="28" y="36" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" fill="#12352c">สามชั้น</text>
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <rect x="28" y="56" width="260" height="180" rx="10" fill="#d7f5ea"/>
+    <text x="44" y="90" font-size="18" fill="#12352c">สังเกต</text>
+    <text x="44" y="118" font-size="14" fill="#245">วัดสถานะหนึ่ง</text>
+    <text x="44" y="144" font-size="13" fill="#245">อุปกรณ์สวมใส่, CGM,</text>
+    <text x="44" y="166" font-size="13" fill="#245">การบันทึก EEG, ผลแล็บ</text>
+    <rect x="310" y="56" width="260" height="180" rx="10" fill="#fff4cc"/>
+    <text x="326" y="90" font-size="18" fill="#12352c">แทรกแซง</text>
+    <text x="326" y="118" font-size="14" fill="#245">พยายามเปลี่ยนสถานะ</text>
+    <text x="326" y="144" font-size="13" fill="#245">ยา, เปปไทด์, แสง,</text>
+    <text x="326" y="166" font-size="13" fill="#245">การกระตุ้น, การฝึก</text>
+    <rect x="592" y="56" width="260" height="180" rx="10" fill="#e7e4f7"/>
+    <text x="608" y="90" font-size="18" fill="#12352c">เสริมความสามารถ</text>
+    <text x="608" y="118" font-size="14" fill="#245">เพิ่มหรือทดแทนการทำงาน</text>
+    <text x="608" y="144" font-size="13" fill="#245">แขนขาเทียม, สิ่งฝัง,</text>
+    <text x="608" y="166" font-size="13" fill="#245">ส่วนต่อประสานสมอง</text>
+  </g>
+  <text x="28" y="272" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">ชั้นถัดไปไม่ได้มีหลักฐานดีกว่าชั้นก่อนโดยอัตโนมัติ</text>
+</svg>

@@ -1,4 +1,6 @@
 ---
+import { localeId, pick } from '../lib/locale';
+
 type Source = { url: string; title: string; accessed: string; type?: string };
 
 interface PageData {
@@ -20,7 +22,8 @@ interface PageData {
 const route = Astro.locals.starlightRoute;
 const data = route?.entry?.data as PageData | undefined;
 const lang = (route?.lang ?? 'en').toLowerCase();
-const isZh = lang.startsWith('zh');
+const id = localeId(route?.lang);
+const isZh = id === 'zh';
 
 const evidence: Record<string, string> = isZh
 	? {
@@ -142,7 +145,7 @@ if (data?.entityType) {
 		if (!hit) continue;
 		backlinks.push({ href: id ? `/${id}/` : '/', title: titleFrom(raw) });
 	}
-	backlinks.sort((a, b) => a.title.localeCompare(b.title, isZh ? 'zh' : 'en'));
+	backlinks.sort((a, b) => a.title.localeCompare(b.title, id === 'zh' ? 'zh' : id === 'th' ? 'th' : 'en'));
 }
 
 const sources = data?.sources ?? [];
@@ -152,68 +155,70 @@ const show = Boolean(data?.entityType);
 {
 	show && (
 		<section class="bh-facts" data-pagefind-ignore>
-			<h2>{isZh ? '页面记录' : 'Page record'}</h2>
+			<h2>{pick(id, 'Page record', '页面记录')}</h2>
 			<ul class="bh-meta">
 				<li>
-					{isZh ? '类型' : 'Type'}: {entityLabels[data?.entityType ?? ''] ?? data?.entityType}
+					{pick(id, 'Type', '类型')}: {pick(id, entityLabels[data?.entityType ?? ''] ?? data?.entityType ?? '', entityLabels[data?.entityType ?? ''] ?? '')}
 				</li>
 				{data?.domain && (
 					<li>
-						{isZh ? '领域' : 'Domain'}: {domainLabels[data.domain] ?? data.domain}
+						{pick(id, 'Domain', '领域')}: {isZh ? (domainLabels[data.domain] ?? data.domain) : pick(id, data.domain, data.domain)}
 					</li>
 				)}
 				{data?.layer && (
 					<li>
-						{isZh ? '层次' : 'Layer'}: {data.layer}
+						{pick(id, 'Layer', '层次')}: {pick(id, data.layer, data.layer)}
 					</li>
 				)}
 				{data?.purpose && (
 					<li>
-						{isZh ? '目的' : 'Purpose'}: {data.purpose}
+						{pick(id, 'Purpose', '目的')}: {pick(id, data.purpose, data.purpose)}
 					</li>
 				)}
 				{data?.maturity && (
 					<li>
-						{isZh ? '成熟度' : 'Maturity'}: {data.maturity}
+						{pick(id, 'Maturity', '成熟度')}: {data.maturity}
 					</li>
 				)}
 				<li>
-					{isZh ? '证据' : 'Evidence'}: {evidence[data?.evidenceLevel ?? 'unrated'] ?? data?.evidenceLevel}
+					{pick(id, 'Evidence', '证据')}: {pick(id, evidence[data?.evidenceLevel ?? 'unrated'] ?? '', evidence[data?.evidenceLevel ?? 'unrated'] ?? '')}
 				</li>
 				{data?.status && (
 					<li>
-						{isZh ? '状态' : 'Status'}: {statusLabels[data.status] ?? data.status}
+						{pick(id, 'Status', '状态')}: {isZh ? (statusLabels[data.status] ?? data.status) : pick(id, data.status, data.status)}
 					</li>
 				)}
 				{data?.lastReviewed && (
 					<li>
-						{isZh ? '最近审阅' : 'Last reviewed'}: {data.lastReviewed}
+						{pick(id, 'Last reviewed', '最近审阅')}: {data.lastReviewed}
 					</li>
 				)}
 			</ul>
 			{data?.regulatoryStatus && (
 				<p>
-					<strong>{isZh ? '法规状态：' : 'Regulatory status: '}</strong>
+					<strong>{pick(id, 'Regulatory status: ', '法规状态：')}</strong>
 					{data.regulatoryStatus}
 				</p>
 			)}
 			{data?.riskNotes && (
 				<p>
-					<strong>{isZh ? '风险笔记：' : 'Risk notes: '}</strong>
+					<strong>{pick(id, 'Risk notes: ', '风险笔记：')}</strong>
 					{data.riskNotes}
 				</p>
 			)}
 			{data?.status === 'stub' && (
 				<p>
-					<strong>{isZh ? '存根，需要来源。' : 'Stub, needs sourcing.'}</strong>{' '}
-					{isZh
-						? '本页没有足够的已核对事实，不能当作参考依据。'
-						: 'This page does not yet contain enough checked facts to use as a reference.'}
+					<strong>{pick(id, 'Stub, needs sourcing.', '存根，需要来源。')}</strong>{' '}
+					{pick(
+						id,
+						'This page does not yet contain enough checked facts to use as a reference.',
+						'本页没有足够的已核对事实，不能当作参考依据。',
+					)}
 				</p>
 			)}
-			<h2>{isZh ? '来源' : 'Sources'}</h2>
+			<h2>{pick(id, 'Sources', '来源')}</h2>
 			{sources.length === 0 ? (
-				<p>{isZh ? '本页没有附上外部来源。' : 'No external sources are attached to this page.'}</p>
+				<p>{pick(id, 'No external sources are attached to this page.', '本页没有附上外部来源。')}</p>
 			) : (
 				<ul>
 					{sources.map((source) => (
@@ -221,14 +226,14 @@ const show = Boolean(data?.entityType);
 							<a href={source.url}>{source.title}</a>
 							{' '}
 							({source.type ? `${source.type}, ` : ''}
-							{isZh ? '查阅于' : 'accessed'} {source.accessed})
+							{pick(id, 'accessed', '查阅于')} {source.accessed})
 						</li>
 					))}
 				</ul>
 			)}
-			<h2>{isZh ? '被以下页面引用' : 'Referenced by'}</h2>
+			<h2>{pick(id, 'Referenced by', '被以下页面引用')}</h2>
 			{backlinks.length === 0 ? (
-				<p>{isZh ? '还没有其他页面链接到这里。' : 'No other page links here yet.'}</p>
+				<p>{pick(id, 'No other page links here yet.', '还没有其他页面链接到这里。')}</p>
 			) : (
 				<ul>
 					{backlinks.map((link) => (
@@ -239,9 +244,11 @@ const show = Boolean(data?.entityType);
 				</ul>
 			)}
 			<p>
-				{isZh
-					? '其他维基页面的互相引用不是证据。事实应指向上面的来源。'
-					: 'A link from another wiki page is not evidence. Facts should point at the sources above.'}
+				{pick(
+					id,
+					'A link from another wiki page is not evidence. Facts should point at the sources above.',
+					'其他维基页面的互相引用不是证据。事实应指向上面的来源。',
+				)}
 			</p>
 		</section>
 	)

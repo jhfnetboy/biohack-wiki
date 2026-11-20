@@ -59,9 +59,9 @@ const allowIndexing = ['true', '1', 'yes'].includes(
 	(process.env.ALLOW_INDEXING ?? '').trim().toLowerCase(),
 );
 
-const group = (label, zh, directory) => ({
+const group = (label, zh, th, directory) => ({
 	label,
-	translations: { 'zh-CN': zh },
+	translations: { 'zh-CN': zh, th },
 	items: [{ autogenerate: { directory } }],
 });
 
@@ -81,6 +81,7 @@ export default defineConfig({
 			title: {
 				en: 'BioHack Wiki',
 				'zh-CN': 'BioHack 知识库',
+				th: 'BioHack Wiki',
 			},
 			description:
 				'An open, open-source wiki helping anyone research every area of biohacking and inform decisions. Not medical advice.',
@@ -96,6 +97,7 @@ export default defineConfig({
 			locales: {
 				root: { label: 'English', lang: 'en' },
 				'zh-cn': { label: '简体中文', lang: 'zh-CN' },
+				th: { label: 'ไทย', lang: 'th' },
 			},
 			lastUpdated: false,
 			credits: true,
@@ -118,100 +120,101 @@ export default defineConfig({
 			},
 			plugins: [
 				starlightLinksValidator({
-					errorOnFallbackPages: true,
+					// Thai covers the front door. Deeper articles fall back to English.
+					errorOnFallbackPages: false,
 					errorOnInconsistentLocale: true,
 				}),
 			],
 			sidebar: [
 				{
 					label: 'Start',
-					translations: { 'zh-CN': '开始' },
+					translations: { 'zh-CN': '开始', th: 'เริ่มต้น' },
 					items: [
-						{ label: 'Home', translations: { 'zh-CN': '首页' }, slug: '' },
+						{ label: 'Home', translations: { 'zh-CN': '首页', th: 'หน้าแรก' }, slug: '' },
 						{
 							label: 'What is biohacking',
-							translations: { 'zh-CN': '什么是生物黑客' },
+							translations: { 'zh-CN': '什么是生物黑客', th: 'ไบโอแฮกกิงคืออะไร' },
 							slug: 'overview/what-is-biohacking',
 						},
 						{
 							label: 'Three layers',
-							translations: { 'zh-CN': '三个层次' },
+							translations: { 'zh-CN': '三个层次', th: 'สามชั้น' },
 							slug: 'overview/three-layers',
 						},
 						{
 							label: 'Learning paths',
-							translations: { 'zh-CN': '学习路径' },
+							translations: { 'zh-CN': '学习路径', th: 'เส้นทางการเรียนรู้' },
 							slug: 'overview/learning-paths',
 						},
-						{ label: 'About', translations: { 'zh-CN': '关于' }, slug: 'about' },
+						{ label: 'About', translations: { 'zh-CN': '关于', th: 'เกี่ยวกับ' }, slug: 'about' },
 						{
 							label: 'Principles',
-							translations: { 'zh-CN': '原则' },
+							translations: { 'zh-CN': '原则', th: 'หลักการ' },
 							slug: 'overview/principles',
 						},
 						{
 							label: 'License',
-							translations: { 'zh-CN': '许可' },
+							translations: { 'zh-CN': '许可', th: 'สัญญาอนุญาต' },
 							slug: 'policies/license',
 						},
 						{
 							label: 'Add a page',
-							translations: { 'zh-CN': '如何添加页面' },
+							translations: { 'zh-CN': '如何添加页面', th: 'เพิ่มหน้า' },
 							slug: 'contributing',
 						},
 					],
 				},
-				group('Biochemical', '生物化学干预', 'biochemical'),
-				group('Peptides', '肽', 'peptides'),
-				group('Neurohacking', '脑科学与神经增强', 'neurohacking'),
-				group('Bionic augmentation', '仿生与智能义肢', 'bionic'),
-				group('Cyborg and grinder', '人体植入与赛博格', 'cyborg'),
-				group('Genetic', '基因与细胞', 'genetic'),
-				group('Longevity', '长寿与抗衰老', 'longevity'),
-				group('Quantified self', '自我量化', 'quantified-self'),
-				group('Microbiome', '微生物组', 'microbiome'),
-				group('Lifestyle and environment', '环境与行为', 'lifestyle'),
+				group('Biochemical', '生物化学干预', 'ชีวเคมี', 'biochemical'),
+				group('Peptides', '肽', 'เปปไทด์', 'peptides'),
+				group('Neurohacking', '脑科学与神经增强', 'นิวโรแฮกกิง', 'neurohacking'),
+				group('Bionic augmentation', '仿生与智能义肢', 'ไบโอนิก', 'bionic'),
+				group('Cyborg and grinder', '人体植入与赛博格', 'ไซบอร์ก', 'cyborg'),
+				group('Genetic', '基因与细胞', 'พันธุกรรมและเซลล์', 'genetic'),
+				group('Longevity', '长寿与抗衰老', 'อายุยืน', 'longevity'),
+				group('Quantified self', '自我量化', 'การวัดตนเอง', 'quantified-self'),
+				group('Microbiome', '微生物组', 'จุลินทรีย์', 'microbiome'),
+				group('Lifestyle and environment', '环境与行为', 'พฤติกรรมและสิ่งแวดล้อม', 'lifestyle'),
 				{
 					label: 'Guides',
-					translations: { 'zh-CN': '导读' },
+					translations: { 'zh-CN': '导读', th: 'คู่มือ' },
 					items: [
-						{ label: 'Maturity', translations: { 'zh-CN': '成熟度' }, slug: 'overview/maturity' },
+						{ label: 'Maturity', translations: { 'zh-CN': '成熟度', th: 'ความพร้อม' }, slug: 'overview/maturity' },
 						{
 							label: 'Closed loop',
-							translations: { 'zh-CN': '闭环' },
+							translations: { 'zh-CN': '闭环', th: 'วงปิด' },
 							slug: 'overview/closed-loop',
 						},
 						{
 							label: 'Concepts',
-							translations: { 'zh-CN': '概念辨析' },
+							translations: { 'zh-CN': '概念辨析', th: 'แนวคิด' },
 							slug: 'overview/concepts',
 						},
 						{
 							label: 'Evidence and safety',
-							translations: { 'zh-CN': '证据与安全' },
+							translations: { 'zh-CN': '证据与安全', th: 'หลักฐานและความปลอดภัย' },
 							slug: 'overview/evidence-and-safety',
 						},
 						{
 							label: 'EEG, AI, and a robotic arm',
-							translations: { 'zh-CN': '脑电、AI 与机械臂' },
+							translations: { 'zh-CN': '脑电、AI 与机械臂', th: 'EEG, AI และแขนกล' },
 							slug: 'overview/eeg-ai-robotic-arm',
 						},
 					],
 				},
 				{
 					label: 'Reference',
-					translations: { 'zh-CN': '参考' },
+					translations: { 'zh-CN': '参考', th: 'อ้างอิง' },
 					items: [
-						group('Companies', '公司', 'companies'),
-						group('Clinical trials', '临床试验', 'trials'),
-						group('Studies', '研究', 'studies'),
-						group('Vendor records', '厂商记录', 'vendors'),
-						group('Regulation', '法规', 'regulation'),
-						group('Glossary', '术语', 'glossary'),
-						group('News', '动态', 'news'),
+						group('Companies', '公司', 'บริษัท', 'companies'),
+						group('Clinical trials', '临床试验', 'การทดลองทางคลินิก', 'trials'),
+						group('Studies', '研究', 'งานวิจัย', 'studies'),
+						group('Vendor records', '厂商记录', 'บันทึกผู้ขาย', 'vendors'),
+						group('Regulation', '法规', 'กฎระเบียบ', 'regulation'),
+						group('Glossary', '术语', 'อภิธานศัพท์', 'glossary'),
+						group('News', '动态', 'ข่าว', 'news'),
 					],
 				},
-				group('About and policy', '关于与政策', 'policies'),
+				group('About and policy', '关于与政策', 'เกี่ยวกับและนโยบาย', 'policies'),
 			],
 		}),
 		{
@@ -238,6 +241,7 @@ export default defineConfig({
 				locales: {
 					root: 'en',
 					'zh-cn': 'zh-CN',
+					th: 'th',
 				},
 			},
 		}),
