@@ -604,7 +604,7 @@ html[data-has-hero] .content-panel {
 .bh-map {
 	position: relative;
 	display: grid;
-	grid-template-columns: minmax(220px, 1fr) minmax(16rem, 30rem) minmax(220px, 1fr);
+	grid-template-columns: minmax(240px, 1fr) minmax(11rem, 18rem) minmax(240px, 1fr);
 	gap: 0.75rem 0.7rem;
 	align-items: center;
 }
@@ -619,11 +619,12 @@ html[data-has-hero] .content-panel {
 
 .bh-map-tile {
 	display: grid;
-	grid-template-columns: 1fr 56px;
-	gap: 0.4rem;
-	align-items: center;
-	min-height: 5.4rem;
-	padding: 0.4rem 0.5rem;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 0;
+	align-items: stretch;
+	min-height: 8.6rem;
+	padding: 0;
+	overflow: hidden;
 	border: 1px solid var(--bh-line);
 	border-radius: 12px;
 	background: var(--bh-card);
@@ -637,21 +638,8 @@ html[data-has-hero] .content-panel {
 	outline: none;
 }
 
-.bh-map-side.right .bh-map-tile {
-	grid-template-columns: 56px 1fr;
-}
-
-.bh-map-side.right .bh-map-tile .bh-figure {
-	order: -1;
-}
-
-.bh-map-side.right .bh-map-copy {
-	text-align: end;
-}
-
-.bh-map-side.right .bh-map-layers,
-.bh-map-side.right .bh-map-goals {
-	justify-content: flex-end;
+.bh-map-copy {
+	padding: 0.45rem 0.6rem 0.5rem;
 }
 
 .bh-map-keywords {
@@ -689,12 +677,22 @@ html[data-has-hero] .content-panel {
 	font-size: 0.62rem;
 }
 
-.bh-map-tile .bh-figure.thumb,
-.bh-map-tile .bh-figure.thumb img {
-	width: 56px;
-	height: 40px;
-	flex-basis: 56px;
+.bh-map-tile .bh-figure.panel {
+	position: relative;
+	height: 100%;
+	min-height: 8.6rem;
+	margin: 0;
+	overflow: hidden;
+	border-radius: 0 12px 12px 0;
+}
+
+.bh-map-tile .bh-figure.panel img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
+	border-radius: 0 12px 12px 0;
 }
 
 .bh-map-body {
@@ -710,25 +708,46 @@ html[data-has-hero] .content-panel {
 	width: 100%;
 }
 
+.bh-map-figure::before {
+	content: '';
+	position: absolute;
+	inset: 6% 0;
+	z-index: 0;
+	pointer-events: none;
+	background: none;
+}
+
+html[data-theme='dark'] .bh-map-figure::before {
+	background: radial-gradient(ellipse at center, rgba(186, 244, 224, 0.28), transparent 68%);
+}
+
+html[data-theme='dark'] .bh-map-figure img {
+	filter: brightness(1.12);
+}
+
 .bh-map-figure img {
+	position: relative;
+	z-index: 1;
 	display: block;
 	width: 100%;
 	height: auto;
-	aspect-ratio: 3 / 4;
-	border-radius: 18px;
+	aspect-ratio: 458 / 1138;
+	border-radius: 0;
+	background: transparent;
 }
 
 .bh-map-caption {
 	position: absolute;
-	right: 0.45rem;
-	bottom: 0.45rem;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
 	margin: 0;
-	padding: 0.12rem 0.42rem;
-	border-radius: 6px;
-	background: color-mix(in srgb, #061018 74%, transparent);
-	color: #e7f6f0;
+	padding: 0;
+	background: transparent;
+	color: var(--sl-color-gray-3);
 	font-size: 0.65rem;
 	line-height: 1.25;
+	text-shadow: 0 1px 2px var(--sl-color-bg);
 	pointer-events: none;
 }
 
@@ -851,7 +870,7 @@ html[data-has-hero] .content-panel {
 	}
 
 	.bh-map-figure {
-		width: min(100%, 16rem);
+		width: min(42vw, 11rem);
 		height: auto;
 	}
 
@@ -868,13 +887,20 @@ html[data-has-hero] .content-panel {
 
 	.bh-map-tile,
 	.bh-map-side.right .bh-map-tile {
-		grid-template-columns: 64px minmax(0, 1fr);
+		grid-template-columns: 1fr;
+		grid-template-rows: 8rem auto;
 		min-height: 0;
 	}
 
 	.bh-map-tile .bh-figure,
 	.bh-map-side.right .bh-map-tile .bh-figure {
 		order: -1;
+		height: 8rem;
+	}
+
+	.bh-map-tile .bh-figure.panel,
+	.bh-map-tile .bh-figure.panel img {
+		border-radius: 12px 12px 0 0;
 	}
 
 	.bh-map-side.right .bh-map-copy,

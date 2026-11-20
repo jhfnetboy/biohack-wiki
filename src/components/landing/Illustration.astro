@@ -7,7 +7,7 @@ interface Props {
 	name: string;
 	wide?: boolean;
 	/** thumb: domain card. hero: small homepage art. moderate: later sections. */
-	size?: 'full' | 'hero' | 'moderate' | 'thumb';
+	size?: 'full' | 'hero' | 'moderate' | 'thumb' | 'panel';
 }
 
 const { name, wide = false, size = 'full' } = Astro.props;
@@ -15,20 +15,23 @@ const item = illustrations[name];
 if (!item) throw new Error(`Unknown illustration ${name}`);
 const id = localeId(Astro.locals.starlightRoute?.lang);
 const alt = pick(id, item.alt, item.altZh);
-const widths = size === 'thumb' ? [96, 160] : size === 'hero' ? [320, 640] : [480, 800, 1200];
+const widths =
+	size === 'thumb' ? [96, 160] : size === 'panel' ? [280, 480, 720] : size === 'hero' ? [320, 640] : [480, 800, 1200];
 const sizes =
 	size === 'thumb'
 		? '96px'
-		: size === 'hero'
-			? '(min-width: 960px) 360px, 96px'
-			: size === 'moderate'
-				? '(min-width: 800px) 420px, 100vw'
-				: '(min-width: 960px) 720px, 100vw';
+		: size === 'panel'
+			? '(max-width: 767px) 100vw, 280px'
+			: size === 'hero'
+				? '(min-width: 960px) 360px, 96px'
+				: size === 'moderate'
+					? '(min-width: 800px) 420px, 100vw'
+					: '(min-width: 960px) 720px, 100vw';
 const caption =
 	size === 'hero' ? pick(id, 'AI-generated illustration', 'AI 生成插图') : alt;
 ---
 
 <figure class:list={['bh-figure', size, { wide }]}>
 	<Image src={item.src} alt={alt} widths={widths} sizes={sizes} />
-	{size !== 'thumb' && <figcaption>{caption}</figcaption>}
+	{size !== 'thumb' && size !== 'panel' && <figcaption>{caption}</figcaption>}
 </figure>

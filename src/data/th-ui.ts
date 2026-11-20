@@ -519,5 +519,6 @@ export const thUi: Record<string, string> = {
   "AI-generated illustration. Healthy cells around a glass hourglass, used here for cellular renewal.": "ภาพประกอบที่สร้างด้วย AI เซลล์ที่ดูแข็งแรงล้อมนาฬิกาทราย ใช้ที่นี่เพื่อการฟื้นฟูระดับเซลล์",
   "AI-generated illustration. A peptide chain, a glass vial, and a certificate of analysis.": "ภาพประกอบที่สร้างด้วย AI สายเปปไทด์ ขวดแก้ว และใบรับรองผลการวิเคราะห์",
   "AI-generated illustration. A luminous translucent human figure standing centered on a dark field.": "ภาพประกอบที่สร้างด้วย AI ร่างมนุษย์โปร่งแสงเรืองแสงยืนอยู่ตรงกลางบนพื้นมืด",
+  "AI-generated illustration. A translucent teal human figure, cropped close, with no background.": "ภาพประกอบที่สร้างด้วย AI ร่างมนุษย์สีเทียลโปร่งแสง ตัดชิด ไม่มีพื้นหลัง",
   "AI-generated illustration. A circadian arc with light, cold-water, and heat motifs, reused for environmental signals.": "ภาพประกอบที่สร้างด้วย AI เส้นโค้งจังหวะชีวภาพพร้อมแสง น้ำเย็น และความร้อน ใช้ซ้ำสำหรับสัญญาณสิ่งแวดล้อม",
 };

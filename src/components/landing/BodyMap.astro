@@ -74,16 +74,16 @@ const blurbs: Record<string, { en: string; zh: string }> = {
 };
 
 const anchors: Record<string, { side: Side; x: number; y: number; layers: Layer[] }> = {
-	neurohacking: { side: 'left', x: 46, y: 12, layers: ['Observe', 'Intervene', 'Augment'] },
-	genetic: { side: 'left', x: 44, y: 22, layers: ['Observe', 'Intervene', 'Augment'] },
-	peptides: { side: 'left', x: 54, y: 34, layers: ['Intervene'] },
-	microbiome: { side: 'left', x: 48, y: 52, layers: ['Observe', 'Intervene'] },
-	bionic: { side: 'left', x: 40, y: 78, layers: ['Observe', 'Augment'] },
-	lifestyle: { side: 'right', x: 62, y: 11, layers: ['Observe', 'Intervene'] },
-	cellular: { side: 'right', x: 70, y: 24, layers: ['Intervene'] },
-	biochemical: { side: 'right', x: 58, y: 40, layers: ['Intervene'] },
-	'quantified-self': { side: 'right', x: 80, y: 48, layers: ['Observe'] },
-	cyborg: { side: 'right', x: 84, y: 58, layers: ['Augment'] },
+	neurohacking: { side: 'left', x: 48, y: 4, layers: ['Observe', 'Intervene', 'Augment'] },
+	genetic: { side: 'left', x: 42, y: 22, layers: ['Observe', 'Intervene', 'Augment'] },
+	peptides: { side: 'left', x: 57, y: 28, layers: ['Intervene'] },
+	microbiome: { side: 'left', x: 44, y: 46, layers: ['Observe', 'Intervene'] },
+	bionic: { side: 'left', x: 36, y: 76, layers: ['Observe', 'Augment'] },
+	lifestyle: { side: 'right', x: 57, y: 7, layers: ['Observe', 'Intervene'] },
+	biochemical: { side: 'right', x: 62, y: 38, layers: ['Intervene'] },
+	'quantified-self': { side: 'right', x: 90, y: 48, layers: ['Observe'] },
+	cyborg: { side: 'right', x: 96, y: 53, layers: ['Augment'] },
+	cellular: { side: 'right', x: 66, y: 70, layers: ['Intervene'] },
 };
 
 const bySlug = Object.fromEntries(domains.map((domain) => [domain.slug, domain]));
@@ -113,7 +113,7 @@ const id = localeId(Astro.locals.starlightRoute?.lang);
 const prefix = localePrefix(id);
 const href = (path: string) => `${prefix}${path}`;
 const t = (en: string, zh: string) => pick(id, en, zh);
-const body = illustrations['body-center'];
+const body = illustrations['body-center-cutout'];
 const bodyAlt = pick(id, body.alt, body.altZh);
 const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 ---
@@ -150,7 +150,7 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 								</span>
 								<em>{t(tile.blurb, tile.blurbZh)}</em>
 							</span>
-							<Illustration name={tile.slot} size="thumb" />
+							<Illustration name={tile.slot} size="panel" />
 						</a>
 					</li>
 				))
@@ -161,8 +161,8 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 				<Image
 					src={body.src}
 					alt={bodyAlt}
-					widths={[480, 768, 1024]}
-					sizes="(max-width: 767px) 72vw, 360px"
+					widths={[240, 458, 720]}
+					sizes="(max-width: 767px) 42vw, 280px"
 				/>
 				{
 					tiles.map((tile) => (
@@ -205,7 +205,7 @@ const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
 								</span>
 								<em>{t(tile.blurb, tile.blurbZh)}</em>
 							</span>
-							<Illustration name={tile.slot} size="thumb" />
+							<Illustration name={tile.slot} size="panel" />
 						</a>
 					</li>
 				))
