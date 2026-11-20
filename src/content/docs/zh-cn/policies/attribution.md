@@ -27,7 +27,9 @@ sidebar:
 | domain-bionic.webp | 肌电仿生假手 |
 | domain-cyborg.webp | 手部皮下的小型植入芯片 |
 | domain-genetic.webp | DNA 双螺旋和抽象编辑意象 |
-| domain-longevity.webp | 细胞环绕沙漏 |
+| domain-longevity.webp | 细胞环绕沙漏，细胞与再生领域暂用 |
+| domain-peptides.webp | 多肽链、玻璃瓶和检验报告 |
+| body-center.webp | 首页人体图居中的发光人体 |
 | domain-quantified-self.webp | 通用戒指、手表、血糖贴片和曲线 |
 | domain-microbiome.webp | 风格化的肠道微生物群落 |
 | domain-lifestyle.webp | 昼夜节律以及睡眠、运动和冷水意象 |

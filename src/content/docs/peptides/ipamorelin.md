@@ -3,15 +3,17 @@ title: "Ipamorelin"
 titleZh: "Ipamorelin"
 description: "FDA lists ipamorelin acetate in Category 2 for 503B compounding and also explains a withdrawn nomination. Not a use guide."
 entityType: "compound"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 aliases:
   - "ipamorelin"
   - "ipamorelin acetate"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"

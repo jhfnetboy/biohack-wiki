@@ -27,7 +27,9 @@ sidebar:
 | domain-bionic.webp | มือเทียมไมโออิเล็กทริก |
 | domain-cyborg.webp | ชิปฝังขนาดเล็กใต้ผิวมือ |
 | domain-genetic.webp | เกลียว DNA และภาพการแก้ไขแบบนามธรรม |
-| domain-longevity.webp | เซลล์รอบนาฬิกาทราย |
+| domain-longevity.webp | เซลล์รอบนาฬิกาทราย ใช้ชั่วคราวสำหรับโดเมนเซลล์ |
+| domain-peptides.webp | สายเปปไทด์ ขวด และใบรับรองผลวิเคราะห์ |
+| body-center.webp | ร่างมนุษย์เรืองแสงตรงกลางสำหรับแผนที่หน้าแรก |
 | domain-quantified-self.webp | แหวน นาฬิกา แผ่นแนว CGM และเส้นข้อมูล |
 | domain-microbiome.webp | ชุมชนจุลินทรีย์ในลำไส้แบบภาพวาด |
 | domain-lifestyle.webp | ส่วนโค้งเซอร์คาเดียน การนอน การเคลื่อนไหว และน้ำเย็น |

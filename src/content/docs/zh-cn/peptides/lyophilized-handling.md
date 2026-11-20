@@ -3,12 +3,14 @@ title: "冻干肽：本维基不提供的操作"
 titleZh: "冻干肽：本维基不提供的操作"
 description: "为什么本维基不提供冻干肽的配制步骤，外加两条仅限于复配 GLP-1 西林瓶的 FDA 警告。"
 entityType: "guide"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"

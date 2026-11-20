@@ -3,12 +3,15 @@ title: "NIA Interventions Testing Program"
 titleZh: "NIA 干预测试计划"
 description: "Stub page reserved for NIA Interventions Testing Program. No checked facts yet. Not medical advice or a buying guide."
 entityType: "topic"
-domain: "longevity"
+domain: "cross-cutting"
 domains:
-  - "longevity"
+  - "cross-cutting"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
+  - extend
 maturity: "research"
 lastReviewed: "2026-11-20"
 status: "stub"
@@ -29,7 +32,7 @@ sidebar:
 Stub, needs sourcing. The outline below is not a set of findings.
 :::
 
-The National Institute on Aging Interventions Testing Program page (https://www.nia.nih.gov/research/dab/interventions-testing-program-itp) was not retrieved for this draft. No mouse lifespan result is stated.
+The National Institute on Aging Interventions Testing Program page (https://www.nia.nih.gov/research/dab/interventions-testing-program-itp) was not retrieved for this draft. No mouse lifespan result is stated. When this wiki files a tested compound, a small molecule belongs under [biochemical](/biochemical/), not under a longevity method.
 
 ## Outline
 
@@ -42,6 +45,6 @@ This page does not give doses, titration schedules, injection or implantation te
 
 ## See also
 
-- [Hallmarks of aging](/longevity/hallmarks-of-aging/)
+- [Hallmarks of aging](/goals/longevity/hallmarks-of-aging/)
 - [Editorial policy](/policies/editorial/)
 - [Medical disclaimer](/disclaimer/)

@@ -88,5 +88,14 @@
   "/biochemical/peptides/tesamorelin": "/peptides/tesamorelin/",
   "/zh-cn/biochemical/peptides/tesamorelin": "/zh-cn/peptides/tesamorelin/",
   "/biochemical/peptides/tirzepatide": "/peptides/tirzepatide/",
-  "/zh-cn/biochemical/peptides/tirzepatide": "/zh-cn/peptides/tirzepatide/"
+  "/zh-cn/biochemical/peptides/tirzepatide": "/zh-cn/peptides/tirzepatide/",
+  "/longevity": "/goals/longevity/",
+  "/longevity/hallmarks-of-aging": "/goals/longevity/hallmarks-of-aging/",
+  "/longevity/nia-itp": "/goals/longevity/nia-itp/",
+  "/zh-cn/longevity": "/zh-cn/goals/longevity/",
+  "/zh-cn/longevity/hallmarks-of-aging": "/zh-cn/goals/longevity/hallmarks-of-aging/",
+  "/zh-cn/longevity/nia-itp": "/zh-cn/goals/longevity/nia-itp/",
+  "/th/longevity": "/th/goals/longevity/",
+  "/th/longevity/hallmarks-of-aging": "/th/goals/longevity/hallmarks-of-aging/",
+  "/th/longevity/nia-itp": "/th/goals/longevity/nia-itp/"
 }

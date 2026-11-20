@@ -164,16 +164,17 @@ export default defineConfig({
 						},
 					],
 				},
-				group('Biochemical', '生物化学干预', 'ชีวเคมี', 'biochemical'),
+				group('Quantified self', '量化自我', 'การวัดตนเอง', 'quantified-self'),
+				group('Environmental Signals', '环境信号', 'สัญญาณสิ่งแวดล้อม', 'lifestyle'),
+				group('Biochemical', '生化小分子', 'ชีวเคมีโมเลกุลเล็ก', 'biochemical'),
 				group('Peptides', '肽', 'เปปไทด์', 'peptides'),
-				group('Neurohacking', '脑科学与神经增强', 'นิวโรแฮกกิง', 'neurohacking'),
-				group('Bionic augmentation', '仿生与智能义肢', 'ไบโอนิก', 'bionic'),
-				group('Cyborg and grinder', '人体植入与赛博格', 'ไซบอร์ก', 'cyborg'),
-				group('Genetic', '基因与细胞', 'พันธุกรรมและเซลล์', 'genetic'),
-				group('Longevity', '长寿与抗衰老', 'อายุยืน', 'longevity'),
-				group('Quantified self', '自我量化', 'การวัดตนเอง', 'quantified-self'),
+				group('Genetic', '基因', 'พันธุกรรม', 'genetic'),
+				group('Cellular & Regenerative', '细胞与再生', 'เซลล์และการฟื้นฟู', 'cellular'),
 				group('Microbiome', '微生物组', 'จุลินทรีย์', 'microbiome'),
-				group('Lifestyle and environment', '环境与行为', 'พฤติกรรมและสิ่งแวดล้อม', 'lifestyle'),
+				group('Neurotech', '神经科技', 'เทคโนโลยีประสาท', 'neurohacking'),
+				group('Cyborg implants', '植入与赛博格', 'ไซบอร์ก', 'cyborg'),
+				group('Bionics', '仿生', 'ไบโอนิก', 'bionic'),
+				group('Goals', '目标', 'เป้าหมาย', 'goals'),
 				{
 					label: 'Guides',
 					translations: { 'zh-CN': '导读', th: 'คู่มือ' },
@@ -225,6 +226,11 @@ export default defineConfig({
 						? '# ALLOW_INDEXING is true. Sitewide X-Robots-Tag is omitted.\n'
 						: '/*\n  X-Robots-Tag: noindex, nofollow\n';
 					fs.writeFileSync(new URL('_headers', dir), headers);
+					const lines = Object.entries(legacyRedirects).flatMap(([from, to]) => {
+						const dest = String(to).endsWith('/') ? String(to) : `${to}/`;
+						return [`${from} ${dest} 301`, `${from}/ ${dest} 301`];
+					});
+					fs.writeFileSync(new URL('_redirects', dir), `${lines.join('\n')}\n`);
 				},
 			},
 		},

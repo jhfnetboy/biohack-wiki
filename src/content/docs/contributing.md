@@ -21,7 +21,7 @@ Templates live in `templates/` at the repository root, one file per entity type:
 
 English files go in `src/content/docs/`. The matching Simplified Chinese file goes in `src/content/docs/zh-cn/` with the same path. Starlight uses that pair for `hreflang`. If the Chinese file is missing, the build fails the internal-link check (`errorOnFallbackPages`).
 
-Use a lowercase hyphenated slug. Top-level folders are the nine domains: `biochemical/`, `neurohacking/`, `bionic/`, `cyborg/`, `genetic/`, `longevity/`, `quantified-self/`, `microbiome/`, and `lifestyle/`, plus `overview/`, `regulation/`, and the other cross-cutting folders.
+Use a lowercase hyphenated slug. Method folders are `quantified-self/`, `lifestyle/` (Environmental Signals), `biochemical/`, `peptides/`, `genetic/`, `cellular/`, `microbiome/`, `neurohacking/` (displayed as Neurotech), `cyborg/`, and `bionic/`. Goals live in `goals/`. `overview/`, `regulation/`, and the other cross-cutting folders stay as they are.
 
 ## 3. Fill the frontmatter
 

@@ -3,12 +3,14 @@ title: "GLP-1 受体激动剂"
 titleZh: "GLP-1 受体激动剂"
 description: "FDA 对未经批准和复配的 GLP-1 药物说过什么，包括司美格鲁肽、替尔泊肽、瑞他鲁肽、survodutide 和 mazdutide。"
 entityType: "topic"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"

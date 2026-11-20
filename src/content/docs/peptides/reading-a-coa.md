@@ -3,12 +3,14 @@ title: "Reading a certificate of analysis"
 titleZh: "阅读检验报告"
 description: "Stub page reserved for Reading a certificate of analysis. No checked facts yet. Not medical advice or a buying guide."
 entityType: "guide"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "stub"

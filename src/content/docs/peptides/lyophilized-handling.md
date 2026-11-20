@@ -3,12 +3,14 @@ title: "Lyophilized peptides: what this wiki will not instruct"
 titleZh: "冻干肽：本维基不提供的操作"
 description: "Why this wiki gives no preparation steps for lyophilized peptides, plus two FDA warnings limited to compounded GLP-1 vials."
 entityType: "guide"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"

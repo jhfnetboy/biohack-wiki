@@ -3,15 +3,17 @@ title: "GHK-Cu"
 titleZh: "GHK-Cu"
 description: "FDA's withdrawn-nomination note on injectable GHK-Cu cites limited human data and immunogenicity concerns. Cosmetic claims are not reviewed."
 entityType: "compound"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 aliases:
   - "GHK-Cu"
   - "copper peptide"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"

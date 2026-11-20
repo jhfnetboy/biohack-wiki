@@ -3,12 +3,14 @@ title: "阅读检验报告"
 titleZh: "阅读检验报告"
 description: "为「阅读检验报告」预留的存根页。尚无核对过的事实。不是医疗建议或购买指南。本页不是医疗建议，也不能代替原始文件。"
 entityType: "guide"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "stub"

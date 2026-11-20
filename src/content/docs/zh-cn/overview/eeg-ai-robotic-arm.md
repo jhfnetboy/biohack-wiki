@@ -8,7 +8,8 @@ domains:
   - "cross-cutting"
 evidenceLevel: "unrated"
 layer: "augment"
-purpose: "restoration"
+goals:
+  - restore
 maturity: "research"
 lastReviewed: "2026-11-20"
 status: "stub"

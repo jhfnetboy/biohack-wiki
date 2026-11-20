@@ -3,15 +3,17 @@ title: "GHK-Cu"
 titleZh: "GHK-Cu"
 description: "FDA 关于注射用 GHK-Cu 的已撤回提名提到人体数据有限和免疫原性担忧。本页不评化妆宣称。"
 entityType: "compound"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 aliases:
   - "GHK-Cu"
   - "copper peptide"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"

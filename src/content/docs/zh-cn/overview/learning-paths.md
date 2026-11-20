@@ -16,7 +16,7 @@ sidebar:
 
 1. [医疗免责声明](/zh-cn/disclaimer/)和[证据与安全](/zh-cn/overview/evidence-and-safety/)。
 2. [什么是生物黑客](/zh-cn/overview/what-is-biohacking/)和[三个层次](/zh-cn/overview/three-layers/)。
-3. 一次一个领域：[生物化学](/zh-cn/biochemical/)、[神经增强](/zh-cn/neurohacking/)、[仿生](/zh-cn/bionic/)、[赛博格](/zh-cn/cyborg/)、[基因](/zh-cn/genetic/)、[长寿](/zh-cn/longevity/)、[自我量化](/zh-cn/quantified-self/)、[微生物组](/zh-cn/microbiome/)（存根）、[生活方式](/zh-cn/lifestyle/)。
+3. 一次一种方法：[量化自我](/zh-cn/quantified-self/)、[环境信号](/zh-cn/lifestyle/)、[生化小分子](/zh-cn/biochemical/)、[肽](/zh-cn/peptides/)、[基因](/zh-cn/genetic/)、[细胞与再生](/zh-cn/cellular/)、[微生物组](/zh-cn/microbiome/)（存根）、[神经科技](/zh-cn/neurohacking/)、[植入与赛博格](/zh-cn/cyborg/)、[仿生](/zh-cn/bionic/)。目标另列：[修复、增强、延寿](/zh-cn/goals/)。
 4. [术语表](/zh-cn/glossary/)只当作地图。释义是临时的。
 5. 把每个存根当成未完成。
 

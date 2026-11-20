@@ -1,5 +1,7 @@
 ---
 import Illustration from './Illustration.astro';
+import KeywordBanner from './KeywordBanner.astro';
+import { domainGoals, goalLabel } from '../../data/domain-keywords';
 import { localeId, localePrefix, pick } from '../../lib/locale';
 
 const id = localeId(Astro.locals.starlightRoute?.lang);
@@ -48,8 +50,8 @@ const categories = [
 
 <article class="bh-domain">
 	<header class="bh-hero">
-		<Illustration name="domain-biochemical" wide />
-		<p class="bh-kicker">{t('Biochemical domain', '生物化学领域')}</p>
+		<Illustration name="domain-peptides" wide />
+		<KeywordBanner domain="peptides" />
 		<h1>{t('Peptides', '肽')}</h1>
 		<p class="bh-lead">
 			{
@@ -59,11 +61,14 @@ const categories = [
 				)
 			}
 		</p>
+		<ul class="bh-goal-row">
+			{domainGoals.peptides.map((goal) => <li class:list={['bh-goal', goal]}>{goalLabel(goal, id)}</li>)}
+		</ul>
 		<p class="bh-note">
 			{
 				t(
-					'Peptides stay inside the biochemical domain of the nine-domain map. The public path is /peptides/ so it can later map to a peptides subdomain. That DNS name is not configured.',
-					'肽仍属于九领域地图里的生物化学领域。公开路径是 /peptides/，以便以后映射到 peptides 子域名。该 DNS 名称尚未配置。',
+					'Peptides are a first-level domain: short amino-acid chains the body uses as signals. They are split from biochemical molecules because purity, testing, and supply are their own problem. The public path can later map to a peptides subdomain. That DNS name is not configured.',
+					'肽是一级领域：身体用来发信号的氨基酸短链。它和生化小分子分开，是因为纯度、检测和供应本身就是问题。公开路径以后可以映射到 peptides 子域名。该 DNS 名称尚未配置。',
 				)
 			}
 		</p>

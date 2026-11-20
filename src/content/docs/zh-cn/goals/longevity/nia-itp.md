@@ -3,12 +3,15 @@ title: "NIA 干预测试计划"
 titleZh: "NIA 干预测试计划"
 description: "为「NIA 干预测试计划」预留的存根页。尚无核对过的事实。不是医疗建议或购买指南。"
 entityType: "topic"
-domain: "longevity"
+domain: "cross-cutting"
 domains:
-  - "longevity"
+  - "cross-cutting"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
+  - extend
 maturity: "research"
 lastReviewed: "2026-11-20"
 status: "stub"
@@ -29,7 +32,7 @@ sidebar:
 存根，需要来源。下面的提纲不是研究结论。
 :::
 
-美国国家衰老研究所干预测试计划页面（https://www.nia.nih.gov/research/dab/interventions-testing-program-itp）在本草稿中没有取回。不写任何小鼠寿命结果。
+美国国家衰老研究所干预测试计划页面（https://www.nia.nih.gov/research/dab/interventions-testing-program-itp）在本草稿中没有取回。不写任何小鼠寿命结果。本维基若归档被测化合物，小分子归在[生化小分子](/zh-cn/biochemical/)，而不是一个叫“长寿”的方法领域。
 
 ## 提纲
 
@@ -42,6 +45,6 @@ sidebar:
 
 ## 另见
 
-- [衰老标志](/zh-cn/longevity/hallmarks-of-aging/)
+- [衰老标志](/zh-cn/goals/longevity/hallmarks-of-aging/)
 - [编辑政策](/zh-cn/policies/editorial/)
 - [医疗免责声明](/zh-cn/disclaimer/)

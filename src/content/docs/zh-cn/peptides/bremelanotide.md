@@ -3,16 +3,18 @@ title: "Bremelanotide"
 titleZh: "Bremelanotide"
 description: "VYLEESI（bremelanotide）说明书中的适应证、使用限制和心血管警告。剂量不抄录。"
 entityType: "compound"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 aliases:
   - "PT-141"
   - "bremelanotide"
   - "Vyleesi"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "commercial"
 lastReviewed: "2026-11-20"
 status: "reviewed"

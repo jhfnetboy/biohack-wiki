@@ -8,7 +8,8 @@ domains:
   - "cyborg"
 evidenceLevel: "unrated"
 layer: "augment"
-purpose: "enhancement"
+goals:
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "stub"

@@ -1,6 +1,8 @@
 ---
 import Illustration from './Illustration.astro';
+import KeywordBanner from './KeywordBanner.astro';
 import { domainBySlug, type Card } from '../../data/domains';
+import { goalLabel } from '../../data/domain-keywords';
 import { domainScenes } from '../../data/illustrations';
 import { localeId, localePrefix, pick } from '../../lib/locale';
 import { toneLabel } from '../../lib/tone-label';
@@ -27,7 +29,7 @@ function cardText(card: Card) {
 <article class="bh-domain">
 	<header class="bh-hero">
 		<Illustration name={domain.slot} wide />
-		<p class="bh-kicker">{t('Domain', '领域')}</p>
+		<KeywordBanner domain={domain.slug} />
 		<h1>{t(domain.title, domain.titleZh)}</h1>
 		<p class="bh-lead">{t(domain.definition, domain.definitionZh)}</p>
 		<ul class="bh-badges">
@@ -38,11 +40,11 @@ function cardText(card: Card) {
 					</li>
 				))
 			}
+		</ul>
+		<ul class="bh-goal-row">
 			{
-				domain.purposes.map((purpose) => (
-					<li>
-						{t('Purpose', '目的')} · {t(purpose, purpose)}
-					</li>
+				domain.goals.map((goal) => (
+					<li class:list={['bh-goal', goal]}>{goalLabel(goal, id)}</li>
 				))
 			}
 		</ul>

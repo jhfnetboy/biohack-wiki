@@ -9,6 +9,8 @@ import domainLongevity from '../assets/illustrations/domain-longevity.webp';
 import domainQuantified from '../assets/illustrations/domain-quantified-self.webp';
 import domainMicrobiome from '../assets/illustrations/domain-microbiome.webp';
 import domainLifestyle from '../assets/illustrations/domain-lifestyle.webp';
+import domainPeptides from '../assets/illustrations/domain-peptides.webp';
+import bodyCenter from '../assets/illustrations/body-center.webp';
 import sceneBci from '../assets/illustrations/scene-bci.webp';
 import sceneHand from '../assets/illustrations/scene-prosthetic-hand.webp';
 import sceneExo from '../assets/illustrations/scene-exoskeleton.webp';
@@ -54,10 +56,20 @@ export const illustrations: Record<string, Illustration> = {
 		alt: 'AI-generated illustration. A DNA helix with an abstract gene-editing scissors motif.',
 		altZh: 'AI 生成插图。DNA 双螺旋与抽象的基因编辑剪刀意象。',
 	},
-	'domain-longevity': {
+	'domain-cellular': {
 		src: domainLongevity,
-		alt: 'AI-generated illustration. Healthy cells around a glass hourglass, suggesting healthspan.',
-		altZh: 'AI 生成插图。健康细胞环绕沙漏，隐喻健康寿命。',
+		alt: 'AI-generated illustration. Healthy cells around a glass hourglass, used here for cellular renewal.',
+		altZh: 'AI 生成插图。健康细胞环绕沙漏，这里用来表示细胞与组织再生。',
+	},
+	'domain-peptides': {
+		src: domainPeptides,
+		alt: 'AI-generated illustration. A peptide chain, a glass vial, and a certificate of analysis.',
+		altZh: 'AI 生成插图。多肽链、玻璃瓶和检验报告。',
+	},
+	'body-center': {
+		src: bodyCenter,
+		alt: 'AI-generated illustration. A luminous translucent human figure standing centered on a dark field.',
+		altZh: 'AI 生成插图。居中站立的半透明发光人体。',
 	},
 	'domain-quantified-self': {
 		src: domainQuantified,
@@ -71,8 +83,8 @@ export const illustrations: Record<string, Illustration> = {
 	},
 	'domain-lifestyle': {
 		src: domainLifestyle,
-		alt: 'AI-generated illustration. A circadian sun-to-moon arc with sleep, exercise, and cold-water motifs.',
-		altZh: 'AI 生成插图。昼夜节律的日升月落，以及睡眠、运动与冷水暴露意象。',
+		alt: 'AI-generated illustration. A circadian arc with light, cold-water, and heat motifs, reused for environmental signals.',
+		altZh: 'AI 生成插图。带光照、冷水和热暴露意象的昼夜弧线，这里用来表示环境信号。',
 	},
 	'scene-bci': {
 		src: sceneBci,
