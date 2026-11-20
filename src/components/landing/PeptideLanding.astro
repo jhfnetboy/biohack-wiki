@@ -1,6 +1,8 @@
 ---
 import Illustration from './Illustration.astro';
 import KeywordBanner from './KeywordBanner.astro';
+import MoleculeCompare from './MoleculeCompare.astro';
+import ScenarioCards from './ScenarioCards.astro';
 import { domainGoals, goalLabel } from '../../data/domain-keywords';
 import { localeId, localePrefix, pick } from '../../lib/locale';
 
@@ -79,6 +81,9 @@ const categories = [
 			<a class="bh-button ghost" href={href('/biochemical/')}>{t('Biochemical domain', '生物化学领域')}</a>
 		</p>
 	</header>
+
+	<ScenarioCards slug="peptides" />
+	<MoleculeCompare />
 
 	<section class="bh-feature">
 		<div>

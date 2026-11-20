@@ -1,6 +1,8 @@
 ---
 import Illustration from './Illustration.astro';
 import KeywordBanner from './KeywordBanner.astro';
+import MoleculeCompare from './MoleculeCompare.astro';
+import ScenarioCards from './ScenarioCards.astro';
 import { domainBySlug, type Card } from '../../data/domains';
 import { goalLabel } from '../../data/domain-keywords';
 import { domainScenes } from '../../data/illustrations';
@@ -49,6 +51,23 @@ function cardText(card: Card) {
 			}
 		</ul>
 	</header>
+
+	{slug === 'cyborg' && (
+		<aside class="bh-callout">
+			<p>
+				{t(
+					'Brain implants such as Neuralink are filed under Neurotech, because anything that reads or writes neural signals belongs there. Cyborg implants do not interface with the nervous system.',
+					'Neuralink 这类脑植入归在神经科技，因为任何读写神经信号的东西都属于那里。赛博格植入物不与神经系统接口。',
+				)}
+			</p>
+			<p>
+				<a href={href('/neurohacking/bci/neuralink-n1/')}>{t('Open the N1 page', '打开 N1 页面')}</a>
+			</p>
+		</aside>
+	)}
+
+	<ScenarioCards slug={slug} />
+	{slug === 'biochemical' && <MoleculeCompare />}
 
 	<section>
 		<h2>{t('Map of the domain', '领域地图')}</h2>

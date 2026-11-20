@@ -561,6 +561,55 @@ html[data-has-hero] .content-panel {
 	}
 }
 
+.bh-callout {
+	margin: 0.8rem 0 1rem;
+	padding: 0.8rem 1rem;
+	border: 1px solid var(--bh-teal);
+	border-radius: 12px;
+	background: color-mix(in srgb, var(--bh-teal) 10%, var(--bh-card));
+}
+
+.bh-callout p {
+	margin: 0.25rem 0;
+}
+
+.bh-scenario-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem;
+	margin: 0.35rem 0;
+}
+
+.bh-compare-table {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.55rem;
+	margin-top: 0.6rem;
+}
+
+.bh-compare-table > div {
+	margin: 0;
+	padding: 0.7rem 0.8rem;
+	border: 1px solid var(--bh-line);
+	border-radius: 12px;
+	background: var(--bh-card);
+}
+
+.bh-compare-head {
+	font-weight: 720;
+}
+
+.bh-compare-table p {
+	margin: 0.3rem 0 0;
+	color: var(--sl-color-gray-2);
+}
+
+@media (max-width: 720px) {
+	.bh-compare-table {
+		grid-template-columns: 1fr;
+	}
+}
+
 .bh-keyword-banner {
 	margin: 0.2rem 0 0.15rem;
 	color: var(--bh-teal);
