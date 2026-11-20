@@ -1,0 +1,36 @@
+---
+import type { GoalId } from '../../data/domain-keywords';
+
+interface Props {
+	goal: GoalId;
+}
+
+const { goal } = Astro.props;
+---
+
+<span class:list={['bh-goal-mark', goal]} aria-hidden="true">
+	{
+		goal === 'restore' && (
+			<svg viewBox="0 0 32 32">
+				<path d="M16 27s-8.2-5.4-8.2-11.2a5.1 5.1 0 0 1 8.2-4 5.1 5.1 0 0 1 8.2 4C24.2 21.6 16 27 16 27z" />
+				<path d="M7.5 16.2h4.2l1.8-3.2 2.6 5.4 1.7-2.2h6.7" />
+			</svg>
+		)
+	}
+	{
+		goal === 'enhance' && (
+			<svg viewBox="0 0 32 32">
+				<path d="M18.2 4 8 17.2h6.4L13 28l11-13.2h-6.4z" />
+			</svg>
+		)
+	}
+	{
+		goal === 'extend' && (
+			<svg viewBox="0 0 32 32">
+				<path d="M10 5h12M10 27h12" />
+				<path d="M11.2 5.4c0 5.4 4.8 6.4 4.8 10.6s-4.8 5.2-4.8 10.6" />
+				<path d="M20.8 5.4c0 5.4-4.8 6.4-4.8 10.6s4.8 5.2 4.8 10.6" />
+			</svg>
+		)
+	}
+</span>

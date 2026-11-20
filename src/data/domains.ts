@@ -1321,7 +1321,7 @@ export const domains: DomainDef[] = [
 		],
 		startHere: [
 			{ href: '/quantified-self/', title: 'Where trackers live', titleZh: '追踪器在哪里' },
-			{ href: '/overview/three-layers/', title: 'Observe and intervene', titleZh: '观察与干预' },
+			{ href: '/goals/', title: 'Goals', titleZh: '目标' },
 		],
 	},
 ];

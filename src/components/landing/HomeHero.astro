@@ -1,12 +1,9 @@
 ---
 import { positioning } from '../../data/positioning';
-import { localeId, localePrefix, pick } from '../../lib/locale';
+import { localeId } from '../../lib/locale';
 
 const id = localeId(Astro.locals.starlightRoute?.lang);
 const copy = id === 'zh' ? positioning.zh : id === 'th' ? positioning.th : positioning.en;
-const prefix = localePrefix(id);
-const href = (path: string) => `${prefix}${path}`;
-const t = (en: string, zh: string) => pick(id, en, zh);
 
 const icons = [
 	'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2.5h7l3 3V13.5H3z"/><path d="M10 2.5V6h3M5 9h6M5 11.5h4"/></svg>',
@@ -17,9 +14,7 @@ const icons = [
 ---
 
 <header class="bh-intro">
-	<div class="bh-intro-copy">
-		<h1 id="_top">{copy.headline}</h1>
-		<p class="bh-subline">{copy.subline}</p>
+	<div class="bh-intro-line">
 		<ul class="bh-badges">
 			{
 				copy.badges.map((label, index) => (
@@ -30,10 +25,7 @@ const icons = [
 				))
 			}
 		</ul>
-		<div class="bh-links">
-			<a class="bh-button" href="#domains">{t('Explore the domains', '浏览各个领域')}</a>
-			<a class="bh-button ghost" href={href('/goals/')}>{t('Goals', '目标')}</a>
-			<a class="bh-textlink" href={href('/about/')}>{t('About', '关于')}</a>
-		</div>
+		<h1 id="_top">{copy.headline}</h1>
 	</div>
+	<p class="bh-subline">{copy.subline}</p>
 </header>

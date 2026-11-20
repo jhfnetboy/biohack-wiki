@@ -149,11 +149,6 @@ export default defineConfig({
 							slug: 'overview/what-is-biohacking',
 						},
 						{
-							label: 'Three layers',
-							translations: { 'zh-CN': '三个层次', th: 'สามชั้น' },
-							slug: 'overview/three-layers',
-						},
-						{
 							label: 'Learning paths',
 							translations: { 'zh-CN': '学习路径', th: 'เส้นทางการเรียนรู้' },
 							slug: 'overview/learning-paths',
@@ -224,7 +219,16 @@ export default defineConfig({
 					link('Exoskeletons', '外骨骼', 'โครงกระดูกกล', 'bionic/exoskeletons'),
 					link('Osseointegration', '骨整合', 'การยึดกับกระดูก', 'bionic/tmr-osseointegration'),
 				]),
-				group('Goals', '目标', 'เป้าหมาย', 'goals'),
+				section('Goals', '目标', 'เป้าหมาย', [
+					link('Overview', '概览', 'ภาพรวม', 'goals'),
+					section('Extend', '延寿', 'ยืดสุขภาพ', [
+						link('Overview', '概览', 'ภาพรวม', 'goals/longevity'),
+						link('Hallmarks of aging', '衰老标志', 'เครื่องหมายของความชรา', 'goals/longevity/hallmarks-of-aging'),
+						link('NIA ITP', 'NIA 干预测试计划', 'โครงการทดสอบ NIA', 'goals/longevity/nia-itp'),
+					]),
+					link('Restore', '修复', 'ฟื้นฟู', 'goals/restore'),
+					link('Enhance', '增强', 'เสริมศักยภาพ', 'goals/enhance'),
+				]),
 				{
 					label: 'Guides',
 					translations: { 'zh-CN': '导读', th: 'คู่มือ' },

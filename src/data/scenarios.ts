@@ -2,7 +2,7 @@ import type { GoalId } from './domain-keywords';
 import type { LocaleId } from '../lib/locale';
 
 export type Localized = Record<LocaleId, string>;
-export type EvidenceBadge = 'approved' | 'trial' | 'early' | 'limited';
+export type EvidenceBadge = 'approved' | 'cleared' | 'trial' | 'early' | 'limited';
 
 export type Scenario = {
 	name: Localized;
@@ -69,9 +69,9 @@ export const domainScenarios: Record<string, Scenario[]> = {
 		{
 			name: L('Metformin and rapamycin', '二甲双胍与雷帕霉素', 'เมตฟอร์มินและราพามัยซิน'),
 			summary: L(
-				'AFAR describes TAME as a planned six-year trial of metformin in older adults and says it is still raising money to launch it, so the trial has no result here. Separately, a 2009 mouse study from the NIA Interventions Testing Program found that rapamycin, started late in life, extended median and maximal lifespan in both sexes.',
-				'美国衰老研究联合会把 TAME 描述为计划中的六年二甲双胍试验，并表示仍在筹资启动，因此这里没有试验结果。另一边，美国衰老研究所干预测试计划 2009 年的小鼠研究发现，晚年才开始喂食的雷帕霉素延长了雌雄小鼠的中位寿命和最长寿命。',
-				'AFAR อธิบาย TAME ว่าเป็นการทดลองเมตฟอร์มินหกปีที่วางแผนไว้ในผู้สูงวัย และบอกว่ายังระดมทุนเพื่อเริ่ม จึงยังไม่มีผลที่นี่ อีกด้าน การศึกษาหนูปี 2009 ของโครงการทดสอบการแทรกแซง NIA พบว่าราพามัยซินที่เริ่มให้เมื่ออายุมากแล้ว ยืดทั้งอายุขัยมัธยฐานและอายุขัยสูงสุดในหนูทั้งสองเพศ',
+				'As of April 2024, AFAR describes TAME as a planned six-year trial of metformin in older adults and says it is still raising money to launch it, so the trial has no result here. Separately, a 2009 mouse study from the NIA Interventions Testing Program found that rapamycin, started late in life, extended median and maximal lifespan in both sexes.',
+				'截至 2024 年 4 月，美国衰老研究联合会把 TAME 描述为计划中的六年二甲双胍试验，并表示仍在筹资启动，因此这里没有试验结果。另一边，美国衰老研究所干预测试计划 2009 年的小鼠研究发现，晚年才开始喂食的雷帕霉素延长了雌雄小鼠的中位寿命和最长寿命。',
+				'ณ เดือนเมษายน 2024 AFAR อธิบาย TAME ว่าเป็นการทดลองเมตฟอร์มินหกปีที่วางแผนไว้ในผู้สูงวัย และบอกว่ายังระดมทุนเพื่อเริ่ม จึงยังไม่มีผลที่นี่ อีกด้าน การศึกษาหนูปี 2009 ของโครงการทดสอบการแทรกแซง NIA พบว่าราพามัยซินที่เริ่มให้เมื่ออายุมากแล้ว ยืดทั้งอายุขัยมัธยฐานและอายุขัยสูงสุดในหนูทั้งสองเพศ',
 			),
 			goals: ['extend'],
 			badge: 'early',
@@ -199,7 +199,7 @@ export const domainScenarios: Record<string, Scenario[]> = {
 				'FDA รับรองระบบ NeuroStar TMS ในปี 2008 สำหรับผู้ใหญ่ที่มีโรคซึมเศร้าหลักที่ยาต้านเศร้าก่อนหน้าหนึ่งชนิดยังช่วยได้ไม่พอ เป็นเครื่องมือตามใบสั่งที่ใช้ภายใต้การดูแลจิตแพทย์',
 			),
 			goals: ['restore'],
-			badge: 'approved',
+			badge: 'cleared',
 			href: '/neurohacking/neuromodulation/tms/',
 			sources: [{
 				url: 'https://www.accessdata.fda.gov/cdrh_docs/pdf8/K083538.pdf',
@@ -413,6 +413,7 @@ export function scenariosFor(slug: string): Scenario[] {
 
 export const evidenceBadge: Record<EvidenceBadge, Localized> = {
 	approved: L('Approved', '已获批', 'อนุมัติแล้ว'),
+	cleared: L('Cleared', '已获许可', 'ได้รับอนุญาต'),
 	trial: L('Clinical trial', '临床试验', 'การทดลองทางคลินิก'),
 	early: L('Animal or early research', '仅动物或早期研究', 'การศึกษาในสัตว์หรือระยะต้น'),
 	limited: L('Limited evidence', '证据有限', 'หลักฐานจำกัด'),
