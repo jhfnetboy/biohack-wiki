@@ -1,0 +1,32 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+import PageFacts from './PageFacts.astro';
+
+const lang = Astro.locals.starlightRoute?.lang ?? 'en';
+const isZh = lang.toLowerCase().startsWith('zh');
+const href = isZh ? '/zh-cn/disclaimer/' : '/disclaimer/';
+---
+
+<PageFacts />
+<p class="bh-footer-note">
+	{
+		isZh ? (
+			<>
+				教育参考，不是医疗建议。<a href={href}>医疗免责声明</a>
+			</>
+		) : (
+			<>
+				Educational reference. Not medical advice. <a href={href}>Medical disclaimer</a>
+			</>
+		)
+	}
+</p>
+<Default><slot /></Default>
+
+<style>
+	.bh-footer-note {
+		margin: 1.5rem 0 0;
+		font-size: var(--sl-text-xs);
+		color: var(--sl-color-gray-3);
+	}
+</style>

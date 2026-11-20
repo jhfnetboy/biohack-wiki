@@ -1,0 +1,25 @@
+{
+  "name": "biohack-wiki",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BioHack Wiki: a sourced, conservative reference for peptides, neurotechnology, assistive devices, and related domains.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.10",
+    "@astrojs/sitemap": "3.7.6",
+    "@astrojs/starlight": "0.43.1",
+    "astro": "7.4.13",
+    "starlight-links-validator": "0.27.0"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,204 @@
+---
+type Source = { url: string; title: string; accessed: string; type?: string };
+
+interface PageData {
+	title?: string;
+	entityType?: string;
+	domain?: string;
+	domains?: string[];
+	evidenceLevel?: string;
+	regulatoryStatus?: string;
+	lastReviewed?: string;
+	status?: string;
+	sources?: Source[];
+}
+
+const route = Astro.locals.starlightRoute;
+const data = route?.entry?.data as PageData | undefined;
+const lang = (route?.lang ?? 'en').toLowerCase();
+const isZh = lang.startsWith('zh');
+
+const evidence: Record<string, string> = isZh
+	? {
+			A: 'A · 人体随机对照',
+			B: 'B · 人体观察性',
+			C: 'C · 动物',
+			D: 'D · 体外',
+			E: 'E · 轶事',
+			unrated: '未评级',
+		}
+	: {
+			A: 'A · human randomized trial',
+			B: 'B · human observational',
+			C: 'C · animal',
+			D: 'D · in vitro',
+			E: 'E · anecdote',
+			unrated: 'Not rated',
+		};
+
+const entityLabels: Record<string, string> = isZh
+	? {
+			compound: '化合物',
+			device: '器械',
+			company: '公司',
+			trial: '临床试验',
+			study: '研究',
+			vendor: '厂商',
+			regulation: '法规',
+			glossary: '术语',
+			guide: '指南',
+			topic: '主题',
+			comparison: '对比',
+			navigation: '导航',
+			policy: '政策',
+		}
+	: {
+			compound: 'Compound',
+			device: 'Device',
+			company: 'Company',
+			trial: 'Trial',
+			study: 'Study',
+			vendor: 'Vendor',
+			regulation: 'Regulation',
+			glossary: 'Glossary',
+			guide: 'Guide',
+			topic: 'Topic',
+			comparison: 'Comparison',
+			navigation: 'Navigation',
+			policy: 'Policy',
+		};
+
+const rawPages = import.meta.glob('../content/docs/**/*.{md,mdx}', {
+	eager: true,
+	query: '?raw',
+	import: 'default',
+}) as Record<string, string>;
+
+function idFromPath(filePath: string): string {
+	const normalized = filePath.replaceAll('\\', '/');
+	const marker = '/content/docs/';
+	const idx = normalized.lastIndexOf(marker);
+	let rel = idx >= 0 ? normalized.slice(idx + marker.length) : normalized;
+	rel = rel.replace(/\.(md|mdx)$/, '');
+	if (rel.endsWith('/index')) rel = rel.slice(0, -'/index'.length);
+	if (rel === 'index') rel = '';
+	return rel;
+}
+
+function titleFrom(raw: string): string {
+	const fm = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? '';
+	const title = fm.match(/^title:\s*(.+)$/m)?.[1]?.trim() ?? 'Untitled';
+	return title.replace(/^['"]|['"]$/g, '');
+}
+
+const currentId = (route?.id ?? '').replace(/\/$/, '');
+const currentTargets = new Set<string>();
+if (currentId) {
+	currentTargets.add(`/${currentId}`);
+	currentTargets.add(`/${currentId}/`);
+} else {
+	currentTargets.add('/');
+	currentTargets.add('');
+}
+
+const backlinks: { href: string; title: string }[] = [];
+if (data?.entityType) {
+	for (const [filePath, raw] of Object.entries(rawPages)) {
+		const id = idFromPath(filePath);
+		if (id === currentId) continue;
+		const hrefs = new Set<string>();
+		for (const match of raw.matchAll(/\[[^\]]*\]\(([^)\s]+)\)/g)) hrefs.add(match[1] ?? '');
+		for (const match of raw.matchAll(/href="([^"]+)"/g)) hrefs.add(match[1] ?? '');
+		let hit = false;
+		for (const href of hrefs) {
+			if (!href.startsWith('/')) continue;
+			const bare = href.split('#')[0] ?? '';
+			const slashed = bare.endsWith('/') ? bare : `${bare}/`;
+			if (currentTargets.has(bare) || currentTargets.has(slashed)) hit = true;
+		}
+		if (!hit) continue;
+		backlinks.push({ href: id ? `/${id}/` : '/', title: titleFrom(raw) });
+	}
+	backlinks.sort((a, b) => a.title.localeCompare(b.title, isZh ? 'zh' : 'en'));
+}
+
+const sources = data?.sources ?? [];
+const show = Boolean(data?.entityType);
+---
+
+{
+	show && (
+		<section class="bh-facts" data-pagefind-ignore>
+			<h2>{isZh ? '页面记录' : 'Page record'}</h2>
+			<ul class="bh-meta">
+				<li>
+					{isZh ? '类型' : 'Type'}: {entityLabels[data?.entityType ?? ''] ?? data?.entityType}
+				</li>
+				{data?.domain && (
+					<li>
+						{isZh ? '领域' : 'Domain'}: {data.domain}
+					</li>
+				)}
+				<li>
+					{isZh ? '证据' : 'Evidence'}: {evidence[data?.evidenceLevel ?? 'unrated'] ?? data?.evidenceLevel}
+				</li>
+				{data?.status && (
+					<li>
+						{isZh ? '状态' : 'Status'}: {data.status}
+					</li>
+				)}
+				{data?.lastReviewed && (
+					<li>
+						{isZh ? '最近审阅' : 'Last reviewed'}: {data.lastReviewed}
+					</li>
+				)}
+			</ul>
+			{data?.regulatoryStatus && (
+				<p>
+					<strong>{isZh ? '法规状态：' : 'Regulatory status: '}</strong>
+					{data.regulatoryStatus}
+				</p>
+			)}
+			{data?.status === 'stub' && (
+				<p>
+					<strong>{isZh ? '存根，需要来源。' : 'Stub, needs sourcing.'}</strong>{' '}
+					{isZh
+						? '本页没有足够的已核对事实，不能当作参考依据。'
+						: 'This page does not yet contain enough checked facts to use as a reference.'}
+				</p>
+			)}
+			<h2>{isZh ? '来源' : 'Sources'}</h2>
+			{sources.length === 0 ? (
+				<p>{isZh ? '本页没有附上外部来源。' : 'No external sources are attached to this page.'}</p>
+			) : (
+				<ul>
+					{sources.map((source) => (
+						<li>
+							<a href={source.url}>{source.title}</a>
+							{' '}
+							({source.type ? `${source.type}, ` : ''}
+							{isZh ? '查阅于' : 'accessed'} {source.accessed})
+						</li>
+					))}
+				</ul>
+			)}
+			<h2>{isZh ? '被以下页面引用' : 'Referenced by'}</h2>
+			{backlinks.length === 0 ? (
+				<p>{isZh ? '还没有其他页面链接到这里。' : 'No other page links here yet.'}</p>
+			) : (
+				<ul>
+					{backlinks.map((link) => (
+						<li>
+							<a href={link.href}>{link.title}</a>
+						</li>
+					))}
+				</ul>
+			)}
+			<p>
+				{isZh
+					? '其他维基页面的互相引用不是证据。事实应指向上面的来源。'
+					: 'A link from another wiki page is not evidence. Facts should point at the sources above.'}
+			</p>
+		</section>
+	)
+}

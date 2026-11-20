@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="BioHack Wiki">
+  <rect width="32" height="32" rx="6" fill="#12352c"/>
+  <path d="M8 22.5c2.2-6 4.2-9 8-13 3.8 4 5.8 7 8 13" fill="none" stroke="#d7f5ea" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="16" cy="10" r="2" fill="#d7f5ea"/>
+</svg>

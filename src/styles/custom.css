@@ -1,0 +1,52 @@
+.bh-banner {
+	margin: 0;
+	padding: 0.55rem 1rem;
+	background: var(--sl-color-banner-bg, var(--sl-color-bg-accent));
+	color: var(--sl-color-banner-text, var(--sl-color-text-invert));
+	font-size: var(--sl-text-sm);
+	line-height: 1.45;
+	text-align: center;
+}
+
+.bh-banner a {
+	color: inherit;
+	font-weight: 650;
+	text-underline-offset: 0.15em;
+}
+
+.bh-facts {
+	margin-top: 2.5rem;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--sl-color-gray-5);
+	font-size: var(--sl-text-sm);
+}
+
+.bh-facts h2 {
+	font-size: var(--sl-text-h5);
+	margin: 0 0 0.75rem;
+}
+
+.bh-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	margin: 0 0 1rem;
+	padding: 0;
+	list-style: none;
+}
+
+.bh-meta li {
+	margin: 0;
+	padding: 0.15rem 0.5rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 999px;
+}
+
+.bh-facts ul {
+	margin: 0;
+	padding-left: 1.1rem;
+}
+
+.bh-facts li + li {
+	margin-top: 0.35rem;
+}
