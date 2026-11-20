@@ -19,6 +19,11 @@ const id = localeId(Astro.locals.starlightRoute?.lang);
 const prefix = localePrefix(id);
 const t = (en: string, zh: string) => pick(id, en, zh);
 const href = (path: string) => `${prefix}${path}`;
+const layerWord = {
+	Observe: { en: 'Observe', zh: '观测', th: 'สังเกต' },
+	Intervene: { en: 'Intervene', zh: '干预', th: 'แทรกแซง' },
+	Augment: { en: 'Augment', zh: '增强', th: 'เสริม' },
+} as const;
 
 function cardTitle(card: Card) {
 	return t(card.title, card.titleZh);
@@ -38,7 +43,7 @@ function cardText(card: Card) {
 			{
 				domain.layers.map((layer) => (
 					<li>
-						{t('Layer', '层次')} · {t(layer, layer)}
+						{id === 'en' ? 'Layer' : id === 'zh' ? '层次' : 'ชั้น'} · {layerWord[layer][id]}
 					</li>
 				))
 			}

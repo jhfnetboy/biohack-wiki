@@ -34,8 +34,8 @@ export const illustrations: Record<string, Illustration> = {
 	},
 	'domain-biochemical': {
 		src: domainBiochemical,
-		alt: 'AI-generated illustration. Peptide-like molecular chains above laboratory glassware.',
-		altZh: 'AI 生成插图。实验室器皿上方的多肽分子链。',
+		alt: 'AI-generated illustration. Laboratory glassware with small-molecule motifs.',
+		altZh: 'AI 生成插图。实验室器皿与小分子意象。',
 	},
 	'domain-neurohacking': {
 		src: domainNeurohacking,

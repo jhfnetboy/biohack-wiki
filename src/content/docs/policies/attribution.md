@@ -22,7 +22,7 @@ Made for BioHack Wiki on 20 November 2026. They are not photographs of real pati
 | File | What it shows |
 | --- | --- |
 | hero.webp | Luminous silhouette with measurement, biochemical, and neural layers |
-| domain-biochemical.webp | Peptide-like chains above glassware |
+| domain-biochemical.webp | Laboratory glassware with small-molecule motifs |
 | domain-neurohacking.webp | Brain, network, and a generic EEG headset |
 | domain-bionic.webp | Myoelectric prosthetic hand |
 | domain-cyborg.webp | Small implant chip under the skin of a hand |

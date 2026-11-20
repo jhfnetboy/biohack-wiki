@@ -1,6 +1,6 @@
 ---
+import { evidenceBadge, scenariosFor, type EvidenceBadge, type Scenario } from '../../data/scenarios';
 import { goalLabel, type GoalId } from '../../data/domain-keywords';
-import { scenariosFor, type Scenario } from '../../data/scenarios';
 import { localeId, localePrefix, pick } from '../../lib/locale';
 
 interface Props {
@@ -14,10 +14,6 @@ const prefix = localePrefix(id);
 const t = (en: string, zh: string) => pick(id, en, zh);
 const text = (row: Scenario['name']) => row[id];
 const href = (path: string) => `${prefix}${path}`;
-
-function chips(scenario: Scenario): GoalId[] {
-	return scenario.goals;
-}
 ---
 
 {
@@ -26,28 +22,31 @@ function chips(scenario: Scenario): GoalId[] {
 			<h2>{t('Typical scenarios', '典型场景')}</h2>
 			<p class="bh-note">
 				{t(
-					'A named situation and the real examples this wiki can point at. A stub is not a result. No doses and no purchasing.',
-					'一个点名的情境，以及本维基能指到的真实例子。存根不是结果。没有剂量，也没有购买信息。',
+					'Real situations this wiki can point to. A stub means the evidence has not been summarized here. No doses and no purchasing.',
+					'本维基能够指到的真实情境。存根表示证据还没有在这里整理。没有剂量，也没有购买信息。',
 				)}
 			</p>
 			<ul class="bh-grid">
 				{scenarios.map((scenario) => (
-					<li class:list={['bh-card', { stub: scenario.stub }]}>
-						{scenario.stub && <span class="bh-pill stub">{t('Stub, needs sourcing', '存根，需要来源')}</span>}
-						<h3>{text(scenario.name)}</h3>
-						<p>
-							<strong>{t('What is used', '用的是什么')}</strong> {text(scenario.uses)}
-						</p>
+					<li class:list={['bh-card', 'bh-scenario', { stub: scenario.stub }]}>
 						<p class="bh-scenario-meta">
-							{chips(scenario).map((goal) => (
+							<span class:list={['bh-evidence', scenario.badge]}>{evidenceBadge[scenario.badge][id]}</span>
+							{scenario.goals.map((goal: GoalId) => (
 								<span class:list={['bh-goal', goal]}>{goalLabel(goal, id)}</span>
 							))}
 						</p>
-						<p>
-							<strong>{t('Evidence status', '证据状态')}</strong> {text(scenario.status)}
-						</p>
-						<p>{text(scenario.note)}</p>
-						{scenario.href && <a href={href(scenario.href)}>{t('Open', '打开')}</a>}
+						<h3>{text(scenario.name)}</h3>
+						<p>{text(scenario.summary)}</p>
+						{scenario.sources && scenario.sources.length > 0 && (
+							<ul class="bh-sources">
+								{scenario.sources.map((source) => (
+									<li>
+										<a href={source.url} rel="noopener noreferrer">{source.label}</a>
+									</li>
+								))}
+							</ul>
+						)}
+						{scenario.href && <a href={href(scenario.href)}>{t('Wiki page', '维基页面')}</a>}
 					</li>
 				))}
 			</ul>

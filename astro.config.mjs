@@ -65,6 +65,18 @@ const group = (label, zh, th, directory) => ({
 	items: [{ autogenerate: { directory } }],
 });
 
+const link = (label, zh, th, slug) => ({
+	label,
+	translations: { 'zh-CN': zh, th },
+	slug,
+});
+
+const section = (label, zh, th, items) => ({
+	label,
+	translations: { 'zh-CN': zh, th },
+	items,
+});
+
 // https://starlight.astro.build/reference/configuration/
 export default defineConfig({
 	site,
@@ -164,16 +176,54 @@ export default defineConfig({
 						},
 					],
 				},
-				group('Quantified self', '量化自我', 'การวัดตนเอง', 'quantified-self'),
+				section('Quantified self', '量化自我', 'การวัดตนเอง', [
+					link('Overview', '概览', 'ภาพรวม', 'quantified-self'),
+					link('Continuous glucose monitors', '连续血糖监测', 'เครื่องวัดกลูโคสต่อเนื่อง', 'quantified-self/cgm'),
+					link('Heart-rate variability', '心率变异性', 'ความแปรปรวนของอัตราหัวใจ', 'quantified-self/hrv'),
+				]),
 				group('Environmental Signals', '环境信号', 'สัญญาณสิ่งแวดล้อม', 'lifestyle'),
-				group('Biochemical', '生化小分子', 'ชีวเคมีโมเลกุลเล็ก', 'biochemical'),
+				section('Biochemical', '生化小分子', 'ชีวเคมีโมเลกุลเล็ก', [
+					link('Overview', '概览', 'ภาพรวม', 'biochemical'),
+					link('Hormones', '激素与内分泌', 'ฮอร์โมน', 'biochemical/hormones'),
+					link('Metabolic health', '代谢健康与营养', 'สุขภาพเมแทบอลิซึม', 'biochemical/metabolic'),
+					link('Nootropics', '认知增强', 'สารเสริมการรู้คิด', 'biochemical/nootropics'),
+				]),
 				group('Peptides', '肽', 'เปปไทด์', 'peptides'),
 				group('Genetic', '基因', 'พันธุกรรม', 'genetic'),
 				group('Cellular & Regenerative', '细胞与再生', 'เซลล์และการฟื้นฟู', 'cellular'),
 				group('Microbiome', '微生物组', 'จุลินทรีย์', 'microbiome'),
-				group('Neurotech', '神经科技', 'เทคโนโลยีประสาท', 'neurohacking'),
-				group('Cyborg implants', '植入与赛博格', 'ไซบอร์ก', 'cyborg'),
-				group('Bionics', '仿生', 'ไบโอนิก', 'bionic'),
+				section('Neurotech', '神经科技', 'เทคโนโลยีประสาท', [
+					link('Overview', '概览', 'ภาพรวม', 'neurohacking'),
+					section('Brain-computer interfaces', '脑机接口', 'ส่วนต่อประสานสมองกับคอมพิวเตอร์', [
+						link('Overview', '概览', 'ภาพรวม', 'neurohacking/bci'),
+						link('Neuralink N1', 'Neuralink N1', 'Neuralink N1', 'neurohacking/bci/neuralink-n1'),
+						link('Speech decoding', '语音解码', 'การถอดรหัสคำพูด', 'neurohacking/bci/speech-decoding'),
+						link('Synchron Stentrode', 'Synchron Stentrode', 'Synchron Stentrode', 'neurohacking/bci/synchron-stentrode'),
+					]),
+					section('Neuromodulation', '神经调控', 'การปรับการทำงานของประสาท', [
+						link('Overview', '概览', 'ภาพรวม', 'neurohacking/neuromodulation'),
+						link('tDCS', 'tDCS', 'tDCS', 'neurohacking/neuromodulation/tdcs'),
+						link('TMS', 'TMS 与 rTMS', 'TMS', 'neurohacking/neuromodulation/tms'),
+						link('Vagus nerve', '迷走神经刺激', 'การกระตุ้นเส้นประสาทเวกัส', 'neurohacking/neuromodulation/vagus-nerve'),
+					]),
+					section('Non-invasive', '非侵入式神经技术', 'เทคโนโลยีประสาทแบบไม่ผ่าตัด', [
+						link('Overview', '概览', 'ภาพรวม', 'neurohacking/noninvasive'),
+						link('Consumer EEG', '消费级脑电设备', 'อุปกรณ์ EEG สำหรับผู้บริโภค', 'neurohacking/noninvasive/consumer-eeg'),
+						link('EEG paradigms', '脑电控制范式', 'กระบวนทัศน์ EEG', 'neurohacking/noninvasive/eeg-paradigms'),
+						link('fNIRS and Kernel', 'fNIRS 与 Kernel', 'fNIRS และ Kernel', 'neurohacking/noninvasive/fnirs-kernel'),
+					]),
+				]),
+				section('Cyborg implants', '植入与赛博格', 'ไซบอร์ก', [
+					link('Overview', '概览', 'ภาพรวม', 'cyborg'),
+					link('Grinder implants', 'Grinder 植入物', 'อุปกรณ์ฝังของ grinder', 'cyborg/grinder-implants'),
+				]),
+				section('Bionics', '仿生', 'ไบโอนิก', [
+					link('Overview', '概览', 'ภาพรวม', 'bionic'),
+					link('Prosthetic hands', '肌电假手', 'มือเทียม', 'bionic/bionic-hands'),
+					link('EMG pattern recognition', '肌电模式识别', 'การรู้จำรูปแบบ EMG', 'bionic/emg-pattern-recognition'),
+					link('Exoskeletons', '外骨骼', 'โครงกระดูกกล', 'bionic/exoskeletons'),
+					link('Osseointegration', '骨整合', 'การยึดกับกระดูก', 'bionic/tmr-osseointegration'),
+				]),
 				group('Goals', '目标', 'เป้าหมาย', 'goals'),
 				{
 					label: 'Guides',
