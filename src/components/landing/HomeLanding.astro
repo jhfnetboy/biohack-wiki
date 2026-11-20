@@ -1,48 +1,9 @@
 ---
+import BodyMap from './BodyMap.astro';
 import Illustration from './Illustration.astro';
-import { domains } from '../../data/domains';
 import { positioning, repoUrl } from '../../data/positioning';
 import { localeId, localePrefix, pick } from '../../lib/locale';
 import { toneLabel } from '../../lib/tone-label';
-
-const blurbs: Record<string, { en: string; zh: string }> = {
-	biochemical: {
-		en: 'Peptides, hormones, metabolic drugs and supplements',
-		zh: '肽、激素、代谢药物与补充剂',
-	},
-	neurohacking: {
-		en: 'Brain signals, stimulation, and interfaces',
-		zh: '脑信号、刺激与脑机接口',
-	},
-	bionic: {
-		en: 'Prostheses, exoskeletons, and assistive devices',
-		zh: '假肢、外骨骼与辅助装置',
-	},
-	cyborg: {
-		en: 'Implants and sensors placed in the body',
-		zh: '体内植入物与传感器',
-	},
-	genetic: {
-		en: 'Gene and cell research topics',
-		zh: '基因与细胞研究',
-	},
-	longevity: {
-		en: 'Aging biology and healthspan research',
-		zh: '衰老生物学与健康寿命',
-	},
-	'quantified-self': {
-		en: 'Wearables, glucose monitors, and heart data',
-		zh: '可穿戴、血糖与心率数据',
-	},
-	microbiome: {
-		en: 'Gut microbes, diet, and related oversight',
-		zh: '肠道微生物、饮食与监管',
-	},
-	lifestyle: {
-		en: 'Sleep, light, movement, and temperature',
-		zh: '睡眠、光照、运动与温度',
-	},
-};
 
 const id = localeId(Astro.locals.starlightRoute?.lang);
 const copy = id === 'zh' ? positioning.zh : id === 'th' ? positioning.th : positioning.en;
@@ -54,29 +15,7 @@ const diagram = (file: string) =>
 ---
 
 <article class="bh-home">
-	<section id="domains" class="bh-coverage">
-		<div class="bh-section-head">
-			<h2>{t('Nine domains', '覆盖的领域')}</h2>
-		</div>
-		<ul class="bh-domains">
-			{
-				domains.map((domain) => {
-					const blurb = blurbs[domain.slug];
-					return (
-						<li>
-							<a class="bh-domain-link" href={href(`/${domain.slug}/`)}>
-								<Illustration name={domain.slot} size="thumb" />
-								<span>
-									<strong>{t(domain.title, domain.titleZh)}</strong>
-									<em>{blurb ? t(blurb.en, blurb.zh) : ''}</em>
-								</span>
-							</a>
-						</li>
-					);
-				})
-			}
-		</ul>
-	</section>
+	<BodyMap />
 
 	<section>
 		<h2>{t('What we provide', '我们提供的价值和帮助')}</h2>

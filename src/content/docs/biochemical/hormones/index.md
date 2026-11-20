@@ -8,7 +8,9 @@ domains:
   - "biochemical"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "unknown"
 lastReviewed: "2026-11-20"
 status: "reviewed"
@@ -16,7 +18,7 @@ sidebar:
   order: 0
 ---
 
-The Endocrine Society site is a place an editor can start. This index does not summarize a guideline, because none was opened.
+The Endocrine Society site is a place an editor can start. This index does not summarize a guideline, because none was opened. Steroid and thyroid hormones stay in this biochemical domain. Peptide and protein hormones are filed under [peptides](/peptides/).
 
 ## Not yet written
 

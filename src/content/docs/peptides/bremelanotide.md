@@ -3,16 +3,18 @@ title: "Bremelanotide"
 titleZh: "Bremelanotide"
 description: "Label facts for VYLEESI (bremelanotide): indication, limitations, and a cardiovascular warning. The dose is not copied."
 entityType: "compound"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 aliases:
   - "PT-141"
   - "bremelanotide"
   - "Vyleesi"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "commercial"
 lastReviewed: "2026-11-20"
 status: "reviewed"

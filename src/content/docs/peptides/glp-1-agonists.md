@@ -3,12 +3,14 @@ title: "GLP-1 receptor agonists"
 titleZh: "GLP-1 受体激动剂"
 description: "What FDA has said about unapproved and compounded GLP-1 drugs, including semaglutide, tirzepatide, retatrutide, survodutide, and mazdutide."
 entityType: "topic"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"

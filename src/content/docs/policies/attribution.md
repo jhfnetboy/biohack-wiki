@@ -27,7 +27,9 @@ Made for BioHack Wiki on 20 November 2026. They are not photographs of real pati
 | domain-bionic.webp | Myoelectric prosthetic hand |
 | domain-cyborg.webp | Small implant chip under the skin of a hand |
 | domain-genetic.webp | DNA helix and an abstract editing motif |
-| domain-longevity.webp | Cells around an hourglass |
+| domain-longevity.webp | Cells around an hourglass, reused for the cellular domain |
+| domain-peptides.webp | Peptide chain, vial, and a certificate of analysis |
+| body-center.webp | Centered luminous human figure for the homepage map |
 | domain-quantified-self.webp | Generic ring, watch, CGM-style patch, and curves |
 | domain-microbiome.webp | Stylized gut microbial community |
 | domain-lifestyle.webp | Circadian arc with sleep, movement, and cold-water motifs |

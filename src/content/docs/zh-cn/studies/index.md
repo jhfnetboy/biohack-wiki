@@ -17,6 +17,6 @@ sidebar:
 
 ## 链接
 
-- [衰老的十二个标志](/zh-cn/longevity/hallmarks-of-aging/)
+- [衰老的十二个标志](/zh-cn/goals/longevity/hallmarks-of-aging/)
 
 本页不提供剂量、滴定方案、注射或植入操作、配制步骤，也不提供购买渠道。

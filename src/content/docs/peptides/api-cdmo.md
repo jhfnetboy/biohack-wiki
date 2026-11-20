@@ -3,12 +3,14 @@ title: "Peptide API and CDMO map"
 titleZh: "肽原料药与 CDMO"
 description: "Stub page reserved for Peptide API and CDMO map. No checked facts yet. Not medical advice or a buying guide."
 entityType: "topic"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "stub"

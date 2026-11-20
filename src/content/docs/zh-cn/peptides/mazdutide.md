@@ -3,14 +3,16 @@ title: "Mazdutide"
 titleZh: "Mazdutide"
 description: "FDA 将 mazdutide 列为以虚假研究用标签销售的未经批准药物之一。此处不写药理。"
 entityType: "compound"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 aliases:
   - "mazdutide"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "research"
 lastReviewed: "2026-11-20"
 status: "reviewed"

@@ -19,7 +19,7 @@ export type DomainDef = {
 	definition: string;
 	definitionZh: string;
 	layers: Array<'Observe' | 'Intervene' | 'Augment'>;
-	purposes: Array<'Restoration' | 'Enhancement'>;
+	goals: Array<'restore' | 'enhance' | 'extend'>;
 	areas: Card[];
 	examples: Card[];
 	maturityRows: { label: string; labelZh: string; note: string; noteZh: string; tone: Tone }[];
@@ -35,20 +35,35 @@ export const domains: DomainDef[] = [
 	{
 		slug: 'biochemical',
 		slot: 'domain-biochemical',
-		title: 'Biochemical hacking',
-		titleZh: '生物化学干预',
+		title: 'Biochemical',
+		titleZh: '生化小分子',
 		definition:
-			'This wiki files peptides, hormones, metabolic notes, and chemical nootropics here. The folder is a map, not a menu of things to take.',
-		definitionZh: '本维基把肽、激素、代谢笔记和化学类促认知物质放在这里。这是地图，不是服用清单。',
+			'Adding chemical molecules that are not amino-acid chains: nutrients, supplements, small-molecule drugs, and steroid hormones. Effects depend on dose and usually fade after you stop. Not a menu of things to take.',
+		definitionZh: '加入非氨基酸链的化学分子：营养素、补充剂、小分子药物和类固醇激素。效果依赖剂量，停用后通常会消退。不是服用清单。',
 		layers: ['Intervene'],
-		purposes: ['Restoration', 'Enhancement'],
+		goals: ['restore', 'enhance', 'extend'],
 		areas: [
 			{
 				title: 'Peptides',
 				titleZh: '肽',
-				text: 'Own path at /peptides/, still filed in this domain. Reserved for a future peptides subdomain.',
-				textZh: '独立路径 /peptides/，仍归本领域。预留给以后的 peptides 子域名。',
+				text: 'A sibling domain, not a section of this one. Amino-acid chains are filed there.',
+				textZh: '并列领域，不是本领域的一节。氨基酸链归在那里。',
 				href: '/peptides/',
+			},
+			{
+				title: 'Senolytics',
+				titleZh: '清除衰老细胞的小分子',
+				text: 'Small molecules aimed at senescent cells. Stub, needs sourcing. No doses.',
+				textZh: '针对衰老细胞的小分子。存根，需要来源。没有剂量。',
+				stub,
+			},
+			{
+				title: 'Rapamycin',
+				titleZh: '雷帕霉素',
+				text: 'A small molecule, not a peptide. No outcome is stated.',
+				textZh: '小分子，不是肽。不写结局。',
+				href: '/goals/longevity/nia-itp/',
+				stub,
 			},
 			{
 				title: 'GLP-1 related names',
@@ -203,7 +218,7 @@ export const domains: DomainDef[] = [
 		],
 		related: [
 			{ href: '/quantified-self/', title: 'Quantified self', titleZh: '自我量化' },
-			{ href: '/longevity/', title: 'Longevity', titleZh: '长寿' },
+			{ href: '/goals/longevity/', title: 'Extend (healthspan)', titleZh: '延寿（健康寿命）' },
 			{ href: '/neurohacking/', title: 'Neurohacking', titleZh: '神经增强' },
 		],
 		startHere: [
@@ -215,13 +230,13 @@ export const domains: DomainDef[] = [
 	{
 		slug: 'neurohacking',
 		slot: 'domain-neurohacking',
-		title: 'Neurohacking',
-		titleZh: '脑科学与神经增强',
+		title: 'Neurotech',
+		titleZh: '神经科技',
 		definition:
-			'Recording, stimulation, and brain-computer interfaces. The split is editorial. It is not a ranking of evidence, and this page states no performance numbers.',
-		definitionZh: '记录、刺激和脑机接口。这样划分是编辑选择，不是证据排名。本页不写性能数字。',
+			'Reading or writing nerve signals with electricity, magnetism, light, or electrodes, from EEG to brain-computer interfaces. Chemical nootropics are biochemical. No performance numbers.',
+		definitionZh: '用电、磁、光或电极直接读写神经信号，从脑电到脑机接口。化学类促认知物质归在生化小分子。本页不写性能数字。',
 		layers: ['Observe', 'Intervene', 'Augment'],
-		purposes: ['Restoration', 'Enhancement'],
+		goals: ['restore', 'enhance'],
 		areas: [
 			{
 				title: 'EEG and neurofeedback',
@@ -430,14 +445,14 @@ export const domains: DomainDef[] = [
 	{
 		slug: 'bionic',
 		slot: 'domain-bionic',
-		title: 'Bionic augmentation',
-		titleZh: '仿生与智能义肢',
+		title: 'Bionics',
+		titleZh: '仿生',
 		definition:
 			'Prostheses, exoskeletons, and control methods aimed at replacing or assisting movement. WHO’s assistive-technology fact sheet is the sourced overview of function domains. Product comparisons are stubs.',
 		definitionZh:
 			'假肢、外骨骼和旨在替代或辅助动作的控制方法。WHO 辅助技术事实清单是功能域的有来源总览。产品对比是存根。',
 		layers: ['Observe', 'Augment'],
-		purposes: ['Restoration'],
+		goals: ['restore', 'enhance'],
 		areas: [
 			{
 				title: 'Hands: passive, body-powered, myoelectric, bionic',
@@ -606,13 +621,13 @@ export const domains: DomainDef[] = [
 	{
 		slug: 'cyborg',
 		slot: 'domain-cyborg',
-		title: 'Cyborg and grinder',
-		titleZh: '人体植入与赛博格',
+		title: 'Cyborg implants',
+		titleZh: '植入与赛博格',
 		definition:
-			'Objects placed in the body outside prosthetic and gene-therapy folders. This page does not give placement steps, body sites, or sellers.',
-		definitionZh: '假肢和基因治疗之外、放入身体的物体。本页不写植入步骤、身体部位或卖家。',
+			'Hardware under the skin that does not read or write the brain: chips, magnets, and sensors. Nerve interfaces are neurotech. This page does not give placement steps or sellers.',
+		definitionZh: '不读写大脑的皮下硬件：芯片、磁体和传感器。神经接口归在神经科技。本页不写植入步骤或卖家。',
 		layers: ['Augment'],
-		purposes: ['Enhancement'],
+		goals: ['enhance'],
 		areas: [
 			{
 				title: 'NFC and RFID implants',
@@ -726,19 +741,19 @@ export const domains: DomainDef[] = [
 	{
 		slug: 'genetic',
 		slot: 'domain-genetic',
-		title: 'Genetic biohacking',
-		titleZh: '基因与细胞工程',
+		title: 'Genetic',
+		titleZh: '基因',
 		definition:
-			'Gene and cell topics. Implants are filed under cyborg. This landing does not describe a laboratory method, and it does not list approved products because that list was not opened.',
-		definitionZh: '基因和细胞主题。植入物归在赛博格。本页不描述实验方法，也没有打开已批准产品清单，因此不列产品。',
+			'Reading or rewriting DNA or RNA: testing, gene therapy, and editing. A change is often one-time and may be irreversible. Living cells are filed under cellular. No laboratory methods.',
+		definitionZh: '阅读或改写 DNA 或 RNA：检测、基因治疗和编辑。改动往往是一次性的，而且可能不可逆。活细胞归在细胞与再生。没有实验方法。',
 		layers: ['Observe', 'Intervene', 'Augment'],
-		purposes: ['Restoration', 'Enhancement'],
+		goals: ['restore', 'extend'],
 		areas: [
 			{
-				title: 'Approved cellular and gene therapy products',
-				titleZh: '已批准的细胞和基因治疗产品',
-				text: 'Not written. FDA CBER is the named starting point. The list was not opened.',
-				textZh: '尚未撰写。FDA CBER 是点名的起点。清单没有打开。',
+				title: 'Gene testing',
+				titleZh: '基因检测',
+				text: 'Stub, needs sourcing. No product list.',
+				textZh: '存根，需要来源。没有产品清单。',
 				stub,
 			},
 			{
@@ -749,10 +764,10 @@ export const domains: DomainDef[] = [
 				stub,
 			},
 			{
-				title: 'Cell engineering',
-				titleZh: '细胞工程',
-				text: 'Stub, needs sourcing.',
-				textZh: '存根，需要来源。',
+				title: 'Epigenetic clocks',
+				titleZh: '表观遗传时钟',
+				text: 'Stub, needs sourcing. No error bars.',
+				textZh: '存根，需要来源。没有误差。',
 				stub,
 			},
 			{
@@ -832,8 +847,8 @@ export const domains: DomainDef[] = [
 			},
 		],
 		related: [
-			{ href: '/cyborg/', title: 'Cyborg', titleZh: '赛博格' },
-			{ href: '/longevity/', title: 'Longevity', titleZh: '长寿' },
+			{ href: '/cellular/', title: 'Cellular & Regenerative', titleZh: '细胞与再生' },
+			{ href: '/goals/longevity/', title: 'Extend (healthspan)', titleZh: '延寿（健康寿命）' },
 			{ href: '/overview/principles/', title: 'Principles', titleZh: '原则' },
 		],
 		startHere: [
@@ -842,50 +857,29 @@ export const domains: DomainDef[] = [
 		],
 	},
 	{
-		slug: 'longevity',
-		slot: 'domain-longevity',
-		title: 'Longevity',
-		titleZh: '长寿与抗衰老',
+		slug: 'cellular',
+		slot: 'domain-cellular',
+		title: 'Cellular & Regenerative',
+		titleZh: '细胞与再生',
 		definition:
-			'Aging biology as a research map. The twelve hallmarks are the names in one 2023 abstract. This page does not claim a proven way to extend human life.',
-		definitionZh: '把衰老生物学当作研究地图。十二个标志是 2023 年一篇摘要中的名称。本页不声称有已证实的延长人类寿命的方法。',
-		layers: ['Observe', 'Intervene'],
-		purposes: ['Restoration', 'Enhancement'],
+			'Using living cells or tissue as parts to repair, replace, or reprogram aging or damaged tissue. Educational only. No protocols, clinics, or purchasing.',
+		definitionZh: '把活细胞或组织当作零件，用来修复、替换或重编程衰老或受损的组织。仅供了解。没有操作流程、诊所或购买信息。',
+		layers: ['Intervene'],
+		goals: ['restore', 'extend'],
 		areas: [
 			{
-				title: 'Twelve hallmarks',
-				titleZh: '十二个标志',
-				text: 'Copied from PubMed 36599349. A framework, not a treatment list.',
-				textZh: '抄自 PubMed 36599349。是框架，不是治疗清单。',
-				href: '/longevity/hallmarks-of-aging/',
-			},
-			{
-				title: 'Epigenetic and other clocks',
-				titleZh: '表观遗传时钟等',
-				text: 'Stub, needs sourcing. No error bars.',
-				textZh: '存根，需要来源。没有误差。',
+				title: 'Stem-cell therapies',
+				titleZh: '干细胞疗法',
+				text: 'Stub, needs sourcing. No protocol and no clinic list.',
+				textZh: '存根，需要来源。没有操作流程，也不列诊所。',
 				stub,
 			},
 			{
-				title: 'Senolytics',
-				titleZh: 'Senolytics',
+				title: 'Tissue engineering',
+				titleZh: '组织工程',
 				text: 'Stub, needs sourcing.',
 				textZh: '存根，需要来源。',
 				stub,
-			},
-			{
-				title: 'NIA Interventions Testing Program',
-				titleZh: 'NIA 干预测试计划',
-				text: 'The program page was not retrieved. No mouse result is stated.',
-				textZh: '计划页面没有取回。不写小鼠结果。',
-				href: '/longevity/nia-itp/',
-				stub,
-			},
-			{
-				title: 'Healthspan and lifespan',
-				titleZh: '健康寿命与寿命',
-				text: 'Editorial distinction only. No year-count is claimed.',
-				textZh: '只是编辑上的区分。不声称年数。',
 			},
 			{
 				title: 'Partial reprogramming',
@@ -894,49 +888,46 @@ export const domains: DomainDef[] = [
 				textZh: '存根，需要来源。没有流程。',
 				stub,
 			},
+			{
+				title: 'Cell products such as CAR-T',
+				titleZh: 'CAR-T 等细胞产品',
+				text: 'Living cells are filed here. Nucleic-acid editing is genetic. Stub, needs sourcing.',
+				textZh: '活细胞归在这里。核酸编辑归在基因。存根，需要来源。',
+				stub,
+			},
 		],
 		examples: [
 			{
-				title: 'Hallmarks review',
-				titleZh: '标志综述',
-				text: 'PubMed 36599349.',
-				textZh: 'PubMed 36599349。',
-				href: '/longevity/hallmarks-of-aging/',
-				maturity: 'research',
-				evidence: 'unrated',
-			},
-			{
-				title: 'ITP',
-				titleZh: 'ITP',
-				text: 'Stub.',
-				textZh: '存根。',
-				href: '/longevity/nia-itp/',
-				maturity: 'research',
+				title: 'Partial reprogramming',
+				titleZh: '部分重编程',
+				text: 'Research-stage name only. No protocol.',
+				textZh: '只点研究阶段的名称。没有流程。',
+				maturity: 'highly-experimental',
 				evidence: 'unrated',
 				stub,
 			},
 			{
-				title: 'Rapamycin',
-				titleZh: '雷帕霉素',
-				text: 'Not filed as a peptide. No outcome is stated.',
-				textZh: '不作为肽归档。不写结局。',
-				href: '/peptides/',
-				maturity: 'unknown',
+				title: 'Senolytics',
+				titleZh: '清除衰老细胞的小分子',
+				text: 'Small molecules. Filed under biochemical, not here.',
+				textZh: '小分子。归在生化小分子，不在这里。',
+				href: '/biochemical/',
+				maturity: 'research',
 				evidence: 'unrated',
 				stub,
 			},
 		],
 		maturityRows: [
 			{
-				label: 'Hallmark names',
-				labelZh: '标志名称',
-				note: 'One abstract. Not an intervention result.',
-				noteZh: '一篇摘要。不是干预结果。',
-				tone: 'sourced',
+				label: 'Cell therapies',
+				labelZh: '细胞治疗',
+				note: 'Stub, needs sourcing.',
+				noteZh: '存根，需要来源。',
+				tone: 'stub',
 			},
 			{
-				label: 'Commercial anti-aging offers',
-				labelZh: '商业抗衰服务',
+				label: 'Tissue engineering',
+				labelZh: '组织工程',
 				note: 'Stub, needs sourcing.',
 				noteZh: '存根，需要来源。',
 				tone: 'stub',
@@ -944,29 +935,30 @@ export const domains: DomainDef[] = [
 		],
 		debates: [
 			{
-				title: 'Healthspan versus lifespan marketing',
-				titleZh: '健康寿命与寿命营销',
-				text: 'This wiki does not treat a commercial claim of reversed aging as evidence.',
-				textZh: '本维基不把“逆转衰老”的商业宣称当作证据。',
+				title: 'Clinic offers',
+				titleZh: '诊所服务',
+				text: 'Stub. Unapproved clinic offers are not reviewed here.',
+				textZh: '存根。未经批准的诊所服务这里不评。',
+				stub,
 			},
 		],
 		regulation: [
 			{
-				title: 'Drugs discussed for aging',
-				titleZh: '被讨论用于衰老的药物',
-				text: 'Stub unless a specific FDA page is already cited on a substance page.',
-				textZh: '除非某物质页已经引用具体 FDA 页面，否则是存根。',
+				title: 'United States',
+				titleZh: '美国',
+				text: 'Stub, needs sourcing. No product list.',
+				textZh: '存根，需要来源。没有产品清单。',
 				stub,
 			},
 		],
 		related: [
-			{ href: '/biochemical/', title: 'Biochemical', titleZh: '生物化学' },
-			{ href: '/quantified-self/', title: 'Quantified self', titleZh: '自我量化' },
 			{ href: '/genetic/', title: 'Genetic', titleZh: '基因' },
+			{ href: '/biochemical/', title: 'Biochemical', titleZh: '生化小分子' },
+			{ href: '/goals/longevity/', title: 'Extend (healthspan)', titleZh: '延寿（健康寿命）' },
 		],
 		startHere: [
-			{ href: '/longevity/hallmarks-of-aging/', title: 'Twelve hallmarks', titleZh: '十二个标志' },
-			{ href: '/overview/maturity/', title: 'Maturity matrix', titleZh: '成熟度矩阵' },
+			{ href: '/goals/', title: 'Goals', titleZh: '目标' },
+			{ href: '/goals/longevity/hallmarks-of-aging/', title: 'Twelve hallmarks', titleZh: '十二个标志' },
 		],
 	},
 	{
@@ -978,7 +970,7 @@ export const domains: DomainDef[] = [
 			'Wearables, continuous glucose monitors, and heart-rate variability. A sensor reading is not a diagnosis. Accuracy figures are not stated on this landing.',
 		definitionZh: '可穿戴设备、连续血糖监测和心率变异性。传感器读数不是诊断。本页不写准确率。',
 		layers: ['Observe'],
-		purposes: ['Restoration', 'Enhancement'],
+		goals: ['restore', 'enhance', 'extend'],
 		areas: [
 			{
 				title: 'Rings, watches, and bands',
@@ -1099,7 +1091,7 @@ export const domains: DomainDef[] = [
 		related: [
 			{ href: '/biochemical/metabolic/', title: 'Metabolic notes', titleZh: '代谢笔记' },
 			{ href: '/lifestyle/', title: 'Lifestyle', titleZh: '生活方式' },
-			{ href: '/longevity/', title: 'Longevity', titleZh: '长寿' },
+			{ href: '/goals/longevity/', title: 'Extend (healthspan)', titleZh: '延寿（健康寿命）' },
 		],
 		startHere: [
 			{ href: '/quantified-self/hrv/', title: 'HRV', titleZh: '心率变异性' },
@@ -1116,7 +1108,7 @@ export const domains: DomainDef[] = [
 			'A new domain for gut microbes, diet, and related regulation. No review was opened for this landing, so the map is a list of stubs.',
 		definitionZh: '肠道微生物、饮食和相关监管的新领域。本页没有打开综述，因此地图是存根清单。',
 		layers: ['Observe', 'Intervene'],
-		purposes: ['Restoration', 'Enhancement'],
+		goals: ['restore', 'extend'],
 		areas: [
 			{
 				title: 'Gut microbial communities',
@@ -1203,7 +1195,7 @@ export const domains: DomainDef[] = [
 		],
 		related: [
 			{ href: '/biochemical/metabolic/', title: 'Metabolic', titleZh: '代谢' },
-			{ href: '/longevity/', title: 'Longevity', titleZh: '长寿' },
+			{ href: '/goals/longevity/', title: 'Extend (healthspan)', titleZh: '延寿（健康寿命）' },
 			{ href: '/lifestyle/', title: 'Lifestyle', titleZh: '生活方式' },
 		],
 		startHere: [
@@ -1214,13 +1206,13 @@ export const domains: DomainDef[] = [
 	{
 		slug: 'lifestyle',
 		slot: 'domain-lifestyle',
-		title: 'Lifestyle and environment',
-		titleZh: '环境与行为',
+		title: 'Environmental Signals',
+		titleZh: '环境信号',
 		definition:
-			'Sleep behavior, light, movement, and temperature as topics. No session length or temperature is published. Sleep-tracking devices are under quantified self.',
-		definitionZh: '睡眠行为、光照、运动和温度作为主题。不公布时长或温度。睡眠追踪设备在自我量化。',
+			'Deliberate, measurable physical and timing signals: light, cold, heat, hypoxia, and eating windows. Generic sleep or exercise advice is background. No session length or temperature is published.',
+		definitionZh: '有意、可测量的物理和时间信号：光照、寒冷、炎热、低氧和进食窗口。泛泛的睡眠或运动建议只是背景。不公布时长或温度。',
 		layers: ['Observe', 'Intervene'],
-		purposes: ['Restoration', 'Enhancement'],
+		goals: ['extend', 'enhance'],
 		areas: [
 			{
 				title: 'Circadian rhythm and light',
@@ -1324,7 +1316,7 @@ export const domains: DomainDef[] = [
 		],
 		related: [
 			{ href: '/quantified-self/', title: 'Quantified self', titleZh: '自我量化' },
-			{ href: '/longevity/', title: 'Longevity', titleZh: '长寿' },
+			{ href: '/goals/longevity/', title: 'Extend (healthspan)', titleZh: '延寿（健康寿命）' },
 			{ href: '/biochemical/', title: 'Biochemical', titleZh: '生物化学' },
 		],
 		startHere: [

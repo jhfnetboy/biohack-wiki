@@ -46,4 +46,4 @@ Stub, needs sourcing. Adjectives in the project notes are not copied as findings
 | Prostheses and exoskeletons | Stub, needs sourcing. |
 | Implanted brain-computer interfaces | Stub, needs sourcing. |
 | Human genetic enhancement | Stub, needs sourcing. No method is described. |
-| Longevity biotechnology | Stub, needs sourcing. The [hallmarks page](/longevity/hallmarks-of-aging/) only names twelve items from one abstract. |
+| Extend (healthspan) | A goal, not a method. The [hallmarks page](/goals/longevity/hallmarks-of-aging/) only names twelve items from one abstract. |

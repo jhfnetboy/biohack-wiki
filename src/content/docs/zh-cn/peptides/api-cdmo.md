@@ -3,12 +3,14 @@ title: "肽原料药与 CDMO"
 titleZh: "肽原料药与 CDMO"
 description: "为「肽原料药与 CDMO」预留的存根页。尚无核对过的事实。不是医疗建议或购买指南。"
 entityType: "topic"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "stub"

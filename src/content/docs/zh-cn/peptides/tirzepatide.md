@@ -3,14 +3,16 @@ title: "替尔泊肽"
 titleZh: "替尔泊肽"
 description: "FDA 关于未经批准和复配替尔泊肽的表述，包括不良事件报告。不是给药指南。本页不是医疗建议，也不能代替原始文件。"
 entityType: "compound"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 aliases:
   - "tirzepatide"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "clinical-partial"
 lastReviewed: "2026-11-20"
 status: "reviewed"

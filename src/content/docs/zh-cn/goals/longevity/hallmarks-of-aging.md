@@ -3,12 +3,15 @@ title: "衰老的十二个标志（2023）"
 titleZh: "衰老的十二个标志（2023）"
 description: "PubMed 摘要“Hallmarks of aging: An expanding universe”（36599349）中列出的十二个衰老标志。"
 entityType: "topic"
-domain: "longevity"
+domain: "cross-cutting"
 domains:
-  - "longevity"
+  - "cross-cutting"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
+  - extend
 maturity: "research"
 lastReviewed: "2026-11-20"
 status: "reviewed"
@@ -30,6 +33,24 @@ PubMed 记录 36599349 是题为“Hallmarks of aging: An expanding universe”�
 - 摘要列出的十二个标志是：基因组不稳定、端粒损耗、表观遗传改变、蛋白稳态丧失、巨自噬受损、营养感知失调、线粒体功能障碍、细胞衰老、干细胞耗竭、细胞间通讯改变、慢性炎症和菌群失调。
 - 摘要说这些标志彼此关联，也与提议中的健康标志相关：空间区室化、稳态维持和对压力的适当反应。
 
+## 标志与方法领域
+
+下表是为了导航做的编辑对应。2023 年那篇论文并没有按这些领域给标志分类。
+
+| 衰老标志 | 本维基的归档位置 |
+| --- | --- |
+| 基因组不稳定、端粒损耗 | [基因](/zh-cn/genetic/)、[细胞与再生](/zh-cn/cellular/) |
+| 表观遗传改变 | [基因](/zh-cn/genetic/)中的时钟，[细胞与再生](/zh-cn/cellular/)中的重编程 |
+| 蛋白稳态丧失、巨自噬受损 | [生化小分子](/zh-cn/biochemical/)、[环境信号](/zh-cn/lifestyle/) |
+| 营养感知失调 | [生化小分子](/zh-cn/biochemical/)、[肽](/zh-cn/peptides/)、[环境信号](/zh-cn/lifestyle/) |
+| 线粒体功能障碍 | [生化小分子](/zh-cn/biochemical/)、[肽](/zh-cn/peptides/) |
+| 细胞衰老 | [细胞与再生](/zh-cn/cellular/)，清除衰老细胞的小分子在[生化小分子](/zh-cn/biochemical/) |
+| 干细胞耗竭 | [细胞与再生](/zh-cn/cellular/) |
+| 细胞间通讯改变 | [肽](/zh-cn/peptides/) |
+| 慢性炎症 | [生化小分子](/zh-cn/biochemical/)、[微生物组](/zh-cn/microbiome/) |
+| 菌群失调 | [微生物组](/zh-cn/microbiome/) |
+| 测量生物年龄 | [量化自我](/zh-cn/quantified-self/)、[基因](/zh-cn/genetic/)中的时钟 |
+
 ## 这里没有写的内容
 
 本页不推荐清单上的任何干预。NIA 干预测试计划页面在本草稿中没有取回，因此不写小鼠寿命结果。
@@ -38,5 +59,5 @@ PubMed 记录 36599349 是题为“Hallmarks of aging: An expanding universe”�
 
 ## 另见
 
-- [长寿](/zh-cn/longevity/)
-- [NIA 干预测试计划](/zh-cn/longevity/nia-itp/)
+- [长寿](/zh-cn/goals/longevity/)
+- [NIA 干预测试计划](/zh-cn/goals/longevity/nia-itp/)

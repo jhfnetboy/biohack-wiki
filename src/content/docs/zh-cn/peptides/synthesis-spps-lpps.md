@@ -3,12 +3,14 @@ title: "肽合成笔记"
 titleZh: "肽合成笔记"
 description: "为「肽合成笔记」预留的存根页。尚无核对过的事实。不是医疗建议或购买指南。本页不是医疗建议，也不能代替原始文件。"
 entityType: "topic"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "stub"

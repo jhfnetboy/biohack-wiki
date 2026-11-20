@@ -17,6 +17,6 @@ A study page needs a PMID or DOI, the design, and a limitation. Cross-linking a 
 
 ## Linked
 
-- [Twelve hallmarks of aging](/longevity/hallmarks-of-aging/)
+- [Twelve hallmarks of aging](/goals/longevity/hallmarks-of-aging/)
 
 This page does not give doses, titration schedules, injection or implantation technique, preparation steps, or places to purchase a product.

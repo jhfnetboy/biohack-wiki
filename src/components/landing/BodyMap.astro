@@ -1,0 +1,302 @@
+---
+import { Image } from 'astro:assets';
+import Illustration from './Illustration.astro';
+import { domains } from '../../data/domains';
+import { domainGoals, goalLabel, keywordLine, type GoalId } from '../../data/domain-keywords';
+import { illustrations } from '../../data/illustrations';
+import { localeId, localePrefix, pick } from '../../lib/locale';
+
+type Side = 'left' | 'right';
+type Layer = 'Observe' | 'Intervene' | 'Augment';
+
+type Tile = {
+	slug: string;
+	slot: string;
+	href: string;
+	side: Side;
+	title: string;
+	titleZh: string;
+	blurb: string;
+	blurbZh: string;
+	layers: Layer[];
+	goals: GoalId[];
+	x: number;
+	y: number;
+};
+
+const layerZh: Record<Layer, string> = {
+	Observe: '观察',
+	Intervene: '干预',
+	Augment: '增强',
+};
+
+const blurbs: Record<string, { en: string; zh: string }> = {
+	neurohacking: {
+		en: 'Electricity, magnetism, light, or electrodes on nerve signals',
+		zh: '用电、磁、光或电极读写神经信号',
+	},
+	genetic: {
+		en: 'Read or rewrite DNA and RNA. Often one-time',
+		zh: '阅读或改写 DNA 与 RNA，往往一次性',
+	},
+	peptides: {
+		en: 'Short amino-acid signals. Purity is its own problem',
+		zh: '短氨基酸信号。纯度本身就是问题',
+	},
+	microbiome: {
+		en: 'Change the microbes that live with you, mostly in the gut',
+		zh: '改变与你共生的微生物，主要在肠道',
+	},
+	bionic: {
+		en: 'Machines that replace or attach to a limb or a sense',
+		zh: '替代或外挂肢体与感官的机械装置',
+	},
+	lifestyle: {
+		en: 'Light, cold, heat, and timing. No added substance',
+		zh: '光照、冷热和时间信号，不引入外来物质',
+	},
+	cellular: {
+		en: 'Living cells or tissue used as replacement parts',
+		zh: '把活细胞或组织当作替换的零件',
+	},
+	biochemical: {
+		en: 'Small molecules, not amino-acid chains. Dose-dependent',
+		zh: '非氨基酸链的小分子，效果依赖剂量',
+	},
+	'quantified-self': {
+		en: 'Sensors turn body state into data. Read only',
+		zh: '传感器把身体状态变成数据，只读',
+	},
+	cyborg: {
+		en: 'Hardware under the skin that does not connect to the brain',
+		zh: '不连接大脑的皮下硬件',
+	},
+};
+
+const anchors: Record<string, { side: Side; x: number; y: number; layers: Layer[] }> = {
+	neurohacking: { side: 'left', x: 46, y: 12, layers: ['Observe', 'Intervene', 'Augment'] },
+	genetic: { side: 'left', x: 44, y: 22, layers: ['Observe', 'Intervene', 'Augment'] },
+	peptides: { side: 'left', x: 54, y: 34, layers: ['Intervene'] },
+	microbiome: { side: 'left', x: 48, y: 52, layers: ['Observe', 'Intervene'] },
+	bionic: { side: 'left', x: 40, y: 78, layers: ['Observe', 'Augment'] },
+	lifestyle: { side: 'right', x: 62, y: 11, layers: ['Observe', 'Intervene'] },
+	cellular: { side: 'right', x: 70, y: 24, layers: ['Intervene'] },
+	biochemical: { side: 'right', x: 58, y: 40, layers: ['Intervene'] },
+	'quantified-self': { side: 'right', x: 80, y: 48, layers: ['Observe'] },
+	cyborg: { side: 'right', x: 84, y: 58, layers: ['Augment'] },
+};
+
+const bySlug = Object.fromEntries(domains.map((domain) => [domain.slug, domain]));
+
+const tiles: Tile[] = Object.entries(anchors).map(([slug, anchor]) => {
+	const domain = bySlug[slug];
+	const blurb = blurbs[slug];
+	return {
+		slug,
+		slot: slug === 'peptides' ? 'domain-peptides' : (domain?.slot ?? 'domain-biochemical'),
+		href: `/${slug}/`,
+		side: anchor.side,
+		title: slug === 'peptides' ? 'Peptides' : (domain?.title ?? slug),
+		titleZh: slug === 'peptides' ? '肽' : (domain?.titleZh ?? slug),
+		blurb: blurb?.en ?? '',
+		blurbZh: blurb?.zh ?? '',
+		layers: anchor.layers,
+		goals: domainGoals[slug] ?? [],
+		x: anchor.x,
+		y: anchor.y,
+	};
+});
+
+const left = tiles.filter((tile) => tile.side === 'left');
+const right = tiles.filter((tile) => tile.side === 'right');
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const prefix = localePrefix(id);
+const href = (path: string) => `${prefix}${path}`;
+const t = (en: string, zh: string) => pick(id, en, zh);
+const body = illustrations['body-center'];
+const bodyAlt = pick(id, body.alt, body.altZh);
+const caption = pick(id, 'AI-generated illustration', 'AI 生成插图');
+---
+
+<section id="domains" class="bh-coverage">
+	<div class="bh-section-head">
+		<h2>{t('The human at the center', '人在中心')}</h2>
+	</div>
+	<div class="bh-map" data-body-map>
+		<ol class="bh-map-side left">
+			{
+				left.map((tile) => (
+					<li>
+						<a class="bh-map-tile" href={href(tile.href)} data-tile={tile.slug}>
+							<span class="bh-map-copy">
+								<span class="bh-map-keywords">{keywordLine(tile.slug, id)}</span>
+								<strong>{t(tile.title, tile.titleZh)}</strong>
+								<span class="bh-map-layers">
+									{tile.layers.map((layer) => (
+										<span class="bh-pill">{t(layer, layerZh[layer])}</span>
+									))}
+								</span>
+								<span class="bh-map-goals">
+									{tile.goals.map((goal) => (
+										<span class:list={['bh-goal', goal]}>{goalLabel(goal, id)}</span>
+									))}
+								</span>
+								<em>{t(tile.blurb, tile.blurbZh)}</em>
+							</span>
+							<Illustration name={tile.slot} size="thumb" />
+						</a>
+					</li>
+				))
+			}
+		</ol>
+		<figure class="bh-map-body">
+			<div class="bh-map-figure">
+				<Image src={body.src} alt={bodyAlt} widths={[320, 480, 768]} sizes="(max-width: 767px) 70vw, 320px" />
+				{
+					tiles.map((tile) => (
+						<span class="bh-map-anchor" data-anchor={tile.slug} style={`left:${tile.x}%;top:${tile.y}%`} />
+					))
+				}
+			</div>
+			<figcaption>{caption}</figcaption>
+		</figure>
+		<ol class="bh-map-side right">
+			{
+				right.map((tile) => (
+					<li>
+						<a class="bh-map-tile" href={href(tile.href)} data-tile={tile.slug}>
+							<span class="bh-map-copy">
+								<span class="bh-map-keywords">{keywordLine(tile.slug, id)}</span>
+								<strong>{t(tile.title, tile.titleZh)}</strong>
+								<span class="bh-map-layers">
+									{tile.layers.map((layer) => (
+										<span class="bh-pill">{t(layer, layerZh[layer])}</span>
+									))}
+								</span>
+								<span class="bh-map-goals">
+									{tile.goals.map((goal) => (
+										<span class:list={['bh-goal', goal]}>{goalLabel(goal, id)}</span>
+									))}
+								</span>
+								<em>{t(tile.blurb, tile.blurbZh)}</em>
+							</span>
+							<Illustration name={tile.slot} size="thumb" />
+						</a>
+					</li>
+				))
+			}
+		</ol>
+		<svg class="bh-map-lines" aria-hidden="true">
+			{
+				tiles.map((tile) => (
+					<g data-for={tile.slug}>
+						<line data-for={tile.slug} />
+						<circle data-for={tile.slug} r="3.5" />
+					</g>
+				))
+			}
+		</svg>
+	</div>
+	<p class="bh-axis">
+		{t('The human at the center. Ten methods. Three goals.', '人在中心。十种手段。三个目标。')}
+	</p>
+	<div class="bh-split">
+		<p>
+			{
+				t(
+					'Biochemical and peptides both add a messenger. Genetic does not: it rewrites the instructions that make messengers.',
+					'生化和肽都是往身体里加信使。基因不加信使，而是改写制造信使的说明书。',
+				)
+			}
+		</p>
+		<ul>
+			<li>
+				{
+					t(
+						'Biochemical — small chemical molecules. Effects depend on dose and usually fade after you stop.',
+						'生化小分子：加入小化学分子。效果依赖剂量，停用后通常会消退。',
+					)
+				}
+			</li>
+			<li>
+				{
+					t(
+						'Peptides — the messenger is a short amino-acid chain. Split out because purity, testing, and supply are their own problem.',
+						'肽：信使是氨基酸短链。单独列出，是因为纯度、检测和供应本身就是问题。',
+					)
+				}
+			</li>
+			<li>
+				{
+					t(
+						'Genetic — reads or rewrites DNA or RNA. A change is often one-time and may be irreversible.',
+						'基因：阅读或改写 DNA 或 RNA。改动往往一次到位，而且可能不可逆。',
+					)
+				}
+			</li>
+		</ul>
+	</div>
+</section>
+
+<script>
+	function layout(root: HTMLElement) {
+		const svg = root.querySelector<SVGSVGElement>('.bh-map-lines');
+		if (!svg) return;
+		if (window.matchMedia('(max-width: 767px)').matches) return;
+		const box = root.getBoundingClientRect();
+		svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
+		svg.setAttribute('width', String(box.width));
+		svg.setAttribute('height', String(box.height));
+		for (const tile of root.querySelectorAll<HTMLElement>('[data-tile]')) {
+			const slug = tile.dataset.tile ?? '';
+			const anchor = root.querySelector<HTMLElement>(`[data-anchor="${slug}"]`);
+			const line = svg.querySelector<SVGLineElement>(`line[data-for="${slug}"]`);
+			const dot = svg.querySelector<SVGCircleElement>(`circle[data-for="${slug}"]`);
+			if (!anchor || !line || !dot) continue;
+			const tileBox = tile.getBoundingClientRect();
+			const anchorBox = anchor.getBoundingClientRect();
+			const fromLeft = Boolean(tile.closest('.left'));
+			const x1 = (fromLeft ? tileBox.right : tileBox.left) - box.left;
+			const y1 = tileBox.top + tileBox.height / 2 - box.top;
+			const x2 = anchorBox.left + anchorBox.width / 2 - box.left;
+			const y2 = anchorBox.top + anchorBox.height / 2 - box.top;
+			line.setAttribute('x1', String(x1));
+			line.setAttribute('y1', String(y1));
+			line.setAttribute('x2', String(x2));
+			line.setAttribute('y2', String(y2));
+			dot.setAttribute('cx', String(x2));
+			dot.setAttribute('cy', String(y2));
+		}
+	}
+
+	function setActive(root: HTMLElement, slug: string) {
+		root.dataset.active = slug;
+		for (const node of root.querySelectorAll('.is-active')) node.classList.remove('is-active');
+		if (!slug) return;
+		for (const node of root.querySelectorAll(`[data-for="${slug}"], [data-anchor="${slug}"]`)) {
+			node.classList.add('is-active');
+		}
+	}
+
+	for (const root of document.querySelectorAll<HTMLElement>('[data-body-map]')) {
+		const draw = () => layout(root);
+		draw();
+		new ResizeObserver(draw).observe(root);
+		root.addEventListener('pointerover', (event) => {
+			const tile = (event.target as Element | null)?.closest<HTMLElement>('[data-tile]');
+			setActive(root, tile?.dataset.tile ?? '');
+		});
+		root.addEventListener('pointerout', (event) => {
+			const next = event.relatedTarget as Node | null;
+			if (!next || !root.contains(next)) setActive(root, '');
+		});
+		root.addEventListener('focusin', (event) => {
+			const tile = (event.target as Element | null)?.closest<HTMLElement>('[data-tile]');
+			setActive(root, tile?.dataset.tile ?? '');
+		});
+		root.addEventListener('focusout', (event) => {
+			const next = event.relatedTarget as Node | null;
+			if (!next || !root.contains(next)) setActive(root, '');
+		});
+	}
+</script>

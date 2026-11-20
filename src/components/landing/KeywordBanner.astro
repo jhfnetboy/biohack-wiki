@@ -1,0 +1,16 @@
+---
+import { goalKeywordLine, keywordLine, type GoalId } from '../../data/domain-keywords';
+import { localeId } from '../../lib/locale';
+
+interface Props {
+	domain?: string;
+	goal?: GoalId;
+}
+
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const text = Astro.props.goal
+	? goalKeywordLine(Astro.props.goal, id)
+	: keywordLine(Astro.props.domain ?? '', id);
+---
+
+{text && <p class="bh-keyword-banner">{text}</p>}

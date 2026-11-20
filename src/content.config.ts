@@ -3,24 +3,26 @@ import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
 import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
 
 /**
- * Nine top-level domains (IA v2), plus cross-cutting pages.
- * Peptides, hormones, and nootropics are sections inside biochemical.
+ * Ten method domains (taxonomy v3), plus cross-cutting pages.
+ * Longevity is a goal at /goals/longevity/, not a method domain.
+ * Peptides are a first-level domain. Slug `lifestyle` is Environmental Signals.
  */
 export const domains = [
-	'biochemical',
-	'neurohacking',
-	'bionic',
-	'cyborg',
-	'genetic',
-	'longevity',
 	'quantified-self',
-	'microbiome',
 	'lifestyle',
+	'biochemical',
+	'peptides',
+	'genetic',
+	'cellular',
+	'microbiome',
+	'neurohacking',
+	'cyborg',
+	'bionic',
 	'cross-cutting',
 ] as const;
 
 export const layers = ['observe', 'intervene', 'augment'] as const;
-export const purposes = ['restoration', 'enhancement', 'both'] as const;
+export const goalIds = ['restore', 'enhance', 'extend'] as const;
 export const maturityLevels = [
 	'commercial',
 	'clinical-partial',
@@ -69,8 +71,8 @@ const wikiFields = z.object({
 	evidenceLevel: z.enum(evidenceLevels).default('unrated'),
 	/** Editorial filing: observe, intervene, or augment. Not a clinical claim. */
 	layer: z.enum(layers).optional(),
-	/** Editorial filing: restoration, enhancement, or both. */
-	purpose: z.enum(purposes).optional(),
+	/** Goals this page serves. A method can serve more than one. */
+	goals: z.array(z.enum(goalIds)).default([]),
 	/** Coarse maturity label. Use unknown until a source supports a tighter word. */
 	maturity: z.enum(maturityLevels).optional(),
 	/** Short plain-language regulatory status. Do not put dosing here. */

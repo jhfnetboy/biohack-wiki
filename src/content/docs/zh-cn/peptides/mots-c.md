@@ -3,15 +3,17 @@ title: "MOTS-c"
 titleZh: "MOTS-c"
 description: "FDA 说没有 MOTs-C 产品的人体暴露数据，并将该物质列入 2026 年 7 月 PCAC 议程。"
 entityType: "compound"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 aliases:
   - "MOTS-c"
   - "MOTs-C"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "reviewed"

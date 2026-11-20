@@ -8,7 +8,9 @@ domains:
   - "biochemical"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "unknown"
 lastReviewed: "2026-11-20"
 status: "reviewed"

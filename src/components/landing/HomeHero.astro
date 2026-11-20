@@ -1,5 +1,4 @@
 ---
-import Illustration from './Illustration.astro';
 import { positioning } from '../../data/positioning';
 import { localeId, localePrefix, pick } from '../../lib/locale';
 
@@ -32,12 +31,9 @@ const icons = [
 			}
 		</ul>
 		<div class="bh-links">
-			<a class="bh-button" href="#domains">{t('Explore 9 domains', '浏览九个领域')}</a>
-			<a class="bh-button ghost" href={href('/peptides/')}>{t('Peptides', '肽')}</a>
+			<a class="bh-button" href="#domains">{t('Explore the domains', '浏览各个领域')}</a>
+			<a class="bh-button ghost" href={href('/goals/')}>{t('Goals', '目标')}</a>
 			<a class="bh-textlink" href={href('/about/')}>{t('About', '关于')}</a>
 		</div>
-	</div>
-	<div class="bh-intro-art">
-		<Illustration name="hero" size="hero" />
 	</div>
 </header>

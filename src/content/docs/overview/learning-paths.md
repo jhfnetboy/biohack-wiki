@@ -16,7 +16,7 @@ sidebar:
 
 1. [Medical disclaimer](/disclaimer/) and [evidence and safety](/overview/evidence-and-safety/).
 2. [What is biohacking](/overview/what-is-biohacking/) and the [three layers](/overview/three-layers/).
-3. One domain at a time: [biochemical](/biochemical/), [neurohacking](/neurohacking/), [bionic](/bionic/), [cyborg](/cyborg/), [genetic](/genetic/), [longevity](/longevity/), [quantified self](/quantified-self/), [microbiome](/microbiome/) (stub), [lifestyle](/lifestyle/).
+3. One method at a time: [quantified self](/quantified-self/), [environmental signals](/lifestyle/), [biochemical](/biochemical/), [peptides](/peptides/), [genetic](/genetic/), [cellular](/cellular/), [microbiome](/microbiome/) (stub), [neurotech](/neurohacking/), [cyborg implants](/cyborg/), [bionics](/bionic/). Goals are separate: [Restore, Enhance, Extend](/goals/).
 4. Use the [glossary](/glossary/) as a map. Its glosses are provisional.
 5. Treat every stub as unfinished.
 

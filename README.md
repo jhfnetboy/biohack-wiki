@@ -52,20 +52,21 @@ Rules for what may be published are in [the editorial policy](src/content/docs/p
 
 ## Taxonomy
 
-Nine top-level domains (IA v2), plus cross-cutting sections. URL slugs are English. Older v1 paths redirect.
+Ten method domains (taxonomy v3), plus three goals. URL slugs are English. Older paths redirect.
 
 | Domain | Path |
 | --- | --- |
-| Biochemical hacking (hormones, nootropics, metabolic notes; peptides are linked from here) | `/biochemical/` |
-| Peptides (still the biochemical domain; path reserved for a future `peptides.<domain>` host) | `/peptides/` |
-| Neurohacking (recording, stimulation, brain-computer interfaces) | `/neurohacking/` |
-| Bionic augmentation | `/bionic/` |
-| Cyborg and grinder implants | `/cyborg/` |
-| Genetic biohacking | `/genetic/` |
-| Longevity | `/longevity/` |
 | Quantified self (wearables, CGM, HRV) | `/quantified-self/` |
+| Environmental Signals (slug `lifestyle`) | `/lifestyle/` |
+| Biochemical small molecules | `/biochemical/` |
+| Peptides (first-level domain; path can later map to a peptides host) | `/peptides/` |
+| Genetic (DNA/RNA only) | `/genetic/` |
+| Cellular and regenerative | `/cellular/` |
 | Microbiome | `/microbiome/` |
-| Lifestyle and environment | `/lifestyle/` |
+| Neurotech (slug `neurohacking`) | `/neurohacking/` |
+| Cyborg implants | `/cyborg/` |
+| Bionics | `/bionic/` |
+| Goals: Restore, Enhance, Extend (healthspan) | `/goals/` |
 
 Cross-cutting sections: [`/companies/`](src/content/docs/companies/index.md), [`/trials/`](src/content/docs/trials/index.md), [`/studies/`](src/content/docs/studies/index.md), [`/vendors/`](src/content/docs/vendors/index.md), [`/regulation/`](src/content/docs/regulation/index.md), [`/glossary/`](src/content/docs/glossary/index.md), [`/news/`](src/content/docs/news/index.md).
 

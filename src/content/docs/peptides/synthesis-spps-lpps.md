@@ -3,12 +3,14 @@ title: "Peptide synthesis notes"
 titleZh: "肽合成笔记"
 description: "Stub page reserved for Peptide synthesis notes. No checked facts yet. Not medical advice or a buying guide."
 entityType: "topic"
-domain: "biochemical"
+domain: "peptides"
 domains:
-  - "biochemical"
+  - "peptides"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "highly-experimental"
 lastReviewed: "2026-11-20"
 status: "stub"

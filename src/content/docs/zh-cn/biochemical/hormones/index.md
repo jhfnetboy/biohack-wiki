@@ -8,7 +8,9 @@ domains:
   - "biochemical"
 evidenceLevel: "unrated"
 layer: "intervene"
-purpose: "both"
+goals:
+  - restore
+  - enhance
 maturity: "unknown"
 lastReviewed: "2026-11-20"
 status: "reviewed"
@@ -16,7 +18,7 @@ sidebar:
   order: 0
 ---
 
-内分泌学会网站是编辑可以起步的地方。本索引不总结指南，因为没有打开任何指南。
+内分泌学会网站是编辑可以起步的地方。本索引不总结指南，因为没有打开任何指南。类固醇和甲状腺激素留在生化小分子。肽类和蛋白类激素归在[肽](/zh-cn/peptides/)。
 
 ## 尚未撰写
 
