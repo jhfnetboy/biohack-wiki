@@ -3,9 +3,9 @@ title: "Precision Neuroscience"
 titleZh: "Precision Neuroscience"
 description: "为「Precision Neuroscience」预留的存根页。尚无核对过的事实。不是医疗建议或购买指南。"
 entityType: "company"
-domain: "bci"
+domain: "neurohacking"
 domains:
-  - "bci"
+  - "neurohacking"
 evidenceLevel: "unrated"
 lastReviewed: "2026-11-20"
 status: "stub"
@@ -40,6 +40,6 @@ Precision Neuroscience 的公开网站是 https://precisionneuro.io/ 。电极�
 
 ## 另见
 
-- [脑机接口](/zh-cn/neurotech/bci/)
+- [脑机接口](/zh-cn/neurohacking/bci/)
 - [编辑政策](/zh-cn/policies/editorial/)
 - [医疗免责声明](/zh-cn/disclaimer/)

@@ -3,23 +3,31 @@ import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
 import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
 
 /**
- * Twelve subject domains from the wiki taxonomy, plus a bucket for pages that
- * cut across domains (policy, glossary index, news).
+ * Nine top-level domains (IA v2), plus cross-cutting pages.
+ * Peptides, hormones, and nootropics are sections inside biochemical.
  */
 export const domains = [
-	'peptides',
-	'bci',
-	'assistive',
-	'noninvasive-neurotech',
-	'neuromodulation',
+	'biochemical',
+	'neurohacking',
+	'bionic',
+	'cyborg',
+	'genetic',
 	'longevity',
-	'hormones',
-	'metabolic',
-	'nootropics',
-	'recovery',
 	'quantified-self',
-	'diybio',
+	'microbiome',
+	'lifestyle',
 	'cross-cutting',
+] as const;
+
+export const layers = ['observe', 'intervene', 'augment'] as const;
+export const purposes = ['restoration', 'enhancement', 'both'] as const;
+export const maturityLevels = [
+	'commercial',
+	'clinical-partial',
+	'early-clinical',
+	'research',
+	'highly-experimental',
+	'unknown',
 ] as const;
 
 export const entityTypes = [
@@ -59,14 +67,22 @@ const wikiFields = z.object({
 	domains: z.array(z.enum(domains)).default([]),
 	aliases: z.array(z.string()).default([]),
 	evidenceLevel: z.enum(evidenceLevels).default('unrated'),
+	/** Editorial filing: observe, intervene, or augment. Not a clinical claim. */
+	layer: z.enum(layers).optional(),
+	/** Editorial filing: restoration, enhancement, or both. */
+	purpose: z.enum(purposes).optional(),
+	/** Coarse maturity label. Use unknown until a source supports a tighter word. */
+	maturity: z.enum(maturityLevels).optional(),
 	/** Short plain-language regulatory status. Do not put dosing here. */
 	regulatoryStatus: z.string().optional(),
+	riskNotes: z.string().optional(),
 	regulatory: z
 		.object({
 			us: z.string().optional(),
 			eu: z.string().optional(),
 			cn: z.string().optional(),
 			au: z.string().optional(),
+			th: z.string().optional(),
 		})
 		.optional(),
 	lastReviewed: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),

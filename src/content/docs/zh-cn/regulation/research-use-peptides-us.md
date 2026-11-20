@@ -3,9 +3,9 @@ title: "美国的研究用标识"
 titleZh: "美国的研究用标识"
 description: "FDA 对虚假标成研究用、实际供人使用的药物的一项警告。不是关于 RUO 地位的完整法律备忘录。"
 entityType: "regulation"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 evidenceLevel: "unrated"
 lastReviewed: "2026-11-20"
 status: "reviewed"
@@ -39,5 +39,5 @@ documentUrl: "https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns
 
 ## 另见
 
-- [GLP-1 激动剂总览](/zh-cn/peptides/glp-1-agonists/)
+- [GLP-1 激动剂总览](/zh-cn/biochemical/peptides/glp-1-agonists/)
 - [Category 2](/zh-cn/regulation/fda-503a-category-2/)

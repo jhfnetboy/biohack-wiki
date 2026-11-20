@@ -7,6 +7,9 @@ domain: "quantified-self"
 domains:
   - "quantified-self"
 evidenceLevel: "unrated"
+layer: "observe"
+purpose: "both"
+maturity: "unknown"
 lastReviewed: "2026-11-20"
 status: "stub"
 noindex: true

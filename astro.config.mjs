@@ -52,6 +52,9 @@ function collectNoindex(dir, prefix = '') {
 
 const noindex = collectNoindex(path.join(root, 'src/content/docs'));
 const site = siteOrigin();
+const legacyRedirects = JSON.parse(
+	fs.readFileSync(path.join(root, 'src/data/legacy-redirects.json'), 'utf8'),
+);
 
 const group = (label, zh, directory) => ({
 	label,
@@ -64,6 +67,7 @@ export default defineConfig({
 	site,
 	output: 'static',
 	trailingSlash: 'always',
+	redirects: legacyRedirects,
 	markdown: {
 		processor: satteri({
 			mdastPlugins: [glossaryAutolink],
@@ -112,6 +116,21 @@ export default defineConfig({
 					translations: { 'zh-CN': '开始' },
 					items: [
 						{ label: 'Home', translations: { 'zh-CN': '首页' }, slug: '' },
+						{
+							label: 'What is biohacking',
+							translations: { 'zh-CN': '什么是生物黑客' },
+							slug: 'overview/what-is-biohacking',
+						},
+						{
+							label: 'Three layers',
+							translations: { 'zh-CN': '三个层次' },
+							slug: 'overview/three-layers',
+						},
+						{
+							label: 'Learning paths',
+							translations: { 'zh-CN': '学习路径' },
+							slug: 'overview/learning-paths',
+						},
 						{ label: 'About', translations: { 'zh-CN': '关于' }, slug: 'about' },
 						{
 							label: 'Add a page',
@@ -120,18 +139,42 @@ export default defineConfig({
 						},
 					],
 				},
-				group('Peptides', '肽与蛋白', 'peptides'),
-				group('Neural interfaces / BCI', '神经接口与脑机接口', 'neurotech/bci'),
-				group('Non-invasive neurotech', '非侵入式神经技术', 'neurotech/noninvasive'),
-				group('Neuromodulation', '神经调控', 'neurotech/neuromodulation'),
-				group('Prosthetics and assistive tech', '义肢与辅助技术', 'assistive'),
-				group('Geroscience and longevity', '衰老与长寿', 'longevity'),
-				group('Hormones', '激素与内分泌', 'hormones'),
-				group('Metabolic health', '代谢与营养', 'metabolic'),
-				group('Nootropics', '认知增强', 'nootropics'),
-				group('Sleep and recovery', '睡眠与恢复', 'recovery'),
-				group('Wearables and quantified self', '可穿戴与量化自我', 'quantified-self'),
-				group('Gene, cell, and DIY bio', '基因、细胞与 DIY 生物', 'diybio'),
+				group('Biochemical', '生物化学干预', 'biochemical'),
+				group('Neurohacking', '脑科学与神经增强', 'neurohacking'),
+				group('Bionic augmentation', '仿生与智能义肢', 'bionic'),
+				group('Cyborg and grinder', '人体植入与赛博格', 'cyborg'),
+				group('Genetic', '基因与细胞', 'genetic'),
+				group('Longevity', '长寿与抗衰老', 'longevity'),
+				group('Quantified self', '自我量化', 'quantified-self'),
+				group('Microbiome', '微生物组', 'microbiome'),
+				group('Lifestyle and environment', '环境与行为', 'lifestyle'),
+				{
+					label: 'Guides',
+					translations: { 'zh-CN': '导读' },
+					items: [
+						{ label: 'Maturity', translations: { 'zh-CN': '成熟度' }, slug: 'overview/maturity' },
+						{
+							label: 'Closed loop',
+							translations: { 'zh-CN': '闭环' },
+							slug: 'overview/closed-loop',
+						},
+						{
+							label: 'Concepts',
+							translations: { 'zh-CN': '概念辨析' },
+							slug: 'overview/concepts',
+						},
+						{
+							label: 'Evidence and safety',
+							translations: { 'zh-CN': '证据与安全' },
+							slug: 'overview/evidence-and-safety',
+						},
+						{
+							label: 'EEG, AI, and a robotic arm',
+							translations: { 'zh-CN': '脑电、AI 与机械臂' },
+							slug: 'overview/eeg-ai-robotic-arm',
+						},
+					],
+				},
 				{
 					label: 'Reference',
 					translations: { 'zh-CN': '参考' },
@@ -150,7 +193,10 @@ export default defineConfig({
 		}),
 		sitemap({
 			filter: (page) => {
-				const slug = new URL(page).pathname.replace(/^\/|\/$/g, '');
+				const pathname = new URL(page).pathname;
+				const bare = pathname.replace(/\/$/, '') || '/';
+				if (Object.prototype.hasOwnProperty.call(legacyRedirects, bare)) return false;
+				const slug = pathname.replace(/^\/|\/$/g, '');
 				return !noindex.has(slug);
 			},
 			i18n: {

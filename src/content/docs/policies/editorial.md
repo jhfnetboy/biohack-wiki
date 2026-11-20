@@ -19,6 +19,10 @@ A reviewed factual sentence points at an entry in that page's `sources` list. Pr
 
 Another BioHack Wiki page is context, not evidence.
 
+## Filing labels
+
+`layer` (`observe`, `intervene`, `augment`), `purpose` (`restoration`, `enhancement`, `both`), and `maturity` (`commercial`, `clinical-partial`, `early-clinical`, `research`, `highly-experimental`, `unknown`) organize pages. They are not substitutes for `evidenceLevel` and they are not outcomes. Use `unknown` for maturity until a source supports a tighter word.
+
 ## Evidence grades
 
 `A` human randomized trial, `B` human observational study, `C` animal study, `D` in vitro, `E` anecdote, `unrated` when the page does not cite that design. Approval of a drug is not, by itself, a reason to mark a page `A` if the trials are not the thing being summarized.

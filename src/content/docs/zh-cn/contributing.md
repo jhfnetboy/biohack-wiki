@@ -21,7 +21,7 @@ sidebar:
 
 英文文件放在 `src/content/docs/`。对应的简体中文文件放在 `src/content/docs/zh-cn/`，路径相同。Starlight 用这一对生成 `hreflang`。缺少中文文件时，站内链接检查会失败（`errorOnFallbackPages`）。
 
-链接使用小写短横线。目录就是栏目，例如 `peptides/`、`neurotech/bci/`、`assistive/`、`regulation/`。
+链接使用小写短横线。顶层目录是九个领域：`biochemical/`、`neurohacking/`、`bionic/`、`cyborg/`、`genetic/`、`longevity/`、`quantified-self/`、`microbiome/`、`lifestyle/`，以及 `overview/`、`regulation/` 和其他横向栏目。
 
 ## 3. 填写前言
 

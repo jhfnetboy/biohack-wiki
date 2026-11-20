@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" role="img" aria-labelledby="title desc">
+  <title id="title">Closed loop: sense, interpret, control, evaluate</title>
+  <desc id="desc">Original safety-framed loop. It does not depict automated drug dosing.</desc>
+  <rect width="880" height="320" fill="#f7f6f3"/>
+  <text x="28" y="40" font-family="Georgia, serif" font-size="22" fill="#12352c">Closed loop, with a stop rule</text>
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" fill="#12352c">
+    <rect x="40" y="70" width="180" height="70" rx="10" fill="#d7f5ea"/>
+    <text x="58" y="110">1 Sense</text>
+    <rect x="280" y="70" width="180" height="70" rx="10" fill="#d7e8f5"/>
+    <text x="298" y="110">2 Interpret</text>
+    <rect x="520" y="70" width="180" height="70" rx="10" fill="#fff4cc"/>
+    <text x="538" y="110">3 Decide</text>
+    <rect x="340" y="190" width="200" height="70" rx="10" fill="#f7e7d8"/>
+    <text x="358" y="230">4 Evaluate</text>
+  </g>
+  <g stroke="#12352c" fill="none" stroke-width="1.5">
+    <path d="M220 105 H280"/>
+    <path d="M460 105 H520"/>
+    <path d="M610 140 V190 H540"/>
+    <path d="M340 225 H120 V140"/>
+  </g>
+  <text x="28" y="300" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">Stop rule: this wiki does not describe an AI choosing a drug dose or an injection.</text>
+</svg>

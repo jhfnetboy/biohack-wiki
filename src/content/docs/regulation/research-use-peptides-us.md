@@ -3,9 +3,9 @@ title: "Research-use labeling in the United States"
 titleZh: "美国的研究用标识"
 description: "One FDA warning about drugs falsely labeled for research and sold for human use. Not a full legal memo on RUO status."
 entityType: "regulation"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 evidenceLevel: "unrated"
 lastReviewed: "2026-11-20"
 status: "reviewed"
@@ -39,5 +39,5 @@ This page does not give doses, titration schedules, injection or implantation te
 
 ## See also
 
-- [GLP-1 agonist overview](/peptides/glp-1-agonists/)
+- [GLP-1 agonist overview](/biochemical/peptides/glp-1-agonists/)
 - [Category 2](/regulation/fda-503a-category-2/)

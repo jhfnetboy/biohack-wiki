@@ -5,6 +5,9 @@ description: "REPLACE 40 to 200 characters. Compare only fields present in the c
 entityType: "comparison"
 domain: "peptides"
 evidenceLevel: "unrated"
+layer: "observe"
+purpose: "both"
+maturity: "unknown"
 lastReviewed: "2026-11-20"
 status: "stub"
 noindex: true

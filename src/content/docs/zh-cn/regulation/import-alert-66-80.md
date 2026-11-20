@@ -3,9 +3,9 @@ title: "进口警报 66-80"
 titleZh: "进口警报 66-80"
 description: "FDA 对 GLP-1 原料药绿色清单进口警报 66-80 的描述。企业名单不抄录。"
 entityType: "regulation"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 evidenceLevel: "unrated"
 lastReviewed: "2026-11-20"
 status: "reviewed"
@@ -43,5 +43,5 @@ documentUrl: "https://www.accessdata.fda.gov/cms_ia/importalert_1186.html"
 
 ## 另见
 
-- [GLP-1 激动剂总览](/zh-cn/peptides/glp-1-agonists/)
+- [GLP-1 激动剂总览](/zh-cn/biochemical/peptides/glp-1-agonists/)
 - [法规](/zh-cn/regulation/)

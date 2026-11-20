@@ -7,6 +7,9 @@ domain: "longevity"
 domains:
   - "longevity"
 evidenceLevel: "unrated"
+layer: "intervene"
+purpose: "both"
+maturity: "research"
 lastReviewed: "2026-11-20"
 status: "stub"
 noindex: true

@@ -44,22 +44,19 @@ Rules for what may be published are in [the editorial policy](src/content/docs/p
 
 ## Taxonomy
 
-Twelve top-level domains, plus cross-cutting sections. URL slugs are English.
+Nine top-level domains (IA v2), plus cross-cutting sections. URL slugs are English. Older v1 paths redirect.
 
 | Domain | Path |
 | --- | --- |
-| Peptides | `/peptides/` |
-| Neural interfaces and brain-computer interfaces | `/neurotech/bci/` |
-| Prosthetics, orthotics, and assistive technology | `/assistive/` |
-| Non-invasive neurotechnology | `/neurotech/noninvasive/` |
-| Neuromodulation | `/neurotech/neuromodulation/` |
-| Geroscience and longevity | `/longevity/` |
-| Hormones | `/hormones/` |
-| Metabolic health and nutrition | `/metabolic/` |
-| Nootropics | `/nootropics/` |
-| Sleep, recovery, and environment | `/recovery/` |
-| Wearables and quantified self | `/quantified-self/` |
-| Gene, cell, DIY biology, and implants | `/diybio/` |
+| Biochemical hacking (peptides, hormones, nootropics, metabolic notes) | `/biochemical/` |
+| Neurohacking (recording, stimulation, brain-computer interfaces) | `/neurohacking/` |
+| Bionic augmentation | `/bionic/` |
+| Cyborg and grinder implants | `/cyborg/` |
+| Genetic biohacking | `/genetic/` |
+| Longevity | `/longevity/` |
+| Quantified self (wearables, CGM, HRV) | `/quantified-self/` |
+| Microbiome | `/microbiome/` |
+| Lifestyle and environment | `/lifestyle/` |
 
 Cross-cutting sections: [`/companies/`](src/content/docs/companies/index.md), [`/trials/`](src/content/docs/trials/index.md), [`/studies/`](src/content/docs/studies/index.md), [`/vendors/`](src/content/docs/vendors/index.md), [`/regulation/`](src/content/docs/regulation/index.md), [`/glossary/`](src/content/docs/glossary/index.md), [`/news/`](src/content/docs/news/index.md).
 
@@ -71,6 +68,7 @@ Sidebar group labels are translated in `astro.config.mjs` (`zh-CN`). Starlight s
 
 - Cite a document you opened. Another wiki page is not evidence.
 - `evidenceLevel` stays `unrated` until the page cites a specific study design (`A` human randomized, `B` human observational, `C` animal, `D` in vitro, `E` anecdote).
+- `layer` (`observe`, `intervene`, `augment`), `purpose` (`restoration`, `enhancement`, `both`), and `maturity` are editorial filing labels. Do not treat them as trial results.
 - Do not invent studies, sample sizes, effect sizes, quotations, prices, or dates.
 - Do not add dosing protocols, titration, injection or implantation technique, preparation steps, or shopping guidance.
 - Stubs set `noindex: true` and stay out of the sitemap.

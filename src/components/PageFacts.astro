@@ -7,7 +7,11 @@ interface PageData {
 	domain?: string;
 	domains?: string[];
 	evidenceLevel?: string;
+	layer?: string;
+	purpose?: string;
+	maturity?: string;
 	regulatoryStatus?: string;
+	riskNotes?: string;
 	lastReviewed?: string;
 	status?: string;
 	sources?: Source[];
@@ -139,6 +143,21 @@ const show = Boolean(data?.entityType);
 						{isZh ? '领域' : 'Domain'}: {data.domain}
 					</li>
 				)}
+				{data?.layer && (
+					<li>
+						{isZh ? '层次' : 'Layer'}: {data.layer}
+					</li>
+				)}
+				{data?.purpose && (
+					<li>
+						{isZh ? '目的' : 'Purpose'}: {data.purpose}
+					</li>
+				)}
+				{data?.maturity && (
+					<li>
+						{isZh ? '成熟度' : 'Maturity'}: {data.maturity}
+					</li>
+				)}
 				<li>
 					{isZh ? '证据' : 'Evidence'}: {evidence[data?.evidenceLevel ?? 'unrated'] ?? data?.evidenceLevel}
 				</li>
@@ -157,6 +176,12 @@ const show = Boolean(data?.entityType);
 				<p>
 					<strong>{isZh ? '法规状态：' : 'Regulatory status: '}</strong>
 					{data.regulatoryStatus}
+				</p>
+			)}
+			{data?.riskNotes && (
+				<p>
+					<strong>{isZh ? '风险笔记：' : 'Risk notes: '}</strong>
+					{data.riskNotes}
 				</p>
 			)}
 			{data?.status === 'stub' && (

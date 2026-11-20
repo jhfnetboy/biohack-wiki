@@ -3,9 +3,9 @@ title: "WHO 辅助技术"
 titleZh: "WHO 辅助技术"
 description: "WHO 2024 年事实清单：六个功能域，以及需要辅助产品的人数估计。本页不是医疗建议，也不能代替原始文件。"
 entityType: "regulation"
-domain: "assistive"
+domain: "bionic"
 domains:
-  - "assistive"
+  - "bionic"
 evidenceLevel: "unrated"
 lastReviewed: "2026-11-20"
 status: "reviewed"
@@ -45,5 +45,5 @@ WHO 辅助技术事实清单的日期是 2024 年 1 月 2 日。下面的数字�
 
 ## 另见
 
-- [义肢与辅助技术](/zh-cn/assistive/)
+- [义肢与辅助技术](/zh-cn/bionic/)
 - [法规](/zh-cn/regulation/)

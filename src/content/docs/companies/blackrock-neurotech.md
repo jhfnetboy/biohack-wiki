@@ -3,9 +3,9 @@ title: "Blackrock Neurotech"
 titleZh: "Blackrock Neurotech"
 description: "Stub page reserved for Blackrock Neurotech. No checked facts yet. Not medical advice or a buying guide."
 entityType: "company"
-domain: "bci"
+domain: "neurohacking"
 domains:
-  - "bci"
+  - "neurohacking"
 evidenceLevel: "unrated"
 lastReviewed: "2026-11-20"
 status: "stub"
@@ -40,6 +40,6 @@ This page does not give doses, titration schedules, injection or implantation te
 
 ## See also
 
-- [Brain-computer interfaces](/neurotech/bci/)
+- [Brain-computer interfaces](/neurohacking/bci/)
 - [Editorial policy](/policies/editorial/)
 - [Medical disclaimer](/disclaimer/)

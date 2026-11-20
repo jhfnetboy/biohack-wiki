@@ -3,9 +3,9 @@ title: "Import Alert 66-80"
 titleZh: "进口警报 66-80"
 description: "FDA's description of green-list Import Alert 66-80 for GLP-1 active ingredients. The firm list is not copied."
 entityType: "regulation"
-domain: "peptides"
+domain: "biochemical"
 domains:
-  - "peptides"
+  - "biochemical"
 evidenceLevel: "unrated"
 lastReviewed: "2026-11-20"
 status: "reviewed"
@@ -43,5 +43,5 @@ This page does not give doses, titration schedules, injection or implantation te
 
 ## See also
 
-- [GLP-1 agonist overview](/peptides/glp-1-agonists/)
+- [GLP-1 agonist overview](/biochemical/peptides/glp-1-agonists/)
 - [Regulation](/regulation/)

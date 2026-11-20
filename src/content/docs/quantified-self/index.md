@@ -7,6 +7,9 @@ domain: "quantified-self"
 domains:
   - "quantified-self"
 evidenceLevel: "unrated"
+layer: "observe"
+purpose: "both"
+maturity: "unknown"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sidebar:
@@ -18,6 +21,6 @@ The Quantified Self community site and FDA's general-wellness and digital-health
 ## Seeded pages
 
 - [Heart-rate variability](/quantified-self/hrv/)
-- [Continuous glucose monitors](/metabolic/cgm/)
+- [Continuous glucose monitors](/quantified-self/cgm/)
 
 This page does not give doses, titration schedules, injection or implantation technique, preparation steps, or places to purchase a product.

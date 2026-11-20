@@ -7,6 +7,9 @@ domain: "quantified-self"
 domains:
   - "quantified-self"
 evidenceLevel: "unrated"
+layer: "observe"
+purpose: "both"
+maturity: "unknown"
 lastReviewed: "2026-11-20"
 status: "reviewed"
 sidebar:
@@ -18,6 +21,6 @@ sidebar:
 ## 已建页面
 
 - [心率变异性](/zh-cn/quantified-self/hrv/)
-- [连续血糖监测](/zh-cn/metabolic/cgm/)
+- [连续血糖监测](/zh-cn/quantified-self/cgm/)
 
 本页不提供剂量、滴定方案、注射或植入操作、配制步骤，也不提供购买渠道。
