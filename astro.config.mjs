@@ -128,7 +128,9 @@ export default defineConfig({
 			components: {
 				Banner: './src/components/Banner.astro',
 				Footer: './src/components/Footer.astro',
+				Head: './src/components/Head.astro',
 				Hero: './src/components/landing/HomeHero.astro',
+				PageFrame: './src/components/PageFrame.astro',
 			},
 			plugins: [
 				starlightLinksValidator({

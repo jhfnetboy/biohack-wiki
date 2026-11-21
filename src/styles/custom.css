@@ -1340,3 +1340,104 @@ html[data-theme='dark'] .bh-fig {
 	--warn: var(--bh-stub);
 	--warn-bg: var(--bh-stub-bg);
 }
+
+/* Desktop sidebar toggles: collapse the left nav and right TOC independently
+   so the article column can grow. Hidden below Starlight’s desktop breakpoints
+   (50rem nav, 72rem TOC), leaving the existing mobile menu unchanged. */
+.bh-sidebar-toggle {
+	display: none;
+	position: fixed;
+	z-index: var(--sl-z-index-menu);
+	top: calc(var(--sl-nav-height) + 0.65rem);
+	box-sizing: border-box;
+	width: 2rem;
+	height: 2rem;
+	margin: 0;
+	padding: 0;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--sl-color-hairline-shade);
+	border-radius: 999px;
+	background-color: var(--sl-color-bg-nav);
+	color: var(--sl-color-white);
+	box-shadow: var(--sl-shadow-sm);
+	cursor: pointer;
+}
+.bh-sidebar-toggle:hover {
+	background-color: var(--sl-color-gray-6);
+}
+.bh-sidebar-toggle:focus {
+	outline: none;
+}
+.bh-sidebar-toggle:focus-visible {
+	outline: 2px solid var(--sl-color-accent);
+	outline-offset: 2px;
+}
+.bh-sidebar-toggle__icon {
+	display: none;
+	line-height: 0;
+}
+html[data-bh-nav='open'] .bh-sidebar-toggle--nav .bh-sidebar-toggle__icon--collapse,
+html[data-bh-nav='collapsed'] .bh-sidebar-toggle--nav .bh-sidebar-toggle__icon--expand,
+html[data-bh-toc='open'] .bh-sidebar-toggle--toc .bh-sidebar-toggle__icon--collapse,
+html[data-bh-toc='collapsed'] .bh-sidebar-toggle--toc .bh-sidebar-toggle__icon--expand {
+	display: block;
+}
+/* First visit: attributes may be missing until the head script runs; treat as open. */
+html:not([data-bh-nav]) .bh-sidebar-toggle--nav .bh-sidebar-toggle__icon--collapse,
+html:not([data-bh-toc]) .bh-sidebar-toggle--toc .bh-sidebar-toggle__icon--collapse {
+	display: block;
+}
+
+@media (min-width: 50rem) {
+	.bh-sidebar-toggle--nav {
+		display: inline-flex;
+		inset-inline-start: calc(var(--sl-sidebar-width) - 1rem);
+	}
+	html[data-bh-nav='collapsed'][data-has-sidebar] {
+		--sl-content-inline-start: 0rem;
+	}
+	html[data-bh-nav='collapsed'] .bh-sidebar-toggle--nav {
+		inset-inline-start: 0.4rem;
+	}
+	html[data-bh-nav='collapsed'] .sidebar-pane {
+		display: none;
+	}
+	/* Between 50rem and 72rem only the left nav is a desktop sidebar. */
+	html[data-has-sidebar][data-bh-nav='collapsed']:not([data-has-hero]) {
+		--sl-content-width: min(58rem, calc(100vw - 3rem));
+	}
+}
+
+@media (min-width: 72rem) {
+	/* Sit on the outer (trailing) edge so the button never covers “本页内容”. */
+	.bh-sidebar-toggle--toc {
+		display: inline-flex;
+		inset-inline-end: 0.4rem;
+	}
+	html[data-bh-toc='collapsed'] .right-sidebar-container {
+		display: none;
+		width: 0;
+	}
+	html[data-bh-toc='collapsed'][data-has-sidebar][data-has-toc] .main-pane {
+		width: 100%;
+		--sl-content-margin-inline: auto;
+	}
+	html[data-has-sidebar][data-has-toc][data-bh-nav='collapsed'][data-bh-toc='open']:not([data-has-hero]) {
+		--sl-content-width: min(58rem, calc(100vw - var(--sl-sidebar-width) - 4rem));
+	}
+	html[data-has-sidebar][data-has-toc][data-bh-nav='open'][data-bh-toc='collapsed']:not([data-has-hero]),
+	html[data-has-toc][data-bh-toc='collapsed']:not([data-has-sidebar]):not([data-has-hero]) {
+		--sl-content-width: min(58rem, calc(100vw - var(--sl-sidebar-width) - 4rem));
+	}
+	html[data-has-sidebar][data-bh-nav='collapsed'][data-bh-toc='collapsed']:not([data-has-hero]),
+	html[data-bh-nav='collapsed'][data-bh-toc='collapsed']:not([data-has-hero]) {
+		--sl-content-width: min(70rem, calc(100vw - 4rem));
+	}
+}
+
+@media print {
+	.bh-sidebar-toggle {
+		display: none !important;
+	}
+}

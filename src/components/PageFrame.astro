@@ -1,0 +1,120 @@
+---
+import Default from '@astrojs/starlight/components/PageFrame.astro';
+
+const { hasSidebar, toc } = Astro.locals.starlightRoute;
+const t = Astro.locals.t;
+const navCollapse = t('sidebarToggle.collapseNav');
+const navExpand = t('sidebarToggle.expandNav');
+const tocCollapse = t('sidebarToggle.collapseToc');
+const tocExpand = t('sidebarToggle.expandToc');
+---
+
+<Default>
+	<slot name="header" slot="header" />
+	<slot name="sidebar" slot="sidebar" />
+	<slot />
+</Default>
+
+{
+	hasSidebar && (
+		<button
+			type="button"
+			class="bh-sidebar-toggle bh-sidebar-toggle--nav print:hidden"
+			data-bh-toggle="nav"
+			data-label-collapse={navCollapse}
+			data-label-expand={navExpand}
+			aria-controls="starlight__sidebar"
+			aria-expanded="true"
+			aria-label={navCollapse}
+			title={navCollapse}
+		>
+			<span class="bh-sidebar-toggle__icon bh-sidebar-toggle__icon--collapse" aria-hidden="true">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+					<path d="M14.7 6.3a1 1 0 0 1 0 1.4L10.4 12l4.3 4.3a1 1 0 1 1-1.4 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.4 0Z" />
+				</svg>
+			</span>
+			<span class="bh-sidebar-toggle__icon bh-sidebar-toggle__icon--expand" aria-hidden="true">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+					<path d="M9.3 6.3a1 1 0 0 1 1.4 0l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 1 1-1.4-1.4l4.3-4.3-4.3-4.3a1 1 0 0 1 0-1.4Z" />
+				</svg>
+			</span>
+			<span class="sr-only">{navCollapse}</span>
+		</button>
+	)
+}
+
+{
+	toc && (
+		<button
+			type="button"
+			class="bh-sidebar-toggle bh-sidebar-toggle--toc print:hidden"
+			data-bh-toggle="toc"
+			data-label-collapse={tocCollapse}
+			data-label-expand={tocExpand}
+			aria-controls="starlight__toc"
+			aria-expanded="true"
+			aria-label={tocCollapse}
+			title={tocCollapse}
+		>
+			<span class="bh-sidebar-toggle__icon bh-sidebar-toggle__icon--collapse" aria-hidden="true">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+					<path d="M9.3 6.3a1 1 0 0 1 1.4 0l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 1 1-1.4-1.4l4.3-4.3-4.3-4.3a1 1 0 0 1 0-1.4Z" />
+				</svg>
+			</span>
+			<span class="bh-sidebar-toggle__icon bh-sidebar-toggle__icon--expand" aria-hidden="true">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+					<path d="M14.7 6.3a1 1 0 0 1 0 1.4L10.4 12l4.3 4.3a1 1 0 1 1-1.4 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.4 0Z" />
+				</svg>
+			</span>
+			<span class="sr-only">{tocCollapse}</span>
+		</button>
+	)
+}
+
+<script>
+	const KEYS = { nav: 'bh-wiki-nav', toc: 'bh-wiki-toc' } as const;
+	const ATTR = { nav: 'data-bh-nav', toc: 'data-bh-toc' } as const;
+
+	function current(which: 'nav' | 'toc') {
+		return document.documentElement.getAttribute(ATTR[which]) === 'collapsed'
+			? 'collapsed'
+			: 'open';
+	}
+
+	function syncButtons() {
+		document.querySelectorAll<HTMLButtonElement>('[data-bh-toggle]').forEach((btn) => {
+			const which = btn.dataset.bhToggle as 'nav' | 'toc' | undefined;
+			if (which !== 'nav' && which !== 'toc') return;
+			const open = current(which) === 'open';
+			btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+			const label = open ? btn.dataset.labelCollapse : btn.dataset.labelExpand;
+			if (label) {
+				btn.setAttribute('aria-label', label);
+				btn.setAttribute('title', label);
+				const sr = btn.querySelector('.sr-only');
+				if (sr) sr.textContent = label;
+			}
+		});
+		const toc = document.querySelector('.right-sidebar-container');
+		if (toc && !toc.id) toc.id = 'starlight__toc';
+	}
+
+	function apply(which: 'nav' | 'toc', next: 'open' | 'collapsed') {
+		document.documentElement.setAttribute(ATTR[which], next);
+		try {
+			localStorage.setItem(KEYS[which], next);
+		} catch {
+			/* private mode */
+		}
+		syncButtons();
+	}
+
+	document.querySelectorAll<HTMLButtonElement>('[data-bh-toggle]').forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const which = btn.dataset.bhToggle as 'nav' | 'toc' | undefined;
+			if (which !== 'nav' && which !== 'toc') return;
+			apply(which, current(which) === 'open' ? 'collapsed' : 'open');
+		});
+	});
+	syncButtons();
+</script>

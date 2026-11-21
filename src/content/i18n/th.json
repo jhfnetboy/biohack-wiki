@@ -3,5 +3,9 @@
   "disclaimer.link": "ข้อจำกัดความรับผิดทางการแพทย์",
   "page.sources": "แหล่งอ้างอิง",
   "page.backlinks": "ถูกอ้างโดย",
-  "page.stub": "ฉบับร่าง ยังต้องหาแหล่งอ้างอิง"
+  "page.stub": "ฉบับร่าง ยังต้องหาแหล่งอ้างอิง",
+  "sidebarToggle.collapseNav": "ซ่อนเมนูนำทาง",
+  "sidebarToggle.expandNav": "แสดงเมนูนำทาง",
+  "sidebarToggle.collapseToc": "ซ่อนสารบัญ",
+  "sidebarToggle.expandToc": "แสดงสารบัญ"
 }
