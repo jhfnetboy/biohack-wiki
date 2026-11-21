@@ -7,7 +7,7 @@ domain: "cross-cutting"
 domains:
   - "cross-cutting"
 evidenceLevel: "unrated"
-lastReviewed: "2026-11-20"
+lastReviewed: "2026-11-21"
 status: "reviewed"
 sidebar:
   order: 4
@@ -45,4 +45,4 @@ Each on-page caption begins with “AI-generated illustration.”
 
 ## Original diagrams
 
-Drawn for this wiki, not copied from a third party: [domain map](/diagrams/domain-map.svg), [three layers](/diagrams/three-layers.svg), [signal chain](/diagrams/bci-signal-chain.svg), [closed loop](/diagrams/closed-loop.svg).
+Drawn for this wiki, not copied from a third party: [domain map](/diagrams/domain-map.svg) (Chinese [/diagrams/domain-map-zh.svg](/diagrams/domain-map-zh.svg), Thai [/diagrams/domain-map-th.svg](/diagrams/domain-map-th.svg)), [three layers](/diagrams/three-layers.svg), [signal chain](/diagrams/bci-signal-chain.svg), [closed loop](/diagrams/closed-loop.svg).

@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Illustration from './Illustration.astro';
-import { domains } from '../../data/domains';
+import { methodDomainBySlug } from '../../data/method-domains';
 import { domainGoals, goalLabel, keywordsFor, type GoalId } from '../../data/domain-keywords';
 import { methodBySlug } from '../../data/method-goals';
 import { illustrations } from '../../data/illustrations';
@@ -79,18 +79,17 @@ const anchors: Record<string, { side: Side; x: number; y: number }> = {
 	cellular: { side: 'right', x: 66, y: 70 },
 };
 
-const bySlug = Object.fromEntries(domains.map((domain) => [domain.slug, domain]));
-
 const tiles: Tile[] = Object.entries(anchors).map(([slug, anchor]) => {
-	const domain = bySlug[slug];
+	const domain = methodDomainBySlug[slug];
+	if (!domain) throw new Error(`Unknown method domain ${slug}`);
 	const blurb = blurbs[slug];
 	return {
 		slug,
-		slot: slug === 'peptides' ? 'domain-peptides' : (domain?.slot ?? 'domain-biochemical'),
+		slot: domain.slot,
 		href: `/${slug}/`,
 		side: anchor.side,
-		title: slug === 'peptides' ? 'Peptides' : (domain?.title ?? slug),
-		titleZh: slug === 'peptides' ? '肽' : (domain?.titleZh ?? slug),
+		title: domain.title,
+		titleZh: domain.titleZh,
 		blurb: blurb?.en ?? '',
 		blurbZh: blurb?.zh ?? '',
 		goals: domainGoals[slug] ?? [],

@@ -1,58 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
-  <title id="title">Nine biohacking domains</title>
-  <desc id="desc">Original diagram of the wiki's nine filing domains. Not copied from a third party.</desc>
-  <rect width="920" height="520" fill="#f4f7f5"/>
-  <text x="32" y="42" font-family="Georgia, serif" font-size="22" fill="#12352c">Nine domains (editorial map)</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 920 620" role="img" aria-labelledby="title desc">
+  <title id="title">Ten biohacking domains</title>
+  <desc id="desc">Original diagram of the wiki's ten domains. Not copied from a third party. Each box links to that domain's landing page.</desc>
+  <rect width="920" height="620" fill="#f4f7f5"/>
+  <text x="32" y="42" font-family="Georgia, serif" font-size="22" fill="#12352c">Ten domains (editorial map)</text>
   <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#12352c">
-    <g>
-      <rect x="32" y="70" width="270" height="64" rx="8" fill="#d7f5ea"/>
-      <text x="48" y="96">1 Biochemical</text>
-      <text x="48" y="116" font-size="12" fill="#245">peptides, hormones, nootropics</text>
-    </g>
-    <g>
-      <rect x="322" y="70" width="270" height="64" rx="8" fill="#d7e8f5"/>
-      <text x="338" y="96">2 Neurohacking</text>
-      <text x="338" y="116" font-size="12" fill="#245">recording, stimulation, BCI</text>
-    </g>
-    <g>
-      <rect x="612" y="70" width="270" height="64" rx="8" fill="#e7e4f7"/>
-      <text x="628" y="96">3 Bionic augmentation</text>
-      <text x="628" y="116" font-size="12" fill="#245">prostheses, exoskeletons</text>
-    </g>
-    <g>
-      <rect x="32" y="160" width="270" height="64" rx="8" fill="#f7e7d8"/>
-      <text x="48" y="186">4 Cyborg / grinder</text>
-      <text x="48" y="206" font-size="12" fill="#245">implants, magnets, sensors</text>
-    </g>
-    <g>
-      <rect x="322" y="160" width="270" height="64" rx="8" fill="#f7dce3"/>
-      <text x="338" y="186">5 Genetic</text>
-      <text x="338" y="206" font-size="12" fill="#245">gene, cell, synthetic biology</text>
-    </g>
-    <g>
-      <rect x="612" y="160" width="270" height="64" rx="8" fill="#e5f3d8"/>
-      <text x="628" y="186">6 Longevity</text>
-      <text x="628" y="206" font-size="12" fill="#245">hallmarks, clocks, healthspan</text>
-    </g>
-    <g>
-      <rect x="32" y="250" width="270" height="64" rx="8" fill="#fff4cc"/>
-      <text x="48" y="276">7 Quantified self</text>
-      <text x="48" y="296" font-size="12" fill="#245">wearables, CGM, HRV</text>
-    </g>
-    <g>
-      <rect x="322" y="250" width="270" height="64" rx="8" fill="#e3f6f2"/>
-      <text x="338" y="276">8 Microbiome</text>
-      <text x="338" y="296" font-size="12" fill="#245">gut, diet, microbes</text>
-    </g>
-    <g>
-      <rect x="612" y="250" width="270" height="64" rx="8" fill="#efe7ff"/>
-      <text x="628" y="276">9 Lifestyle / environment</text>
-      <text x="628" y="296" font-size="12" fill="#245">light, sleep, temperature, movement</text>
-    </g>
+    <a href="/quantified-self/">
+      <g>
+        <rect x="32" y="78" width="270" height="64" rx="8" fill="#fff4cc"/>
+        <text x="48" y="104">1 Quantified self</text>
+        <text x="48" y="124" font-size="12" fill="#245">wearables, CGM, HRV</text>
+      </g>
+    </a>
+    <a href="/lifestyle/">
+      <g>
+        <rect x="322" y="78" width="270" height="64" rx="8" fill="#efe7ff"/>
+        <text x="338" y="104">2 Environmental Signals</text>
+        <text x="338" y="124" font-size="12" fill="#245">light, cold, heat, timing</text>
+      </g>
+    </a>
+    <a href="/biochemical/">
+      <g>
+        <rect x="32" y="168" width="270" height="64" rx="8" fill="#d7f5ea"/>
+        <text x="48" y="194">3 Biochemical</text>
+        <text x="48" y="214" font-size="12" fill="#245">small molecules, hormones, nootropics</text>
+      </g>
+    </a>
+    <a href="/peptides/">
+      <g>
+        <rect x="322" y="168" width="270" height="64" rx="8" fill="#c5ebd8"/>
+        <text x="338" y="194">4 Peptides</text>
+        <text x="338" y="214" font-size="12" fill="#245">amino-acid signals, purity</text>
+      </g>
+    </a>
+    <a href="/genetic/">
+      <g>
+        <rect x="32" y="258" width="270" height="64" rx="8" fill="#f7dce3"/>
+        <text x="48" y="284">5 Genetic</text>
+        <text x="48" y="304" font-size="12" fill="#245">gene, RNA, synthetic biology</text>
+      </g>
+    </a>
+    <a href="/cellular/">
+      <g>
+        <rect x="322" y="258" width="270" height="64" rx="8" fill="#f3d4e8"/>
+        <text x="338" y="284">6 Cellular &amp; Regenerative</text>
+        <text x="338" y="304" font-size="12" fill="#245">stem cells, tissue, reprogramming</text>
+      </g>
+    </a>
+    <a href="/microbiome/">
+      <g>
+        <rect x="612" y="258" width="270" height="64" rx="8" fill="#e3f6f2"/>
+        <text x="628" y="284">7 Microbiome</text>
+        <text x="628" y="304" font-size="12" fill="#245">gut, diet, microbes</text>
+      </g>
+    </a>
+    <a href="/neurohacking/">
+      <g>
+        <rect x="32" y="348" width="270" height="64" rx="8" fill="#d7e8f5"/>
+        <text x="48" y="374">8 Neurotech</text>
+        <text x="48" y="394" font-size="12" fill="#245">recording, stimulation, BCI</text>
+      </g>
+    </a>
+    <a href="/cyborg/">
+      <g>
+        <rect x="322" y="348" width="270" height="64" rx="8" fill="#f7e7d8"/>
+        <text x="338" y="374">9 Cyborg implants</text>
+        <text x="338" y="394" font-size="12" fill="#245">implants, magnets, sensors</text>
+      </g>
+    </a>
+    <a href="/bionic/">
+      <g>
+        <rect x="612" y="348" width="270" height="64" rx="8" fill="#e7e4f7"/>
+        <text x="628" y="374">10 Bionics</text>
+        <text x="628" y="394" font-size="12" fill="#245">prostheses, exoskeletons</text>
+      </g>
+    </a>
   </g>
-  <text x="32" y="360" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">The boxes overlap on purpose. A single project can sit in more than one domain.</text>
-  <text x="32" y="388" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">Example filed under 2 and 3: signals from the nervous system used to move an assistive device.</text>
-  <path d="M450 134 H612" stroke="#12352c" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="32" y="478" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">The boxes overlap on purpose. A single project can sit in more than one domain.</text>
+  <text x="32" y="506" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">Example filed under 8 and 10: signals from the nervous system used to move an assistive device.</text>
+  <path d="M302 380 H310 V422 H612 V380" stroke="#12352c" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
   <defs>
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
       <path d="M0 0 L6 3 L0 6 Z" fill="#12352c"/>

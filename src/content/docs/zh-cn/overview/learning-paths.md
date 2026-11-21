@@ -1,14 +1,14 @@
 ---
 title: "学习路径"
 titleZh: "学习路径"
-description: "九个领域的建议阅读顺序。它不是操作方案，也不是有分数的课程。不是医疗建议。不是医疗建议。"
+description: "十个领域的建议阅读顺序。它不是操作方案，也不是有分数的课程。不是医疗建议。不是医疗建议。"
 entityType: "navigation"
 domain: "cross-cutting"
 domains:
   - "cross-cutting"
 evidenceLevel: "unrated"
 maturity: "unknown"
-lastReviewed: "2026-11-20"
+lastReviewed: "2026-11-21"
 status: "reviewed"
 sidebar:
   order: 8

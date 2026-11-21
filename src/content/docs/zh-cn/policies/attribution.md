@@ -7,7 +7,7 @@ domain: "cross-cutting"
 domains:
   - "cross-cutting"
 evidenceLevel: "unrated"
-lastReviewed: "2026-11-20"
+lastReviewed: "2026-11-21"
 status: "reviewed"
 sidebar:
   order: 4
@@ -45,4 +45,4 @@ sidebar:
 
 ## 原创示意图
 
-为本维基绘制，不是从第三方复制：[领域地图](/diagrams/domain-map.svg)、[三个层次](/diagrams/three-layers.svg)（中文版 [/diagrams/three-layers-zh.svg](/diagrams/three-layers-zh.svg)）、[信号链](/diagrams/bci-signal-chain.svg)（中文版 [/diagrams/bci-signal-chain-zh.svg](/diagrams/bci-signal-chain-zh.svg)）、[闭环](/diagrams/closed-loop.svg)。
+为本维基绘制，不是从第三方复制：[领域地图](/diagrams/domain-map-zh.svg)（英文 [/diagrams/domain-map.svg](/diagrams/domain-map.svg)，泰文 [/diagrams/domain-map-th.svg](/diagrams/domain-map-th.svg)）、[三个层次](/diagrams/three-layers.svg)（中文版 [/diagrams/three-layers-zh.svg](/diagrams/three-layers-zh.svg)）、[信号链](/diagrams/bci-signal-chain.svg)（中文版 [/diagrams/bci-signal-chain-zh.svg](/diagrams/bci-signal-chain-zh.svg)）、[闭环](/diagrams/closed-loop.svg)。
