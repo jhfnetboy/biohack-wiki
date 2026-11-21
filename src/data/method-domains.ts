@@ -16,7 +16,7 @@ export type MethodDomain = {
 	blurb: string;
 	blurbZh: string;
 	blurbTh: string;
-	/** Fill used by the editorial domain-map SVG (same pastel language as the current diagram). */
+	/** Legacy pastel swatch; the v2 diagram uses theme tokens instead. */
 	fill: string;
 };
 

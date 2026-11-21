@@ -1253,3 +1253,46 @@ a > .sl-badge {
 .bh-serve-list span {
 	color: var(--sl-color-gray-2);
 }
+
+
+/* Domain map (v2): inherit the site theme when the SVG is inlined.
+   These rules beat the SVG's prefers-color-scheme defaults. */
+.bh-domain-map-figure {
+	margin: 1.25rem 0 1.75rem;
+	padding: 0;
+	border: 0;
+	container-type: inline-size;
+	container-name: domain-map;
+}
+.bh-domain-map-figure .bh-domain-map {
+	width: 100%;
+	height: auto;
+	display: block;
+	max-width: 100%;
+}
+/* Article column is narrower than the viewport; container queries
+   pick the stacked layout when the inlined map cannot fit the grid. */
+@container domain-map (max-width: 720px) {
+	.bh-domain-map-figure .dm-desktop { display: none !important; }
+}
+@container domain-map (min-width: 721px) {
+	.bh-domain-map-figure .dm-mobile { display: none !important; }
+}
+:root[data-theme='light'] .bh-domain-map,
+html[data-theme='light'] .bh-domain-map {
+	--dm-ink: var(--bh-ink);
+	--dm-card: var(--bh-card);
+	--dm-line: var(--bh-line);
+	--dm-teal: var(--bh-teal);
+	--dm-banner: var(--bh-banner);
+	--dm-muted: color-mix(in srgb, var(--bh-ink) 68%, var(--bh-card));
+}
+:root[data-theme='dark'] .bh-domain-map,
+html[data-theme='dark'] .bh-domain-map {
+	--dm-ink: var(--bh-ink);
+	--dm-card: var(--bh-card);
+	--dm-line: var(--bh-line);
+	--dm-teal: var(--bh-teal);
+	--dm-banner: var(--bh-banner);
+	--dm-muted: color-mix(in srgb, var(--bh-ink) 72%, var(--bh-card));
+}

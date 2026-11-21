@@ -80,16 +80,24 @@ for (const [name, previous] of before) {
 	if (!next.includes(`/${methodDomains[0]!.slug}/`)) {
 		errors.push(`public/diagrams/${name} is missing per-domain links`);
 	}
-	const hrefCount = [...next.matchAll(/<a href="/g)].length;
-	if (hrefCount !== METHOD_DOMAIN_COUNT) {
-		errors.push(`public/diagrams/${name} has ${hrefCount} links, expected ${METHOD_DOMAIN_COUNT}`);
+	const hrefs = [...next.matchAll(/<a class="node" href="([^"]+)"/g)].map((m) => m[1]);
+	const unique = new Set(hrefs);
+	if (unique.size !== METHOD_DOMAIN_COUNT) {
+		errors.push(`public/diagrams/${name} has ${unique.size} unique links, expected ${METHOD_DOMAIN_COUNT}`);
+	}
+	if (hrefs.length !== METHOD_DOMAIN_COUNT * 2) {
+		errors.push(`public/diagrams/${name} has ${hrefs.length} links, expected ${METHOD_DOMAIN_COUNT * 2} (desktop + mobile)`);
+	}
+	if (!/class="bh-domain-map"/.test(next) || !/dm-desktop/.test(next) || !/dm-mobile/.test(next)) {
+		errors.push(`public/diagrams/${name} is missing the v2 desktop/mobile structure`);
 	}
 }
 fs.rmSync(tmp, { recursive: true, force: true });
 
 const required = [
-	['src/content/docs/overview/what-is-biohacking.md', domainCountCopy.en.phrase],
-	['src/content/docs/zh-cn/overview/what-is-biohacking.md', domainCountCopy.zh.phrase],
+	['src/content/docs/overview/what-is-biohacking.mdx', domainCountCopy.en.phrase],
+	['src/content/docs/zh-cn/overview/what-is-biohacking.mdx', domainCountCopy.zh.phrase],
+	['src/content/docs/th/overview/what-is-biohacking.mdx', domainCountCopy.th.phrase],
 	['src/content/docs/overview/concepts.md', `${domainCountCopy.en.word}-domain map`],
 	['src/content/docs/zh-cn/overview/concepts.md', `${domainCountCopy.zh.word}领域地图`],
 ];
@@ -97,6 +105,9 @@ for (const [file, needle] of required) {
 	const text = fs.readFileSync(path.join(root, file), 'utf8');
 	if (!text.includes(needle)) {
 		errors.push(`${file} should mention "${needle}"`);
+	}
+	if (file.includes('what-is-biohacking') && !text.includes('<DomainMap')) {
+		errors.push(`${file} should inline <DomainMap />`);
 	}
 }
 
