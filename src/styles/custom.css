@@ -1410,11 +1410,9 @@ html:not([data-bh-toc]) .bh-sidebar-toggle--toc .bh-sidebar-toggle__icon--collap
 }
 
 @media (min-width: 72rem) {
+	/* Sit on the outer (trailing) edge so the button never covers “本页内容”. */
 	.bh-sidebar-toggle--toc {
 		display: inline-flex;
-		inset-inline-end: calc(var(--sl-sidebar-width) - 1rem);
-	}
-	html[data-bh-toc='collapsed'] .bh-sidebar-toggle--toc {
 		inset-inline-end: 0.4rem;
 	}
 	html[data-bh-toc='collapsed'] .right-sidebar-container {
