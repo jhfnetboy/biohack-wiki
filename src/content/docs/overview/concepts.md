@@ -16,7 +16,7 @@ sidebar:
 
 These labels are for editors. They are not quotations.
 
-**Biohacking** is deliberately intervening in your own biology — and checking the result — in order to restore, enhance, or extend healthspan. The ten domains are the methods; the three goals are why. See [What is biohacking](/overview/what-is-biohacking/).
+**Biohacking** is self-directed, deliberately intervening in one’s own body and mind — and checking the result — in order to restore, enhance, or extend healthspan. The ten domains are the methods; the three goals are why. See [What is biohacking](/overview/what-is-biohacking/).
 
 **Human augmentation** is the narrower file for adding or replacing a function. That usually sits under the Enhance goal. A prosthesis for a missing limb is filed as Restore. A subdermal identification chip in a person without that impairment is filed as Enhance. The label is not a moral permission.
 

@@ -43,7 +43,7 @@ WHO uses this term for products that maintain or improve functioning. See the WH
 
 ## Biohacking
 
-A loose popular label for self-directed experiments on body, data, or biology. This wiki does not treat the label as a method.
+A loose popular label for self-directed, deliberate intervention in one’s own body and mind. This wiki does not treat the label as a method.
 
 ## Biomarker
 

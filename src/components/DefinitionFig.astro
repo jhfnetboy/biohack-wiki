@@ -1,0 +1,24 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { localeId } from '../lib/locale';
+
+interface Props {
+	name: 'definition-goals-means-loop' | 'definition-spectrum' | 'definition-two-senses';
+	caption?: string;
+}
+
+const { name, caption } = Astro.props;
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const suffix = id === 'zh' ? '-zh' : id === 'th' ? '-th' : '';
+const file = `${name}${suffix}.svg`;
+const raw = fs.readFileSync(path.join(process.cwd(), 'public/diagrams', file), 'utf8');
+const svg = raw
+	.replace(/\swidth="[^"]*"/, ' width="100%"')
+	.replace(/\sheight="[^"]*"/, '');
+---
+
+<figure class="bh-def-fig">
+	<Fragment set:html={svg} />
+	{caption && <figcaption>{caption}</figcaption>}
+</figure>

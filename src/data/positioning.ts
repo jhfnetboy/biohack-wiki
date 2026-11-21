@@ -6,10 +6,10 @@ export type Pillar = { title: string; text: string };
 export const positioning = {
 	en: {
 		statement:
-			'Biohacking is deliberately intervening in your own biology — and checking the result — in order to restore, enhance, or extend healthspan. This wiki groups the methods into ten domains. It is an open, open-source reference helping any person or organization research those areas and inform their decisions. Professionally tracked, continuously updated, objective and neutral.',
+			'Biohacking is self-directed, deliberately intervening in one’s own body and mind — and checking the result — in order to restore, enhance, or extend healthspan. This wiki groups the methods into ten domains. It is an open, open-source reference helping any person or organization research those areas and inform their decisions. Professionally tracked, continuously updated, objective and neutral.',
 		headline: 'The open biohacking wiki',
 		subline:
-			'Biohacking is deliberately intervening in your own biology — and checking the result — in order to restore, enhance, or extend healthspan. This wiki groups the methods into ten domains, and is an open-source reference for any person or organization.',
+			'Biohacking is self-directed, deliberately intervening in one’s own body and mind — and checking the result — in order to restore, enhance, or extend healthspan. This wiki groups the methods into ten domains, and is an open-source reference for any person or organization.',
 		badges: ['Tracked', 'Updated', 'Neutral', 'Open source'],
 		tagline:
 			'Open, open-source wiki: ten method domains toward restore, enhance, or extend. Objective, continuously updated, and not medical advice.',
@@ -38,10 +38,10 @@ export const positioning = {
 	},
 	zh: {
 		statement:
-			'生物黑客，是为了修复、增强或延寿，有意识地干预自己的身体，并查看结果；本维基把这些手段分成十个领域。开放、开源，帮助任何人和组织查阅并为决策提供参考。专业跟进，持续更新，客观中立。',
+			'生物黑客，是为了修复、增强或延寿，自己做主、有意识地干预自己的身心，并查看结果；本维基把这些手段分成十个领域。开放、开源，帮助任何人和组织查阅并为决策提供参考。专业跟进，持续更新，客观中立。',
 		headline: '开放的生物黑客百科',
 		subline:
-			'生物黑客，是为了修复、增强或延寿，有意识地干预自己的身体，并查看结果；本维基把这些手段分成十个领域。开源、人人可用，为决策提供参考。',
+			'生物黑客，是为了修复、增强或延寿，自己做主、有意识地干预自己的身心，并查看结果；本维基把这些手段分成十个领域。开源、人人可用，为决策提供参考。',
 		badges: ['专业跟进', '持续更新', '客观中立', '开源'],
 		tagline: '开放、开源的生物黑客 wiki。手段分成十个领域，目的是修复、增强或延寿。客观中立，持续更新，不是医疗建议。',
 		pillars: [
@@ -69,10 +69,10 @@ export const positioning = {
 	},
 	th: {
 		statement:
-			'ไบโอแฮกกิง คือการแทรกแซงชีววิทยาของตนเองอย่างตั้งใจ และตรวจสอบผล เพื่อฟื้นฟู เสริมศักยภาพ หรือยืดสุขภาพ วิกินี้จัดวิธีที่ใช้เป็นสิบโดเมน เป็นแหล่งอ้างอิงแบบเปิดและโอเพนซอร์ส ที่ช่วยให้บุคคลหรือองค์กรศึกษาและใช้ประกอบการตัดสินใจ มีการติดตามอย่างมืออาชีพ อัปเดตต่อเนื่อง เป็นกลาง',
+			'ไบโอแฮกกิง คือการกำหนดแนวทางด้วยตนเอง แทรกแซงร่างกายและจิตใจของตนเองอย่างตั้งใจ และตรวจสอบผล เพื่อฟื้นฟู เสริมศักยภาพ หรือยืดสุขภาพ วิกินี้จัดวิธีที่ใช้เป็นสิบโดเมน เป็นแหล่งอ้างอิงแบบเปิดและโอเพนซอร์ส ที่ช่วยให้บุคคลหรือองค์กรศึกษาและใช้ประกอบการตัดสินใจ มีการติดตามอย่างมืออาชีพ อัปเดตต่อเนื่อง เป็นกลาง',
 		headline: 'วิกิไบโอแฮกกิงแบบเปิด',
 		subline:
-			'ไบโอแฮกกิง คือการแทรกแซงชีววิทยาของตนเองอย่างตั้งใจ และตรวจสอบผล เพื่อฟื้นฟู เสริมศักยภาพ หรือยืดสุขภาพ วิกินี้จัดวิธีที่ใช้เป็นสิบโดเมน เป็นแหล่งอ้างอิงโอเพนซอร์สสำหรับบุคคลหรือองค์กร',
+			'ไบโอแฮกกิง คือการกำหนดแนวทางด้วยตนเอง แทรกแซงร่างกายและจิตใจของตนเองอย่างตั้งใจ และตรวจสอบผล เพื่อฟื้นฟู เสริมศักยภาพ หรือยืดสุขภาพ วิกินี้จัดวิธีที่ใช้เป็นสิบโดเมน เป็นแหล่งอ้างอิงโอเพนซอร์สสำหรับบุคคลหรือองค์กร',
 		badges: ['มืออาชีพ', 'อัปเดต', 'เป็นกลาง', 'โอเพนซอร์ส'],
 		tagline:
 			'วิกิไบโอแฮกกิงแบบเปิดและโอเพนซอร์ส: สิบโดเมนวิธี เพื่อฟื้นฟู เสริมศักยภาพ หรือยืดสุขภาพ เป็นกลาง อัปเดตต่อเนื่อง ไม่ใช่คำแนะนำทางการแพทย์',

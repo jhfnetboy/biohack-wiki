@@ -1296,3 +1296,47 @@ html[data-theme='dark'] .bh-domain-map {
 	--dm-banner: var(--bh-banner);
 	--dm-muted: color-mix(in srgb, var(--bh-ink) 72%, var(--bh-card));
 }
+
+
+/* Definition illustrations: inherit the site theme when the SVG is inlined.
+   These rules beat the SVG's prefers-color-scheme defaults. */
+.bh-def-fig {
+	margin: 1.25rem 0 1.75rem;
+	padding: 0;
+	border: 0;
+}
+.bh-def-fig .bh-fig {
+	width: 100%;
+	height: auto;
+	display: block;
+	max-width: 100%;
+}
+.bh-def-fig figcaption {
+	margin-top: 0.45rem;
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-3);
+}
+:root[data-theme='light'] .bh-fig,
+html[data-theme='light'] .bh-fig {
+	--ink: var(--bh-ink);
+	--card: var(--bh-card);
+	--line: var(--bh-line);
+	--teal: var(--bh-teal);
+	--soft: var(--bh-soft);
+	--bg: var(--bh-banner);
+	--muted: color-mix(in srgb, var(--bh-ink) 68%, var(--bh-card));
+	--warn: var(--bh-stub);
+	--warn-bg: var(--bh-stub-bg);
+}
+:root[data-theme='dark'] .bh-fig,
+html[data-theme='dark'] .bh-fig {
+	--ink: var(--bh-ink);
+	--card: var(--bh-card);
+	--line: var(--bh-line);
+	--teal: var(--bh-teal);
+	--soft: var(--bh-soft);
+	--bg: var(--bh-banner);
+	--muted: color-mix(in srgb, var(--bh-ink) 72%, var(--bh-card));
+	--warn: var(--bh-stub);
+	--warn-bg: var(--bh-stub-bg);
+}
