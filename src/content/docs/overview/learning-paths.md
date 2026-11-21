@@ -1,7 +1,7 @@
 ---
 title: "Learning paths"
 titleZh: "学习路径"
-description: "A suggested reading order across the ten domains. It is not a protocol and not a graded course."
+description: "A suggested reading order across the ten method domains and three goals — Restore, Enhance, and Extend. It is not a protocol and not a graded course."
 entityType: "navigation"
 domain: "cross-cutting"
 domains:
@@ -13,6 +13,8 @@ status: "reviewed"
 sidebar:
   order: 8
 ---
+
+Read the working definition and the three goals first, then one method domain at a time.
 
 1. [Medical disclaimer](/disclaimer/) and [evidence and safety](/overview/evidence-and-safety/).
 2. [What is biohacking](/overview/what-is-biohacking/) and the [goals](/goals/).

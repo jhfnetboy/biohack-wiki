@@ -238,7 +238,7 @@ export const thUi: Record<string, string> = {
   "Partial reprogramming": "การรีโปรแกรมบางส่วน",
   "Peptide overview": "ภาพรวมเปปไทด์",
   "Peptides": "เปปไทด์",
-  "Peptides are a first-level domain on the ten-domain map. The public path is /peptides/ so it can later map to a peptides subdomain. That DNS name is not configured.": "เปปไทด์เป็นโดเมนระดับแรกในแผนที่สิบโดเมน เส้นทางสาธารณะคือ /peptides/ เพื่อให้แมปไปยังซับโดเมน peptides ได้ภายหลัง ชื่อ DNS นั้นยังไม่ได้ตั้ง",
+  "Peptides are a first-level domain among the ten method domains. The public path is /peptides/ so it can later map to a peptides subdomain. That DNS name is not configured.": "เปปไทด์เป็นโดเมนระดับแรกในสิบโดเมนวิธี เส้นทางสาธารณะคือ /peptides/ เพื่อให้แมปไปยังซับโดเมน peptides ได้ภายหลัง ชื่อ DNS นั้นยังไม่ได้ตั้ง",
   "Peptides, hormones, metabolic drugs and supplements": "เปปไทด์ ฮอร์โมน ยาเมแทบอลิซึม และผลิตภัณฑ์เสริม",
   "Personalized nutrition": "โภชนาการเฉพาะบุคคล",
   "Placeholder index. No regimens.": "ดัชนีที่ยังว่าง ไม่มีสูตรการใช้",

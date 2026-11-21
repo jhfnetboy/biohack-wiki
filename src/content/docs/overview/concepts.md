@@ -16,8 +16,8 @@ sidebar:
 
 These labels are for editors. They are not quotations.
 
-**Biohacking** is the ten-domain map. See [What is biohacking](/overview/what-is-biohacking/).
+**Biohacking** is deliberately intervening in your own biology — and checking the result — in order to restore, enhance, or extend healthspan. The ten domains are the methods; the three goals are why. See [What is biohacking](/overview/what-is-biohacking/).
 
-**Human augmentation** is the narrower file for adding or replacing a function, usually `layer: augment`. A prosthesis for a missing limb is filed as restoration. A subdermal identification chip in a person without that impairment is filed as enhancement. The label is not a moral permission.
+**Human augmentation** is the narrower file for adding or replacing a function. That usually sits under the Enhance goal. A prosthesis for a missing limb is filed as Restore. A subdermal identification chip in a person without that impairment is filed as Enhance. The label is not a moral permission.
 
 **Transhumanism** is reserved for explicit claims about transcending ordinary human limits. No manifesto was opened, so none is summarized. A device is not transhumanist merely because it is new.
