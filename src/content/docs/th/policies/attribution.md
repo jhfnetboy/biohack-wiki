@@ -7,7 +7,7 @@ domain: "cross-cutting"
 domains:
   - "cross-cutting"
 evidenceLevel: "unrated"
-lastReviewed: "2026-11-20"
+lastReviewed: "2026-11-21"
 status: "reviewed"
 sidebar:
   order: 4
@@ -45,4 +45,4 @@ sidebar:
 
 ## แผนภาพต้นฉบับ
 
-วาดขึ้นสำหรับวิกินี้ ไม่ได้คัดลอกจากบุคคลที่สาม: [แผนที่โดเมน](/diagrams/domain-map.svg), [สามชั้น](/diagrams/three-layers-th.svg), [ห่วงโซ่สัญญาณ](/diagrams/bci-signal-chain-th.svg), [วงปิด](/diagrams/closed-loop.svg)
+วาดขึ้นสำหรับวิกินี้ ไม่ได้คัดลอกจากบุคคลที่สาม: [แผนที่โดเมน](/diagrams/domain-map-th.svg) (อังกฤษ [/diagrams/domain-map.svg](/diagrams/domain-map.svg), จีน [/diagrams/domain-map-zh.svg](/diagrams/domain-map-zh.svg)), [สามชั้น](/diagrams/three-layers-th.svg), [ห่วงโซ่สัญญาณ](/diagrams/bci-signal-chain-th.svg), [วงปิด](/diagrams/closed-loop.svg)

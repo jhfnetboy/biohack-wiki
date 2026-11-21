@@ -1,14 +1,14 @@
 ---
 title: "Learning paths"
 titleZh: "学习路径"
-description: "A suggested reading order across the nine domains. It is not a protocol and not a graded course."
+description: "A suggested reading order across the ten domains. It is not a protocol and not a graded course."
 entityType: "navigation"
 domain: "cross-cutting"
 domains:
   - "cross-cutting"
 evidenceLevel: "unrated"
 maturity: "unknown"
-lastReviewed: "2026-11-20"
+lastReviewed: "2026-11-21"
 status: "reviewed"
 sidebar:
   order: 8

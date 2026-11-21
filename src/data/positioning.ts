@@ -1,3 +1,5 @@
+import { domainCountCopy } from './method-domains';
+
 export type Pillar = { title: string; text: string };
 
 /** Site positioning. For anyone: people and organizations. Open and open source. */
@@ -14,7 +16,7 @@ export const positioning = {
 		pillars: [
 			{
 				title: 'Comprehensive coverage',
-				text: 'Nine domains, from peptides and neurotechnology to microbiome and daily environment, with the same sourcing rules everywhere.',
+				text: `${domainCountCopy.en.phraseCap}, from peptides and neurotechnology to microbiome and daily environment, with the same sourcing rules everywhere.`,
 			},
 			{
 				title: 'Decision support',
@@ -45,7 +47,7 @@ export const positioning = {
 		pillars: [
 			{
 				title: '全面覆盖',
-				text: '九个领域，从肽和神经技术到微生物组与日常环境，全站使用同一套来源规则。',
+				text: `${domainCountCopy.zh.phrase}，从肽和神经技术到微生物组与日常环境，全站使用同一套来源规则。`,
 			},
 			{
 				title: '决策参考',
@@ -77,7 +79,7 @@ export const positioning = {
 		pillars: [
 			{
 				title: 'ครอบคลุม',
-				text: 'เก้าโดเมน ตั้งแต่เปปไทด์และประสาทเทคโนโลยีจนถึงจุลินทรีย์และชีวิตประจำวัน ใช้กฎแหล่งอ้างอิงเดียวกัน',
+				text: `${domainCountCopy.th.phrase} ตั้งแต่เปปไทด์และประสาทเทคโนโลยีจนถึงจุลินทรีย์และชีวิตประจำวัน ใช้กฎแหล่งอ้างอิงเดียวกัน`,
 			},
 			{
 				title: 'ช่วยตัดสินใจ',

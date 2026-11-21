@@ -9,6 +9,8 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "diagrams": "node --experimental-strip-types scripts/render-domain-map.ts",
+    "check": "node scripts/check-content.mjs && node --experimental-strip-types scripts/check-domain-count.ts",
     "build": "astro build",
     "preview": "astro preview"
   },

@@ -1,6 +1,7 @@
 ---
 import { scenariosFor } from '../data/scenarios';
 import { localeId, pick } from '../lib/locale';
+import { methodDomains } from '../data/method-domains';
 
 type Source = { url: string; title: string; accessed: string; type?: string };
 
@@ -44,21 +45,12 @@ const evidence: Record<string, string> = isZh
 			unrated: 'Not rated',
 		};
 
-const domainLabels: Record<string, string> = isZh
-	? {
-			biochemical: '生化小分子',
-			peptides: '肽',
-			neurohacking: '神经科技',
-			bionic: '仿生',
-			cyborg: '赛博格',
-			genetic: '基因',
-			cellular: '细胞与再生',
-			'quantified-self': '自我量化',
-			microbiome: '微生物组',
-			lifestyle: '环境信号',
-			'cross-cutting': '跨领域',
-		}
-	: {};
+const domainLabels: Record<string, string> = {
+	...Object.fromEntries(
+		methodDomains.map((domain) => [domain.slug, isZh ? domain.titleZh : domain.title]),
+	),
+	'cross-cutting': isZh ? '跨领域' : 'Cross-cutting',
+};
 
 const statusLabels: Record<string, string> = isZh
 	? { reviewed: '已审阅', stub: '存根', draft: '草稿' }

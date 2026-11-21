@@ -217,7 +217,7 @@ export const domains: DomainDef[] = [
 			},
 		],
 		related: [
-			{ href: '/quantified-self/', title: 'Quantified self', titleZh: '自我量化' },
+			{ href: '/quantified-self/', title: 'Quantified self', titleZh: '量化自我' },
 			{ href: '/goals/longevity/', title: 'Extend (healthspan)', titleZh: '延寿（健康寿命）' },
 			{ href: '/neurohacking/', title: 'Neurohacking', titleZh: '神经增强' },
 		],
@@ -225,6 +225,99 @@ export const domains: DomainDef[] = [
 			{ href: '/overview/evidence-and-safety/', title: 'Evidence and safety', titleZh: '证据与安全' },
 			{ href: '/peptides/', title: 'Peptide overview', titleZh: '肽总览' },
 			{ href: '/peptides/glp-1-agonists/', title: 'GLP-1 page', titleZh: 'GLP-1 页' },
+		],
+	},
+	{
+		slug: 'peptides',
+		slot: 'domain-peptides',
+		title: 'Peptides',
+		titleZh: '肽',
+		definition:
+			'Short amino-acid chains the body uses as signals. Split from biochemical molecules because purity, testing, and supply are their own problem. Not a menu of things to take, and not a chemistry proof.',
+		definitionZh: '身体用来发信号的氨基酸短链。它和生化小分子分开，是因为纯度、检测和供应本身就是问题。不是服用清单，也不是化学证明。',
+		layers: ['Intervene'],
+		goals: ['restore', 'enhance', 'extend'],
+		areas: [
+			{
+				title: 'GLP-1s',
+				titleZh: 'GLP-1 相关',
+				text: 'Semaglutide, tirzepatide, retatrutide, and other incretin names. The GLP-1 page quotes FDA. It is not an efficacy comparison.',
+				textZh: '司美格鲁肽、替尔泊肽、瑞他鲁肽以及其他肠促胰素名称。GLP-1 页引用 FDA。它不是疗效对比。',
+				href: '/peptides/glp-1-agonists/',
+			},
+			{
+				title: 'Healing names',
+				titleZh: '修复讨论中的名称',
+				text: 'BPC-157 and TB-500 are filed here. FDA compounding-risk statements only. No repair claim.',
+				textZh: 'BPC-157 和 TB-500 归档在这里。只写 FDA 的复配风险表述。不写修复疗效。',
+				href: '/peptides/bpc-157/',
+			},
+			{
+				title: 'GH secretagogues',
+				titleZh: '生长激素促泌剂',
+				text: 'CJC-1295, ipamorelin, and tesamorelin. Tesamorelin’s approval status is still a stub.',
+				textZh: 'CJC-1295、ipamorelin 和 tesamorelin。Tesamorelin 的批准状态仍是存根。',
+				href: '/peptides/cjc-1295/',
+			},
+			{
+				title: 'Cosmetic and copper',
+				titleZh: '美容与铜肽',
+				text: 'GHK-Cu. The sourced note is limited to injectable GHK-Cu on FDA’s withdrawn-nomination list.',
+				textZh: 'GHK-Cu。有来源的笔记只限于 FDA 撤回清单上的注射用 GHK-Cu。',
+				href: '/peptides/ghk-cu/',
+			},
+		],
+		examples: [
+			{
+				title: 'Reading a certificate of analysis',
+				titleZh: '阅读检验报告',
+				text: 'Stub. No purity cutoffs.',
+				textZh: '存根。没有纯度切点。',
+				href: '/peptides/reading-a-coa/',
+				stub,
+			},
+		],
+		maturityRows: [
+			{
+				label: 'Approved GLP-1 drugs',
+				labelZh: '已批准的 GLP-1 药物',
+				note: 'Sourced on the GLP-1 page from FDA’s unapproved-GLP-1 statements. This row is not an efficacy grade.',
+				noteZh: '来源是 GLP-1 页引用的 FDA 未经批准 GLP-1 表述。本行不是疗效评级。',
+				tone: 'sourced',
+			},
+			{
+				label: 'Research-use names',
+				labelZh: '研究用名称',
+				note: 'Several names appear on FDA compounding-risk or withdrawn-nomination pages. See those regulation pages.',
+				noteZh: '若干名称出现在 FDA 复配风险或撤回提名页面。见那些法规页。',
+				tone: 'sourced',
+			},
+		],
+		debates: [
+			{
+				title: 'Purity and supply',
+				titleZh: '纯度与供应',
+				text: 'Purity, testing, and supply are why peptides are a first-level domain, not a folder under biochemical.',
+				textZh: '纯度、检测和供应，是肽成为一级领域、而不是生化小分子下文件夹的原因。',
+			},
+		],
+		regulation: [
+			{
+				title: 'United States',
+				titleZh: '美国',
+				text: 'Category 2, withdrawn nominations, Import Alert 66-80, and the July 2026 PCAC agenda have sourced pages.',
+				textZh: 'Category 2、已撤回提名、进口警报 66-80，以及 2026 年 7 月 PCAC 议程已有来源页。',
+				href: '/regulation/',
+			},
+		],
+		related: [
+			{ href: '/biochemical/', title: 'Biochemical', titleZh: '生化小分子' },
+			{ href: '/goals/', title: 'Goals', titleZh: '目标' },
+			{ href: '/peptides/reading-a-coa/', title: 'Reading a certificate of analysis', titleZh: '阅读检验报告' },
+		],
+		startHere: [
+			{ href: '/peptides/glp-1-agonists/', title: 'GLP-1 page', titleZh: 'GLP-1 页' },
+			{ href: '/overview/evidence-and-safety/', title: 'Evidence and safety', titleZh: '证据与安全' },
 		],
 	},
 	{
@@ -965,7 +1058,7 @@ export const domains: DomainDef[] = [
 		slug: 'quantified-self',
 		slot: 'domain-quantified-self',
 		title: 'Quantified self',
-		titleZh: '自我量化',
+		titleZh: '量化自我',
 		definition:
 			'Wearables, continuous glucose monitors, and heart-rate variability. A sensor reading is not a diagnosis. Accuracy figures are not stated on this landing.',
 		definitionZh: '可穿戴设备、连续血糖监测和心率变异性。传感器读数不是诊断。本页不写准确率。',
@@ -1315,7 +1408,7 @@ export const domains: DomainDef[] = [
 			},
 		],
 		related: [
-			{ href: '/quantified-self/', title: 'Quantified self', titleZh: '自我量化' },
+			{ href: '/quantified-self/', title: 'Quantified self', titleZh: '量化自我' },
 			{ href: '/goals/longevity/', title: 'Extend (healthspan)', titleZh: '延寿（健康寿命）' },
 			{ href: '/biochemical/', title: 'Biochemical', titleZh: '生物化学' },
 		],

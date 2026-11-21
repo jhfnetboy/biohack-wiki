@@ -8,7 +8,7 @@ domains:
   - "cross-cutting"
 evidenceLevel: "unrated"
 maturity: "unknown"
-lastReviewed: "2026-11-20"
+lastReviewed: "2026-11-21"
 status: "reviewed"
 sidebar:
   order: 5
@@ -16,7 +16,7 @@ sidebar:
 
 这些标签给编辑用，不是引文。
 
-**生物黑客**是九领域地图。见[什么是生物黑客](/zh-cn/overview/what-is-biohacking/)。
+**生物黑客**是十领域地图。见[什么是生物黑客](/zh-cn/overview/what-is-biohacking/)。
 
 **人体增强**是更窄的归档，指增加或替代功能，通常是 `layer: augment`。为缺失肢体做的假肢归档为恢复。没有这种损伤的人使用皮下身份芯片，归档为增强。标签不是道德许可。
 
