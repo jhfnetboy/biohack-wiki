@@ -1183,7 +1183,7 @@ export const domains: DomainDef[] = [
 		],
 		related: [
 			{ href: '/biochemical/metabolic/', title: 'Metabolic notes', titleZh: '代谢笔记' },
-			{ href: '/lifestyle/', title: 'Lifestyle', titleZh: '生活方式' },
+			{ href: '/lifestyle/', title: 'Environmental Signals', titleZh: '环境信号' },
 			{ href: '/goals/longevity/', title: 'Extend (healthspan)', titleZh: '延寿（健康寿命）' },
 		],
 		startHere: [
@@ -1289,7 +1289,7 @@ export const domains: DomainDef[] = [
 		related: [
 			{ href: '/biochemical/metabolic/', title: 'Metabolic', titleZh: '代谢' },
 			{ href: '/goals/longevity/', title: 'Extend (healthspan)', titleZh: '延寿（健康寿命）' },
-			{ href: '/lifestyle/', title: 'Lifestyle', titleZh: '生活方式' },
+			{ href: '/lifestyle/', title: 'Environmental Signals', titleZh: '环境信号' },
 		],
 		startHere: [
 			{ href: '/overview/evidence-and-safety/', title: 'How grades work', titleZh: '等级如何使用' },

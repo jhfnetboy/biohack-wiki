@@ -6,17 +6,17 @@ export type Pillar = { title: string; text: string };
 export const positioning = {
 	en: {
 		statement:
-			'An open, open-source wiki helping any person or organization research and understand every area of biohacking and informing their decisions. Professionally tracked, continuously updated, objective and neutral.',
+			'Biohacking is deliberately intervening in your own biology — and checking the result — in order to restore, enhance, or extend healthspan. This wiki groups the methods into ten domains. It is an open, open-source reference helping any person or organization research those areas and inform their decisions. Professionally tracked, continuously updated, objective and neutral.',
 		headline: 'The open biohacking wiki',
 		subline:
-			'An open-source reference for any person or organization, to research every area of biohacking and make better-informed decisions.',
+			'Biohacking is deliberately intervening in your own biology — and checking the result — in order to restore, enhance, or extend healthspan. This wiki groups the methods into ten domains, and is an open-source reference for any person or organization.',
 		badges: ['Tracked', 'Updated', 'Neutral', 'Open source'],
 		tagline:
-			'Open, open-source wiki for anyone researching biohacking and informing decisions. Objective, continuously updated, and not medical advice.',
+			'Open, open-source wiki: ten method domains toward restore, enhance, or extend. Objective, continuously updated, and not medical advice.',
 		pillars: [
 			{
 				title: 'Comprehensive coverage',
-				text: `${domainCountCopy.en.phraseCap}, from peptides and neurotechnology to microbiome and daily environment, with the same sourcing rules everywhere.`,
+				text: `${domainCountCopy.en.phraseCap} in service of three goals — Restore, Enhance, and Extend — from peptides and neurotechnology to microbiome and environmental signals, with the same sourcing rules everywhere.`,
 			},
 			{
 				title: 'Decision support',
@@ -38,16 +38,16 @@ export const positioning = {
 	},
 	zh: {
 		statement:
-			'开放、开源的 Biohacking wiki，帮助任何人和组织研究、了解 Biohacking 的各个领域，并为决策提供信息参考。专业跟进，持续更新，客观中立。',
+			'生物黑客，是为了修复、增强或延寿，有意识地干预自己的身体，并查看结果；本维基把这些手段分成十个领域。开放、开源，帮助任何人和组织查阅并为决策提供参考。专业跟进，持续更新，客观中立。',
 		headline: '开放的生物黑客百科',
 		subline:
-			'开源、人人可用的参考资料，帮助任何人和组织研究、了解生物黑客的各个领域，为决策提供参考。',
+			'生物黑客，是为了修复、增强或延寿，有意识地干预自己的身体，并查看结果；本维基把这些手段分成十个领域。开源、人人可用，为决策提供参考。',
 		badges: ['专业跟进', '持续更新', '客观中立', '开源'],
-		tagline: '开放、开源的生物黑客 wiki，帮助任何人和组织研究并做决策参考。客观中立，持续更新，不是医疗建议。',
+		tagline: '开放、开源的生物黑客 wiki。手段分成十个领域，目的是修复、增强或延寿。客观中立，持续更新，不是医疗建议。',
 		pillars: [
 			{
 				title: '全面覆盖',
-				text: `${domainCountCopy.zh.phrase}，从肽和神经技术到微生物组与日常环境，全站使用同一套来源规则。`,
+				text: `${domainCountCopy.zh.phrase}，服务于修复、增强、延寿三个目的，从肽和神经技术到微生物组与环境信号，全站使用同一套来源规则。`,
 			},
 			{
 				title: '决策参考',
@@ -69,17 +69,17 @@ export const positioning = {
 	},
 	th: {
 		statement:
-			'วิกิแบบเปิดและโอเพนซอร์ส ที่ช่วยให้บุคคลหรือองค์กรศึกษาและเข้าใจไบโอแฮกกิงทุกด้าน เพื่อใช้ประกอบการตัดสินใจ มีการติดตามอย่างมืออาชีพ อัปเดตต่อเนื่อง เป็นกลาง',
+			'ไบโอแฮกกิง คือการแทรกแซงชีววิทยาของตนเองอย่างตั้งใจ และตรวจสอบผล เพื่อฟื้นฟู เสริมศักยภาพ หรือยืดสุขภาพ วิกินี้จัดวิธีที่ใช้เป็นสิบโดเมน เป็นแหล่งอ้างอิงแบบเปิดและโอเพนซอร์ส ที่ช่วยให้บุคคลหรือองค์กรศึกษาและใช้ประกอบการตัดสินใจ มีการติดตามอย่างมืออาชีพ อัปเดตต่อเนื่อง เป็นกลาง',
 		headline: 'วิกิไบโอแฮกกิงแบบเปิด',
 		subline:
-			'แหล่งอ้างอิงโอเพนซอร์สสำหรับบุคคลหรือองค์กร เพื่อศึกษาไบโอแฮกกิงทุกด้านและตัดสินใจอย่างมีข้อมูลมากขึ้น',
+			'ไบโอแฮกกิง คือการแทรกแซงชีววิทยาของตนเองอย่างตั้งใจ และตรวจสอบผล เพื่อฟื้นฟู เสริมศักยภาพ หรือยืดสุขภาพ วิกินี้จัดวิธีที่ใช้เป็นสิบโดเมน เป็นแหล่งอ้างอิงโอเพนซอร์สสำหรับบุคคลหรือองค์กร',
 		badges: ['มืออาชีพ', 'อัปเดต', 'เป็นกลาง', 'โอเพนซอร์ส'],
 		tagline:
-			'วิกิไบโอแฮกกิงแบบเปิดและโอเพนซอร์ส สำหรับบุคคลหรือองค์กร เป็นกลาง อัปเดตต่อเนื่อง ไม่ใช่คำแนะนำทางการแพทย์',
+			'วิกิไบโอแฮกกิงแบบเปิดและโอเพนซอร์ส: สิบโดเมนวิธี เพื่อฟื้นฟู เสริมศักยภาพ หรือยืดสุขภาพ เป็นกลาง อัปเดตต่อเนื่อง ไม่ใช่คำแนะนำทางการแพทย์',
 		pillars: [
 			{
 				title: 'ครอบคลุม',
-				text: `${domainCountCopy.th.phrase} ตั้งแต่เปปไทด์และประสาทเทคโนโลยีจนถึงจุลินทรีย์และชีวิตประจำวัน ใช้กฎแหล่งอ้างอิงเดียวกัน`,
+				text: `${domainCountCopy.th.phrase} เพื่อสามเป้าหมาย — ฟื้นฟู เสริมศักยภาพ และยืดสุขภาพ — ตั้งแต่เปปไทด์และประสาทเทคโนโลยีจนถึงจุลินทรีย์และสัญญาณสิ่งแวดล้อม ใช้กฎแหล่งอ้างอิงเดียวกัน`,
 			},
 			{
 				title: 'ช่วยตัดสินใจ',

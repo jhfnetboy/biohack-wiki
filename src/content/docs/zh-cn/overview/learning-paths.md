@@ -1,7 +1,7 @@
 ---
 title: "学习路径"
 titleZh: "学习路径"
-description: "十个领域的建议阅读顺序。它不是操作方案，也不是有分数的课程。不是医疗建议。不是医疗建议。"
+description: "十个方法领域与三个目的（修复、增强、延寿）的建议阅读顺序。它不是操作方案，也不是有分数的课程。不是医疗建议。"
 entityType: "navigation"
 domain: "cross-cutting"
 domains:
@@ -13,6 +13,8 @@ status: "reviewed"
 sidebar:
   order: 8
 ---
+
+先读工作定义和三个目的，再按手段逐个看。
 
 1. [医疗免责声明](/zh-cn/disclaimer/)和[证据与安全](/zh-cn/overview/evidence-and-safety/)。
 2. [什么是生物黑客](/zh-cn/overview/what-is-biohacking/)和[目标](/zh-cn/goals/)。

@@ -28,6 +28,8 @@ const stale = [
 	/9\s*个领域/,
 	/เก้าโดเมน/,
 	/9\s*โดเมน/,
+	/\bten-domain map\b/i,
+	/十领域地图/,
 ];
 
 const skipDir = new Set(['node_modules', '.git', 'dist', '.astro']);
@@ -98,8 +100,8 @@ const required = [
 	['src/content/docs/overview/what-is-biohacking.mdx', domainCountCopy.en.phrase],
 	['src/content/docs/zh-cn/overview/what-is-biohacking.mdx', domainCountCopy.zh.phrase],
 	['src/content/docs/th/overview/what-is-biohacking.mdx', domainCountCopy.th.phrase],
-	['src/content/docs/overview/concepts.md', `${domainCountCopy.en.word}-domain map`],
-	['src/content/docs/zh-cn/overview/concepts.md', `${domainCountCopy.zh.word}领域地图`],
+	['src/content/docs/overview/concepts.md', `${domainCountCopy.en.phrase} are the methods`],
+	['src/content/docs/zh-cn/overview/concepts.md', `${domainCountCopy.zh.phrase}是手段`],
 ];
 for (const [file, needle] of required) {
 	const text = fs.readFileSync(path.join(root, file), 'utf8');
