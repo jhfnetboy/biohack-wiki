@@ -3,5 +3,9 @@
   "disclaimer.link": "医疗免责声明",
   "page.sources": "来源",
   "page.backlinks": "被以下页面引用",
-  "page.stub": "存根，需要来源。"
+  "page.stub": "存根，需要来源。",
+  "sidebarToggle.collapseNav": "收起导航",
+  "sidebarToggle.expandNav": "打开导航",
+  "sidebarToggle.collapseToc": "收起目录",
+  "sidebarToggle.expandToc": "打开目录"
 }

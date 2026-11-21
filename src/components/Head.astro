@@ -1,0 +1,20 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+---
+
+<Default />
+{/* Apply remembered sidebar state before first paint so the layout does not flash. */}
+<script is:inline>
+	(() => {
+		try {
+			const nav = localStorage.getItem('bh-wiki-nav');
+			const toc = localStorage.getItem('bh-wiki-toc');
+			const root = document.documentElement;
+			root.setAttribute('data-bh-nav', nav === 'collapsed' ? 'collapsed' : 'open');
+			root.setAttribute('data-bh-toc', toc === 'collapsed' ? 'collapsed' : 'open');
+		} catch {
+			document.documentElement.setAttribute('data-bh-nav', 'open');
+			document.documentElement.setAttribute('data-bh-toc', 'open');
+		}
+	})();
+</script>

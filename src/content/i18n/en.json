@@ -3,5 +3,9 @@
   "disclaimer.link": "Medical disclaimer",
   "page.sources": "Sources",
   "page.backlinks": "Referenced by",
-  "page.stub": "Stub, needs sourcing."
+  "page.stub": "Stub, needs sourcing.",
+  "sidebarToggle.collapseNav": "Collapse navigation",
+  "sidebarToggle.expandNav": "Open navigation",
+  "sidebarToggle.collapseToc": "Collapse table of contents",
+  "sidebarToggle.expandToc": "Open table of contents"
 }
