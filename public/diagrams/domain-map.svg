@@ -1,86 +1,291 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 920 620" role="img" aria-labelledby="title desc">
-  <title id="title">Ten biohacking domains</title>
-  <desc id="desc">Original diagram of the wiki's ten domains. Not copied from a third party. Each box links to that domain's landing page.</desc>
-  <rect width="920" height="620" fill="#f4f7f5"/>
-  <text x="32" y="42" font-family="Georgia, serif" font-size="22" fill="#12352c">Ten domains (editorial map)</text>
-  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#12352c">
-    <a href="/quantified-self/">
-      <g>
-        <rect x="32" y="78" width="270" height="64" rx="8" fill="#fff4cc"/>
-        <text x="48" y="104">1 Quantified self</text>
-        <text x="48" y="124" font-size="12" fill="#245">wearables, CGM, HRV</text>
-      </g>
-    </a>
-    <a href="/lifestyle/">
-      <g>
-        <rect x="322" y="78" width="270" height="64" rx="8" fill="#efe7ff"/>
-        <text x="338" y="104">2 Environmental Signals</text>
-        <text x="338" y="124" font-size="12" fill="#245">light, cold, heat, timing</text>
-      </g>
-    </a>
-    <a href="/biochemical/">
-      <g>
-        <rect x="32" y="168" width="270" height="64" rx="8" fill="#d7f5ea"/>
-        <text x="48" y="194">3 Biochemical</text>
-        <text x="48" y="214" font-size="12" fill="#245">small molecules, hormones, nootropics</text>
-      </g>
-    </a>
-    <a href="/peptides/">
-      <g>
-        <rect x="322" y="168" width="270" height="64" rx="8" fill="#c5ebd8"/>
-        <text x="338" y="194">4 Peptides</text>
-        <text x="338" y="214" font-size="12" fill="#245">amino-acid signals, purity</text>
-      </g>
-    </a>
-    <a href="/genetic/">
-      <g>
-        <rect x="32" y="258" width="270" height="64" rx="8" fill="#f7dce3"/>
-        <text x="48" y="284">5 Genetic</text>
-        <text x="48" y="304" font-size="12" fill="#245">gene, RNA, synthetic biology</text>
-      </g>
-    </a>
-    <a href="/cellular/">
-      <g>
-        <rect x="322" y="258" width="270" height="64" rx="8" fill="#f3d4e8"/>
-        <text x="338" y="284">6 Cellular &amp; Regenerative</text>
-        <text x="338" y="304" font-size="12" fill="#245">stem cells, tissue, reprogramming</text>
-      </g>
-    </a>
-    <a href="/microbiome/">
-      <g>
-        <rect x="612" y="258" width="270" height="64" rx="8" fill="#e3f6f2"/>
-        <text x="628" y="284">7 Microbiome</text>
-        <text x="628" y="304" font-size="12" fill="#245">gut, diet, microbes</text>
-      </g>
-    </a>
-    <a href="/neurohacking/">
-      <g>
-        <rect x="32" y="348" width="270" height="64" rx="8" fill="#d7e8f5"/>
-        <text x="48" y="374">8 Neurotech</text>
-        <text x="48" y="394" font-size="12" fill="#245">recording, stimulation, BCI</text>
-      </g>
-    </a>
-    <a href="/cyborg/">
-      <g>
-        <rect x="322" y="348" width="270" height="64" rx="8" fill="#f7e7d8"/>
-        <text x="338" y="374">9 Cyborg implants</text>
-        <text x="338" y="394" font-size="12" fill="#245">implants, magnets, sensors</text>
-      </g>
-    </a>
-    <a href="/bionic/">
-      <g>
-        <rect x="612" y="348" width="270" height="64" rx="8" fill="#e7e4f7"/>
-        <text x="628" y="374">10 Bionics</text>
-        <text x="628" y="394" font-size="12" fill="#245">prostheses, exoskeletons</text>
-      </g>
-    </a>
-  </g>
-  <text x="32" y="478" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">The boxes overlap on purpose. A single project can sit in more than one domain.</text>
-  <text x="32" y="506" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#333">Example filed under 8 and 10: signals from the nervous system used to move an assistive device.</text>
-  <path d="M302 380 H310 V422 H612 V380" stroke="#12352c" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
-  <defs>
-    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0 0 L6 3 L0 6 Z" fill="#12352c"/>
-    </marker>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" class="bh-domain-map" width="100%" role="group" aria-labelledby="bh-domain-map-title bh-domain-map-desc">
+  <title id="bh-domain-map-title">Ten biohacking domains</title>
+  <desc id="bh-domain-map-desc">Diagram of the wiki's ten domains. Not copied from a third party. Each card links to that domain's landing page.</desc>
+  <style>
+    .bh-domain-map {
+      --dm-ink: #12352c;
+      --dm-card: #ffffff;
+      --dm-line: #d5e4dc;
+      --dm-teal: #1f7a5c;
+      --dm-banner: #f3f6f4;
+      --dm-muted: #3d5a50;
+      background: transparent;
+    }
+    @media (prefers-color-scheme: dark) {
+      .bh-domain-map {
+        --dm-ink: #e7f6f0;
+        --dm-card: #13241f;
+        --dm-line: #2c4a40;
+        --dm-teal: #8ee0c2;
+        --dm-banner: #121c19;
+        --dm-muted: #b7d4c8;
+      }
+    }
+    .bh-domain-map .bg { fill: var(--dm-banner); }
+    .bh-domain-map .headline {
+      font-family: var(--sl-font-system, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      fill: var(--dm-ink);
+    }
+    .bh-domain-map .kicker {
+      font-family: var(--sl-font-system, ui-sans-serif, system-ui, sans-serif);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      fill: var(--dm-teal);
+    }
+    .bh-domain-map .note {
+      font-family: var(--sl-font-system, ui-sans-serif, system-ui, sans-serif);
+      font-size: 13px;
+      fill: var(--dm-muted);
+    }
+    .bh-domain-map .card {
+      fill: var(--dm-card);
+      stroke: var(--dm-line);
+      stroke-width: 1;
+    }
+    .bh-domain-map .accent { fill: var(--dm-teal); }
+    .bh-domain-map .idx {
+      font-family: var(--sl-font-system, ui-sans-serif, system-ui, sans-serif);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      fill: var(--dm-teal);
+    }
+    .bh-domain-map .title {
+      font-family: var(--sl-font-system, ui-sans-serif, system-ui, sans-serif);
+      font-size: 14px;
+      font-weight: 650;
+      fill: var(--dm-ink);
+    }
+    .bh-domain-map .blurb {
+      font-family: var(--sl-font-system, ui-sans-serif, system-ui, sans-serif);
+      font-size: 12px;
+      fill: var(--dm-muted);
+    }
+    .bh-domain-map .dm-mobile .headline { font-size: 24px; }
+    .bh-domain-map .dm-mobile .title { font-size: 16px; }
+    .bh-domain-map .dm-mobile .blurb { font-size: 13px; }
+    .bh-domain-map .dm-mobile .idx { font-size: 12px; }
+    .bh-domain-map a.node { cursor: pointer; }
+    .bh-domain-map a.node:hover .card,
+    .bh-domain-map a.node:focus-visible .card { stroke: var(--dm-teal); }
+    /* Aspect-ratio and show/hide apply only to the standalone wrapper
+       (a root .bh-domain-map that is not itself a hoisted layout). */
+    svg.bh-domain-map:not(.dm-desktop):not(.dm-mobile) {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    svg.bh-domain-map:not(.dm-desktop):not(.dm-mobile) .dm-desktop,
+    svg.bh-domain-map:not(.dm-desktop):not(.dm-mobile) .dm-mobile {
+      width: 100%;
+      height: 100%;
+    }
+    @media (min-width: 641px) {
+      svg.bh-domain-map:not(.dm-desktop):not(.dm-mobile) .dm-mobile { display: none; }
+      svg.bh-domain-map:not(.dm-desktop):not(.dm-mobile) { aspect-ratio: 892 / 500; }
+    }
+    @media (max-width: 640px) {
+      svg.bh-domain-map:not(.dm-desktop):not(.dm-mobile) .dm-desktop { display: none; }
+      svg.bh-domain-map:not(.dm-desktop):not(.dm-mobile) { aspect-ratio: 400 / 1040; }
+    }
+  </style>
+  <svg class="dm-desktop" viewBox="0 0 892 500" width="100%" height="100%" overflow="visible">
+    <rect class="bg" width="892" height="500" rx="16"/>
+    <text class="kicker" x="24" y="32">Editorial map</text>
+    <text class="headline" x="24" y="54">Ten domains</text>
+      <a class="node" href="/quantified-self/" aria-label="01 Quantified self">
+        <g transform="translate(24 72)">
+          <rect class="card" width="268" height="68" rx="12"/>
+          <rect class="accent" width="4" height="68" rx="2"/>
+          <text class="idx" x="16" y="22">01</text>
+          <text class="title" x="44" y="22">Quantified self</text>
+          <text class="blurb" x="16" y="46">wearables, CGM, HRV</text>
+        </g>
+      </a>
+      <a class="node" href="/lifestyle/" aria-label="02 Environmental Signals">
+        <g transform="translate(312 72)">
+          <rect class="card" width="268" height="68" rx="12"/>
+          <rect class="accent" width="4" height="68" rx="2"/>
+          <text class="idx" x="16" y="22">02</text>
+          <text class="title" x="44" y="22">Environmental Signals</text>
+          <text class="blurb" x="16" y="46">light, cold, heat, timing</text>
+        </g>
+      </a>
+      <a class="node" href="/biochemical/" aria-label="03 Biochemical">
+        <g transform="translate(24 156)">
+          <rect class="card" width="268" height="68" rx="12"/>
+          <rect class="accent" width="4" height="68" rx="2"/>
+          <text class="idx" x="16" y="22">03</text>
+          <text class="title" x="44" y="22">Biochemical</text>
+          <text class="blurb" x="16" y="46">small molecules, hormones, nootropics</text>
+        </g>
+      </a>
+      <a class="node" href="/peptides/" aria-label="04 Peptides">
+        <g transform="translate(312 156)">
+          <rect class="card" width="268" height="68" rx="12"/>
+          <rect class="accent" width="4" height="68" rx="2"/>
+          <text class="idx" x="16" y="22">04</text>
+          <text class="title" x="44" y="22">Peptides</text>
+          <text class="blurb" x="16" y="46">amino-acid signals, purity</text>
+        </g>
+      </a>
+      <a class="node" href="/genetic/" aria-label="05 Genetic">
+        <g transform="translate(24 240)">
+          <rect class="card" width="268" height="68" rx="12"/>
+          <rect class="accent" width="4" height="68" rx="2"/>
+          <text class="idx" x="16" y="22">05</text>
+          <text class="title" x="44" y="22">Genetic</text>
+          <text class="blurb" x="16" y="46">gene, RNA, synthetic biology</text>
+        </g>
+      </a>
+      <a class="node" href="/cellular/" aria-label="06 Cellular &amp; Regenerative">
+        <g transform="translate(312 240)">
+          <rect class="card" width="268" height="68" rx="12"/>
+          <rect class="accent" width="4" height="68" rx="2"/>
+          <text class="idx" x="16" y="22">06</text>
+          <text class="title" x="44" y="22">Cellular &amp; Regenerative</text>
+          <text class="blurb" x="16" y="46">stem cells, tissue, reprogramming</text>
+        </g>
+      </a>
+      <a class="node" href="/microbiome/" aria-label="07 Microbiome">
+        <g transform="translate(600 240)">
+          <rect class="card" width="268" height="68" rx="12"/>
+          <rect class="accent" width="4" height="68" rx="2"/>
+          <text class="idx" x="16" y="22">07</text>
+          <text class="title" x="44" y="22">Microbiome</text>
+          <text class="blurb" x="16" y="46">gut, diet, microbes</text>
+        </g>
+      </a>
+      <a class="node" href="/neurohacking/" aria-label="08 Neurotech">
+        <g transform="translate(24 324)">
+          <rect class="card" width="268" height="68" rx="12"/>
+          <rect class="accent" width="4" height="68" rx="2"/>
+          <text class="idx" x="16" y="22">08</text>
+          <text class="title" x="44" y="22">Neurotech</text>
+          <text class="blurb" x="16" y="46">recording, stimulation, BCI</text>
+        </g>
+      </a>
+      <a class="node" href="/cyborg/" aria-label="09 Cyborg implants">
+        <g transform="translate(312 324)">
+          <rect class="card" width="268" height="68" rx="12"/>
+          <rect class="accent" width="4" height="68" rx="2"/>
+          <text class="idx" x="16" y="22">09</text>
+          <text class="title" x="44" y="22">Cyborg implants</text>
+          <text class="blurb" x="16" y="46">implants, magnets, sensors</text>
+        </g>
+      </a>
+      <a class="node" href="/bionic/" aria-label="10 Bionics">
+        <g transform="translate(600 324)">
+          <rect class="card" width="268" height="68" rx="12"/>
+          <rect class="accent" width="4" height="68" rx="2"/>
+          <text class="idx" x="16" y="22">10</text>
+          <text class="title" x="44" y="22">Bionics</text>
+          <text class="blurb" x="16" y="46">prostheses, exoskeletons</text>
+        </g>
+      </a>
+    <text class="note" x="24" y="430">Cards can overlap: one project may belong to more than one domain.</text>
+    <text class="note" x="24" y="450">Example under 08 and 10: nerve signals used to move an assistive device.</text>
+  </svg>
+  <svg class="dm-mobile" viewBox="0 0 400 1040" width="100%" height="100%" overflow="visible">
+    <rect class="bg" width="400" height="1040" rx="16"/>
+    <text class="kicker" x="16" y="32">Editorial map</text>
+    <text class="headline" x="16" y="56">Ten domains</text>
+      <a class="node" href="/quantified-self/" aria-label="01 Quantified self">
+        <g transform="translate(16 72)">
+          <rect class="card" width="368" height="76" rx="12"/>
+          <rect class="accent" width="4" height="76" rx="2"/>
+          <text class="idx" x="16" y="26">01</text>
+          <text class="title" x="48" y="26">Quantified self</text>
+          <text class="blurb" x="16" y="52">wearables, CGM, HRV</text>
+        </g>
+      </a>
+      <a class="node" href="/lifestyle/" aria-label="02 Environmental Signals">
+        <g transform="translate(16 156)">
+          <rect class="card" width="368" height="76" rx="12"/>
+          <rect class="accent" width="4" height="76" rx="2"/>
+          <text class="idx" x="16" y="26">02</text>
+          <text class="title" x="48" y="26">Environmental Signals</text>
+          <text class="blurb" x="16" y="52">light, cold, heat, timing</text>
+        </g>
+      </a>
+      <a class="node" href="/biochemical/" aria-label="03 Biochemical">
+        <g transform="translate(16 240)">
+          <rect class="card" width="368" height="76" rx="12"/>
+          <rect class="accent" width="4" height="76" rx="2"/>
+          <text class="idx" x="16" y="26">03</text>
+          <text class="title" x="48" y="26">Biochemical</text>
+          <text class="blurb" x="16" y="52">small molecules, hormones, nootropics</text>
+        </g>
+      </a>
+      <a class="node" href="/peptides/" aria-label="04 Peptides">
+        <g transform="translate(16 324)">
+          <rect class="card" width="368" height="76" rx="12"/>
+          <rect class="accent" width="4" height="76" rx="2"/>
+          <text class="idx" x="16" y="26">04</text>
+          <text class="title" x="48" y="26">Peptides</text>
+          <text class="blurb" x="16" y="52">amino-acid signals, purity</text>
+        </g>
+      </a>
+      <a class="node" href="/genetic/" aria-label="05 Genetic">
+        <g transform="translate(16 408)">
+          <rect class="card" width="368" height="76" rx="12"/>
+          <rect class="accent" width="4" height="76" rx="2"/>
+          <text class="idx" x="16" y="26">05</text>
+          <text class="title" x="48" y="26">Genetic</text>
+          <text class="blurb" x="16" y="52">gene, RNA, synthetic biology</text>
+        </g>
+      </a>
+      <a class="node" href="/cellular/" aria-label="06 Cellular &amp; Regenerative">
+        <g transform="translate(16 492)">
+          <rect class="card" width="368" height="76" rx="12"/>
+          <rect class="accent" width="4" height="76" rx="2"/>
+          <text class="idx" x="16" y="26">06</text>
+          <text class="title" x="48" y="26">Cellular &amp; Regenerative</text>
+          <text class="blurb" x="16" y="52">stem cells, tissue, reprogramming</text>
+        </g>
+      </a>
+      <a class="node" href="/microbiome/" aria-label="07 Microbiome">
+        <g transform="translate(16 576)">
+          <rect class="card" width="368" height="76" rx="12"/>
+          <rect class="accent" width="4" height="76" rx="2"/>
+          <text class="idx" x="16" y="26">07</text>
+          <text class="title" x="48" y="26">Microbiome</text>
+          <text class="blurb" x="16" y="52">gut, diet, microbes</text>
+        </g>
+      </a>
+      <a class="node" href="/neurohacking/" aria-label="08 Neurotech">
+        <g transform="translate(16 660)">
+          <rect class="card" width="368" height="76" rx="12"/>
+          <rect class="accent" width="4" height="76" rx="2"/>
+          <text class="idx" x="16" y="26">08</text>
+          <text class="title" x="48" y="26">Neurotech</text>
+          <text class="blurb" x="16" y="52">recording, stimulation, BCI</text>
+        </g>
+      </a>
+      <a class="node" href="/cyborg/" aria-label="09 Cyborg implants">
+        <g transform="translate(16 744)">
+          <rect class="card" width="368" height="76" rx="12"/>
+          <rect class="accent" width="4" height="76" rx="2"/>
+          <text class="idx" x="16" y="26">09</text>
+          <text class="title" x="48" y="26">Cyborg implants</text>
+          <text class="blurb" x="16" y="52">implants, magnets, sensors</text>
+        </g>
+      </a>
+      <a class="node" href="/bionic/" aria-label="10 Bionics">
+        <g transform="translate(16 828)">
+          <rect class="card" width="368" height="76" rx="12"/>
+          <rect class="accent" width="4" height="76" rx="2"/>
+          <text class="idx" x="16" y="26">10</text>
+          <text class="title" x="48" y="26">Bionics</text>
+          <text class="blurb" x="16" y="52">prostheses, exoskeletons</text>
+        </g>
+      </a>
+    <text class="note" x="16" y="930">Cards can overlap: one project may</text>
+    <text class="note" x="16" y="952">belong to more than one domain.</text>
+  </svg>
 </svg>

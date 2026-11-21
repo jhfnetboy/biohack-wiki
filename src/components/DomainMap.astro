@@ -1,0 +1,47 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { localeId } from '../lib/locale';
+
+const id = localeId(Astro.locals.starlightRoute?.lang);
+const file = id === 'zh' ? 'domain-map-zh.svg' : id === 'th' ? 'domain-map-th.svg' : 'domain-map.svg';
+const svg = fs.readFileSync(path.join(process.cwd(), 'public/diagrams', file), 'utf8');
+
+const style = svg.match(/<style>[\s\S]*?<\/style>/)?.[0] ?? '';
+
+function inner(className: string): string {
+	const start = svg.indexOf(`<svg class="${className}"`);
+	if (start < 0) throw new Error(`domain map is missing ${className}`);
+	const end = svg.indexOf('</svg>', start);
+	if (end < 0) throw new Error(`domain map ${className} is not closed`);
+	return svg.slice(start, end + 6);
+}
+
+function hoist(markup: string, variant: 'desktop' | 'mobile'): string {
+	const titleId = `bh-domain-map-title-${variant}`;
+	const descId = `bh-domain-map-desc-${variant}`;
+	const titled = markup.replace(/<svg class="([^"]+)"([^>]*)>/, (_, cls, attrs) => {
+		const cleaned = String(attrs)
+			.replace(/\swidth="[^"]*"/, '')
+			.replace(/\sheight="[^"]*"/, '');
+		return `<svg class="bh-domain-map ${cls}" width="100%" role="group" aria-labelledby="${titleId} ${descId}"${cleaned}>`;
+	});
+	const title = (svg.match(/<title[^>]*>[\s\S]*?<\/title>/)?.[0] ?? '').replace(
+		/id="[^"]*"/,
+		`id="${titleId}"`,
+	);
+	const desc = (svg.match(/<desc[^>]*>[\s\S]*?<\/desc>/)?.[0] ?? '').replace(
+		/id="[^"]*"/,
+		`id="${descId}"`,
+	);
+	return titled.replace(/<svg([^>]*)>/, `<svg$1>${style}${title}${desc}`);
+}
+
+const desktop = hoist(inner('dm-desktop'), 'desktop');
+const mobile = hoist(inner('dm-mobile'), 'mobile');
+---
+
+<figure class="bh-domain-map-figure">
+	<Fragment set:html={desktop} />
+	<Fragment set:html={mobile} />
+</figure>
